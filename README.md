@@ -1,6 +1,6 @@
 # crypto_app
 
-A new Flutter project.
+The UI of this app was taken from Dribbble
 
 ## Getting Started
 
