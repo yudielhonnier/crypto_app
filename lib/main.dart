@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ligthTheme,
       darkTheme: darkTheme,
       themeMode: ThemeMode.dark,
-      home:  TradingPage(),
+      home:  HomePage(),
       routes: {
         '/chart':(_) => TradingPage(),
         '/home': (_) => HomePage(),
@@ -147,3 +147,8 @@ class MyApp extends StatelessWidget {
 //     );
 //   }
 // }
+
+
+
+
+ 

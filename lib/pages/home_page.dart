@@ -11,12 +11,16 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final colorsGradient = [
+      Color.fromARGB(0, 6, 13, 24),
+      Color.fromARGB(220, 6, 13, 24),
+      Color.fromARGB(255, 6, 13, 24)
+    ];
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: darkTheme.colorScheme.primary,
       appBar: AppBarHome(),
       body: Stack(children: [
         ColoredBox(
@@ -92,7 +96,6 @@ class _HomePageState extends State<HomePage> {
                               fontWeight: FontWeight.bold),
                         )),
                   ),
-                 
                 ),
                 const SizedBox(
                   height: 10,
@@ -102,64 +105,29 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
-        Positioned(
-            bottom: 180,
-            left: 0,
-            child: IgnorePointer(
-              ignoring: true,
-              child: Opacity(
-                opacity: 1,
-                child: Container(
-                  decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Color.fromARGB(0, 6, 13, 24),
-                            Color.fromARGB(220, 6, 13, 24),
-                            Color.fromARGB(255, 6, 13, 24)
-                          ]),
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20))),
-                  height: 200,
-                  width: size.width,
-                ),
-              ),
-            )),
-
-        PanelMarket(),
-
-        Positioned(
-          bottom: 0,
-          left: 0,
-          child: Opacity(
-              opacity: 1,
-              child: IgnorePointer(
-                ignoring: true,
-                child: Container(
-                  // color:Color.fromARGB(255,6,13,24) ,
-                  height: 60,
-                  width: size.width,
-                  decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Color.fromARGB(50, 6, 13, 24),
-                            Color.fromARGB(100, 6, 13, 24),
-                            Color.fromARGB(220, 6, 13, 24),
-                            Color.fromARGB(255, 6, 13, 24)
-                          ]),
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20))),
-                ),
-              )),
+        BottomGradient(
+            size: size, colors: colorsGradient, height: 200, bottom: 180),
+    
+        Stack(
+          children:[
+            SlidingUpPanelMarket(
+            dropdownvalue: 'Capitalization',
+           items: [
+            'Capitalization',
+            'BlaBlaBl1',
+            'BlaBlaBla2',
+            'BlaBlaBla3',
+            'BlaBlaBla4',
+          ]),
+ BottomGradient(
+            size: size,
+            colors:colorsGradient,
+            height: 170,
+            bottom: 0),
+          ] 
         ),
+       
       ]),
     );
   }
 }
-
-

@@ -1,9 +1,9 @@
-import 'package:crypto_app/models/sales_data.dart';
+// import 'package:crypto_app/models/sales_data.dart';
 import 'package:crypto_app/models/step_area_data.dart';
 import 'package:crypto_app/themes/theme_constants.dart';
 import 'package:crypto_app/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
+// import 'package:syncfusion_flutter_charts/charts.dart';
 
 class TradingPage extends StatefulWidget {
   @override
@@ -19,7 +19,7 @@ class TradingPageState extends State<TradingPage> {
     String dropdownvalue = 'ETH/USDT';
 
     // List of items in our dropdown menu
-    var items = [
+    var coinsPair = [
       'ETH/USDT',
       'BlaBlaBla1',
       'BlaBlaBla2',
@@ -64,6 +64,22 @@ class TradingPageState extends State<TradingPage> {
     ];
     // var
 
+    List<double> lineChartDataList=[
+                            35.5,
+                            12,
+                            45.5,
+                            23.23,
+                            15.676,
+                            19.56,
+                            17.3444,
+                            80.5,
+                            75.23,
+                            82.676,
+                            82.56,
+                            102.3,
+                            90.444
+                          ];
+
     List<StepAreaData> chartData = <StepAreaData>[
       StepAreaData(1, 23, -29),
       StepAreaData(2, 13, -7),
@@ -72,101 +88,24 @@ class TradingPageState extends State<TradingPage> {
       StepAreaData(5, 40, -5),
     ];
 
-    String walletAmount= '\$5,271.39';  
-    String higAmount='130.62%';
-    String lowAmount='+900.62';
+    String walletAmount = '\$5,271.39';
+    String higAmount = '130.62%';
+    String lowAmount = '+900.62';
 
     var cardsTimeChart = [
-                              Card(
-                                 color: darkTheme.colorScheme.primary,
-                                child: 
-                                Container(
-                                 
-                                  alignment: Alignment.center,
-                                  width: 20,
-                                  height: 20,
-                                  child: Text('D')),
-                              ),
-                              Card(
-                                 color: darkTheme.colorScheme.primary,
-                                child: Container(
-                                  
-                                  alignment: Alignment.center,
-                                  width: 20,
-                                  height: 20,
-                                  child: Text('W')),
-                              ),
-                              Card(
-                                 color: darkTheme.colorScheme.secondary,
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  width: 20,
-                                  height: 20,
-                                  child: Text('M')),
-                              ),
-                              Card(
-                                color: darkTheme.colorScheme.primary,
-                                child: Container(
-                                  
-                                  alignment: Alignment.center,
-                                  width: 25,
-                                  height: 20,
-                                  child: Text('6M')),
-                              ),
-                              Card(
-                                color: darkTheme.colorScheme.primary,
-                                child: Container(
-                                  
-                                  alignment: Alignment.center,
-                                  width: 20,
-                                  height: 20,
-                                  child: Text('Y')),
-                              ),
-                              Card(
-                                color: darkTheme.colorScheme.primary,
-                                child: Container(
-                                  
-                                  alignment: Alignment.center,
-                                  width: 20,
-                                  height: 20,
-                                  child: Text('Y')),
-                              ),
-                              Card(
-                                color: darkTheme.colorScheme.primary,
-                                child: Container(
-                                  
-                                  alignment: Alignment.center,
-                                  width: 20,
-                                  height: 20,
-                                  child: Text('All')),
-                              ),
-                              Card(
-                                  color: darkTheme.colorScheme.primary,
-                                child: Container(
-                                  
-                                  alignment: Alignment.center,
-                                  width: 20,
-                                  height: 20,
-                                  child: Text('')),
-                              ),
-                              Card(
-                                color: darkTheme.colorScheme.primary,
-                                child: Container(
-                                  
-                                  alignment: Alignment.center,
-                                  width: 20,
-                                  height: 20,
-                                  child: Icon(Icons.aspect_ratio)),
-                              ),
-                            ];
+      const CardsTimeChart(),
+    ];
     return DefaultTabController(
       length: 4,
       child: Scaffold(
         backgroundColor: darkTheme.colorScheme.primary,
-        appBar: AppBarTrading(dropdownvalue: dropdownvalue, items: items,context: context,),
+        appBar: AppBarTrading(
+          dropdownvalue: dropdownvalue,
+          items: coinsPair,
+          context: context,
+        ),
         body: Column(
           children: <Widget>[
-           
             SizedBox(
               height: 430,
               child: ColoredBox(
@@ -175,51 +114,47 @@ class TradingPageState extends State<TradingPage> {
                   padding: EdgeInsets.only(left: 20, right: 20),
                   child: Column(
                     children: [
-                      LinearChartStatictics(walletAmount: walletAmount, higAmount: higAmount, lowAmount: lowAmount),
+                      LinearChartStatictics(
+                          walletAmount: walletAmount,
+                          higAmount: higAmount,
+                          lowAmount: lowAmount),
                       SizedBox(
                         child: Container(),
                         height: 30,
                       ),
-                           Container(
-                             height: 1,
-                             color: darkTheme.colorScheme.secondary,
-                           ),
-                          SizedBox(
+                      Container(
+                        height: 1,
+                        color: darkTheme.colorScheme.secondary,
+                      ),
+                      SizedBox(
                         height: 20,
                       ),
                       Flexible(
-                          child: Stack(
-                            children: [
-                               ColoredBox(
-                                   color: darkTheme.colorScheme.secondary,
-                                  child: 
-                                  SizedBox(
-                                    width: 51,
-                                      height: 30,
-                                    child: Align(
-                                      alignment: Alignment.center,
-                                      child: Row(
-                                        children: [
-                                          Icon(Icons.stacked_line_chart_sharp),
-                                          Text('Line'),
-                                        ],
-                                      )),
-                                  ),
-                                ),
-                              LineChartWidget(
-                                                data: [35.5,12, 45.5, 23.23, 15.676, 19.56, 17.3444, 80.5, 75.23, 82.676, 82.56, 102.3,90.444],
-                                                width: double.infinity,
-                                                height: 220,
-                                                color: Colors.white,
-                                              ),
-                            ])),
-                      SizedBox(
-                        child: Container(
-                            alignment: AlignmentDirectional.bottomStart,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: cardsTimeChart,
-                            )),
+                          child: Stack(children: [
+                        ColoredBox(
+                          color: darkTheme.colorScheme.secondary,
+                          child: SizedBox(
+                            width: 51,
+                            height: 30,
+                            child: Align(
+                                alignment: Alignment.center,
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.stacked_line_chart_sharp),
+                                    Text('Line'),
+                                  ],
+                                )),
+                          ),
+                        ),
+                        LineChartWidget(
+                          data: lineChartDataList,
+                          width: double.infinity,
+                          height: 220,
+                          color: Colors.white,
+                        ),
+                      ])),
+                      const SizedBox(
+                        child: CardsTimeChart(),
                         height: 50,
                       ),
                     ],
@@ -227,16 +162,15 @@ class TradingPageState extends State<TradingPage> {
                 ),
               ),
             ),
-
             SizedBox(
               height: 48,
               child: AppBar(
-                  bottom:  PreferredSize(
-                      preferredSize:  Size.fromWidth(size.width - 40),
-                      child:  Container(
+                  bottom: PreferredSize(
+                      preferredSize: Size.fromWidth(size.width - 40),
+                      child: Container(
                         width: size.width - 40,
                         child: TabBar(
-                          labelStyle:const TextStyle(fontSize: 16),
+                          labelStyle: const TextStyle(fontSize: 16),
                           labelPadding: const EdgeInsets.only(right: 25),
                           isScrollable: true,
                           indicator: const UnderlineTabIndicator(
@@ -244,229 +178,37 @@ class TradingPageState extends State<TradingPage> {
                                 BorderSide(width: 1.0, color: Colors.white),
                             insets: EdgeInsets.only(right: 20),
                           ),
-                          tabs: _ktabs,
+                          tabs:_ktabs,
                         ),
                       ))),
             ),
-
-            Expanded(
-                child:
-                 TabBarView(
-              children: <Widget>[
-                Stack(
-
+            SizedBox(
+              height: 260,
+                child: Column(
                   children: [
-                  SizedBox(
-                      height: 1,
-                      child: Container(
-                        height: 1,
-                        color: darkTheme.colorScheme.secondary,
-                      ),
-                    ),
-                  Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
-                      child: Stack(children: [
-                       
-                        Column(
-                          children: [
-                            const Spacer(),
-                            RotatedBox(
-                              quarterTurns: 3,
-                              child: SizedBox(
-                                  width: 160,
-                                  child: StepAreaChart(chartData: chartData)),
+                        ColoredBox(
+                            color: darkTheme.colorScheme.secondary,
+                            child: SizedBox(
+                              height: 1,
+                              child: Container(),
                             ),
-                           const SizedBox(
-                              height: 60,
-                            )
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Row(
-                              children: <Widget>[
-                                Flexible(
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        alignment: Alignment.bottomLeft,
-                                        child: Text('Bid'),
-                                        height: 40,
-                                      ),
-                                      Container(
-                                        // color: darkTheme.colorScheme.secondary,
-                                        color: Color.fromARGB(0, 6, 13, 24),
-                                        child: ListView.builder(
-                                          itemExtent: 36,
-                                          itemBuilder: (_, i) => ListTile(
-                                            title: Text("${1100+i*(1001-i)}"),
-                                            trailing: Text("${45500+i*(34001-i)}"),
-                                            contentPadding: EdgeInsets.only(left:0),
-                                          ),
-                                        ),
-                                        height: 150,
-                                      ),
-                                    ],
-                                  ),
+                          ),
+                    Flexible(
+                      child: TabBarView(
+                                  children: <Widget>[
+                      OrderBook(chartData: chartData, size: size),
+                      History(),
+                      Notes(),
+                      Info(),
+                      
+                                  ],
                                 ),
-                                SizedBox(child: Container(),width: 12,),
-                                Flexible(
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        alignment: Alignment.bottomLeft,
-                                        child: Text('Ask'),
-                                        height: 40,
-                                      ),
-                                      Container(
-                                        color: Color.fromARGB(0, 6, 13, 24),
-                                        child: ListView.builder(
-                                          itemExtent: 36,
-                                          itemBuilder: (_, i) =>
-                                              ListTile(
-                                               title: Text("${1545+i*(154223-i)}"),
-                                            trailing: Text("${4723432+i*(3344501-i)}"),
-                                                contentPadding: EdgeInsets.only(left:0),
-                                                ),
-                                        ),
-                                        height: 150,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: ElevatedButton(
-                                    onPressed: () {},
-                                    child: Text('BUY',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
-                                    style: ButtonStyle(
-                                        backgroundColor:
-                                            MaterialStateProperty.all(Colors.green),
-                                        padding: MaterialStateProperty.all(
-                                            EdgeInsets.all(14)),
-                                        shape: MaterialStateProperty.all(
-                                          RoundedRectangleBorder(
-                                              //to set border radius to button
-                                              borderRadius:
-                                                  BorderRadius.circular(30)),
-                                        )),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 16,
-                                ),
-                                Expanded(
-                                  child: ElevatedButton(
-                                    onPressed: () {},
-                                    child: Text('SELL',style: TextStyle(fontWeight: FontWeight.bold,color:Colors.white ),),
-                                    style: ButtonStyle(
-                                        backgroundColor:
-                                            MaterialStateProperty.all(Colors.red),
-                                        padding: MaterialStateProperty.all(
-                                            EdgeInsets.all(14)),
-                                              shape: MaterialStateProperty.all(
-                                          RoundedRectangleBorder(
-                                              //to set border radius to button
-                                              borderRadius:
-                                                  BorderRadius.circular(30)),
-                                        )
-                                            ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        
-             Positioned(
-                  bottom:0,
-              left:0, 
-              child: Opacity(
-                  opacity: 1,
-                  child: Container(
-                  // color:Color.fromARGB(255,6,13,24) ,
-                      height: 210,
-                      width: size.width,
-                         decoration: const BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                     Color.fromARGB(100,6,13,24),
-                      Color.fromARGB(100,6,13,24),
-                      Color.fromARGB(200,6,13,24),
-                     Color.fromARGB(200,6,13,24)]),
-                  borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(20),
-                            topRight: Radius.circular(20))
-              ),
-                      ),
-              )),
-                      ]),
-                  ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    SizedBox(
-                      height: 1,
-                      child: Container(
-                        height: 1,
-                        color: darkTheme.colorScheme.secondary,
-                      ),
-                    ),
-                    Container(
-                      height: 48,
-                      child: Icon(Icons.ac_unit_sharp),
                     ),
                   ],
-                ),
-                Column(
-                  children: [
-                    SizedBox(
-                      height: 1,
-                      child: Container(
-                        height: 1,
-                        color: darkTheme.colorScheme.secondary,
-                      ),
-                    ),
-                    Container(
-                      height: 48,
-                      child: Icon(Icons.ac_unit_sharp),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    SizedBox(
-                      height: 1,
-                      child: Container(
-                        height: 1,
-                        color: darkTheme.colorScheme.secondary,
-                      ),
-                    ),
-                    Container(
-                      height: 48,
-                      child: Icon(Icons.ac_unit_sharp),
-                    ),
-                  ],
-                ),
-              ],
-            )),
+                )),
           ],
         ),
       ),
     );
   }
 }
-
-
-
-
-
