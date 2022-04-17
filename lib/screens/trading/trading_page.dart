@@ -1,7 +1,7 @@
 // import 'package:crypto_app/models/sales_data.dart';
 import 'package:crypto_app/models/step_area_data.dart';
 import 'package:crypto_app/themes/theme_constants.dart';
-import 'package:crypto_app/widgets/widgets.dart';
+import 'package:crypto_app/components/widgets.dart';
 import 'package:flutter/material.dart';
 // import 'package:syncfusion_flutter_charts/charts.dart';
 

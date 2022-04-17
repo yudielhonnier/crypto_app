@@ -1,8 +1,9 @@
-part of 'widgets.dart';
+part of '../../../components/widgets.dart';
 
 
-class Notes extends StatelessWidget {
-  const Notes({
+
+class Info extends StatelessWidget {
+  const Info({
     Key? key,
   }) : super(key: key);
 

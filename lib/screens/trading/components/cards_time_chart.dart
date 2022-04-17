@@ -1,4 +1,4 @@
-part of 'widgets.dart';
+part of '../../../components/widgets.dart';
 
 class CardsTimeChart extends StatelessWidget {
   const CardsTimeChart({

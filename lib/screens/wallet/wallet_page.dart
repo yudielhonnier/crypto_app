@@ -2,7 +2,7 @@ import 'package:crypto_app/models/chart_circular_data.dart';
 import 'package:crypto_app/models/sales_data.dart';
 import 'package:crypto_app/models/step_area_data.dart';
 import 'package:crypto_app/themes/theme_constants.dart';
-import 'package:crypto_app/widgets/widgets.dart';
+import 'package:crypto_app/components/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -68,11 +68,14 @@ class WalletPageState extends State<WalletPage> {
             ],
           ),
         ),
-        Column(
-          children: [
-            Expanded(child: Container()),
-            ListCoinsWithoutChart(),
-          ],
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            children: [
+              Expanded(child: Container()),
+              ListCoinsWithoutChart(),
+            ],
+          ),
         ),
         BottomGradient(
             size: size, colors: colorsGradient, height: 170, bottom: 0)

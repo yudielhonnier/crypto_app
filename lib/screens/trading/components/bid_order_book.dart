@@ -1,5 +1,5 @@
 
-part of 'widgets.dart';
+part of '../../../components/widgets.dart';
 
 class BidOrderBook extends StatelessWidget {
   const BidOrderBook({

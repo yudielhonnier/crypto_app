@@ -1,4 +1,4 @@
-part of 'widgets.dart';
+part of '../../../components/widgets.dart';
 
 class ListCoinsWithoutChart extends StatelessWidget {
   const ListCoinsWithoutChart({
@@ -9,7 +9,8 @@ class ListCoinsWithoutChart extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height:280,
-      child: ListView.builder(
+      child: ListView.separated(
+        separatorBuilder:(context, index) =>Divider(color:darkTheme.colorScheme.secondary ,height: 18,), 
         padding: EdgeInsets.only(right: 0),
         shrinkWrap: true,
         itemCount: 25,

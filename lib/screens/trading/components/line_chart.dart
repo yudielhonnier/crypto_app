@@ -1,7 +1,7 @@
 
 
 
-part of 'widgets.dart';
+part of '../../../components/widgets.dart';
 
 class LineChartWidget extends StatelessWidget {
   final List<double> data;

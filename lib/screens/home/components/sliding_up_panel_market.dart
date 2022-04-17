@@ -1,4 +1,4 @@
-part of 'widgets.dart';
+part of '../../../components/widgets.dart';
 
 
 class SlidingUpPanelMarket extends StatefulWidget {
@@ -43,6 +43,11 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
     ));
 
     return SlidingUpPanel(
+            // onPanelOpened: (){
+            //   setState(() {
+            //      _panelHeightClosed=100;
+            //   });
+            // },
             color: darkTheme.colorScheme.primary,
             maxHeight: _panelHeightOpen,
             minHeight: _panelHeightClosed,
