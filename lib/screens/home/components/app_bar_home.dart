@@ -14,7 +14,6 @@ class AppBarHome extends StatelessWidget implements PreferredSize {
   }
 
   @override
-  // TODO: implement child
   Widget get child => Column(
         children: [
           Container(
@@ -39,18 +38,17 @@ class AppBarHome extends StatelessWidget implements PreferredSize {
               ),
             ),
               elevation: 0,
-                    title: Text('Yudiel Honnier',style: TextStyle(fontSize:17 ),),
+                    title:const Text('Yudiel Honnier',style: TextStyle(fontSize:17 ),),
             actions: [
               IconButton(onPressed: () {}, icon: Icon(Icons.compare_arrows)),
               Stack(
-                children: [IconButton(onPressed: () {}, icon: Icon(Icons.notifications_none)),
-                           Positioned(child: CircleAvatar(backgroundColor: Colors.red,radius: 3,),top: 15,right: 16,),]),
+                children: [IconButton(onPressed: () {}, icon:const Icon(Icons.notifications_none)),
+                          const Positioned(child: CircleAvatar(backgroundColor: Colors.red,radius: 3,),top: 15,right: 16,),]),
             ],
           ),
         ],
       );
 
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => const Size.fromHeight(92);
 }

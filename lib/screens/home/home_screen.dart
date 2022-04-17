@@ -1,27 +1,35 @@
-import 'package:crypto_app/screens/trading/trading_page.dart';
+import 'package:crypto_app/screens/trading/trading_screen.dart';
 import 'package:crypto_app/themes/theme_constants.dart';
 import 'package:crypto_app/components/widgets.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final colorsGradient = [
-      Color.fromARGB(0, 6, 13, 24),
-      Color.fromARGB(220, 6, 13, 24),
-      Color.fromARGB(255, 6, 13, 24)
+      const Color.fromARGB(0, 6, 13, 24),
+      const Color.fromARGB(220, 6, 13, 24),
+      const Color.fromARGB(255, 6, 13, 24)
     ];
+    final sortedByItems = [
+      'Capitalization',
+      'BlaBlaBl1',
+      'BlaBlaBla2',
+      'BlaBlaBla3',
+      'BlaBlaBla4',
+    ];
+
     return Scaffold(
       backgroundColor: darkTheme.colorScheme.primary,
-      appBar: AppBarHome(),
+      appBar: const AppBarHome(),
       body: Stack(children: [
         ColoredBox(
           color: darkTheme.colorScheme.primary,
@@ -29,18 +37,18 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.only(left: 20, right: 20),
             child: Column(
               children: [
-               SizedBox(
+                SizedBox(
                   child: Container(),
                   height: 30,
                 ),
-                StaticticsWalletHome(),
+                const StaticticsWalletHome(),
                 SizedBox(
                   child: Container(),
                   height: 18,
                 ),
                 const CardWalletActions(),
                 SizedBox(
-                  height: 70,
+                  height: 60,
                   child: Padding(
                     padding: const EdgeInsets.only(top: 25),
                     child: Align(
@@ -55,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 5,
                 ),
                 const Expanded(child: ListViewNews()),
               ],
@@ -65,13 +73,8 @@ class _HomePageState extends State<HomePage> {
         BottomGradient(
             size: size, colors: colorsGradient, height: 200, bottom: 180),
         Stack(children: [
-          SlidingUpPanelMarket(dropdownvalue: 'Capitalization', items: [
-            'Capitalization',
-            'BlaBlaBl1',
-            'BlaBlaBla2',
-            'BlaBlaBla3',
-            'BlaBlaBla4',
-          ]),
+          SlidingUpPanelMarket(
+              dropdownvalue: sortedByItems[0], items: sortedByItems),
           BottomGradient(
               size: size, colors: colorsGradient, height: 170, bottom: 0),
         ]),
@@ -79,4 +82,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-

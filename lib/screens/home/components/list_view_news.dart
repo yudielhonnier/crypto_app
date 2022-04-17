@@ -10,19 +10,19 @@ class ListViewNews extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       itemBuilder: (context,index)=>  ListTile(
-            contentPadding: EdgeInsets.only(left: 0),
-            title: Text('Digital Assets to Transform Financial Infrastructure',style: TextStyle(height: 1.6),),
-            subtitle: Text('5h agao',style: TextStyle(height: 2.2)),
+            contentPadding: const EdgeInsets.only(left: 0),
+            title: const Text('Digital Assets to Transform Financial Infrastructure',style: TextStyle(height: 1.4),),
+            subtitle: const Text('5h agao',style: TextStyle(height: 2.0)),
             trailing:  Container(
                decoration: BoxDecoration(
                  color: darkTheme.colorScheme.primary,
                  border: Border.all(color: darkTheme.colorScheme.secondary,),
                ),
-              padding: EdgeInsets.all(0), 
+              padding: const EdgeInsets.all(0), 
               width:90 ,
               height:60 , 
              
-              child: Icon(Icons.grain_sharp,
+              child:const  Icon(Icons.grain_sharp,
               
               size: 40)),
             // trailing: Container(padding: EdgeInsets.all(0), width:80 ,height:40 , child: Icon(Icons.grain_sharp,size: 80,)),

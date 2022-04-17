@@ -6,12 +6,12 @@ import 'package:crypto_app/components/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class WalletPage extends StatefulWidget {
+class WalletScreen extends StatefulWidget {
   @override
-  WalletPageState createState() => WalletPageState();
+  WalletScreenState createState() => WalletScreenState();
 }
 
-class WalletPageState extends State<WalletPage> {
+class WalletScreenState extends State<WalletScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -25,11 +25,10 @@ class WalletPageState extends State<WalletPage> {
     ];
 
     final colorsGradient = [
-      Color.fromARGB(0, 6, 13, 24),
-      Color.fromARGB(220, 6, 13, 24),
-      Color.fromARGB(255, 6, 13, 24)
+      const Color.fromARGB(0, 6, 13, 24),
+      const Color.fromARGB(220, 6, 13, 24),
+      const Color.fromARGB(255, 6, 13, 24)
     ];
-
 
     List<StepAreaData> chartData = <StepAreaData>[
       StepAreaData(1, 23, -29),
@@ -48,21 +47,22 @@ class WalletPageState extends State<WalletPage> {
       body: Stack(children: [
         Container(
           color: darkTheme.colorScheme.primary,
-          padding: EdgeInsets.only(left: 20, right: 20),
+          padding: const EdgeInsets.only(left: 20, right: 20),
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 24,
               ),
+              //check  the size of circularChart
               Stack(children: [
                 CircularChart(data: data),
-                StaticticsCircularChart(size: size),
+                CircularChartStatictics(size: size),
               ]),
-              SizedBox(
+              const SizedBox(
                 height: 18,
               ),
-              CardWalletActions(),
-              SizedBox(
+              const CardWalletActions(),
+              const SizedBox(
                 height: 10,
               ),
             ],
@@ -73,7 +73,7 @@ class WalletPageState extends State<WalletPage> {
           child: Column(
             children: [
               Expanded(child: Container()),
-              ListCoinsWithoutChart(),
+              const ListCoinsWithoutChart(),
             ],
           ),
         ),

@@ -10,7 +10,7 @@ class Notes extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 48,
-      child: Icon(Icons.ac_unit_sharp),
+      child: const Icon(Icons.ac_unit_sharp),
     );
   }
 }

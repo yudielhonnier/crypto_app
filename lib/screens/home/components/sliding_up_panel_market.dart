@@ -43,11 +43,7 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
     ));
 
     return SlidingUpPanel(
-            // onPanelOpened: (){
-            //   setState(() {
-            //      _panelHeightClosed=100;
-            //   });
-            // },
+        
             color: darkTheme.colorScheme.primary,
             maxHeight: _panelHeightOpen,
             minHeight: _panelHeightClosed,
@@ -55,7 +51,7 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
             parallaxOffset: .5,
             body: Container(),
             panelBuilder: (sc) => _panel(sc),
-            borderRadius: BorderRadius.only(
+            borderRadius:const BorderRadius.only(
                 topLeft: Radius.circular(18.0),
                 topRight: Radius.circular(18.0)),
             onPanelSlide: (double pos) => setState(() {
@@ -80,16 +76,16 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20))),
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding:const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         children: <Widget>[
          
             IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon:const Icon(
                   Icons.keyboard_arrow_up_sharp,
                 )),
-            Align(
+          const  Align(
                 alignment: AlignmentDirectional.bottomStart,
                 child: Text(
                   'Market',
@@ -102,7 +98,7 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
                         fontSize: 16,
                         color: darkTheme.colorScheme.secondary,
                         fontWeight: FontWeight.bold)),
-                SizedBox(
+              const  SizedBox(
                   width: 5,
                 ),
                  DropdownButtonHideUnderline(
@@ -132,7 +128,7 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
                   ),
                   Expanded(child: Container()),
                 GestureDetector(
-                  child: Container(
+                  child:const SizedBox(
                     child: Icon(
                       Icons.dehaze,
                     ),
@@ -154,23 +150,23 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
                         children: [
                           Flexible(
                             child: ListTile(
-                              contentPadding: EdgeInsets.all(0),
+                              contentPadding:const EdgeInsets.all(0),
                               leading: CircleAvatar(
                                 backgroundColor:
                                     darkTheme.colorScheme.secondaryVariant,
-                                child: Icon(
+                                child:const Icon(
                                   Icons.monetization_on_outlined,
                                 ),
                                 radius: 24.0,
                               ),
-                              title: Text('Bitcoin '),
-                              subtitle: Text('BTC'),
+                              title:const Text('Bitcoin '),
+                              subtitle:const Text('BTC'),
                             ),
                           ),
-                          SizedBox(
+                         const SizedBox(
                             width: 30,
                           ),
-                          LineChartWidget(
+                          const LineChartWidget(
                             data: [0.2, 65.5, 123.23, 45.676, 9.56, 2.3444],
                           ),
                           Expanded(
@@ -180,13 +176,13 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
                                 SizedBox(
                                   child: Column(
                                     children: [
-                                      SizedBox(
+                                     const SizedBox(
                                         height: 18,
                                       ),
-                                      Text('32811.00',
+                                     const Text('32811.00',
                                           style: TextStyle(fontSize: 20)),
                                       Row(
-                                        children: [
+                                        children:const [
                                           Text('-761.0',
                                               style:
                                                   TextStyle(fontSize: 12)),

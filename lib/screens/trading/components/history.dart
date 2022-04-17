@@ -9,7 +9,7 @@ class History extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return const SizedBox(
       height: 48,
       child: Icon(Icons.ac_unit_sharp),
     );

@@ -29,7 +29,7 @@ class OrderBook extends StatelessWidget {
           ],
         ),
         Column(
-          children: [
+          children: const [
             BidOrderBook(),
             SizedBox(
               height: 10,
@@ -38,17 +38,16 @@ class OrderBook extends StatelessWidget {
           ],
         ),
         BottomGradient(
-            size: size,
-            colors: [
-              Color.fromARGB(0, 6, 13, 24),
-              Color.fromARGB(100, 6, 13, 24),
-              Color.fromARGB(200, 6, 13, 24),
-              Color.fromARGB(200, 6, 13, 24)
-            ],
-            height: 210,
-            bottom: 0,
-            ),
-         
+          size: size,
+          colors: const [
+            Color.fromARGB(0, 6, 13, 24),
+            Color.fromARGB(100, 6, 13, 24),
+            Color.fromARGB(200, 6, 13, 24),
+            Color.fromARGB(200, 6, 13, 24)
+          ],
+          height: 210,
+          bottom: 0,
+        ),
       ]),
     );
   }

@@ -8,7 +8,6 @@ class CardsTimeChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      
         alignment: AlignmentDirectional.bottomStart,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -19,7 +18,7 @@ class CardsTimeChart extends StatelessWidget {
                   alignment: Alignment.center,
                   width: 20,
                   height: 20,
-                  child: Text('D')),
+                  child: const Text('D')),
             ),
             Card(
               color: darkTheme.colorScheme.primary,
@@ -27,7 +26,7 @@ class CardsTimeChart extends StatelessWidget {
                   alignment: Alignment.center,
                   width: 20,
                   height: 20,
-                  child: Text('W')),
+                  child: const Text('W')),
             ),
             Card(
               color: darkTheme.colorScheme.secondary,
@@ -35,7 +34,7 @@ class CardsTimeChart extends StatelessWidget {
                   alignment: Alignment.center,
                   width: 20,
                   height: 20,
-                  child: Text('M')),
+                  child: const Text('M')),
             ),
             Card(
               color: darkTheme.colorScheme.primary,
@@ -43,7 +42,7 @@ class CardsTimeChart extends StatelessWidget {
                   alignment: Alignment.center,
                   width: 25,
                   height: 20,
-                  child: Text('6M')),
+                  child: const Text('6M')),
             ),
             Card(
               color: darkTheme.colorScheme.primary,
@@ -51,7 +50,7 @@ class CardsTimeChart extends StatelessWidget {
                   alignment: Alignment.center,
                   width: 20,
                   height: 20,
-                  child: Text('Y')),
+                  child: const Text('Y')),
             ),
             Card(
               color: darkTheme.colorScheme.primary,
@@ -59,7 +58,7 @@ class CardsTimeChart extends StatelessWidget {
                   alignment: Alignment.center,
                   width: 20,
                   height: 20,
-                  child: Text('Y')),
+                  child: const Text('Y')),
             ),
             Card(
               color: darkTheme.colorScheme.primary,
@@ -67,7 +66,7 @@ class CardsTimeChart extends StatelessWidget {
                   alignment: Alignment.center,
                   width: 20,
                   height: 20,
-                  child: Text('All')),
+                  child: const Text('All')),
             ),
             Card(
               color: darkTheme.colorScheme.primary,
@@ -75,7 +74,7 @@ class CardsTimeChart extends StatelessWidget {
                   alignment: Alignment.center,
                   width: 20,
                   height: 20,
-                  child: Text('')),
+                  child: const Text('')),
             ),
             Card(
               color: darkTheme.colorScheme.primary,
@@ -83,7 +82,7 @@ class CardsTimeChart extends StatelessWidget {
                   alignment: Alignment.center,
                   width: 20,
                   height: 20,
-                  child: Icon(Icons.aspect_ratio)),
+                  child: const Icon(Icons.aspect_ratio)),
             ),
           ],
         ));

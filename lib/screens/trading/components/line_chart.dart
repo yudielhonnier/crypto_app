@@ -28,22 +28,22 @@ class LineChartWidget extends StatelessWidget {
       alignment: AlignmentDirectional.center,
        children: [
       Opacity(
-        opacity: data.length > 0 && !loading & !error ? 1 : 0.3,
-        child: Container(
+        opacity: data.length -1 > 0 && !loading & !error ? 1 : 0.3,
+        child: SizedBox(
           width: width,
           height:height,
           child: LineChart(
             mainData(data),
                 // : Utils.demoGraphData),
-            swapAnimationDuration: Duration(seconds: 0),
+            swapAnimationDuration:const Duration(seconds: 0),
           ),
         ),
       ),
       if (loading)
-        Center(
+       const Center(
           child: CircularProgressIndicator(),
         )
-      else if (error || data.length == 0)
+      else if (error || data.length -1 == 0)
         Center(
           child: Text('LocaleKeys.noResults.tr()',
               style: Theme.of(context).textTheme.headline3),

@@ -9,7 +9,6 @@ class StaticticsWalletHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-         
         Row(
           children: [
             Text(
@@ -20,38 +19,32 @@ class StaticticsWalletHome extends StatelessWidget {
                   fontWeight: FontWeight.bold),
             ),
             const Spacer(),
-            // GestureDetector(
-            //   child: Icon(
-            //     Icons.arrow_forward_ios_outlined,
-            //     size: 16,
-            //   ),
-            //   onTap: () => Navigator.pushNamed(context, '/wallet'),
-            // )
-          IconButton(
-            onPressed:(){Navigator.pushNamed(context, '/wallet');}, 
-            icon:  Icon(
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/wallet');
+              },
+              icon: const Icon(
                 Icons.arrow_forward_ios_outlined,
                 size: 16,
-              ),)
-            
+              ),
+            )
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 4,
         ),
         Row(
           children: [
-            Text(
+            const Text(
               '\$5,271.39',
               style: TextStyle(fontSize: 46),
             ),
             const Spacer(),
             Column(
               children: [
-                Text(
+                const Text(
                   '+130.62%',
-                  style:
-                      TextStyle(fontSize: 16, color: Colors.green),
+                  style: TextStyle(fontSize: 16, color: Colors.green),
                 ),
                 Text('+900.62',
                     style: TextStyle(

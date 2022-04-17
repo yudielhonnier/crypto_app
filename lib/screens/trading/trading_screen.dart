@@ -5,12 +5,12 @@ import 'package:crypto_app/components/widgets.dart';
 import 'package:flutter/material.dart';
 // import 'package:syncfusion_flutter_charts/charts.dart';
 
-class TradingPage extends StatefulWidget {
+class TradingScreen extends StatefulWidget {
   @override
-  TradingPageState createState() => TradingPageState();
+  TradingScreenState createState() => TradingScreenState();
 }
 
-class TradingPageState extends State<TradingPage> {
+class TradingScreenState extends State<TradingScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -27,58 +27,43 @@ class TradingPageState extends State<TradingPage> {
       'BlaBlaBla4',
     ];
 
-    var _kTapPages = <Widget>[
-      Container(
-        child: Icon(Icons.ac_unit_sharp),
-      ),
-      Container(
-        child: Icon(Icons.ac_unit_sharp),
-      ),
-      Container(
-        child: Icon(Icons.ac_unit_sharp),
-      ),
-      Container(
-        child: Icon(Icons.ac_unit_sharp),
-      )
-    ];
-
     var _ktabs = <Widget>[
-      Container(
+      const SizedBox(
         child: Tab(
           text: 'Order Book',
         ),
       ),
-      Container(
+      const SizedBox(
         child: Tab(
           text: 'History',
         ),
       ),
-      Container(
+      const SizedBox(
           child: Tab(
         text: 'Notes',
       )),
-      Container(
+      const SizedBox(
           child: Tab(
         text: 'Info',
       )),
     ];
     // var
 
-    List<double> lineChartDataList=[
-                            35.5,
-                            12,
-                            45.5,
-                            23.23,
-                            15.676,
-                            19.56,
-                            17.3444,
-                            80.5,
-                            75.23,
-                            82.676,
-                            82.56,
-                            102.3,
-                            90.444
-                          ];
+    List<double> lineChartDataList = [
+      35.5,
+      12,
+      45.5,
+      23.23,
+      15.676,
+      19.56,
+      17.3444,
+      80.5,
+      75.23,
+      82.676,
+      82.56,
+      102.3,
+      90.444
+    ];
 
     List<StepAreaData> chartData = <StepAreaData>[
       StepAreaData(1, 23, -29),
@@ -92,9 +77,6 @@ class TradingPageState extends State<TradingPage> {
     String higAmount = '130.62%';
     String lowAmount = '+900.62';
 
-    var cardsTimeChart = [
-      const CardsTimeChart(),
-    ];
     return DefaultTabController(
       length: 4,
       child: Scaffold(
@@ -111,7 +93,7 @@ class TradingPageState extends State<TradingPage> {
               child: ColoredBox(
                 color: darkTheme.colorScheme.primary,
                 child: Padding(
-                  padding: EdgeInsets.only(left: 20, right: 20),
+                  padding: const EdgeInsets.only(left: 20, right: 20),
                   child: Column(
                     children: [
                       LinearChartStatictics(
@@ -126,7 +108,7 @@ class TradingPageState extends State<TradingPage> {
                         height: 1,
                         color: darkTheme.colorScheme.secondary,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Flexible(
@@ -139,7 +121,7 @@ class TradingPageState extends State<TradingPage> {
                             child: Align(
                                 alignment: Alignment.center,
                                 child: Row(
-                                  children: [
+                                  children: const [
                                     Icon(Icons.stacked_line_chart_sharp),
                                     Text('Line'),
                                   ],
@@ -167,7 +149,7 @@ class TradingPageState extends State<TradingPage> {
               child: AppBar(
                   bottom: PreferredSize(
                       preferredSize: Size.fromWidth(size.width - 40),
-                      child: Container(
+                      child: SizedBox(
                         width: size.width - 40,
                         child: TabBar(
                           labelStyle: const TextStyle(fontSize: 16),
@@ -178,31 +160,30 @@ class TradingPageState extends State<TradingPage> {
                                 BorderSide(width: 1.0, color: Colors.white),
                             insets: EdgeInsets.only(right: 20),
                           ),
-                          tabs:_ktabs,
+                          tabs: _ktabs,
                         ),
                       ))),
             ),
             SizedBox(
-              height: 260,
+                height: 260,
                 child: Column(
                   children: [
-                        ColoredBox(
-                            color: darkTheme.colorScheme.secondary,
-                            child: SizedBox(
-                              height: 1,
-                              child: Container(),
-                            ),
-                          ),
+                    ColoredBox(
+                      color: darkTheme.colorScheme.secondary,
+                      child: SizedBox(
+                        height: 1,
+                        child: Container(),
+                      ),
+                    ),
                     Flexible(
                       child: TabBarView(
-                                  children: <Widget>[
-                      OrderBook(chartData: chartData, size: size),
-                      History(),
-                      Notes(),
-                      Info(),
-                      
-                                  ],
-                                ),
+                        children: <Widget>[
+                          OrderBook(chartData: chartData, size: size),
+                          const History(),
+                          const Notes(),
+                          const Info(),
+                        ],
+                      ),
                     ),
                   ],
                 )),

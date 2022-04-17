@@ -1,12 +1,12 @@
 part of '../../../components/widgets.dart';
 
-class AppBarTrading extends StatelessWidget implements PreferredSize{
-  const AppBarTrading({
-    Key? key,
-    required this.dropdownvalue,
-    required this.items,
-    required this.context
-  }) : super(key: key);
+class AppBarTrading extends StatelessWidget implements PreferredSize {
+  const AppBarTrading(
+      {Key? key,
+      required this.dropdownvalue,
+      required this.items,
+      required this.context})
+      : super(key: key);
 
   final String dropdownvalue;
   final List<String> items;
@@ -15,8 +15,8 @@ class AppBarTrading extends StatelessWidget implements PreferredSize{
   @override
   Widget build(BuildContext context) {
     return PreferredSize(
-      preferredSize: Size.fromHeight(76),
-      child:child,
+      preferredSize: const Size.fromHeight(76),
+      child: child,
     );
   }
 
@@ -45,7 +45,7 @@ class AppBarTrading extends StatelessWidget implements PreferredSize{
             // centerTitle: true,
             title: Container(
                 alignment: AlignmentDirectional.centerStart,
-                padding: EdgeInsets.only(left: 5, right: 0),
+                padding: const EdgeInsets.only(left: 5, right: 0),
                 child: GestureDetector(
                   child: Row(
                     children: [
@@ -56,8 +56,9 @@ class AppBarTrading extends StatelessWidget implements PreferredSize{
                       ),
                       Text(
                         'Portafolio',
-                        style: TextStyle(fontSize: 16,color: darkTheme.colorScheme.secondary),
-                        
+                        style: TextStyle(
+                            fontSize: 16,
+                            color: darkTheme.colorScheme.secondary),
                       ),
                     ],
                   ),
@@ -65,29 +66,31 @@ class AppBarTrading extends StatelessWidget implements PreferredSize{
                 )),
             actions: [
               DropdownButtonHideUnderline(
-                child: DropdownButtonAppBar(dropdownvalue: dropdownvalue, items: items),
+                child: DropdownButtonAppBar(
+                    dropdownvalue: dropdownvalue, items: items),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 90,
               ),
-              IconButton(onPressed: () {}, icon: Icon(Icons.star_outline)),
+              IconButton(
+                  onPressed: () {}, icon: const Icon(Icons.star_outline)),
             ],
           ),
         ],
-   ) ;
+      );
 
   @override
-  Size get preferredSize =>  Size.fromHeight(76);
+  Size get preferredSize => const Size.fromHeight(76);
 }
 
 class DropdownButtonAppBar extends StatefulWidget {
-   DropdownButtonAppBar({
+  DropdownButtonAppBar({
     Key? key,
     required this.dropdownvalue,
     required this.items,
   }) : super(key: key);
 
-   String dropdownvalue;
+  String dropdownvalue;
   final List<String> items;
 
   @override
