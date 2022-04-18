@@ -1,4 +1,7 @@
+import 'package:crypto_app/models/coin_response.dart';
+import 'package:crypto_app/models/coin_simple_response.dart';
 import 'package:crypto_app/screens/trading/trading_screen.dart';
+import 'package:crypto_app/services/trafic_service.dart';
 import 'package:crypto_app/themes/theme_constants.dart';
 import 'package:crypto_app/components/widgets.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final trafficService =  TrafficService();
     final colorsGradient = [
       const Color.fromARGB(0, 6, 13, 24),
       const Color.fromARGB(220, 6, 13, 24),
@@ -41,7 +45,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Container(),
                   height: 30,
                 ),
-                const StaticticsWalletHome(),
+                GestureDetector(
+                  onTap: ()async{
+                  //todo add custom pagination to the 
+                   final coinSimpleResponseList=await trafficService.getCoinsSimpleResponseList();
+                    final idList=coinSimpleResponseList.getListIds(coinSimpleResponseList.items);
+                      print('aaaaaaaaaaaaaaaaaa $idList');
+                   final coinsResponse=await trafficService.getCoinsMarkets('usd',idList );
+                   print(coinsResponse.items);
+
+
+                  },
+                  child: const StaticticsWalletHome()),
                 SizedBox(
                   child: Container(),
                   height: 18,
