@@ -89,7 +89,7 @@ class TradingScreenState extends State<TradingScreen> {
         body: Column(
           children: <Widget>[
             SizedBox(
-              height: 430,
+              height: 410,
               child: ColoredBox(
                 color: darkTheme.colorScheme.primary,
                 child: Padding(
