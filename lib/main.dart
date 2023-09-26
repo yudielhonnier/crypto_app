@@ -1,8 +1,8 @@
-import 'package:crypto_app/routes.dart';
-import 'package:crypto_app/screens/trading/trading_screen.dart';
-import 'package:crypto_app/screens/home/home_screen.dart';
-import 'package:crypto_app/screens/wallet/wallet_screen.dart';
-import 'package:crypto_app/themes/theme_constants.dart';
+import 'package:crypto_app/config/routes/routes.dart';
+import 'package:crypto_app/features/trading/presentation/pages/trading_screen.dart';
+import 'package:crypto_app/features/home/presentation/page/home_screen.dart';
+import 'package:crypto_app/features/briefcase/presentation/pages/wallet_screen.dart';
+import 'package:crypto_app/config/themes/theme_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ligthTheme,
       darkTheme: darkTheme,
       themeMode: ThemeMode.dark,
-      home:  HomeScreen(),
+      home: HomeScreen(),
       routes: routes,
       debugShowCheckedModeBanner: false,
     );

@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:crypto_app/models/coin_response.dart';
-import 'package:crypto_app/models/coin_simple_response.dart';
+import 'package:crypto_app/core/data/models/coin_response.dart';
+import 'package:crypto_app/core/data/models/coin_simple_response.dart';
 import 'package:dio/dio.dart';
 
 import 'dart:convert';
@@ -17,50 +17,40 @@ class TrafficService {
   final _dio = new Dio();
   // final debouncer = Debouncer<String>(duration: Duration(milliseconds: 2000));
 
+  final _base = 'https://api.coingecko.com/api/v3';
 
-  final _base='https://api.coingecko.com/api/v3';
-
-
-  
   // final StreamController<SearchResponse> _suggestionsStreamController =
   //     new StreamController<SearchResponse>.broadcast();
   // Stream<SearchResponse> get suggestionsStream =>
   //     this._suggestionsStreamController.stream;
 
-
   // https://api.coingecko.com/api/v3/coins/list
-  Future<CoinSimpleResponseList> getCoinsSimpleResponseList( ) async {
-    
-        
+  Future<CoinSimpleResponseList> getCoinsSimpleResponseList() async {
     final url = '${_base}/coins/list';
 
-    final  resp = await this._dio.get(url, queryParameters: {
-      'include_platform':'false'
-    });
-    
-        final data =CoinSimpleResponseList.fromJsonList(resp.data);
-        // print(data.items);
-        return data;
+    final resp = await this
+        ._dio
+        .get(url, queryParameters: {'include_platform': 'false'});
 
+    final data = CoinSimpleResponseList.fromJsonList(resp.data);
+    // print(data.items);
+    return data;
   }
 
-
 // https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin
-  Future<CoinResponseList> getCoinsMarkets(String vs_currency,String id ) async {
-    
-        
+  Future<CoinResponseList> getCoinsMarkets(
+      String vs_currency, String id) async {
     final url = '${_base}/coins/markets';
 
-    final  resp = await this._dio.get(url, queryParameters: {
+    final resp = await this._dio.get(url, queryParameters: {
       'vs_currency': vs_currency,
       'ids': id,
-      'per_page':1
+      'per_page': 1
     });
-    
-        final data =CoinResponseList.fromJsonList(resp.data);
-        // print(data);
-        return data;
 
+    final data = CoinResponseList.fromJsonList(resp.data);
+    // print(data);
+    return data;
   }
 
   // Future<SearchResponse> getQueryResult(String search, LatLng proximity) async {
@@ -78,8 +68,4 @@ class TrafficService {
 
   //   return data;
   // }
-
-  
-
-
 }
