@@ -1,11 +1,11 @@
-import 'package:crypto_app/core/presentation/bottom_gradient.dart';
-import 'package:crypto_app/core/presentation/card_wallet_actions.dart';
+import 'package:crypto_app/features/shared/widgets/bottom_gradient.dart';
+import 'package:crypto_app/features/shared/widgets/card_wallet_actions.dart';
 import 'package:crypto_app/features/home/presentation/widgets/app_bar_home.dart';
 import 'package:crypto_app/features/home/presentation/widgets/list_view_news.dart';
 import 'package:crypto_app/features/home/presentation/widgets/sliding_up_panel_market.dart';
 import 'package:crypto_app/features/home/presentation/widgets/statictics_wallet_home.dart';
-import 'package:crypto_app/core/data/models/coin_response.dart';
-import 'package:crypto_app/core/data/models/coin_simple_response.dart';
+import 'package:crypto_app/features/shared/models/coin_response.dart';
+import 'package:crypto_app/features/shared/models/coin_simple_response.dart';
 import 'package:crypto_app/features/trading/presentation/pages/trading_screen.dart';
 import 'package:crypto_app/services/trafic_service.dart';
 import 'package:crypto_app/config/themes/theme_constants.dart';

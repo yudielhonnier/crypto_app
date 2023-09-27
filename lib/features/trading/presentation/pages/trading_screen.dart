@@ -9,7 +9,7 @@ import 'package:crypto_app/features/trading/presentation/widgets/order_book.dart
 import 'package:flutter/material.dart';
 
 import 'package:crypto_app/config/themes/theme_constants.dart';
-import 'package:crypto_app/core/data/models/step_area_data.dart';
+import 'package:crypto_app/features/shared/models/step_area_data.dart';
 
 class TradingScreen extends StatefulWidget {
   const TradingScreen({super.key});

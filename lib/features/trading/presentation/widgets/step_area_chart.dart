@@ -1,4 +1,4 @@
-import 'package:crypto_app/core/data/models/step_area_data.dart';
+import 'package:crypto_app/features/shared/models/step_area_data.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:crypto_app/config/themes/theme_constants.dart';

@@ -1,5 +1,5 @@
-import 'package:crypto_app/core/presentation/bottom_gradient.dart';
-import 'package:crypto_app/core/presentation/card_wallet_actions.dart';
+import 'package:crypto_app/features/shared/widgets/bottom_gradient.dart';
+import 'package:crypto_app/features/shared/widgets/card_wallet_actions.dart';
 import 'package:crypto_app/features/briefcase/presentation/widgets/app_bar_wallet.dart';
 import 'package:crypto_app/features/briefcase/presentation/widgets/circular_chart.dart';
 import 'package:crypto_app/features/briefcase/presentation/widgets/circular_chart_statictics.dart';
@@ -8,9 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import 'package:crypto_app/config/themes/theme_constants.dart';
-import 'package:crypto_app/core/data/models/chart_circular_data.dart';
-import 'package:crypto_app/core/data/models/sales_data.dart';
-import 'package:crypto_app/core/data/models/step_area_data.dart';
+import 'package:crypto_app/features/shared/models/chart_circular_data.dart';
+import 'package:crypto_app/features/shared/models/sales_data.dart';
+import 'package:crypto_app/features/shared/models/step_area_data.dart';
 
 class WalletScreen extends StatefulWidget {
   @override

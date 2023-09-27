@@ -1,5 +1,5 @@
-import 'package:crypto_app/core/data/models/step_area_data.dart';
-import 'package:crypto_app/core/presentation/bottom_gradient.dart';
+import 'package:crypto_app/features/shared/models/step_area_data.dart';
+import 'package:crypto_app/features/shared/widgets/bottom_gradient.dart';
 import 'package:crypto_app/features/trading/presentation/widgets/ask_order_book.dart';
 import 'package:crypto_app/features/trading/presentation/widgets/bid_order_book.dart';
 import 'package:crypto_app/features/trading/presentation/widgets/step_area_chart.dart';
