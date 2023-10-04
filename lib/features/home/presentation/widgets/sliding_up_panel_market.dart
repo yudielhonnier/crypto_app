@@ -1,6 +1,9 @@
+import 'package:crypto_app/features/home/data/models/market_model.dart';
+import 'package:crypto_app/features/home/presentation/bloc/markets_bloc.dart';
 import 'package:crypto_app/features/trading/presentation/widgets/line_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:crypto_app/config/themes/theme_constants.dart';
@@ -53,7 +56,7 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
       parallaxEnabled: true,
       parallaxOffset: .5,
       body: Container(),
-      panelBuilder: (sc) => _panel(sc),
+      panelBuilder: _panel,
       borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(18.0), topRight: Radius.circular(18.0)),
       onPanelSlide: (double pos) => setState(() {
@@ -134,79 +137,124 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
               ),
             ],
           ),
-          Container(
-            child: Expanded(
-              child: ListView.builder(
-                padding: const EdgeInsets.only(right: 0),
-                shrinkWrap: true,
-                controller: sc,
-                itemCount: 25,
-                itemBuilder: (BuildContext context, int index) {
-                  return SizedBox(
-                      child: IntrinsicHeight(
-                    child: Row(
-                      children: [
-                        Flexible(
-                          child: ListTile(
-                            contentPadding: const EdgeInsets.all(0),
-                            leading: CircleAvatar(
-                              backgroundColor:
-                                  darkTheme.colorScheme.secondaryContainer,
-                              child: const Icon(
-                                Icons.monetization_on_outlined,
-                              ),
-                              radius: 24.0,
-                            ),
-                            title: const Text('Bitcoin '),
-                            subtitle: const Text('BTC'),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 30,
-                        ),
-                        const LineChartWidget(
-                          data: [0.2, 65.5, 123.23, 45.676, 9.56, 2.3444],
-                        ),
-                        const Expanded(
-                          child: Row(
-                            children: [
-                              Spacer(),
-                              SizedBox(
-                                child: Column(
-                                  children: [
-                                    SizedBox(
-                                      height: 18,
-                                    ),
-                                    Text('32811.00',
-                                        style: TextStyle(fontSize: 20)),
-                                    Row(
-                                      children: [
-                                        Text('-761.0',
-                                            style: TextStyle(fontSize: 12)),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Text('-2.27%',
-                                            style: TextStyle(
-                                                fontSize: 12,
-                                                color: Colors.red)),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ));
-                },
-              ),
+          Expanded(
+            child: BlocBuilder<MarketsBloc, MarketsState>(
+              builder: (BuildContext context, state) {
+                if (state is Loading) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (state is Loaded) {
+                  return _showListOfMarkets(context, state.markets);
+                } else if (state is Error) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(
+                        child:
+                            Column(mainAxisSize: MainAxisSize.min, children: [
+                      Text("Error ${state.message}",
+                          textAlign: TextAlign.center),
+                      ElevatedButton(
+                        onPressed: () {
+                          // BlocProvider.of<RemotePostBloc>(context)
+                          //     .add(GetRemotePosts());
+                        },
+                        child: const Text("Try again"),
+                      )
+                    ])),
+                  );
+                }
+                return Container();
+              },
             ),
           )
         ],
       ),
     );
+  }
+
+  Widget _showListOfMarkets(BuildContext context, List<MarketModel> markets) {
+    return RefreshIndicator(
+        child: ListView.builder(
+            padding: const EdgeInsets.all(4),
+            itemCount: markets.length,
+            itemBuilder: (BuildContext context, int index) {
+              return SizedBox(
+                  child: IntrinsicHeight(
+                child: Row(
+                  children: [
+                    Flexible(
+                      child: ListTile(
+                        contentPadding: const EdgeInsets.all(0),
+                        leading: CircleAvatar(
+                          backgroundColor:
+                              darkTheme.colorScheme.secondaryContainer,
+                          child: const Icon(
+                            Icons.monetization_on_outlined,
+                          ),
+                          radius: 24.0,
+                        ),
+                        title: Text(markets[index].name),
+                        subtitle: const Text('BTC'),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 30,
+                    ),
+                    const LineChartWidget(
+                      data: [0.2, 65.5, 123.23, 45.676, 9.56, 2.3444],
+                    ),
+                    const Expanded(
+                      child: Row(
+                        children: [
+                          Spacer(),
+                          SizedBox(
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: 18,
+                                ),
+                                Text('32811.00',
+                                    style: TextStyle(fontSize: 20)),
+                                Row(
+                                  children: [
+                                    Text('-761.0',
+                                        style: TextStyle(fontSize: 12)),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text('-2.27%',
+                                        style: TextStyle(
+                                            fontSize: 12, color: Colors.red)),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ));
+
+              // return Card(
+              //   child: ListTile(
+              //     contentPadding: const EdgeInsets.all(8),
+              //     leading: const Icon(Icons.post_add, color: Colors.blue),
+              //     title: Text(markets[index].title),
+              //     onTap: () {
+              //       Navigator.push(
+              //           context,
+              //           MaterialPageRoute(
+              //               builder: (context) => MyCommentsPage(
+              //                   markets[index].postId, markets[index].title)));
+              //     },
+              //   ),
+              // );
+            }),
+        onRefresh: () => _onRefresh(context));
+  }
+
+  Future<void> _onRefresh(BuildContext context) async {
+    BlocProvider.of<MarketsBloc>(context).add(GetMarketsEvent());
   }
 }

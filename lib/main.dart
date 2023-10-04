@@ -6,7 +6,13 @@ import 'package:crypto_app/config/themes/theme_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-void main() => runApp(MyApp());
+import 'injector.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initializeDependencies();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override

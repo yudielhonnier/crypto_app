@@ -9,11 +9,11 @@ class CardWalletActions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.only(left: 0),
+      margin: const EdgeInsets.only(left: 0),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       color: darkTheme.colorScheme.secondary,
       child: Container(
-        margin: EdgeInsets.only(top: 14, bottom: 16),
+        margin: const EdgeInsets.only(top: 14, bottom: 16),
         height: 50,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -21,36 +21,36 @@ class CardWalletActions extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(Icons.auto_graph_sharp),
+                const Icon(Icons.auto_graph_sharp),
                 Expanded(child: Container()),
-                Text('ANALYTICS', style: TextStyle(fontSize: 12)),
+                const Text('ANALYTICS', style: TextStyle(fontSize: 12)),
               ],
             ),
-            VerticalDivider(
+            const VerticalDivider(
               color: Colors.black87,
               width: 0,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(Icons.arrow_forward_outlined),
+                const Icon(Icons.arrow_forward_outlined),
                 Expanded(child: Container()),
-                Text('WITHDRAW', style: TextStyle(fontSize: 12)),
+                const Text('WITHDRAW', style: TextStyle(fontSize: 12)),
               ],
             ),
-            VerticalDivider(
+            const VerticalDivider(
               color: Colors.black87,
               width: 0,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(Icons.arrow_back),
+                const Icon(Icons.arrow_back),
                 Expanded(child: Container()),
-                Text('DEPOSIT', style: TextStyle(fontSize: 12)),
+                const Text('DEPOSIT', style: TextStyle(fontSize: 12)),
               ],
             ),
-            SizedBox(),
+            const SizedBox(),
           ],
         ),
       ),

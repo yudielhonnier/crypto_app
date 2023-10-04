@@ -1,3 +1,4 @@
+// import 'package:crypto_app/core/error/exceptions.dart';
 // import 'package:crypto_app/core/error/failure.dart';
 // import 'package:crypto_app/core/network/network_info.dart';
 // import 'package:crypto_app/features/home/data/repository/market_repository_impl.dart';
@@ -95,14 +96,32 @@
 //     setUp(() {
 //       when(mockNetworkInfo.isConnected).thenAnswer((_) async => false);
 //     });
-//     test('should check if the device is online', () async {
-//       //arrange
 
+//     test('should return last locally cached when the cached data is present',
+//         () async {
+//       //arrange
+//       when(mockLocalDataSource.getLastMarkets())
+//           .thenAnswer((_) async => tMarketList);
 //       //act
-//       repositoryImpl.getMarkets();
+//       final result = await repositoryImpl.getMarkets();
 
 //       //assert
-//       verify(mockNetworkInfo.isConnected);
+//       verifyZeroInteractions(mockRemoteDataSource);
+//       verify(mockLocalDataSource.getLastMarkets());
+//       expect(result, equals(Right(tMarketList)));
+//     });
+
+//     test('should return cacheFailure when there is no cached data present',
+//         () async {
+//       //arrange
+//       when(mockLocalDataSource.getLastMarkets()).thenThrow(CacheException());
+//       //act
+//       final result = await repositoryImpl.getMarkets();
+
+//       //assert
+//       verifyZeroInteractions(mockRemoteDataSource);
+//       verify(mockLocalDataSource.getLastMarkets());
+//       expect(result, equals(Left(tMarketList)));
 //     });
 //   });
 // }

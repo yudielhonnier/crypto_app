@@ -1,32 +1,30 @@
-import 'package:equatable/equatable.dart';
-
-class Market extends Equatable {
+class Market {
   final String id;
   final String symbol;
   final String name;
   final String image;
-  final double currentPrice;
-  final double marketCap;
-  final int marketCapRank;
-  final double fullyDilutedValuation;
-  final double totalVolume;
-  final double high24h;
-  final double low24h;
-  final double priceChange24h;
-  final double priceChangePercentage24h;
-  final double marketCapChange24h;
-  final double marketCapChangePercentage24h;
-  final double circulatingSupply;
-  final double totalSupply;
-  final double maxSupply;
-  final double ath;
-  final double athChangePercentage;
-  final DateTime athDate;
-  final double atl;
-  final double atlChangePercentage;
-  final DateTime atlDate;
+  final double? currentPrice;
+  final double? marketCap;
+  final int? marketCapRank;
+  final double? fullyDilutedValuation;
+  final double? totalVolume;
+  final double? high24H;
+  final double? low24H;
+  final double? priceChange24H;
+  final double? priceChangePercentage24H;
+  final double? marketCapChange24H;
+  final double? marketCapChangePercentage24H;
+  final double? circulatingSupply;
+  final double? totalSupply;
+  final double? maxSupply;
+  final double? ath;
+  final double? athChangePercentage;
+  final DateTime? athDate;
+  final double? atl;
+  final double? atlChangePercentage;
+  final DateTime? atlDate;
   final dynamic roi;
-  final DateTime lastUpdated;
+  final DateTime? lastUpdated;
 
   const Market({
     required this.id,
@@ -35,28 +33,25 @@ class Market extends Equatable {
     required this.image,
     required this.currentPrice,
     required this.marketCap,
-    required this.marketCapRank,
+    this.marketCapRank,
     required this.fullyDilutedValuation,
     required this.totalVolume,
-    required this.high24h,
-    required this.low24h,
-    required this.priceChange24h,
-    required this.priceChangePercentage24h,
-    required this.marketCapChange24h,
-    required this.marketCapChangePercentage24h,
+    required this.high24H,
+    required this.low24H,
+    required this.priceChange24H,
+    required this.priceChangePercentage24H,
+    required this.marketCapChange24H,
+    required this.marketCapChangePercentage24H,
     required this.circulatingSupply,
     required this.totalSupply,
     required this.maxSupply,
     required this.ath,
     required this.athChangePercentage,
-    required this.athDate,
+    this.athDate,
     required this.atl,
     required this.atlChangePercentage,
     required this.atlDate,
-    required this.roi,
+    this.roi,
     required this.lastUpdated,
   });
-
-  @override
-  List<Object?> get props => [id, symbol, name];
 }
