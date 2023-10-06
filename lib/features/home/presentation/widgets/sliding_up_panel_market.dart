@@ -1,3 +1,5 @@
+import 'package:crypto_app/core/helpers/color_by_price.dart';
+import 'package:crypto_app/core/helpers/round.dart';
 import 'package:crypto_app/features/home/data/models/market_model.dart';
 import 'package:crypto_app/features/home/presentation/bloc/markets_bloc.dart';
 import 'package:crypto_app/features/trading/presentation/widgets/line_chart.dart';
@@ -177,6 +179,7 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
             padding: const EdgeInsets.all(4),
             itemCount: markets.length,
             itemBuilder: (BuildContext context, int index) {
+              final market = markets[index];
               return SizedBox(
                   child: IntrinsicHeight(
                 child: Row(
@@ -184,25 +187,30 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
                     Flexible(
                       child: ListTile(
                         contentPadding: const EdgeInsets.all(0),
-                        leading: CircleAvatar(
-                          backgroundColor:
-                              darkTheme.colorScheme.secondaryContainer,
-                          child: const Icon(
-                            Icons.monetization_on_outlined,
-                          ),
-                          radius: 24.0,
+                        leading: Image(
+                          image: NetworkImage(market.image),
+                          fit: BoxFit.contain,
+                          width: 40,
                         ),
-                        title: Text(markets[index].name),
-                        subtitle: const Text('BTC'),
+                        title: Text(market.name),
+                        subtitle: Text(market.symbol),
                       ),
                     ),
                     const SizedBox(
                       width: 30,
                     ),
-                    const LineChartWidget(
-                      data: [0.2, 65.5, 123.23, 45.676, 9.56, 2.3444],
-                    ),
-                    const Expanded(
+                    market.priceChangePercentage24H < 0
+                        ? const Icon(
+                            Icons.arrow_circle_down,
+                            color: Colors.red,
+                            size: 30,
+                          )
+                        : const Icon(
+                            Icons.arrow_circle_up,
+                            color: Colors.green,
+                            size: 30,
+                          ),
+                    Expanded(
                       child: Row(
                         children: [
                           Spacer(),
@@ -212,18 +220,29 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
                                 SizedBox(
                                   height: 18,
                                 ),
-                                Text('32811.00',
+                                Text(yround(market.currentPrice).toString(),
                                     style: TextStyle(fontSize: 20)),
                                 Row(
                                   children: [
-                                    Text('-761.0',
-                                        style: TextStyle(fontSize: 12)),
-                                    SizedBox(
+                                    Text(
+                                        yround(market.priceChange24H)
+                                            .toString(),
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: colorByPrice(
+                                              market.priceChange24H),
+                                        )),
+                                    const SizedBox(
                                       width: 10,
                                     ),
-                                    Text('-2.27%',
+                                    Text(
+                                        yround(market.priceChangePercentage24H)
+                                                .toString() +
+                                            '%',
                                         style: TextStyle(
-                                            fontSize: 12, color: Colors.red)),
+                                            fontSize: 12,
+                                            color: colorByPrice(market
+                                                .priceChangePercentage24H))),
                                   ],
                                 ),
                               ],

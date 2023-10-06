@@ -24,29 +24,47 @@ mixin _$MarketModel {
   String get symbol => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
-  double? get currentPrice => throw _privateConstructorUsedError;
-  double? get marketCap => throw _privateConstructorUsedError;
-  int? get marketCapRank => throw _privateConstructorUsedError;
-  double? get fullyDilutedValuation => throw _privateConstructorUsedError;
-  double? get totalVolume => throw _privateConstructorUsedError;
-  double? get high24H => throw _privateConstructorUsedError;
-  double? get low24H => throw _privateConstructorUsedError;
-  double? get priceChange24H => throw _privateConstructorUsedError;
-  double? get priceChangePercentage24H => throw _privateConstructorUsedError;
-  double? get marketCapChange24H => throw _privateConstructorUsedError;
-  double? get marketCapChangePercentage24H =>
-      throw _privateConstructorUsedError;
-  double? get circulatingSupply => throw _privateConstructorUsedError;
-  double? get totalSupply => throw _privateConstructorUsedError;
-  double? get maxSupply => throw _privateConstructorUsedError;
-  double? get ath => throw _privateConstructorUsedError;
-  double? get athChangePercentage => throw _privateConstructorUsedError;
-  DateTime? get athDate => throw _privateConstructorUsedError;
-  double? get atl => throw _privateConstructorUsedError;
-  double? get atlChangePercentage => throw _privateConstructorUsedError;
-  DateTime? get atlDate => throw _privateConstructorUsedError;
+  @JsonKey(name: 'current_price')
+  double get currentPrice => throw _privateConstructorUsedError;
+  @JsonKey(name: 'market_cap')
+  double get marketCap => throw _privateConstructorUsedError;
+  @JsonKey(name: 'market_cap_rank')
+  int get marketCapRank => throw _privateConstructorUsedError;
+  @JsonKey(name: 'fully_diluted_valuation')
+  double get fullyDilutedValuation => throw _privateConstructorUsedError;
+  @JsonKey(name: 'total_volume')
+  double get totalVolume => throw _privateConstructorUsedError;
+  @JsonKey(name: 'high_24h')
+  double get high24H => throw _privateConstructorUsedError;
+  @JsonKey(name: 'low_24h')
+  double get low24H => throw _privateConstructorUsedError;
+  @JsonKey(name: 'price_change_24h')
+  double get priceChange24H => throw _privateConstructorUsedError;
+  @JsonKey(name: 'price_change_percentage_24h')
+  double get priceChangePercentage24H => throw _privateConstructorUsedError;
+  @JsonKey(name: 'market_cap_change_24h')
+  double get marketCapChange24H => throw _privateConstructorUsedError;
+  @JsonKey(name: 'market_cap_change_percentage_24h')
+  double get marketCapChangePercentage24H => throw _privateConstructorUsedError;
+  @JsonKey(name: 'circulating_supply')
+  double get circulatingSupply => throw _privateConstructorUsedError;
+  @JsonKey(name: 'total_supply')
+  double get totalSupply => throw _privateConstructorUsedError;
+  @JsonKey(name: 'max_supply')
+  double get maxSupply => throw _privateConstructorUsedError;
+  double get ath => throw _privateConstructorUsedError;
+  @JsonKey(name: 'ath_change_percentage')
+  double get athChangePercentage => throw _privateConstructorUsedError;
+  @JsonKey(name: 'ath_date')
+  DateTime get athDate => throw _privateConstructorUsedError;
+  double get atl => throw _privateConstructorUsedError;
+  @JsonKey(name: 'atl_change_percentage')
+  double get atlChangePercentage => throw _privateConstructorUsedError;
+  @JsonKey(name: 'atl_date')
+  DateTime get atlDate => throw _privateConstructorUsedError;
   Roi? get roi => throw _privateConstructorUsedError;
-  DateTime? get lastUpdated => throw _privateConstructorUsedError;
+  @JsonKey(name: 'last_updated')
+  DateTime get lastUpdated => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -65,28 +83,30 @@ abstract class $MarketModelCopyWith<$Res> {
       String symbol,
       String name,
       String image,
-      double? currentPrice,
-      double? marketCap,
-      int? marketCapRank,
-      double? fullyDilutedValuation,
-      double? totalVolume,
-      double? high24H,
-      double? low24H,
-      double? priceChange24H,
-      double? priceChangePercentage24H,
-      double? marketCapChange24H,
-      double? marketCapChangePercentage24H,
-      double? circulatingSupply,
-      double? totalSupply,
-      double? maxSupply,
-      double? ath,
-      double? athChangePercentage,
-      DateTime? athDate,
-      double? atl,
-      double? atlChangePercentage,
-      DateTime? atlDate,
+      @JsonKey(name: 'current_price') double currentPrice,
+      @JsonKey(name: 'market_cap') double marketCap,
+      @JsonKey(name: 'market_cap_rank') int marketCapRank,
+      @JsonKey(name: 'fully_diluted_valuation') double fullyDilutedValuation,
+      @JsonKey(name: 'total_volume') double totalVolume,
+      @JsonKey(name: 'high_24h') double high24H,
+      @JsonKey(name: 'low_24h') double low24H,
+      @JsonKey(name: 'price_change_24h') double priceChange24H,
+      @JsonKey(name: 'price_change_percentage_24h')
+      double priceChangePercentage24H,
+      @JsonKey(name: 'market_cap_change_24h') double marketCapChange24H,
+      @JsonKey(name: 'market_cap_change_percentage_24h')
+      double marketCapChangePercentage24H,
+      @JsonKey(name: 'circulating_supply') double circulatingSupply,
+      @JsonKey(name: 'total_supply') double totalSupply,
+      @JsonKey(name: 'max_supply') double maxSupply,
+      double ath,
+      @JsonKey(name: 'ath_change_percentage') double athChangePercentage,
+      @JsonKey(name: 'ath_date') DateTime athDate,
+      double atl,
+      @JsonKey(name: 'atl_change_percentage') double atlChangePercentage,
+      @JsonKey(name: 'atl_date') DateTime atlDate,
       Roi? roi,
-      DateTime? lastUpdated});
+      @JsonKey(name: 'last_updated') DateTime lastUpdated});
 
   $RoiCopyWith<$Res>? get roi;
 }
@@ -108,28 +128,28 @@ class _$MarketModelCopyWithImpl<$Res, $Val extends MarketModel>
     Object? symbol = null,
     Object? name = null,
     Object? image = null,
-    Object? currentPrice = freezed,
-    Object? marketCap = freezed,
-    Object? marketCapRank = freezed,
-    Object? fullyDilutedValuation = freezed,
-    Object? totalVolume = freezed,
-    Object? high24H = freezed,
-    Object? low24H = freezed,
-    Object? priceChange24H = freezed,
-    Object? priceChangePercentage24H = freezed,
-    Object? marketCapChange24H = freezed,
-    Object? marketCapChangePercentage24H = freezed,
-    Object? circulatingSupply = freezed,
-    Object? totalSupply = freezed,
-    Object? maxSupply = freezed,
-    Object? ath = freezed,
-    Object? athChangePercentage = freezed,
-    Object? athDate = freezed,
-    Object? atl = freezed,
-    Object? atlChangePercentage = freezed,
-    Object? atlDate = freezed,
+    Object? currentPrice = null,
+    Object? marketCap = null,
+    Object? marketCapRank = null,
+    Object? fullyDilutedValuation = null,
+    Object? totalVolume = null,
+    Object? high24H = null,
+    Object? low24H = null,
+    Object? priceChange24H = null,
+    Object? priceChangePercentage24H = null,
+    Object? marketCapChange24H = null,
+    Object? marketCapChangePercentage24H = null,
+    Object? circulatingSupply = null,
+    Object? totalSupply = null,
+    Object? maxSupply = null,
+    Object? ath = null,
+    Object? athChangePercentage = null,
+    Object? athDate = null,
+    Object? atl = null,
+    Object? atlChangePercentage = null,
+    Object? atlDate = null,
     Object? roi = freezed,
-    Object? lastUpdated = freezed,
+    Object? lastUpdated = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -148,94 +168,94 @@ class _$MarketModelCopyWithImpl<$Res, $Val extends MarketModel>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
-      currentPrice: freezed == currentPrice
+      currentPrice: null == currentPrice
           ? _value.currentPrice
           : currentPrice // ignore: cast_nullable_to_non_nullable
-              as double?,
-      marketCap: freezed == marketCap
+              as double,
+      marketCap: null == marketCap
           ? _value.marketCap
           : marketCap // ignore: cast_nullable_to_non_nullable
-              as double?,
-      marketCapRank: freezed == marketCapRank
+              as double,
+      marketCapRank: null == marketCapRank
           ? _value.marketCapRank
           : marketCapRank // ignore: cast_nullable_to_non_nullable
-              as int?,
-      fullyDilutedValuation: freezed == fullyDilutedValuation
+              as int,
+      fullyDilutedValuation: null == fullyDilutedValuation
           ? _value.fullyDilutedValuation
           : fullyDilutedValuation // ignore: cast_nullable_to_non_nullable
-              as double?,
-      totalVolume: freezed == totalVolume
+              as double,
+      totalVolume: null == totalVolume
           ? _value.totalVolume
           : totalVolume // ignore: cast_nullable_to_non_nullable
-              as double?,
-      high24H: freezed == high24H
+              as double,
+      high24H: null == high24H
           ? _value.high24H
           : high24H // ignore: cast_nullable_to_non_nullable
-              as double?,
-      low24H: freezed == low24H
+              as double,
+      low24H: null == low24H
           ? _value.low24H
           : low24H // ignore: cast_nullable_to_non_nullable
-              as double?,
-      priceChange24H: freezed == priceChange24H
+              as double,
+      priceChange24H: null == priceChange24H
           ? _value.priceChange24H
           : priceChange24H // ignore: cast_nullable_to_non_nullable
-              as double?,
-      priceChangePercentage24H: freezed == priceChangePercentage24H
+              as double,
+      priceChangePercentage24H: null == priceChangePercentage24H
           ? _value.priceChangePercentage24H
           : priceChangePercentage24H // ignore: cast_nullable_to_non_nullable
-              as double?,
-      marketCapChange24H: freezed == marketCapChange24H
+              as double,
+      marketCapChange24H: null == marketCapChange24H
           ? _value.marketCapChange24H
           : marketCapChange24H // ignore: cast_nullable_to_non_nullable
-              as double?,
-      marketCapChangePercentage24H: freezed == marketCapChangePercentage24H
+              as double,
+      marketCapChangePercentage24H: null == marketCapChangePercentage24H
           ? _value.marketCapChangePercentage24H
           : marketCapChangePercentage24H // ignore: cast_nullable_to_non_nullable
-              as double?,
-      circulatingSupply: freezed == circulatingSupply
+              as double,
+      circulatingSupply: null == circulatingSupply
           ? _value.circulatingSupply
           : circulatingSupply // ignore: cast_nullable_to_non_nullable
-              as double?,
-      totalSupply: freezed == totalSupply
+              as double,
+      totalSupply: null == totalSupply
           ? _value.totalSupply
           : totalSupply // ignore: cast_nullable_to_non_nullable
-              as double?,
-      maxSupply: freezed == maxSupply
+              as double,
+      maxSupply: null == maxSupply
           ? _value.maxSupply
           : maxSupply // ignore: cast_nullable_to_non_nullable
-              as double?,
-      ath: freezed == ath
+              as double,
+      ath: null == ath
           ? _value.ath
           : ath // ignore: cast_nullable_to_non_nullable
-              as double?,
-      athChangePercentage: freezed == athChangePercentage
+              as double,
+      athChangePercentage: null == athChangePercentage
           ? _value.athChangePercentage
           : athChangePercentage // ignore: cast_nullable_to_non_nullable
-              as double?,
-      athDate: freezed == athDate
+              as double,
+      athDate: null == athDate
           ? _value.athDate
           : athDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      atl: freezed == atl
+              as DateTime,
+      atl: null == atl
           ? _value.atl
           : atl // ignore: cast_nullable_to_non_nullable
-              as double?,
-      atlChangePercentage: freezed == atlChangePercentage
+              as double,
+      atlChangePercentage: null == atlChangePercentage
           ? _value.atlChangePercentage
           : atlChangePercentage // ignore: cast_nullable_to_non_nullable
-              as double?,
-      atlDate: freezed == atlDate
+              as double,
+      atlDate: null == atlDate
           ? _value.atlDate
           : atlDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
       roi: freezed == roi
           ? _value.roi
           : roi // ignore: cast_nullable_to_non_nullable
               as Roi?,
-      lastUpdated: freezed == lastUpdated
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
     ) as $Val);
   }
 
@@ -265,28 +285,30 @@ abstract class _$$_MarketModelCopyWith<$Res>
       String symbol,
       String name,
       String image,
-      double? currentPrice,
-      double? marketCap,
-      int? marketCapRank,
-      double? fullyDilutedValuation,
-      double? totalVolume,
-      double? high24H,
-      double? low24H,
-      double? priceChange24H,
-      double? priceChangePercentage24H,
-      double? marketCapChange24H,
-      double? marketCapChangePercentage24H,
-      double? circulatingSupply,
-      double? totalSupply,
-      double? maxSupply,
-      double? ath,
-      double? athChangePercentage,
-      DateTime? athDate,
-      double? atl,
-      double? atlChangePercentage,
-      DateTime? atlDate,
+      @JsonKey(name: 'current_price') double currentPrice,
+      @JsonKey(name: 'market_cap') double marketCap,
+      @JsonKey(name: 'market_cap_rank') int marketCapRank,
+      @JsonKey(name: 'fully_diluted_valuation') double fullyDilutedValuation,
+      @JsonKey(name: 'total_volume') double totalVolume,
+      @JsonKey(name: 'high_24h') double high24H,
+      @JsonKey(name: 'low_24h') double low24H,
+      @JsonKey(name: 'price_change_24h') double priceChange24H,
+      @JsonKey(name: 'price_change_percentage_24h')
+      double priceChangePercentage24H,
+      @JsonKey(name: 'market_cap_change_24h') double marketCapChange24H,
+      @JsonKey(name: 'market_cap_change_percentage_24h')
+      double marketCapChangePercentage24H,
+      @JsonKey(name: 'circulating_supply') double circulatingSupply,
+      @JsonKey(name: 'total_supply') double totalSupply,
+      @JsonKey(name: 'max_supply') double maxSupply,
+      double ath,
+      @JsonKey(name: 'ath_change_percentage') double athChangePercentage,
+      @JsonKey(name: 'ath_date') DateTime athDate,
+      double atl,
+      @JsonKey(name: 'atl_change_percentage') double atlChangePercentage,
+      @JsonKey(name: 'atl_date') DateTime atlDate,
       Roi? roi,
-      DateTime? lastUpdated});
+      @JsonKey(name: 'last_updated') DateTime lastUpdated});
 
   @override
   $RoiCopyWith<$Res>? get roi;
@@ -307,28 +329,28 @@ class __$$_MarketModelCopyWithImpl<$Res>
     Object? symbol = null,
     Object? name = null,
     Object? image = null,
-    Object? currentPrice = freezed,
-    Object? marketCap = freezed,
-    Object? marketCapRank = freezed,
-    Object? fullyDilutedValuation = freezed,
-    Object? totalVolume = freezed,
-    Object? high24H = freezed,
-    Object? low24H = freezed,
-    Object? priceChange24H = freezed,
-    Object? priceChangePercentage24H = freezed,
-    Object? marketCapChange24H = freezed,
-    Object? marketCapChangePercentage24H = freezed,
-    Object? circulatingSupply = freezed,
-    Object? totalSupply = freezed,
-    Object? maxSupply = freezed,
-    Object? ath = freezed,
-    Object? athChangePercentage = freezed,
-    Object? athDate = freezed,
-    Object? atl = freezed,
-    Object? atlChangePercentage = freezed,
-    Object? atlDate = freezed,
+    Object? currentPrice = null,
+    Object? marketCap = null,
+    Object? marketCapRank = null,
+    Object? fullyDilutedValuation = null,
+    Object? totalVolume = null,
+    Object? high24H = null,
+    Object? low24H = null,
+    Object? priceChange24H = null,
+    Object? priceChangePercentage24H = null,
+    Object? marketCapChange24H = null,
+    Object? marketCapChangePercentage24H = null,
+    Object? circulatingSupply = null,
+    Object? totalSupply = null,
+    Object? maxSupply = null,
+    Object? ath = null,
+    Object? athChangePercentage = null,
+    Object? athDate = null,
+    Object? atl = null,
+    Object? atlChangePercentage = null,
+    Object? atlDate = null,
     Object? roi = freezed,
-    Object? lastUpdated = freezed,
+    Object? lastUpdated = null,
   }) {
     return _then(_$_MarketModel(
       id: null == id
@@ -347,94 +369,94 @@ class __$$_MarketModelCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
-      currentPrice: freezed == currentPrice
+      currentPrice: null == currentPrice
           ? _value.currentPrice
           : currentPrice // ignore: cast_nullable_to_non_nullable
-              as double?,
-      marketCap: freezed == marketCap
+              as double,
+      marketCap: null == marketCap
           ? _value.marketCap
           : marketCap // ignore: cast_nullable_to_non_nullable
-              as double?,
-      marketCapRank: freezed == marketCapRank
+              as double,
+      marketCapRank: null == marketCapRank
           ? _value.marketCapRank
           : marketCapRank // ignore: cast_nullable_to_non_nullable
-              as int?,
-      fullyDilutedValuation: freezed == fullyDilutedValuation
+              as int,
+      fullyDilutedValuation: null == fullyDilutedValuation
           ? _value.fullyDilutedValuation
           : fullyDilutedValuation // ignore: cast_nullable_to_non_nullable
-              as double?,
-      totalVolume: freezed == totalVolume
+              as double,
+      totalVolume: null == totalVolume
           ? _value.totalVolume
           : totalVolume // ignore: cast_nullable_to_non_nullable
-              as double?,
-      high24H: freezed == high24H
+              as double,
+      high24H: null == high24H
           ? _value.high24H
           : high24H // ignore: cast_nullable_to_non_nullable
-              as double?,
-      low24H: freezed == low24H
+              as double,
+      low24H: null == low24H
           ? _value.low24H
           : low24H // ignore: cast_nullable_to_non_nullable
-              as double?,
-      priceChange24H: freezed == priceChange24H
+              as double,
+      priceChange24H: null == priceChange24H
           ? _value.priceChange24H
           : priceChange24H // ignore: cast_nullable_to_non_nullable
-              as double?,
-      priceChangePercentage24H: freezed == priceChangePercentage24H
+              as double,
+      priceChangePercentage24H: null == priceChangePercentage24H
           ? _value.priceChangePercentage24H
           : priceChangePercentage24H // ignore: cast_nullable_to_non_nullable
-              as double?,
-      marketCapChange24H: freezed == marketCapChange24H
+              as double,
+      marketCapChange24H: null == marketCapChange24H
           ? _value.marketCapChange24H
           : marketCapChange24H // ignore: cast_nullable_to_non_nullable
-              as double?,
-      marketCapChangePercentage24H: freezed == marketCapChangePercentage24H
+              as double,
+      marketCapChangePercentage24H: null == marketCapChangePercentage24H
           ? _value.marketCapChangePercentage24H
           : marketCapChangePercentage24H // ignore: cast_nullable_to_non_nullable
-              as double?,
-      circulatingSupply: freezed == circulatingSupply
+              as double,
+      circulatingSupply: null == circulatingSupply
           ? _value.circulatingSupply
           : circulatingSupply // ignore: cast_nullable_to_non_nullable
-              as double?,
-      totalSupply: freezed == totalSupply
+              as double,
+      totalSupply: null == totalSupply
           ? _value.totalSupply
           : totalSupply // ignore: cast_nullable_to_non_nullable
-              as double?,
-      maxSupply: freezed == maxSupply
+              as double,
+      maxSupply: null == maxSupply
           ? _value.maxSupply
           : maxSupply // ignore: cast_nullable_to_non_nullable
-              as double?,
-      ath: freezed == ath
+              as double,
+      ath: null == ath
           ? _value.ath
           : ath // ignore: cast_nullable_to_non_nullable
-              as double?,
-      athChangePercentage: freezed == athChangePercentage
+              as double,
+      athChangePercentage: null == athChangePercentage
           ? _value.athChangePercentage
           : athChangePercentage // ignore: cast_nullable_to_non_nullable
-              as double?,
-      athDate: freezed == athDate
+              as double,
+      athDate: null == athDate
           ? _value.athDate
           : athDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      atl: freezed == atl
+              as DateTime,
+      atl: null == atl
           ? _value.atl
           : atl // ignore: cast_nullable_to_non_nullable
-              as double?,
-      atlChangePercentage: freezed == atlChangePercentage
+              as double,
+      atlChangePercentage: null == atlChangePercentage
           ? _value.atlChangePercentage
           : atlChangePercentage // ignore: cast_nullable_to_non_nullable
-              as double?,
-      atlDate: freezed == atlDate
+              as double,
+      atlDate: null == atlDate
           ? _value.atlDate
           : atlDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
       roi: freezed == roi
           ? _value.roi
           : roi // ignore: cast_nullable_to_non_nullable
               as Roi?,
-      lastUpdated: freezed == lastUpdated
+      lastUpdated: null == lastUpdated
           ? _value.lastUpdated
           : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
     ));
   }
 }
@@ -447,28 +469,31 @@ class _$_MarketModel implements _MarketModel {
       required this.symbol,
       required this.name,
       required this.image,
-      this.currentPrice = 0.0,
-      this.marketCap = 0.0,
-      this.marketCapRank = 0,
-      this.fullyDilutedValuation = 0.0,
-      this.totalVolume = 0.0,
-      this.high24H = 0.0,
-      this.low24H = 0.0,
-      this.priceChange24H = 0.0,
-      this.priceChangePercentage24H = 0.0,
-      this.marketCapChange24H = 0.0,
-      this.marketCapChangePercentage24H = 0.0,
-      this.circulatingSupply = 0.0,
-      this.totalSupply = 0.0,
-      this.maxSupply = 0.0,
-      this.ath = 0.0,
-      this.athChangePercentage = 0.0,
-      this.athDate,
-      this.atl = 0.0,
-      this.atlChangePercentage = 0.0,
-      this.atlDate,
+      @JsonKey(name: 'current_price') required this.currentPrice,
+      @JsonKey(name: 'market_cap') required this.marketCap,
+      @JsonKey(name: 'market_cap_rank') required this.marketCapRank,
+      @JsonKey(name: 'fully_diluted_valuation')
+      required this.fullyDilutedValuation,
+      @JsonKey(name: 'total_volume') required this.totalVolume,
+      @JsonKey(name: 'high_24h') required this.high24H,
+      @JsonKey(name: 'low_24h') required this.low24H,
+      @JsonKey(name: 'price_change_24h') required this.priceChange24H,
+      @JsonKey(name: 'price_change_percentage_24h')
+      required this.priceChangePercentage24H,
+      @JsonKey(name: 'market_cap_change_24h') required this.marketCapChange24H,
+      @JsonKey(name: 'market_cap_change_percentage_24h')
+      required this.marketCapChangePercentage24H,
+      @JsonKey(name: 'circulating_supply') required this.circulatingSupply,
+      @JsonKey(name: 'total_supply') required this.totalSupply,
+      @JsonKey(name: 'max_supply') required this.maxSupply,
+      required this.ath,
+      @JsonKey(name: 'ath_change_percentage') required this.athChangePercentage,
+      @JsonKey(name: 'ath_date') required this.athDate,
+      required this.atl,
+      @JsonKey(name: 'atl_change_percentage') required this.atlChangePercentage,
+      @JsonKey(name: 'atl_date') required this.atlDate,
       this.roi,
-      this.lastUpdated});
+      @JsonKey(name: 'last_updated') required this.lastUpdated});
 
   factory _$_MarketModel.fromJson(Map<String, dynamic> json) =>
       _$$_MarketModelFromJson(json);
@@ -482,67 +507,68 @@ class _$_MarketModel implements _MarketModel {
   @override
   final String image;
   @override
-  @JsonKey()
-  final double? currentPrice;
+  @JsonKey(name: 'current_price')
+  final double currentPrice;
   @override
-  @JsonKey()
-  final double? marketCap;
+  @JsonKey(name: 'market_cap')
+  final double marketCap;
   @override
-  @JsonKey()
-  final int? marketCapRank;
+  @JsonKey(name: 'market_cap_rank')
+  final int marketCapRank;
   @override
-  @JsonKey()
-  final double? fullyDilutedValuation;
+  @JsonKey(name: 'fully_diluted_valuation')
+  final double fullyDilutedValuation;
   @override
-  @JsonKey()
-  final double? totalVolume;
+  @JsonKey(name: 'total_volume')
+  final double totalVolume;
   @override
-  @JsonKey()
-  final double? high24H;
+  @JsonKey(name: 'high_24h')
+  final double high24H;
   @override
-  @JsonKey()
-  final double? low24H;
+  @JsonKey(name: 'low_24h')
+  final double low24H;
   @override
-  @JsonKey()
-  final double? priceChange24H;
+  @JsonKey(name: 'price_change_24h')
+  final double priceChange24H;
   @override
-  @JsonKey()
-  final double? priceChangePercentage24H;
+  @JsonKey(name: 'price_change_percentage_24h')
+  final double priceChangePercentage24H;
   @override
-  @JsonKey()
-  final double? marketCapChange24H;
+  @JsonKey(name: 'market_cap_change_24h')
+  final double marketCapChange24H;
   @override
-  @JsonKey()
-  final double? marketCapChangePercentage24H;
+  @JsonKey(name: 'market_cap_change_percentage_24h')
+  final double marketCapChangePercentage24H;
   @override
-  @JsonKey()
-  final double? circulatingSupply;
+  @JsonKey(name: 'circulating_supply')
+  final double circulatingSupply;
   @override
-  @JsonKey()
-  final double? totalSupply;
+  @JsonKey(name: 'total_supply')
+  final double totalSupply;
   @override
-  @JsonKey()
-  final double? maxSupply;
+  @JsonKey(name: 'max_supply')
+  final double maxSupply;
   @override
-  @JsonKey()
-  final double? ath;
+  final double ath;
   @override
-  @JsonKey()
-  final double? athChangePercentage;
+  @JsonKey(name: 'ath_change_percentage')
+  final double athChangePercentage;
   @override
-  final DateTime? athDate;
+  @JsonKey(name: 'ath_date')
+  final DateTime athDate;
   @override
-  @JsonKey()
-  final double? atl;
+  final double atl;
   @override
-  @JsonKey()
-  final double? atlChangePercentage;
+  @JsonKey(name: 'atl_change_percentage')
+  final double atlChangePercentage;
   @override
-  final DateTime? atlDate;
+  @JsonKey(name: 'atl_date')
+  final DateTime atlDate;
   @override
   final Roi? roi;
   @override
-  final DateTime? lastUpdated;
+  @JsonKey(name: 'last_updated')
+  final DateTime lastUpdated;
 
   @override
   String toString() {
@@ -652,28 +678,36 @@ abstract class _MarketModel implements MarketModel {
       required final String symbol,
       required final String name,
       required final String image,
-      final double? currentPrice,
-      final double? marketCap,
-      final int? marketCapRank,
-      final double? fullyDilutedValuation,
-      final double? totalVolume,
-      final double? high24H,
-      final double? low24H,
-      final double? priceChange24H,
-      final double? priceChangePercentage24H,
-      final double? marketCapChange24H,
-      final double? marketCapChangePercentage24H,
-      final double? circulatingSupply,
-      final double? totalSupply,
-      final double? maxSupply,
-      final double? ath,
-      final double? athChangePercentage,
-      final DateTime? athDate,
-      final double? atl,
-      final double? atlChangePercentage,
-      final DateTime? atlDate,
+      @JsonKey(name: 'current_price') required final double currentPrice,
+      @JsonKey(name: 'market_cap') required final double marketCap,
+      @JsonKey(name: 'market_cap_rank') required final int marketCapRank,
+      @JsonKey(name: 'fully_diluted_valuation')
+      required final double fullyDilutedValuation,
+      @JsonKey(name: 'total_volume') required final double totalVolume,
+      @JsonKey(name: 'high_24h') required final double high24H,
+      @JsonKey(name: 'low_24h') required final double low24H,
+      @JsonKey(name: 'price_change_24h') required final double priceChange24H,
+      @JsonKey(name: 'price_change_percentage_24h')
+      required final double priceChangePercentage24H,
+      @JsonKey(name: 'market_cap_change_24h')
+      required final double marketCapChange24H,
+      @JsonKey(name: 'market_cap_change_percentage_24h')
+      required final double marketCapChangePercentage24H,
+      @JsonKey(name: 'circulating_supply')
+      required final double circulatingSupply,
+      @JsonKey(name: 'total_supply') required final double totalSupply,
+      @JsonKey(name: 'max_supply') required final double maxSupply,
+      required final double ath,
+      @JsonKey(name: 'ath_change_percentage')
+      required final double athChangePercentage,
+      @JsonKey(name: 'ath_date') required final DateTime athDate,
+      required final double atl,
+      @JsonKey(name: 'atl_change_percentage')
+      required final double atlChangePercentage,
+      @JsonKey(name: 'atl_date') required final DateTime atlDate,
       final Roi? roi,
-      final DateTime? lastUpdated}) = _$_MarketModel;
+      @JsonKey(name: 'last_updated')
+      required final DateTime lastUpdated}) = _$_MarketModel;
 
   factory _MarketModel.fromJson(Map<String, dynamic> json) =
       _$_MarketModel.fromJson;
@@ -687,49 +721,68 @@ abstract class _MarketModel implements MarketModel {
   @override
   String get image;
   @override
-  double? get currentPrice;
+  @JsonKey(name: 'current_price')
+  double get currentPrice;
   @override
-  double? get marketCap;
+  @JsonKey(name: 'market_cap')
+  double get marketCap;
   @override
-  int? get marketCapRank;
+  @JsonKey(name: 'market_cap_rank')
+  int get marketCapRank;
   @override
-  double? get fullyDilutedValuation;
+  @JsonKey(name: 'fully_diluted_valuation')
+  double get fullyDilutedValuation;
   @override
-  double? get totalVolume;
+  @JsonKey(name: 'total_volume')
+  double get totalVolume;
   @override
-  double? get high24H;
+  @JsonKey(name: 'high_24h')
+  double get high24H;
   @override
-  double? get low24H;
+  @JsonKey(name: 'low_24h')
+  double get low24H;
   @override
-  double? get priceChange24H;
+  @JsonKey(name: 'price_change_24h')
+  double get priceChange24H;
   @override
-  double? get priceChangePercentage24H;
+  @JsonKey(name: 'price_change_percentage_24h')
+  double get priceChangePercentage24H;
   @override
-  double? get marketCapChange24H;
+  @JsonKey(name: 'market_cap_change_24h')
+  double get marketCapChange24H;
   @override
-  double? get marketCapChangePercentage24H;
+  @JsonKey(name: 'market_cap_change_percentage_24h')
+  double get marketCapChangePercentage24H;
   @override
-  double? get circulatingSupply;
+  @JsonKey(name: 'circulating_supply')
+  double get circulatingSupply;
   @override
-  double? get totalSupply;
+  @JsonKey(name: 'total_supply')
+  double get totalSupply;
   @override
-  double? get maxSupply;
+  @JsonKey(name: 'max_supply')
+  double get maxSupply;
   @override
-  double? get ath;
+  double get ath;
   @override
-  double? get athChangePercentage;
+  @JsonKey(name: 'ath_change_percentage')
+  double get athChangePercentage;
   @override
-  DateTime? get athDate;
+  @JsonKey(name: 'ath_date')
+  DateTime get athDate;
   @override
-  double? get atl;
+  double get atl;
   @override
-  double? get atlChangePercentage;
+  @JsonKey(name: 'atl_change_percentage')
+  double get atlChangePercentage;
   @override
-  DateTime? get atlDate;
+  @JsonKey(name: 'atl_date')
+  DateTime get atlDate;
   @override
   Roi? get roi;
   @override
-  DateTime? get lastUpdated;
+  @JsonKey(name: 'last_updated')
+  DateTime get lastUpdated;
   @override
   @JsonKey(ignore: true)
   _$$_MarketModelCopyWith<_$_MarketModel> get copyWith =>

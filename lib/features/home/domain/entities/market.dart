@@ -3,28 +3,28 @@ class Market {
   final String symbol;
   final String name;
   final String image;
-  final double? currentPrice;
-  final double? marketCap;
-  final int? marketCapRank;
-  final double? fullyDilutedValuation;
-  final double? totalVolume;
-  final double? high24H;
-  final double? low24H;
-  final double? priceChange24H;
-  final double? priceChangePercentage24H;
-  final double? marketCapChange24H;
-  final double? marketCapChangePercentage24H;
-  final double? circulatingSupply;
-  final double? totalSupply;
-  final double? maxSupply;
-  final double? ath;
-  final double? athChangePercentage;
-  final DateTime? athDate;
-  final double? atl;
-  final double? atlChangePercentage;
-  final DateTime? atlDate;
+  final double currentPrice;
+  final double marketCap;
+  final int marketCapRank;
+  final double fullyDilutedValuation;
+  final double totalVolume;
+  final double high24H;
+  final double low24H;
+  final double priceChange24H;
+  final double priceChangePercentage24H;
+  final double marketCapChange24H;
+  final double marketCapChangePercentage24H;
+  final double circulatingSupply;
+  final double totalSupply;
+  final double maxSupply;
+  final double ath;
+  final double athChangePercentage;
+  final DateTime athDate;
+  final double atl;
+  final double atlChangePercentage;
+  final DateTime atlDate;
   final dynamic roi;
-  final DateTime? lastUpdated;
+  final DateTime lastUpdated;
 
   const Market({
     required this.id,
@@ -33,7 +33,7 @@ class Market {
     required this.image,
     required this.currentPrice,
     required this.marketCap,
-    this.marketCapRank,
+    required this.marketCapRank,
     required this.fullyDilutedValuation,
     required this.totalVolume,
     required this.high24H,
@@ -47,7 +47,7 @@ class Market {
     required this.maxSupply,
     required this.ath,
     required this.athChangePercentage,
-    this.athDate,
+    required this.athDate,
     required this.atl,
     required this.atlChangePercentage,
     required this.atlDate,

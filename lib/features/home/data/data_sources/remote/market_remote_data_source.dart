@@ -16,7 +16,7 @@ abstract class MarketRemoteDataSourceImpl implements MarketRemoteDataSource {
   factory MarketRemoteDataSourceImpl(Dio dio, {String baseUrl}) =
       _MarketRemoteDataSourceImpl;
 
-  @GET('/markets?vs_currency=usd&per_page=5&page=1')
+  @GET('/markets?vs_currency=usd&per_page=10&page=1')
   @override
   Future<List<MarketModel>> getMarkets();
 }

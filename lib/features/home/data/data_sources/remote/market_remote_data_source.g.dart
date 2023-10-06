@@ -34,7 +34,7 @@ class _MarketRemoteDataSourceImpl implements MarketRemoteDataSourceImpl {
     )
             .compose(
               _dio.options,
-              '/markets?vs_currency=usd&per_page=5&page=1',
+              '/markets?vs_currency=usd&per_page=10&page=1',
               queryParameters: queryParameters,
               data: _data,
             )

@@ -1,39 +1,42 @@
 import 'package:crypto_app/features/home/domain/entities/market.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'dart:convert';
 
 part 'market_model.freezed.dart';
 part 'market_model.g.dart';
 
 @freezed
+// @JsonSerializable()
 class MarketModel extends Market with _$MarketModel {
   const factory MarketModel({
     required String id,
     required String symbol,
     required String name,
     required String image,
-    @Default(0.0) double? currentPrice,
-    @Default(0.0) double? marketCap,
-    @Default(0) int? marketCapRank,
-    @Default(0.0) double? fullyDilutedValuation,
-    @Default(0.0) double? totalVolume,
-    @Default(0.0) double? high24H,
-    @Default(0.0) double? low24H,
-    @Default(0.0) double? priceChange24H,
-    @Default(0.0) double? priceChangePercentage24H,
-    @Default(0.0) double? marketCapChange24H,
-    @Default(0.0) double? marketCapChangePercentage24H,
-    @Default(0.0) double? circulatingSupply,
-    @Default(0.0) double? totalSupply,
-    @Default(0.0) double? maxSupply,
-    @Default(0.0) double? ath,
-    @Default(0.0) double? athChangePercentage,
-    DateTime? athDate,
-    @Default(0.0) double? atl,
-    @Default(0.0) double? atlChangePercentage,
-    DateTime? atlDate,
+    @JsonKey(name: 'current_price') required double currentPrice,
+    @JsonKey(name: 'market_cap') required double marketCap,
+    @JsonKey(name: 'market_cap_rank') required int marketCapRank,
+    @JsonKey(name: 'fully_diluted_valuation')
+    required double fullyDilutedValuation,
+    @JsonKey(name: 'total_volume') required double totalVolume,
+    @JsonKey(name: 'high_24h') required double high24H,
+    @JsonKey(name: 'low_24h') required double low24H,
+    @JsonKey(name: 'price_change_24h') required double priceChange24H,
+    @JsonKey(name: 'price_change_percentage_24h')
+    required double priceChangePercentage24H,
+    @JsonKey(name: 'market_cap_change_24h') required double marketCapChange24H,
+    @JsonKey(name: 'market_cap_change_percentage_24h')
+    required double marketCapChangePercentage24H,
+    @JsonKey(name: 'circulating_supply') required double circulatingSupply,
+    @JsonKey(name: 'total_supply') required double totalSupply,
+    @JsonKey(name: 'max_supply') required double maxSupply,
+    required double ath,
+    @JsonKey(name: 'ath_change_percentage') required double athChangePercentage,
+    @JsonKey(name: 'ath_date') required DateTime athDate,
+    required double atl,
+    @JsonKey(name: 'atl_change_percentage') required double atlChangePercentage,
+    @JsonKey(name: 'atl_date') required DateTime atlDate,
     Roi? roi,
-    DateTime? lastUpdated,
+    @JsonKey(name: 'last_updated') required DateTime lastUpdated,
   }) = _MarketModel;
 
   factory MarketModel.fromJson(Map<String, dynamic> json) =>
