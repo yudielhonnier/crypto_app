@@ -270,10 +270,10 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
               //   ),
               // );
             }),
-        onRefresh: () => _onRefresh(context));
+        onRefresh: () => _onRefresh(context, markets.length));
   }
 
-  Future<void> _onRefresh(BuildContext context) async {
-    BlocProvider.of<MarketsBloc>(context).add(GetMarketsEvent());
+  Future<void> _onRefresh(BuildContext context, int page) async {
+    BlocProvider.of<MarketsBloc>(context).add(GetMarketsEvent(page: page));
   }
 }

@@ -34,10 +34,10 @@ class OrderBook extends StatelessWidget {
             )
           ],
         ),
-        Column(
+        const Column(
           children: [
             BidOrderBook(),
-            const SizedBox(
+            SizedBox(
               height: 10,
             ),
             AskOrderBook(),

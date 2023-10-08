@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 
 class AppBarHome extends StatelessWidget implements PreferredSize {
   const AppBarHome({
+    required this.context,
     Key? key,
   }) : super(key: key);
+
+  final BuildContext context;
 
   @override
   Widget build(BuildContext context) {
@@ -32,19 +35,26 @@ class AppBarHome extends StatelessWidget implements PreferredSize {
           ),
           AppBar(
             leadingWidth: 63,
-            leading: Container(
-              padding: const EdgeInsets.only(left: 20),
-              child: const CircleAvatar(
-                backgroundImage: AssetImage('assets/ship.jpg'),
+            leading: GestureDetector(
+              child: Container(
+                padding: const EdgeInsets.only(left: 20),
+                child: const CircleAvatar(
+                  backgroundImage: AssetImage('assets/ship.jpg'),
+                ),
               ),
+              onTap: () => Navigator.pushNamed(context, '/profile'),
             ),
             elevation: 0,
-            title: const Text(
-              'Yudiel Honnier',
-              style: TextStyle(fontSize: 17),
+            title: GestureDetector(
+              child: const Text(
+                'User',
+                style: TextStyle(fontSize: 17),
+              ),
+              onTap: () => Navigator.pushNamed(context, '/profile'),
             ),
             actions: [
-              IconButton(onPressed: () {}, icon: Icon(Icons.compare_arrows)),
+              IconButton(
+                  onPressed: () {}, icon: const Icon(Icons.compare_arrows)),
               Stack(children: [
                 IconButton(
                     onPressed: () {},

@@ -3,7 +3,11 @@ part of 'markets_bloc.dart';
 @immutable
 sealed class MarketsState {}
 
-final class Empty extends MarketsState {}
+final class Empty extends MarketsState {
+  final List<MarketModel> markets;
+
+  Empty(this.markets);
+}
 
 final class Loading extends MarketsState {}
 

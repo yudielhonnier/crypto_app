@@ -19,13 +19,13 @@ class MarketRepositoryImpl implements MarketRepository {
   });
 
   @override
-  Future<Either<Error, List<MarketModel>>> getMarkets() async {
+  Future<Either<Error, List<MarketModel>>> getMarkets(pageNum) async {
     bool result = await networkInfo.isConnected;
     print(' infoooo' + result.toString());
 
     if (await networkInfo.isConnected) {
       try {
-        final remote = await remoteDataSource.getMarkets();
+        final remote = await remoteDataSource.getMarkets(pageNum);
         localDataSource.cacheMarkets(remote);
         return Right(remote);
       } on ServerException catch (e) {
