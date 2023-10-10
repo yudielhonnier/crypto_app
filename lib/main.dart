@@ -1,11 +1,18 @@
-import 'package:crypto_app/pages/trading_page.dart';
-import 'package:crypto_app/pages/home_page.dart';
-import 'package:crypto_app/pages/wallet_page.dart';
-import 'package:crypto_app/themes/theme_constants.dart';
+import 'package:crypto_app/config/routes/routes.dart';
+import 'package:crypto_app/features/trading/presentation/pages/trading_screen.dart';
+import 'package:crypto_app/features/home/presentation/page/home_screen.dart';
+import 'package:crypto_app/features/briefcase/presentation/pages/wallet_screen.dart';
+import 'package:crypto_app/config/themes/theme_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-void main() => runApp(MyApp());
+import 'injector.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initializeDependencies();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -17,13 +24,8 @@ class MyApp extends StatelessWidget {
       theme: ligthTheme,
       darkTheme: darkTheme,
       themeMode: ThemeMode.dark,
-      home:  TradingPage(),
-      routes: {
-        '/chart':(_) => TradingPage(),
-        '/home': (_) => HomePage(),
-        '/wallet': (_) => WalletPage(),
-
-      },
+      home: HomeScreen(),
+      routes: routes,
       debugShowCheckedModeBanner: false,
     );
   }
@@ -147,3 +149,8 @@ class MyApp extends StatelessWidget {
 //     );
 //   }
 // }
+
+
+
+
+ 
