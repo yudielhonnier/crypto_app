@@ -39,7 +39,7 @@ class AppBarHome extends StatelessWidget implements PreferredSize {
               child: Container(
                 padding: const EdgeInsets.only(left: 20),
                 child: const CircleAvatar(
-                  backgroundImage: AssetImage('assets/ship.jpg'),
+                  backgroundImage: AssetImage('assets/profile.jpg'),
                 ),
               ),
               onTap: () => Navigator.pushNamed(context, '/profile'),

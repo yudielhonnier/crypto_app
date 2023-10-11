@@ -1,3 +1,4 @@
+import 'package:crypto_app/core/helpers/is_empty.dart';
 import 'package:crypto_app/features/home/presentation/bloc/markets_bloc.dart';
 import 'package:crypto_app/features/shared/widgets/app_bar_shared.dart';
 import 'package:crypto_app/features/shared/widgets/bottom_gradient.dart';
@@ -57,68 +58,17 @@ class _HomeScreenState extends State<CardsScreen> {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: const Image(
-                          image: AssetImage('assets/ship.jpg'),
-                          width: 200,
-                          height: 200,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
                       const Text(
-                        'UserName',
+                        'Add your bank card',
                         style: TextStyle(fontSize: 20),
                       ),
+                      Container(
+                        child: _buildAlias(),
+                      ),
+                      Container(
+                        child: _buildCard(),
+                      ),
                     ]),
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.only(bottom: 30.0),
-              child: Row(
-                children: [
-                  Icon(Icons.credit_card),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    'YOUR CARDS',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ],
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.only(bottom: 30.0),
-              child: Row(
-                children: [
-                  Icon(Icons.settings),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    'SETTINGS',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ],
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.only(bottom: 30.0),
-              child: Row(
-                children: [
-                  Icon(Icons.notifications),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    'NOTIFICATIONS',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ],
               ),
             ),
             ElevatedButton(
@@ -135,12 +85,12 @@ class _HomeScreenState extends State<CardsScreen> {
               // color: Colors.grey,
               child: const Row(
                 children: [
-                  Icon(Icons.logout),
+                  Icon(Icons.save_outlined),
                   SizedBox(
                     width: 10,
                   ),
                   Text(
-                    'LOGOUT',
+                    'SAVE',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],
@@ -151,5 +101,32 @@ class _HomeScreenState extends State<CardsScreen> {
       ),
       BottomGradient(size: size, colors: colorsGradient, height: 170, bottom: 0)
     ]);
+  }
+
+  Widget _buildCard() {
+    return TextFormField(
+      initialValue: '',
+      keyboardType: const TextInputType.numberWithOptions(decimal: true),
+      decoration: const InputDecoration(
+        labelText: 'Card Number',
+      ),
+      onSaved: (value) => {},
+      validator: (value) {
+        return (isNumeric(value!)) ? null : 'Only numbers';
+      },
+    );
+  }
+
+  Widget _buildAlias() {
+    return TextFormField(
+      initialValue: 'Alias',
+      decoration: const InputDecoration(
+        labelText: 'Alias',
+      ),
+      onSaved: (value) => {},
+      validator: (value) {
+        return (isNumeric(value!)) ? null : 'Only numbers';
+      },
+    );
   }
 }

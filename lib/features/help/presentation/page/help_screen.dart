@@ -1,20 +1,19 @@
 import 'package:crypto_app/features/home/presentation/bloc/markets_bloc.dart';
 import 'package:crypto_app/features/shared/widgets/app_bar_shared.dart';
-import 'package:crypto_app/features/shared/widgets/bottom_gradient.dart';
 import 'package:crypto_app/injector.dart';
 import 'package:crypto_app/config/themes/theme_constants.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class NotificationsScreen extends StatefulWidget {
-  const NotificationsScreen({Key? key}) : super(key: key);
+class HelpScreen extends StatefulWidget {
+  const HelpScreen({Key? key}) : super(key: key);
 
   @override
-  State<NotificationsScreen> createState() => _HomeScreenState();
+  State<HelpScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<NotificationsScreen> {
+class _HomeScreenState extends State<HelpScreen> {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -27,9 +26,10 @@ class _HomeScreenState extends State<NotificationsScreen> {
           child: Scaffold(
             backgroundColor: darkTheme.colorScheme.primary,
             appBar: AppBarShared(
+              name: 'Help',
               context: context,
-              name: 'Notifications',
-              rightSpace: 100,
+              rightSpace: 178,
+              showHelp: false,
             ),
             body: _buildBody(),
           ),
@@ -44,6 +44,6 @@ class _HomeScreenState extends State<NotificationsScreen> {
       const Color.fromARGB(255, 6, 13, 24)
     ];
 
-    return const Center(child: Text('Notifications'));
+    return const Center(child: Text('Help'));
   }
 }

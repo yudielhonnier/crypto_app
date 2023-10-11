@@ -16,7 +16,7 @@ class Market {
   final double marketCapChangePercentage24H;
   final double circulatingSupply;
   final double totalSupply;
-  final double maxSupply;
+  final double? maxSupply;
   final double ath;
   final double athChangePercentage;
   final DateTime athDate;
@@ -44,7 +44,7 @@ class Market {
     required this.marketCapChangePercentage24H,
     required this.circulatingSupply,
     required this.totalSupply,
-    required this.maxSupply,
+    this.maxSupply,
     required this.ath,
     required this.athChangePercentage,
     required this.athDate,

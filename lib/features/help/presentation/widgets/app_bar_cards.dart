@@ -1,20 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:crypto_app/config/themes/theme_constants.dart';
 
-class AppBarShared extends StatelessWidget implements PreferredSize {
-  const AppBarShared({
+class AppBarCards extends StatelessWidget implements PreferredSize {
+  const AppBarCards({
     required this.context,
-    required this.name,
-    required this.rightSpace,
-    showHelp,
     Key? key,
-  })  : showHelp = showHelp ?? true,
-        super(key: key);
+  }) : super(key: key);
 
   final BuildContext context;
-  final String name;
-  final double rightSpace;
-  final bool showHelp;
 
   @override
   Widget build(BuildContext context) {
@@ -57,25 +50,30 @@ class AppBarShared extends StatelessWidget implements PreferredSize {
                         size: 16,
                         color: darkTheme.colorScheme.secondary,
                       ),
+                      Text(
+                        'Home',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: darkTheme.colorScheme.secondary,
+                        ),
+                      ),
                     ],
                   ),
-                  onTap: () => Navigator.pop(context),
+                  onTap: () => Navigator.pushNamed(context, '/home'),
                 )),
             actions: [
-              Center(
+              const Center(
                 child: Text(
-                  name,
-                  style: const TextStyle(fontSize: 16),
+                  'Profile',
+                  style: TextStyle(fontSize: 16),
                 ),
               ),
-              SizedBox(
-                width: rightSpace,
+              const SizedBox(
+                width: 124,
               ),
-              showHelp
-                  ? IconButton(
-                      onPressed: () => Navigator.pushNamed(context, '/help'),
-                      icon: const Icon(Icons.help_outline_rounded))
-                  : const SizedBox()
+              IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.help_outline_rounded)),
             ],
           ),
         ],

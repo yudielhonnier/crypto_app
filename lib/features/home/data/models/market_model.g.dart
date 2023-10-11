@@ -28,7 +28,7 @@ _$_MarketModel _$$_MarketModelFromJson(Map<String, dynamic> json) =>
           (json['market_cap_change_percentage_24h'] as num).toDouble(),
       circulatingSupply: (json['circulating_supply'] as num).toDouble(),
       totalSupply: (json['total_supply'] as num).toDouble(),
-      maxSupply: (json['max_supply'] as num).toDouble(),
+      maxSupply: (json['max_supply'] as num?)?.toDouble(),
       ath: (json['ath'] as num).toDouble(),
       athChangePercentage: (json['ath_change_percentage'] as num).toDouble(),
       athDate: DateTime.parse(json['ath_date'] as String),

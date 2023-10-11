@@ -60,7 +60,7 @@ class _HomeScreenState extends State<ProfileScreen> {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(20),
                         child: const Image(
-                          image: AssetImage('assets/ship.jpg'),
+                          image: AssetImage('assets/profile.jpg'),
                           width: 200,
                           height: 200,
                           fit: BoxFit.cover,

@@ -28,7 +28,7 @@ class MarketModel extends Market with _$MarketModel {
     required double marketCapChangePercentage24H,
     @JsonKey(name: 'circulating_supply') required double circulatingSupply,
     @JsonKey(name: 'total_supply') required double totalSupply,
-    @JsonKey(name: 'max_supply') required double maxSupply,
+    @JsonKey(name: 'max_supply') double? maxSupply,
     required double ath,
     @JsonKey(name: 'ath_change_percentage') required double athChangePercentage,
     @JsonKey(name: 'ath_date') required DateTime athDate,

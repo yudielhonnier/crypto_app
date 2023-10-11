@@ -51,7 +51,7 @@ mixin _$MarketModel {
   @JsonKey(name: 'total_supply')
   double get totalSupply => throw _privateConstructorUsedError;
   @JsonKey(name: 'max_supply')
-  double get maxSupply => throw _privateConstructorUsedError;
+  double? get maxSupply => throw _privateConstructorUsedError;
   double get ath => throw _privateConstructorUsedError;
   @JsonKey(name: 'ath_change_percentage')
   double get athChangePercentage => throw _privateConstructorUsedError;
@@ -98,7 +98,7 @@ abstract class $MarketModelCopyWith<$Res> {
       double marketCapChangePercentage24H,
       @JsonKey(name: 'circulating_supply') double circulatingSupply,
       @JsonKey(name: 'total_supply') double totalSupply,
-      @JsonKey(name: 'max_supply') double maxSupply,
+      @JsonKey(name: 'max_supply') double? maxSupply,
       double ath,
       @JsonKey(name: 'ath_change_percentage') double athChangePercentage,
       @JsonKey(name: 'ath_date') DateTime athDate,
@@ -141,7 +141,7 @@ class _$MarketModelCopyWithImpl<$Res, $Val extends MarketModel>
     Object? marketCapChangePercentage24H = null,
     Object? circulatingSupply = null,
     Object? totalSupply = null,
-    Object? maxSupply = null,
+    Object? maxSupply = freezed,
     Object? ath = null,
     Object? athChangePercentage = null,
     Object? athDate = null,
@@ -220,10 +220,10 @@ class _$MarketModelCopyWithImpl<$Res, $Val extends MarketModel>
           ? _value.totalSupply
           : totalSupply // ignore: cast_nullable_to_non_nullable
               as double,
-      maxSupply: null == maxSupply
+      maxSupply: freezed == maxSupply
           ? _value.maxSupply
           : maxSupply // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       ath: null == ath
           ? _value.ath
           : ath // ignore: cast_nullable_to_non_nullable
@@ -300,7 +300,7 @@ abstract class _$$_MarketModelCopyWith<$Res>
       double marketCapChangePercentage24H,
       @JsonKey(name: 'circulating_supply') double circulatingSupply,
       @JsonKey(name: 'total_supply') double totalSupply,
-      @JsonKey(name: 'max_supply') double maxSupply,
+      @JsonKey(name: 'max_supply') double? maxSupply,
       double ath,
       @JsonKey(name: 'ath_change_percentage') double athChangePercentage,
       @JsonKey(name: 'ath_date') DateTime athDate,
@@ -342,7 +342,7 @@ class __$$_MarketModelCopyWithImpl<$Res>
     Object? marketCapChangePercentage24H = null,
     Object? circulatingSupply = null,
     Object? totalSupply = null,
-    Object? maxSupply = null,
+    Object? maxSupply = freezed,
     Object? ath = null,
     Object? athChangePercentage = null,
     Object? athDate = null,
@@ -421,10 +421,10 @@ class __$$_MarketModelCopyWithImpl<$Res>
           ? _value.totalSupply
           : totalSupply // ignore: cast_nullable_to_non_nullable
               as double,
-      maxSupply: null == maxSupply
+      maxSupply: freezed == maxSupply
           ? _value.maxSupply
           : maxSupply // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       ath: null == ath
           ? _value.ath
           : ath // ignore: cast_nullable_to_non_nullable
@@ -485,7 +485,7 @@ class _$_MarketModel implements _MarketModel {
       required this.marketCapChangePercentage24H,
       @JsonKey(name: 'circulating_supply') required this.circulatingSupply,
       @JsonKey(name: 'total_supply') required this.totalSupply,
-      @JsonKey(name: 'max_supply') required this.maxSupply,
+      @JsonKey(name: 'max_supply') this.maxSupply,
       required this.ath,
       @JsonKey(name: 'ath_change_percentage') required this.athChangePercentage,
       @JsonKey(name: 'ath_date') required this.athDate,
@@ -547,7 +547,7 @@ class _$_MarketModel implements _MarketModel {
   final double totalSupply;
   @override
   @JsonKey(name: 'max_supply')
-  final double maxSupply;
+  final double? maxSupply;
   @override
   final double ath;
   @override
@@ -696,7 +696,7 @@ abstract class _MarketModel implements MarketModel {
       @JsonKey(name: 'circulating_supply')
       required final double circulatingSupply,
       @JsonKey(name: 'total_supply') required final double totalSupply,
-      @JsonKey(name: 'max_supply') required final double maxSupply,
+      @JsonKey(name: 'max_supply') final double? maxSupply,
       required final double ath,
       @JsonKey(name: 'ath_change_percentage')
       required final double athChangePercentage,
@@ -761,7 +761,7 @@ abstract class _MarketModel implements MarketModel {
   double get totalSupply;
   @override
   @JsonKey(name: 'max_supply')
-  double get maxSupply;
+  double? get maxSupply;
   @override
   double get ath;
   @override
