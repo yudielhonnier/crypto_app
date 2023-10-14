@@ -47,4 +47,4 @@ app.*.map.json
 
 pubspec.lock
 fvm/flutter_sdk
-.vscode
+.vscode/*
