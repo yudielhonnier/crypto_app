@@ -9,7 +9,7 @@ This UI design was took from Dribbble and was given life.
 
 - Consume Api public coingecko using Retrofit
 - Beautiful Charts using syncfusion_flutter_charts
-- Internationalization
+- Internationalization 
 
 ## TODO
 

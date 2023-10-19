@@ -1,11 +1,8 @@
-import 'package:crypto_app/config/routes/routes.dart';
-import 'package:crypto_app/features/trading/presentation/pages/trading_screen.dart';
-import 'package:crypto_app/features/home/presentation/page/home_screen.dart';
-import 'package:crypto_app/features/briefcase/presentation/pages/wallet_screen.dart';
 import 'package:crypto_app/config/themes/theme_constants.dart';
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:provider/provider.dart';
 
+import 'config/router/my_router.dart';
 import 'injector.dart';
 
 Future<void> main() async {
@@ -18,16 +15,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // var size=MediaQuery.of(context).size;
-
-    return MaterialApp(
-      title: 'Material App',
-      theme: ligthTheme,
-      darkTheme: darkTheme,
-      themeMode: ThemeMode.dark,
-      home: HomeScreen(),
-      routes: routes,
-      debugShowCheckedModeBanner: false,
-    );
+    return MultiProvider(
+        providers: [
+          Provider<MyRouter>(
+            lazy: false,
+            create: (BuildContext createContext) => MyRouter(),
+          )
+        ],
+        child: Builder(builder: (BuildContext context) {
+          final _router = Provider.of<MyRouter>(context, listen: false).router;
+          return MaterialApp.router(
+            routerConfig: _router,
+            title: 'Material App',
+            theme: ligthTheme,
+            darkTheme: darkTheme,
+            themeMode: ThemeMode.dark,
+            // home: HomeScreen(),
+            // routes: routes,
+            debugShowCheckedModeBanner: false,
+          );
+        }));
   }
 }
 

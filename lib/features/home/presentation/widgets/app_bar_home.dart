@@ -1,4 +1,6 @@
+import 'package:crypto_app/config/router/my_router.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class AppBarHome extends StatelessWidget implements PreferredSize {
   const AppBarHome({
@@ -42,7 +44,7 @@ class AppBarHome extends StatelessWidget implements PreferredSize {
                   backgroundImage: AssetImage('assets/profile.jpg'),
                 ),
               ),
-              onTap: () => Navigator.pushNamed(context, '/profile'),
+              onTap: () => context.push(MyRouter.profileRoute),
             ),
             elevation: 0,
             title: GestureDetector(
@@ -50,7 +52,7 @@ class AppBarHome extends StatelessWidget implements PreferredSize {
                 'User',
                 style: TextStyle(fontSize: 17),
               ),
-              onTap: () => Navigator.pushNamed(context, '/profile'),
+              onTap: () => context.push(MyRouter.profileRoute),
             ),
             actions: [
               IconButton(

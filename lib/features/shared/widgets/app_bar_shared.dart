@@ -1,5 +1,7 @@
+import 'package:crypto_app/config/router/my_router.dart';
 import 'package:flutter/material.dart';
 import 'package:crypto_app/config/themes/theme_constants.dart';
+import 'package:go_router/go_router.dart';
 
 class AppBarShared extends StatelessWidget implements PreferredSize {
   const AppBarShared({
@@ -59,7 +61,7 @@ class AppBarShared extends StatelessWidget implements PreferredSize {
                       ),
                     ],
                   ),
-                  onTap: () => Navigator.pop(context),
+                  onTap: () => context.pop(),
                 )),
             actions: [
               Center(
@@ -73,7 +75,7 @@ class AppBarShared extends StatelessWidget implements PreferredSize {
               ),
               showHelp
                   ? IconButton(
-                      onPressed: () => Navigator.pushNamed(context, '/help'),
+                      onPressed: () => context.push(MyRouter.helpRoute),
                       icon: const Icon(Icons.help_outline_rounded))
                   : const SizedBox()
             ],

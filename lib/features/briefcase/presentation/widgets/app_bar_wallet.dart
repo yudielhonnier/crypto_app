@@ -1,5 +1,7 @@
+import 'package:crypto_app/config/router/my_router.dart';
 import 'package:flutter/material.dart';
 import 'package:crypto_app/config/themes/theme_constants.dart';
+import 'package:go_router/go_router.dart';
 
 class AppBarWallet extends StatelessWidget implements PreferredSize {
   const AppBarWallet({
@@ -59,7 +61,7 @@ class AppBarWallet extends StatelessWidget implements PreferredSize {
                       ),
                     ],
                   ),
-                  onTap: () => Navigator.pushNamed(context, '/home'),
+                  onTap: () => context.push(MyRouter.homeRoute),
                 )),
             actions: [
               Container(
