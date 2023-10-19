@@ -29,7 +29,8 @@ class ListCoinsWithoutChart extends StatelessWidget {
                     child: ListTile(
                       contentPadding: const EdgeInsets.all(0),
                       leading: CircleAvatar(
-                        backgroundColor: darkTheme.colorScheme.secondary,
+                        backgroundColor:
+                            darkTheme.colorScheme.secondaryContainer,
                         child: const Icon(
                           Icons.monetization_on_outlined,
                         ),

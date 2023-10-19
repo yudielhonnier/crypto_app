@@ -45,5 +45,6 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-#Fvm 
-.fvm/flutter_sdk
+pubspec.lock
+fvm/flutter_sdk
+.vscode/

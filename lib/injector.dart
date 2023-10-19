@@ -8,7 +8,7 @@ import 'features/home/data/data_sources/local/market_local_data_source.dart';
 import 'features/home/data/data_sources/remote/market_remote_data_source.dart';
 import 'features/home/data/repository/market_repository_impl.dart';
 import 'features/home/domain/repository/market_repository.dart';
-import 'features/home/domain/usecase/get_markets.dart';
+import 'features/home/domain/usecase/get_markets_use_case.dart';
 
 import 'core/network/network_info.dart';
 

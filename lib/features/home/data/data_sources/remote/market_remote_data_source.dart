@@ -8,7 +8,7 @@ abstract class MarketRemoteDataSource {
   ///Calls the http://[base_url]/coins/markets?per_page=5  endpoint
   ///
   ///Throws a [ServerException] for all the error codes
-  Future<List<MarketModel>> getMarkets();
+  Future<List<MarketModel>> getMarkets(int page);
 }
 
 @RestApi(baseUrl: 'https://api.coingecko.com/api/v3/coins')
@@ -16,7 +16,7 @@ abstract class MarketRemoteDataSourceImpl implements MarketRemoteDataSource {
   factory MarketRemoteDataSourceImpl(Dio dio, {String baseUrl}) =
       _MarketRemoteDataSourceImpl;
 
-  @GET('/markets?vs_currency=usd&per_page=5&page=1')
+  @GET('/markets?vs_currency=usd&per_page=10&page={pageNum}')
   @override
-  Future<List<MarketModel>> getMarkets();
+  Future<List<MarketModel>> getMarkets(@Query("page") int page);
 }
