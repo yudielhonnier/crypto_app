@@ -18,7 +18,7 @@ class LinearChartStatictics extends StatelessWidget {
     return Column(
       children: [
         const SizedBox(
-          height: 22,
+          height: 10,
         ),
         Row(
           children: [
@@ -29,7 +29,7 @@ class LinearChartStatictics extends StatelessWidget {
             const Spacer(),
             const Text(
               'Hig',
-              style: const TextStyle(fontSize: 16, color: Colors.green),
+              style: TextStyle(fontSize: 16, color: Colors.green),
             ),
             const SizedBox(
               width: 36,

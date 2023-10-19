@@ -5,14 +5,14 @@ import 'package:crypto_app/features/briefcase/presentation/widgets/circular_char
 import 'package:crypto_app/features/briefcase/presentation/widgets/circular_chart_statictics.dart';
 import 'package:crypto_app/features/briefcase/presentation/widgets/list_coins_without_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 
 import 'package:crypto_app/config/themes/theme_constants.dart';
 import 'package:crypto_app/features/shared/models/chart_circular_data.dart';
-import 'package:crypto_app/features/shared/models/sales_data.dart';
 import 'package:crypto_app/features/shared/models/step_area_data.dart';
 
 class WalletScreen extends StatefulWidget {
+  const WalletScreen({super.key});
+
   @override
   WalletScreenState createState() => WalletScreenState();
 }

@@ -28,12 +28,14 @@ class _HomeScreenState extends State<HomeScreen> {
     return MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (_) => getIt<MarketsBloc>()..add(GetMarketsEvent()),
+            create: (_) => getIt<MarketsBloc>()..add(GetMarketsEvent(page: 0)),
           ),
         ],
         child: Scaffold(
           backgroundColor: darkTheme.colorScheme.primary,
-          appBar: const AppBarHome(),
+          appBar: AppBarHome(
+            context: context,
+          ),
           body: _buildBody(),
         ));
   }

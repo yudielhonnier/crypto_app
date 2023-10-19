@@ -21,9 +21,9 @@ class _MarketRemoteDataSourceImpl implements MarketRemoteDataSourceImpl {
   String? baseUrl;
 
   @override
-  Future<List<MarketModel>> getMarkets() async {
+  Future<List<MarketModel>> getMarkets(page) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'page': page};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
@@ -34,7 +34,7 @@ class _MarketRemoteDataSourceImpl implements MarketRemoteDataSourceImpl {
     )
             .compose(
               _dio.options,
-              '/markets?vs_currency=usd&per_page=5&page=1',
+              '/markets?vs_currency=usd&per_page=10&page={pageNum}',
               queryParameters: queryParameters,
               data: _data,
             )

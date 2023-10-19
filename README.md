@@ -1,16 +1,21 @@
 # crypto_app
 
-The UI of this app was taken from Dribbble
+CryptoApp show you a daily report of the status of the crypto market
+and other interesting things.
 
-## Getting Started
+This UI design was took from Dribbble and was given life.
 
-This project is a starting point for a Flutter application.
+## Added
 
-A few resources to get you started if this is your first Flutter project:
+- Consume Api public coingecko using Retrofit
+- Beautiful Charts using syncfusion_flutter_charts
+- Internationalization
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## TODO
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Sort the coin by different crieria
+- Show coin page with a complete report of the coin
+- The user can configure light mode
+- The user can add cards
+- Add important notifications
+- Add help page
