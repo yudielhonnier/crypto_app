@@ -1,5 +1,7 @@
+import 'package:crypto_app/config/router/my_router.dart';
 import 'package:flutter/material.dart';
 import 'package:crypto_app/config/themes/theme_constants.dart';
+import 'package:go_router/go_router.dart';
 
 class ListCoinsWithoutChart extends StatelessWidget {
   const ListCoinsWithoutChart({
@@ -25,7 +27,7 @@ class ListCoinsWithoutChart extends StatelessWidget {
               children: [
                 Flexible(
                   child: GestureDetector(
-                    onTap: () => Navigator.pushNamed(context, '/chart'),
+                    onTap: () => context.push(MyRouter.tradingRoute),
                     child: ListTile(
                       contentPadding: const EdgeInsets.all(0),
                       leading: CircleAvatar(

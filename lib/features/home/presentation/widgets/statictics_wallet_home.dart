@@ -1,5 +1,7 @@
+import 'package:crypto_app/config/router/my_router.dart';
 import 'package:flutter/material.dart';
 import 'package:crypto_app/config/themes/theme_constants.dart';
+import 'package:go_router/go_router.dart';
 
 class StaticticsWalletHome extends StatelessWidget {
   const StaticticsWalletHome({
@@ -22,7 +24,7 @@ class StaticticsWalletHome extends StatelessWidget {
             const Spacer(),
             IconButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/wallet');
+                context.push(MyRouter.briefcaseRoute);
               },
               icon: const Icon(
                 Icons.arrow_forward_ios_outlined,

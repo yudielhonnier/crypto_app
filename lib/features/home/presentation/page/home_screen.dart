@@ -5,11 +5,7 @@ import 'package:crypto_app/features/home/presentation/widgets/app_bar_home.dart'
 import 'package:crypto_app/features/home/presentation/widgets/list_view_news.dart';
 import 'package:crypto_app/features/home/presentation/widgets/sliding_up_panel_market.dart';
 import 'package:crypto_app/features/home/presentation/widgets/statictics_wallet_home.dart';
-import 'package:crypto_app/features/shared/models/coin_response.dart';
-import 'package:crypto_app/features/shared/models/coin_simple_response.dart';
-import 'package:crypto_app/features/trading/presentation/pages/trading_screen.dart';
 import 'package:crypto_app/injector.dart';
-import 'package:crypto_app/services/trafic_service.dart';
 import 'package:crypto_app/config/themes/theme_constants.dart';
 
 import 'package:flutter/material.dart';

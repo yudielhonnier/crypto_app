@@ -1,5 +1,7 @@
+import 'package:crypto_app/config/router/my_router.dart';
 import 'package:flutter/material.dart';
 import 'package:crypto_app/config/themes/theme_constants.dart';
+import 'package:go_router/go_router.dart';
 
 class AppBarTrading extends StatelessWidget implements PreferredSize {
   const AppBarTrading(
@@ -63,7 +65,7 @@ class AppBarTrading extends StatelessWidget implements PreferredSize {
                       ),
                     ],
                   ),
-                  onTap: () => Navigator.pushNamed(context, '/wallet'),
+                  onTap: () => context.push(MyRouter.briefcaseRoute),
                 )),
             actions: [
               DropdownButtonHideUnderline(

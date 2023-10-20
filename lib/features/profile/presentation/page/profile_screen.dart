@@ -1,3 +1,4 @@
+import 'package:crypto_app/config/router/my_router.dart';
 import 'package:crypto_app/features/home/presentation/bloc/markets_bloc.dart';
 import 'package:crypto_app/features/shared/widgets/app_bar_shared.dart';
 import 'package:crypto_app/features/shared/widgets/bottom_gradient.dart';
@@ -6,6 +7,7 @@ import 'package:crypto_app/config/themes/theme_constants.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -92,7 +94,7 @@ class _HomeScreenState extends State<ProfileScreen> {
                   ],
                 ),
               ),
-              onTap: () => Navigator.pushNamed(context, '/cards'),
+              onTap: () => context.push(MyRouter.cardsRoute),
             ),
             GestureDetector(
               child: const Padding(
@@ -110,7 +112,7 @@ class _HomeScreenState extends State<ProfileScreen> {
                   ],
                 ),
               ),
-              onTap: () => Navigator.pushNamed(context, '/settings'),
+              onTap: () => context.push(MyRouter.settingsRoute),
             ),
             GestureDetector(
               child: const Padding(
@@ -128,10 +130,10 @@ class _HomeScreenState extends State<ProfileScreen> {
                   ],
                 ),
               ),
-              onTap: () => Navigator.pushNamed(context, '/notifications'),
+              onTap: () => context.push(MyRouter.notificationsRoute),
             ),
             ElevatedButton(
-              onPressed: () => Navigator.pushNamed(context, '/logout'),
+              onPressed: () => context.push(MyRouter.homeRoute),
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.green),
                   padding: MaterialStateProperty.all(const EdgeInsets.all(14)),
