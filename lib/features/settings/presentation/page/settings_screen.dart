@@ -29,7 +29,6 @@ class _HomeScreenState extends State<SettingsScreen> {
             appBar: AppBarShared(
               context: context,
               name: 'Settings',
-              rightSpace: 118,
             ),
             body: _buildBody(),
           ),

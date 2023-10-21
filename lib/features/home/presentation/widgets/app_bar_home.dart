@@ -57,19 +57,21 @@ class AppBarHome extends StatelessWidget implements PreferredSize {
             actions: [
               IconButton(
                   onPressed: () {}, icon: const Icon(Icons.compare_arrows)),
-              Stack(children: [
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.notifications_none)),
-                const Positioned(
-                  child: CircleAvatar(
-                    backgroundColor: Colors.red,
-                    radius: 3,
-                  ),
-                  top: 15,
-                  right: 16,
-                ),
-              ]),
+              IconButton(
+                  onPressed: () {}, icon: const Icon(Icons.notifications_none)),
+              // Stack(children: [
+              //   IconButton(
+              //       onPressed: () {},
+              //       icon: const Icon(Icons.notifications_none)),
+              //   const Positioned(
+              //     child: CircleAvatar(
+              //       backgroundColor: Colors.red,
+              //       radius: 3,
+              //     ),
+              //     top: 15,
+              //     right: 16,
+              //   ),
+              // ]),
             ],
           ),
         ],

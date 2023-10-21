@@ -7,7 +7,6 @@ class AppBarShared extends StatelessWidget implements PreferredSize {
   const AppBarShared({
     required this.context,
     required this.name,
-    required this.rightSpace,
     showHelp,
     Key? key,
   })  : showHelp = showHelp ?? true,
@@ -15,7 +14,6 @@ class AppBarShared extends StatelessWidget implements PreferredSize {
 
   final BuildContext context;
   final String name;
-  final double rightSpace;
   final bool showHelp;
 
   @override
@@ -45,34 +43,21 @@ class AppBarShared extends StatelessWidget implements PreferredSize {
           ),
           AppBar(
             automaticallyImplyLeading: false,
-
+            leading: GestureDetector(
+              onTap: () => context.pop(context),
+              child: Icon(
+                Icons.arrow_back_ios,
+                size: 16,
+                color: darkTheme.colorScheme.secondary,
+              ),
+            ),
             elevation: 0,
-            // centerTitle: true,
-            title: Container(
-                alignment: AlignmentDirectional.centerStart,
-                padding: const EdgeInsets.only(left: 5.0),
-                child: GestureDetector(
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.arrow_back_ios,
-                        size: 16,
-                        color: darkTheme.colorScheme.secondary,
-                      ),
-                    ],
-                  ),
-                  onTap: () => context.pop(),
-                )),
+            centerTitle: true,
+            title: Text(
+              name,
+              style: const TextStyle(fontSize: 16),
+            ),
             actions: [
-              Center(
-                child: Text(
-                  name,
-                  style: const TextStyle(fontSize: 16),
-                ),
-              ),
-              SizedBox(
-                width: rightSpace,
-              ),
               showHelp
                   ? IconButton(
                       onPressed: () => context.push(MyRouter.helpRoute),

@@ -1,6 +1,6 @@
+import 'package:crypto_app/features/shared/widgets/app_bar_shared.dart';
 import 'package:crypto_app/features/shared/widgets/bottom_gradient.dart';
 import 'package:crypto_app/features/shared/widgets/card_wallet_actions.dart';
-import 'package:crypto_app/features/briefcase/presentation/widgets/app_bar_wallet.dart';
 import 'package:crypto_app/features/briefcase/presentation/widgets/circular_chart.dart';
 import 'package:crypto_app/features/briefcase/presentation/widgets/circular_chart_statictics.dart';
 import 'package:crypto_app/features/briefcase/presentation/widgets/list_coins_without_chart.dart';
@@ -10,14 +10,14 @@ import 'package:crypto_app/config/themes/theme_constants.dart';
 import 'package:crypto_app/features/shared/models/chart_circular_data.dart';
 import 'package:crypto_app/features/shared/models/step_area_data.dart';
 
-class WalletScreen extends StatefulWidget {
-  const WalletScreen({super.key});
+class BriefcaseScreen extends StatefulWidget {
+  const BriefcaseScreen({super.key});
 
   @override
-  WalletScreenState createState() => WalletScreenState();
+  BriefcaseScreenState createState() => BriefcaseScreenState();
 }
 
-class WalletScreenState extends State<WalletScreen> {
+class BriefcaseScreenState extends State<BriefcaseScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -47,7 +47,8 @@ class WalletScreenState extends State<WalletScreen> {
     return Scaffold(
       backgroundColor: darkTheme.colorScheme.primary,
       // backgroundColor: Colors.white,
-      appBar: AppBarWallet(
+      appBar: AppBarShared(
+        name: 'Briefcase',
         context: context,
       ),
       body: Stack(children: [

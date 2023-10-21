@@ -50,16 +50,15 @@ class ListCoinsWithoutChart extends StatelessWidget {
                   child: Row(
                     children: [
                       Expanded(child: Container()),
-                      SizedBox(
+                      const SizedBox(
                         child: Column(
                           children: [
-                            const SizedBox(
+                            SizedBox(
                               height: 18,
                             ),
-                            const Text('32811.00',
-                                style: TextStyle(fontSize: 20)),
+                            Text('32811.00', style: TextStyle(fontSize: 20)),
                             Row(
-                              children: const [
+                              children: [
                                 Text('-761.0', style: TextStyle(fontSize: 12)),
                                 SizedBox(
                                   width: 10,

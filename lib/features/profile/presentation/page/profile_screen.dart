@@ -31,7 +31,6 @@ class _HomeScreenState extends State<ProfileScreen> {
             appBar: AppBarShared(
               context: context,
               name: 'Profile',
-              rightSpace: 124,
             ),
             body: _buildBody(),
           ),
