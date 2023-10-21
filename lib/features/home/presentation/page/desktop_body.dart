@@ -1,10 +1,10 @@
 import 'package:crypto_app/features/home/presentation/widgets/app_bar_home.dart';
-import 'package:crypto_app/features/shared/widgets/bottom_gradient.dart';
-import 'package:crypto_app/features/shared/widgets/card_wallet_actions.dart';
 import 'package:crypto_app/features/home/presentation/widgets/list_view_news.dart';
+import 'package:crypto_app/config/themes/theme_constants.dart';
 import 'package:crypto_app/features/home/presentation/widgets/sliding_up_panel_market.dart';
 import 'package:crypto_app/features/home/presentation/widgets/statictics_wallet_home.dart';
-import 'package:crypto_app/config/themes/theme_constants.dart';
+import 'package:crypto_app/features/shared/widgets/bottom_gradient.dart';
+import 'package:crypto_app/features/shared/widgets/card_wallet_actions.dart';
 
 import 'package:flutter/material.dart';
 
@@ -37,21 +37,15 @@ class DesktopHomeBody extends StatelessWidget {
         appBar: AppBarHome(
           context: context,
         ),
-        body: SizedBox(
-          width: double.infinity,
-          child: Row(children: [
-            Stack(children: [
+        body: Row(children: [
+          Flexible(
+            child: Stack(children: [
               ColoredBox(
-                // color: darkTheme.colorScheme.primary,
-                color: Colors.green[100]!,
+                color: darkTheme.colorScheme.primary,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),
                   child: Column(
                     children: [
-                      SizedBox(
-                        child: Container(),
-                        height: 30,
-                      ),
                       const StaticticsWalletHome(),
                       SizedBox(
                         child: Container(),
@@ -72,26 +66,35 @@ class DesktopHomeBody extends StatelessWidget {
                     size: size, colors: colorsGradient, height: 170, bottom: 0),
               ]),
             ]),
-
-            // SizedBox(
-            //   height: 60,
-            //   child: Padding(
-            //     padding: const EdgeInsets.only(top: 25),
-            //     child: Align(
-            //         alignment: AlignmentDirectional.bottomStart,
-            //         child: Text(
-            //           'NEWS',
-            //           style: TextStyle(
-            //               fontSize: 14,
-            //               color: darkTheme.colorScheme.secondary,
-            //               fontWeight: FontWeight.bold),
-            //         )),
-            //   ),
-            // ),
-            const Expanded(child: ListViewNews()),
-            // SlidingUpPanelMarket(
-            //     dropdownvalue: sortedByItems[0], items: sortedByItems),
-          ]),
-        ));
+          ),
+          const VerticalDivider(
+            color: Colors.white,
+            width: 40,
+          ),
+          //news
+          Expanded(
+            child: Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 40,
+                      child: Center(
+                        child: Text(
+                          'NEWS',
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: darkTheme.colorScheme.secondary,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                    const AspectRatio(aspectRatio: 1, child: ListViewNews()),
+                  ],
+                )),
+          ),
+          SlidingUpPanelMarket(
+              dropdownvalue: sortedByItems[0], items: sortedByItems),
+        ]));
   }
 }

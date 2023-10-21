@@ -33,7 +33,8 @@ class AppBarHome extends StatelessWidget implements PreferredSize {
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20))),
-            height: 36,
+            // height: 36,
+            height: 10,
           ),
           AppBar(
             leadingWidth: 63,
@@ -56,9 +57,18 @@ class AppBarHome extends StatelessWidget implements PreferredSize {
             ),
             actions: [
               IconButton(
-                  onPressed: () {}, icon: const Icon(Icons.compare_arrows)),
+                onPressed: () {},
+                icon: const Icon(Icons.compare_arrows),
+                splashRadius: 16,
+              ),
               IconButton(
-                  onPressed: () {}, icon: const Icon(Icons.notifications_none)),
+                onPressed: () {},
+                icon: const Icon(Icons.notifications_none),
+                splashRadius: 16,
+              ),
+              const SizedBox(
+                width: 8,
+              )
               // Stack(children: [
               //   IconButton(
               //       onPressed: () {},
@@ -78,5 +88,6 @@ class AppBarHome extends StatelessWidget implements PreferredSize {
       );
 
   @override
-  Size get preferredSize => const Size.fromHeight(92);
+  // Size get preferredSize => const Size.fromHeight(92);
+  Size get preferredSize => const Size.fromHeight(76);
 }
