@@ -10,8 +10,7 @@ class ListCoinsWithoutChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 280,
+    return Expanded(
       child: ListView.separated(
         separatorBuilder: (context, index) => Divider(
           color: darkTheme.colorScheme.secondary,
