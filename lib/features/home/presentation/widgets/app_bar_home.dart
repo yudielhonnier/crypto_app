@@ -33,8 +33,8 @@ class AppBarHome extends StatelessWidget implements PreferredSize {
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20))),
-            // height: 36,
-            height: 10,
+            height: 36,
+            // height: 10,
           ),
           AppBar(
             leadingWidth: 63,
@@ -88,6 +88,6 @@ class AppBarHome extends StatelessWidget implements PreferredSize {
       );
 
   @override
-  // Size get preferredSize => const Size.fromHeight(92);
-  Size get preferredSize => const Size.fromHeight(76);
+  Size get preferredSize => const Size.fromHeight(92);
+  // Size get preferredSize => const Size.fromHeight(76);
 }
