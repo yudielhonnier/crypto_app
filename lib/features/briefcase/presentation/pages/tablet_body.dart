@@ -10,10 +10,10 @@ class TabletBriefcaseBody extends StatefulWidget {
   const TabletBriefcaseBody({super.key});
 
   @override
-  State<TabletBriefcaseBody> createState() => _MobileBriefcaseBodyState();
+  State<TabletBriefcaseBody> createState() => _TabletBriefcaseBodyState();
 }
 
-class _MobileBriefcaseBodyState extends State<TabletBriefcaseBody> {
+class _TabletBriefcaseBodyState extends State<TabletBriefcaseBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

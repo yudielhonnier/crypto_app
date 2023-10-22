@@ -10,10 +10,10 @@ class DesktopBriefcaseBody extends StatefulWidget {
   const DesktopBriefcaseBody({super.key});
 
   @override
-  State<DesktopBriefcaseBody> createState() => _MobileBriefcaseBodyState();
+  State<DesktopBriefcaseBody> createState() => _DesktopBriefcaseBodyState();
 }
 
-class _MobileBriefcaseBodyState extends State<DesktopBriefcaseBody> {
+class _DesktopBriefcaseBodyState extends State<DesktopBriefcaseBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

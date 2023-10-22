@@ -57,7 +57,7 @@ class AppBarTrading extends StatelessWidget implements PreferredSize {
                         color: darkTheme.colorScheme.secondary,
                       ),
                       Text(
-                        'Portafolio',
+                        'Briefcase',
                         style: TextStyle(
                             fontSize: 16,
                             color: darkTheme.colorScheme.secondary),
