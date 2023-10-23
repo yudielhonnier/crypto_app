@@ -17,7 +17,7 @@ class AppBarTrading extends StatelessWidget implements PreferredSize {
   @override
   Widget build(BuildContext context) {
     return PreferredSize(
-      preferredSize: const Size.fromHeight(76),
+      preferredSize: const Size.fromHeight(92),
       child: child,
     );
   }
@@ -38,13 +38,11 @@ class AppBarTrading extends StatelessWidget implements PreferredSize {
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20))),
-            height: 10,
+            height: 36,
           ),
           AppBar(
             automaticallyImplyLeading: false,
-
             elevation: 0,
-            // centerTitle: true,
             title: Container(
                 alignment: AlignmentDirectional.centerStart,
                 padding: const EdgeInsets.only(left: 5, right: 0),
@@ -72,17 +70,15 @@ class AppBarTrading extends StatelessWidget implements PreferredSize {
                     dropdownvalue: dropdownvalue, items: items),
               ),
               const SizedBox(
-                width: 90,
-              ),
-              IconButton(
-                  onPressed: () {}, icon: const Icon(Icons.star_outline)),
+                width: 20,
+              )
             ],
           ),
         ],
       );
 
   @override
-  Size get preferredSize => const Size.fromHeight(76);
+  Size get preferredSize => const Size.fromHeight(92);
 }
 
 class DropdownButtonAppBar extends StatefulWidget {

@@ -60,9 +60,13 @@ class AppBarShared extends StatelessWidget implements PreferredSize {
             actions: [
               showHelp
                   ? IconButton(
+                      splashRadius: 20,
                       onPressed: () => context.push(MyRouter.helpRoute),
                       icon: const Icon(Icons.help_outline_rounded))
-                  : const SizedBox()
+                  : const SizedBox(),
+              const SizedBox(
+                width: 10,
+              )
             ],
           ),
         ],

@@ -36,8 +36,8 @@ class _MobileTradingBodyState extends State<MobileTradingBody> {
         ),
         body: Column(
           children: <Widget>[
-            SizedBox(
-              height: 396,
+            Expanded(
+              flex: 2,
               child: ColoredBox(
                 color: darkTheme.colorScheme.primary,
                 child: Padding(
@@ -64,7 +64,7 @@ class _MobileTradingBodyState extends State<MobileTradingBody> {
                         ColoredBox(
                           color: darkTheme.colorScheme.secondary,
                           child: const SizedBox(
-                            width: 51,
+                            width: 55,
                             height: 30,
                             child: Align(
                                 alignment: Alignment.center,
@@ -112,31 +112,32 @@ class _MobileTradingBodyState extends State<MobileTradingBody> {
                         ),
                       ))),
             ),
-            SizedBox(
-                height: 260,
-                child: Column(
-                  children: [
-                    ColoredBox(
-                      color: darkTheme.colorScheme.secondary,
-                      child: SizedBox(
-                        height: 1,
-                        child: Container(),
-                      ),
+            Expanded(
+              flex: 1,
+              child: Column(
+                children: [
+                  ColoredBox(
+                    color: darkTheme.colorScheme.secondary,
+                    child: SizedBox(
+                      height: 1,
+                      child: Container(),
                     ),
-                    Flexible(
-                      child: TabBarView(
-                        children: <Widget>[
-                          OrderBook(
-                              chartData: chartData,
-                              size: Size(widthContext, heightContext)),
-                          const History(),
-                          const Notes(),
-                          const Info(),
-                        ],
-                      ),
+                  ),
+                  Flexible(
+                    child: TabBarView(
+                      children: <Widget>[
+                        OrderBook(
+                            chartData: chartData,
+                            size: Size(widthContext, heightContext)),
+                        const History(),
+                        const Notes(),
+                        const Info(),
+                      ],
                     ),
-                  ],
-                )),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),

@@ -20,7 +20,7 @@ class BidOrderBook extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: Container(
+                child: ColoredBox(
                   color: const Color.fromARGB(0, 6, 13, 24),
                   child: ListView.builder(
                     itemExtent: 36,
@@ -30,15 +30,13 @@ class BidOrderBook extends StatelessWidget {
                       contentPadding: const EdgeInsets.only(left: 0),
                     ),
                   ),
-                  // height: 150,
                 ),
               ),
             ],
           ),
         ),
-        SizedBox(
-          child: Container(),
-          width: 12,
+        const VerticalDivider(
+          width: 16,
         ),
         Flexible(
           child: Column(
