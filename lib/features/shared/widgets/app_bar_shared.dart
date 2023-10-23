@@ -29,19 +29,20 @@ class AppBarShared extends StatelessWidget implements PreferredSize {
         children: [
           Container(
             decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Color.fromARGB(255, 17, 24, 36),
-                      Color.fromARGB(255, 6, 13, 24)
-                    ]),
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20))),
+              gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Color.fromARGB(255, 17, 24, 36),
+                    Color.fromARGB(255, 6, 13, 24)
+                  ]),
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+            ),
             height: 36,
           ),
           AppBar(
+            shadowColor: Colors.grey,
             automaticallyImplyLeading: false,
             leading: GestureDetector(
               onTap: () => context.pop(context),
@@ -51,7 +52,7 @@ class AppBarShared extends StatelessWidget implements PreferredSize {
                 color: darkTheme.colorScheme.secondary,
               ),
             ),
-            elevation: 0,
+            elevation: 1.0,
             centerTitle: true,
             title: Text(
               name,
