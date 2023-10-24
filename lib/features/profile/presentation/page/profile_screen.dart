@@ -1,7 +1,7 @@
 import 'package:crypto_app/features/home/presentation/bloc/markets_bloc.dart';
-import 'package:crypto_app/features/profile/presentation/page/desktop_body.dart';
-import 'package:crypto_app/features/profile/presentation/page/mobile_body.dart';
-import 'package:crypto_app/features/profile/presentation/page/tablet_body.dart';
+import 'package:crypto_app/features/profile/presentation/page/desktop_body_profile.dart';
+import 'package:crypto_app/features/profile/presentation/page/mobile_body_profile.dart';
+import 'package:crypto_app/features/profile/presentation/page/tablet_body_profile.dart';
 import 'package:crypto_app/features/shared/widgets/responsive_layout.dart';
 import 'package:crypto_app/injector.dart';
 

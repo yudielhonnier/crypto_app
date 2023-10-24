@@ -64,15 +64,13 @@ class _DesktopProfileBodyState extends State<DesktopProfileBody> {
                 ),
               ),
             ),
-            const VerticalDivider(
-              color: Colors.grey,
+            VerticalDivider(
+              color: darkTheme.colorScheme.secondary,
             ),
             //Image profile
             const Expanded(
               flex: 2,
-              child: ImageProfile(
-                image: AssetImage('assets/profile.jpg'),
-              ),
+              child: ImageProfile(image: AssetImage('assets/profile.jpg')),
             ),
           ],
         ),

@@ -1,15 +1,13 @@
 import 'package:crypto_app/features/home/presentation/bloc/markets_bloc.dart';
-import 'package:crypto_app/features/home/presentation/page/desktop_body.dart';
-import 'package:crypto_app/features/home/presentation/page/tablet_body.dart';
-import 'package:crypto_app/features/home/presentation/widgets/app_bar_home.dart';
+import 'package:crypto_app/features/home/presentation/page/desktop_body_home.dart';
+import 'package:crypto_app/features/home/presentation/page/tablet_body_home.dart';
 import 'package:crypto_app/features/shared/widgets/responsive_layout.dart';
 import 'package:crypto_app/injector.dart';
-import 'package:crypto_app/config/themes/theme_constants.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'mobile_body.dart';
+import 'mobile_body_home.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
