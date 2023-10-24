@@ -23,3 +23,6 @@ List<StepAreaData> chartData = <StepAreaData>[
   StepAreaData(4, 90, -50),
   StepAreaData(5, 40, -5),
 ];
+
+typedef OnPickImageCallback = void Function(
+    double? maxWidth, double? maxHeight, int? quality);

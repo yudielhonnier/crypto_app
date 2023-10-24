@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:crypto_app/config/themes/theme_constants.dart';
 import 'package:crypto_app/core/helpers/extensions.dart';
-import 'package:file_selector/file_selector.dart';
+import 'package:crypto_app/core/helpers/image_picker_handler.dart'
+    as pickerHandler;
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -33,11 +36,13 @@ class _ImageProfileState extends State<ImageProfile> {
                 Center(
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(20),
-                    child: Image(
-                      width: context.width / 2,
-                      image: widget.image,
-                      fit: BoxFit.cover,
-                    ),
+                    child: foto != null
+                        ? Image.file(File(foto!.path))
+                        : Image(
+                            width: context.width / 2,
+                            image: widget.image,
+                            fit: BoxFit.cover,
+                          ),
                   ),
                 ),
                 editVisible
@@ -68,7 +73,20 @@ class _ImageProfileState extends State<ImageProfile> {
                                       //     ImageSource.gallery,
                                       //     context: context),
                                       icon: const Icon(Icons.camera_alt),
-                                      onPressed: () => () {}),
+                                      onPressed: () async {
+                                        var response =
+                                            await pickerHandler.onCallPicker(
+                                          ImageSource.camera,
+                                          context: context,
+                                          isMedia: true,
+                                        );
+                                        final fotopicked = response["files"];
+                                        if (fotopicked != null) {
+                                          setState(() {
+                                            foto = fotopicked;
+                                          });
+                                        }
+                                      }),
                                 ],
                               ),
                             ),
