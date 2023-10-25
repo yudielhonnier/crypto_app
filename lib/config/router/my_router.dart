@@ -1,4 +1,4 @@
-import 'package:crypto_app/features/briefcase/presentation/pages/wallet_screen.dart';
+import 'package:crypto_app/features/briefcase/presentation/pages/briefcase_screen.dart';
 import 'package:crypto_app/features/cards/presentation/page/cards_screen.dart';
 import 'package:crypto_app/features/help/presentation/page/help_screen.dart';
 import 'package:crypto_app/features/home/presentation/page/home_screen.dart';
@@ -52,7 +52,7 @@ class MyRouter {
         pageBuilder: (context, state) => buildPageWithDefaultTransition(
           context: context,
           state: state,
-          child: _build(const WalletScreen()),
+          child: _build(const BriefcaseScreen()),
         ),
       ),
       GoRoute(

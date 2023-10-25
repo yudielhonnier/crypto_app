@@ -29,7 +29,6 @@ class _HomeScreenState extends State<NotificationsScreen> {
             appBar: AppBarShared(
               context: context,
               name: 'Notifications',
-              rightSpace: 100,
             ),
             body: _buildBody(),
           ),

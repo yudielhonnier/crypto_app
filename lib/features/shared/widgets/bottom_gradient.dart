@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class BottomGradient extends StatelessWidget {
-  BottomGradient({
+  const BottomGradient({
     Key? key,
     required this.size,
     required this.colors,
@@ -33,7 +33,7 @@ class BottomGradient extends StatelessWidget {
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: colors),
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(20),
                       topRight: Radius.circular(20))),
             ),

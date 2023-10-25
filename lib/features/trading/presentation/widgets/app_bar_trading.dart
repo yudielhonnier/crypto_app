@@ -1,4 +1,3 @@
-import 'package:crypto_app/config/router/my_router.dart';
 import 'package:flutter/material.dart';
 import 'package:crypto_app/config/themes/theme_constants.dart';
 import 'package:go_router/go_router.dart';
@@ -18,7 +17,7 @@ class AppBarTrading extends StatelessWidget implements PreferredSize {
   @override
   Widget build(BuildContext context) {
     return PreferredSize(
-      preferredSize: const Size.fromHeight(76),
+      preferredSize: const Size.fromHeight(92),
       child: child,
     );
   }
@@ -39,13 +38,11 @@ class AppBarTrading extends StatelessWidget implements PreferredSize {
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20))),
-            height: 10,
+            height: 36,
           ),
           AppBar(
             automaticallyImplyLeading: false,
-
             elevation: 0,
-            // centerTitle: true,
             title: Container(
                 alignment: AlignmentDirectional.centerStart,
                 padding: const EdgeInsets.only(left: 5, right: 0),
@@ -58,14 +55,14 @@ class AppBarTrading extends StatelessWidget implements PreferredSize {
                         color: darkTheme.colorScheme.secondary,
                       ),
                       Text(
-                        'Portafolio',
+                        'Briefcase',
                         style: TextStyle(
                             fontSize: 16,
                             color: darkTheme.colorScheme.secondary),
                       ),
                     ],
                   ),
-                  onTap: () => context.push(MyRouter.briefcaseRoute),
+                  onTap: () => context.pop(context),
                 )),
             actions: [
               DropdownButtonHideUnderline(
@@ -73,17 +70,15 @@ class AppBarTrading extends StatelessWidget implements PreferredSize {
                     dropdownvalue: dropdownvalue, items: items),
               ),
               const SizedBox(
-                width: 90,
-              ),
-              IconButton(
-                  onPressed: () {}, icon: const Icon(Icons.star_outline)),
+                width: 20,
+              )
             ],
           ),
         ],
       );
 
   @override
-  Size get preferredSize => const Size.fromHeight(76);
+  Size get preferredSize => const Size.fromHeight(92);
 }
 
 class DropdownButtonAppBar extends StatefulWidget {

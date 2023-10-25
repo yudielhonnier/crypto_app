@@ -23,6 +23,7 @@ class StaticticsWalletHome extends StatelessWidget {
             ),
             const Spacer(),
             IconButton(
+              splashRadius: 16,
               onPressed: () {
                 context.push(MyRouter.briefcaseRoute);
               },

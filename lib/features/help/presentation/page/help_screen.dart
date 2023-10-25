@@ -28,7 +28,6 @@ class _HomeScreenState extends State<HelpScreen> {
             appBar: AppBarShared(
               name: 'Help',
               context: context,
-              rightSpace: 178,
               showHelp: false,
             ),
             body: _buildBody(),

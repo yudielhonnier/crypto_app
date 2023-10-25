@@ -30,7 +30,6 @@ class _HomeScreenState extends State<CardsScreen> {
             appBar: AppBarShared(
               name: 'Cards',
               context: context,
-              rightSpace: 124,
             ),
             body: _buildBody(),
           ),

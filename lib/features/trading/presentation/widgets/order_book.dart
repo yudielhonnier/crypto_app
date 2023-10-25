@@ -1,8 +1,6 @@
 import 'package:crypto_app/features/shared/models/step_area_data.dart';
-import 'package:crypto_app/features/shared/widgets/bottom_gradient.dart';
 import 'package:crypto_app/features/trading/presentation/widgets/ask_order_book.dart';
 import 'package:crypto_app/features/trading/presentation/widgets/bid_order_book.dart';
-import 'package:crypto_app/features/trading/presentation/widgets/step_area_chart.dart';
 
 import 'package:flutter/material.dart';
 
@@ -18,43 +16,18 @@ class OrderBook extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Stack(children: [
-        Column(
-          children: [
-            const Spacer(),
-            RotatedBox(
-              quarterTurns: 3,
-              child: SizedBox(
-                  width: 160, child: StepAreaChart(chartData: chartData)),
-            ),
-            const SizedBox(
-              height: 60,
-            )
-          ],
-        ),
-        const Column(
-          children: [
-            BidOrderBook(),
-            SizedBox(
-              height: 10,
-            ),
-            AskOrderBook(),
-          ],
-        ),
-        BottomGradient(
-          size: size,
-          colors: const [
-            Color.fromARGB(0, 6, 13, 24),
-            Color.fromARGB(100, 6, 13, 24),
-            Color.fromARGB(200, 6, 13, 24),
-            Color.fromARGB(200, 6, 13, 24)
-          ],
-          height: 210,
-          bottom: 0,
-        ),
-      ]),
-    );
+    return const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        child: Stack(children: [
+          Column(
+            children: [
+              Expanded(flex: 4, child: BidOrderBook()),
+              SizedBox(
+                height: 10,
+              ),
+              Expanded(flex: 1, child: ButtonsOrderBook()),
+            ],
+          ),
+        ]));
   }
 }
