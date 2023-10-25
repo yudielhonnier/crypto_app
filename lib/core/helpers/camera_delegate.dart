@@ -15,6 +15,7 @@ class MyCameraDelegate extends ImagePickerCameraDelegate {
   ) async {
     final fotopicked = (await _picker.pickImage(
         preferredCameraDevice: device, source: ImageSource.camera));
+    print("fotopicked");
     return fotopicked;
   }
 
@@ -27,7 +28,6 @@ class MyCameraDelegate extends ImagePickerCameraDelegate {
   }
 }
 
-// ···
 void setUpCameraDelegate() {
   final ImagePickerPlatform instance = ImagePickerPlatform.instance;
   if (instance is CameraDelegatingImagePickerPlatform) {

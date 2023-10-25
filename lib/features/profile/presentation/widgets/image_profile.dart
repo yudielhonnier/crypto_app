@@ -55,38 +55,15 @@ class _ImageProfileState extends State<ImageProfile> {
                               width: context.width / 2,
                               height: double.infinity,
                               color: darkTheme.primaryColor.withOpacity(0.2),
-                              // child: const Icon(
-                              //   Icons.edit_note_outlined,
-                              //   size: 100,
-                              // ),
                               child: Column(
                                 children: [
-                                  // IconButton(
-                                  //     onPressed: _selectFoto,
-                                  //     icon: const Icon(
-                                  //         Icons.photo_size_select_actual)),
-                                  // IconButton(
-                                  //     onPressed: _makeFoto,
-                                  //     icon: const Icon(Icons.camera_alt)),
                                   IconButton(
-                                      // onPressed: () => _onImageButtonPressed(
-                                      //     ImageSource.gallery,
-                                      //     context: context),
-                                      icon: const Icon(Icons.camera_alt),
-                                      onPressed: () async {
-                                        var response =
-                                            await pickerHandler.onCallPicker(
-                                          ImageSource.camera,
-                                          context: context,
-                                          isMedia: true,
-                                        );
-                                        final fotopicked = response["files"];
-                                        if (fotopicked != null) {
-                                          setState(() {
-                                            foto = fotopicked;
-                                          });
-                                        }
-                                      }),
+                                      onPressed: _pickPhotoFromCamera,
+                                      icon: const Icon(Icons.camera_alt)),
+                                  IconButton(
+                                      icon: const Icon(
+                                          Icons.photo_size_select_actual),
+                                      onPressed: _pickPhotoFromDevice),
                                 ],
                               ),
                             ),
@@ -99,6 +76,10 @@ class _ImageProfileState extends State<ImageProfile> {
             const SizedBox(
               height: 20,
             ),
+            // child: const Icon(
+            //   Icons.edit_note_outlined,
+            //   size: 100,
+            // ),
             const Text(
               'UserName',
               style: TextStyle(fontSize: 20),
@@ -112,4 +93,22 @@ class _ImageProfileState extends State<ImageProfile> {
       editVisible = !editVisible;
     });
   }
+
+  void _pickPhotoFromDevice() async {
+    var response = await pickerHandler.onCallPicker(
+      ImageSource.camera,
+      context: context,
+      isMedia: true,
+    );
+
+    final List fotopicked = response["files"];
+    if (fotopicked.isNotEmpty) {
+      print("foto $fotopicked");
+      setState(() {
+        foto = fotopicked[0];
+      });
+    }
+  }
+
+  void _pickPhotoFromCamera() async {}
 }
