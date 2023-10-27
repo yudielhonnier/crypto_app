@@ -10,6 +10,6 @@ class GetMarketsUseCase implements Usecase<List<Market>, int> {
   GetMarketsUseCase(this.marketRepository);
 
   @override
-  Future<Either<Error, List<Market>>> call(pageNum) =>
+  Future<Either<Failure, List<Market>>> call(pageNum) =>
       marketRepository.getMarkets(pageNum);
 }

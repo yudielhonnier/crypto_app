@@ -19,9 +19,8 @@ class MarketRepositoryImpl implements MarketRepository {
   });
 
   @override
-  Future<Either<Error, List<MarketModel>>> getMarkets(pageNum) async {
+  Future<Either<Failure, List<MarketModel>>> getMarkets(pageNum) async {
     bool result = await networkInfo.isConnected;
-    print(' infoooo' + result.toString());
 
     if (await networkInfo.isConnected) {
       try {

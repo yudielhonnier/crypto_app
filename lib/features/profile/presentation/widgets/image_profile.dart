@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:crypto_app/config/themes/theme_constants.dart';
+import 'package:crypto_app/core/constants/constants.dart';
 import 'package:crypto_app/core/helpers/extensions.dart';
 import 'package:crypto_app/core/helpers/image_picker_handler.dart'
     as pickerHandler;
@@ -95,11 +96,8 @@ class _ImageProfileState extends State<ImageProfile> {
   }
 
   void _pickPhotoFromDevice() async {
-    var response = await pickerHandler.onCallPicker(
-      ImageSource.camera,
-      context: context,
-      isMedia: true,
-    );
+    //todo return a image
+    var response = [];
 
     final List fotopicked = response["files"];
     if (fotopicked.isNotEmpty) {
@@ -109,6 +107,4 @@ class _ImageProfileState extends State<ImageProfile> {
       });
     }
   }
-
-  void _pickPhotoFromCamera() async {}
 }

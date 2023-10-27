@@ -1,14 +1,14 @@
-abstract class Error {
+abstract class Failure {
   String get message;
 }
 
-abstract class ServerError extends Error {}
+abstract class ServerError extends Failure {}
 
-abstract class CacheError extends Error {}
+abstract class CacheError extends Failure {}
 
-class UnknowFailure extends Error {
+class UnknowFailure extends Failure {
   @override
-  String get message => 'Unknow Error';
+  String get message => 'Unknow Failure';
 }
 
 class ApiRequestError implements ServerError {
@@ -18,7 +18,7 @@ class ApiRequestError implements ServerError {
   ApiRequestError({required this.error, this.stackTrace});
 
   @override
-  String get message => 'Error in the API request';
+  String get message => 'Failure in the API request';
 }
 
 class DbError extends CacheError {
@@ -28,5 +28,14 @@ class DbError extends CacheError {
   DbError({required this.error, this.stackTrace});
 
   @override
-  String get message => 'Error caching data in the DB';
+  String get message => 'Failure caching data in the DB';
+}
+
+class PickerFileError extends CacheError {
+  final Object error;
+
+  PickerFileError({required this.error});
+
+  @override
+  String get message => 'Failure picking file in the device';
 }
