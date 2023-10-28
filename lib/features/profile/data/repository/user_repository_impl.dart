@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cross_file/src/types/interface.dart';
 import 'package:crypto_app/core/error/exceptions.dart';
 import 'package:crypto_app/core/error/failure.dart';
@@ -8,8 +10,11 @@ import 'package:fpdart/src/either.dart';
 class UserRepositoryImpl implements UserRepository {
   final UserLocalDataSource localDataSource;
 
-  UserRepositoryImpl(this.localDataSource);
+  UserRepositoryImpl({required this.localDataSource});
 
   @override
-  Future<Either<Failure, XFile>> pickImage() async {}
+  Future<Either<Failure, XFile>> pickImage() async {
+    //todo: finish this method
+    return Left(UnknowFailure());
+  }
 }

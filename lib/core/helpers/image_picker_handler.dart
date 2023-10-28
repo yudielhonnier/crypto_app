@@ -33,24 +33,24 @@ Future<XFileMonad> _pickFileFromMack(source, picker) async {
 }
 
 Future<XFileMonad> _pickFromOtherDevices(source, context, picker) async {
-  try {
-    XFile? pickedFile;
-    await _displayPickImageDialog(context, picker,
-        (double? maxWidth, double? maxHeight, int? quality) async {
-      logger.i("picking single file from device  ... ");
+  // try {
+  //   XFile? pickedFile;
+  //   await _displayPickImageDialog(context, picker,
+  //       (double? maxWidth, double? maxHeight, int? quality) async {
+  //     logger.i("picking single file from device  ... ");
 
-      pickedFile = await picker.pickImage(
-        source: source,
-        maxWidth: maxWidth,
-        maxHeight: maxHeight,
-        imageQuality: quality,
-      );
-    });
-    if (pickedFile != null) return Right(pickedFile!);
-  } catch (e) {
-    logger.i("han error has ocurred picking single file from device  ... ");
-    return Left(PickerFileError(error: e));
-  }
+  //     pickedFile = await picker.pickImage(
+  //       source: source,
+  //       maxWidth: maxWidth,
+  //       maxHeight: maxHeight,
+  //       imageQuality: quality,
+  //     );
+  //   });
+  //   if (pickedFile != null) return Right(pickedFile!);
+  // } catch (e) {
+  //   logger.i("han error has ocurred picking single file from device  ... ");
+  //   return Left(PickerFileError(error: e));
+  // }
   return Left(UnknowFailure());
 }
 

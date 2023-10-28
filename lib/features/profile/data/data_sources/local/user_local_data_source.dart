@@ -50,10 +50,11 @@ class UserLocalDataSourceImpl implements UserLocalDataSource {
 
   @override
   Future<XFile> pickImage() {
-    return pickerHandler.onCallPicker(
-      ImageSource.camera,
-      context: context,
-      isMedia: true,
-    )
+    // return pickerHandler.onCallPicker(
+    //   ImageSource.camera,
+    //   context: context,
+    //   isMedia: true,
+    // )
+    return Future(() => XFile(''));
   }
 }

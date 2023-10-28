@@ -10,7 +10,6 @@ class PickImageUseCase implements Usecase<XFile, NoParams> {
 
   PickImageUseCase(this.userRepository);
   @override
-  Future<Either<Failure, XFile>> call(NoParams params) {
-    userRepository.pickImage();
-  }
+  Future<Either<Failure, XFile>> call(NoParams params) =>
+      userRepository.pickImage();
 }

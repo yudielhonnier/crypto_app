@@ -1,1 +1,1 @@
-abstract class BaseBlocEvent<E> {}
+abstract class BaseBlocEvent {}
