@@ -3,8 +3,8 @@ import 'package:crypto_app/config/themes/theme_constants.dart';
 import 'package:crypto_app/core/helpers/extensions.dart';
 import 'package:crypto_app/features/profile/presentation/widgets/image_profile.dart';
 import 'package:crypto_app/features/profile/presentation/widgets/profile_option.dart';
-import 'package:crypto_app/features/shared/widgets/custom_button.dart';
-import 'package:crypto_app/features/shared/widgets/app_bar_shared.dart';
+import 'package:crypto_app/features/shared/presentation/widgets/custom_button.dart';
+import 'package:crypto_app/features/shared/presentation/widgets/app_bar_shared.dart';
 import 'package:flutter/material.dart';
 
 class DesktopProfileBody extends StatefulWidget {

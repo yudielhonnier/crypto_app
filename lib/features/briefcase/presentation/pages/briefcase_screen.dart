@@ -1,7 +1,7 @@
 import 'package:crypto_app/features/briefcase/presentation/pages/desktop_body_briefcase.dart';
 import 'package:crypto_app/features/briefcase/presentation/pages/mobile_body_briefcase.dart';
 import 'package:crypto_app/features/briefcase/presentation/pages/tablet_body_briefcase.dart';
-import 'package:crypto_app/features/shared/widgets/responsive_layout.dart';
+import 'package:crypto_app/features/shared/presentation/widgets/responsive_layout.dart';
 import 'package:flutter/material.dart';
 
 class BriefcaseScreen extends StatefulWidget {

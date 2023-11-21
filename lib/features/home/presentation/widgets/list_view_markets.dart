@@ -18,6 +18,7 @@ class ListViewMarkets extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
+        color: Colors.white,
         child: ListView.builder(
             padding: const EdgeInsets.all(4),
             itemCount: markets.length,
@@ -40,31 +41,42 @@ class ListViewMarkets extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(
-                      width: 30,
+                      width: 10,
+                    ),
+                    IconButton(
+                        //todo: add action
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.add,
+                          color: Colors.white,
+                          size: 50,
+                        )),
+                    const SizedBox(
+                      width: 10,
                     ),
                     market.priceChangePercentage24H < 0
                         ? const Icon(
                             Icons.arrow_circle_down,
                             color: Colors.red,
-                            size: 30,
+                            size: 50,
                           )
                         : const Icon(
                             Icons.arrow_circle_up,
                             color: Colors.green,
-                            size: 30,
+                            size: 50,
                           ),
                     Expanded(
                       child: Row(
                         children: [
-                          Spacer(),
+                          const Spacer(),
                           SizedBox(
                             child: Column(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   height: 18,
                                 ),
                                 Text(yround(market.currentPrice).toString(),
-                                    style: TextStyle(fontSize: 20)),
+                                    style: const TextStyle(fontSize: 20)),
                                 Row(
                                   children: [
                                     Text(

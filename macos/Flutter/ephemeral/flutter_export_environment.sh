@@ -3,7 +3,7 @@
 export "FLUTTER_ROOT=/Users/david/development/flutter-sdks/3-10-5"
 export "FLUTTER_APPLICATION_PATH=/Users/david/development/projects/flutter/crypto_app"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
-export "FLUTTER_TARGET=/Users/david/development/projects/flutter/crypto_app/lib/main.dart"
+export "FLUTTER_TARGET=/Users/david/development/projects/flutter/crypto_app/lib/app/main.dart"
 export "FLUTTER_BUILD_DIR=build"
 export "FLUTTER_BUILD_NAME=1.0.0"
 export "FLUTTER_BUILD_NUMBER=1"

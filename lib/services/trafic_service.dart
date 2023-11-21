@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:crypto_app/features/shared/models/coin_response.dart';
-import 'package:crypto_app/features/shared/models/coin_simple_response.dart';
+import 'package:crypto_app/features/shared/data/models/coin_response.dart';
+import 'package:crypto_app/features/shared/data/models/coin_simple_response.dart';
 import 'package:dio/dio.dart';
 
 class TrafficService {

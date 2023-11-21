@@ -1,8 +1,9 @@
 import 'package:crypto_app/features/home/presentation/bloc/markets_bloc.dart';
 import 'package:crypto_app/features/home/presentation/page/desktop_body_home.dart';
 import 'package:crypto_app/features/home/presentation/page/tablet_body_home.dart';
-import 'package:crypto_app/features/shared/widgets/responsive_layout.dart';
-import 'package:crypto_app/injector.dart';
+import 'package:crypto_app/features/shared/presentation/bloc/tickets/tickets_bloc.dart';
+import 'package:crypto_app/features/shared/presentation/widgets/responsive_layout.dart';
+import 'package:crypto_app/app/injector.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
         BlocProvider(
           create: (_) => getIt<MarketsBloc>()..add(GetMarketsEvent(page: 0)),
         ),
+        BlocProvider(create: (_) => getIt<TicketsBloc>()),
       ],
       child: ResponsiveLayout(
           mobileBody: MobileHomeBody(context: context),

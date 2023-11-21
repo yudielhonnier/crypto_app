@@ -1,5 +1,5 @@
-import 'package:crypto_app/features/shared/models/chart_circular_data.dart';
-import 'package:crypto_app/features/shared/models/step_area_data.dart';
+import 'package:crypto_app/features/shared/data/models/chart_circular_data.dart';
+import 'package:crypto_app/features/shared/data/models/step_area_data.dart';
 import 'package:flutter/material.dart';
 
 List<ChartCircularData> data = [
