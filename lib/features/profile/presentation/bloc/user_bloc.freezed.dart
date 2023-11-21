@@ -165,20 +165,20 @@ abstract class _PickImage implements UserEvent {
 
 /// @nodoc
 mixin _$UserState {
-  String get photo => throw _privateConstructorUsedError;
+  XFile get photo => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String photo) photoLoaded,
+    required TResult Function(XFile photo) photoLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String photo)? photoLoaded,
+    TResult? Function(XFile photo)? photoLoaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String photo)? photoLoaded,
+    TResult Function(XFile photo)? photoLoaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -209,7 +209,7 @@ abstract class $UserStateCopyWith<$Res> {
   factory $UserStateCopyWith(UserState value, $Res Function(UserState) then) =
       _$UserStateCopyWithImpl<$Res, UserState>;
   @useResult
-  $Res call({String photo});
+  $Res call({XFile photo});
 }
 
 /// @nodoc
@@ -225,13 +225,13 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? photo = null,
+    Object? photo = freezed,
   }) {
     return _then(_value.copyWith(
-      photo: null == photo
+      photo: freezed == photo
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
-              as String,
+              as XFile,
     ) as $Val);
   }
 }
@@ -244,7 +244,7 @@ abstract class _$$_PhotoLoadedCopyWith<$Res>
       __$$_PhotoLoadedCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String photo});
+  $Res call({XFile photo});
 }
 
 /// @nodoc
@@ -258,13 +258,13 @@ class __$$_PhotoLoadedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? photo = null,
+    Object? photo = freezed,
   }) {
     return _then(_$_PhotoLoaded(
-      photo: null == photo
+      photo: freezed == photo
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
-              as String,
+              as XFile,
     ));
   }
 }
@@ -275,7 +275,7 @@ class _$_PhotoLoaded implements _PhotoLoaded {
   const _$_PhotoLoaded({required this.photo});
 
   @override
-  final String photo;
+  final XFile photo;
 
   @override
   String toString() {
@@ -287,11 +287,12 @@ class _$_PhotoLoaded implements _PhotoLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PhotoLoaded &&
-            (identical(other.photo, photo) || other.photo == photo));
+            const DeepCollectionEquality().equals(other.photo, photo));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, photo);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(photo));
 
   @JsonKey(ignore: true)
   @override
@@ -302,7 +303,7 @@ class _$_PhotoLoaded implements _PhotoLoaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String photo) photoLoaded,
+    required TResult Function(XFile photo) photoLoaded,
   }) {
     return photoLoaded(photo);
   }
@@ -310,7 +311,7 @@ class _$_PhotoLoaded implements _PhotoLoaded {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String photo)? photoLoaded,
+    TResult? Function(XFile photo)? photoLoaded,
   }) {
     return photoLoaded?.call(photo);
   }
@@ -318,7 +319,7 @@ class _$_PhotoLoaded implements _PhotoLoaded {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String photo)? photoLoaded,
+    TResult Function(XFile photo)? photoLoaded,
     required TResult orElse(),
   }) {
     if (photoLoaded != null) {
@@ -357,10 +358,10 @@ class _$_PhotoLoaded implements _PhotoLoaded {
 }
 
 abstract class _PhotoLoaded implements UserState {
-  const factory _PhotoLoaded({required final String photo}) = _$_PhotoLoaded;
+  const factory _PhotoLoaded({required final XFile photo}) = _$_PhotoLoaded;
 
   @override
-  String get photo;
+  XFile get photo;
   @override
   @JsonKey(ignore: true)
   _$$_PhotoLoadedCopyWith<_$_PhotoLoaded> get copyWith =>

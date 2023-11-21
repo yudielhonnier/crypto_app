@@ -14,4 +14,7 @@ class UserModel extends User with _$UserModel {
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);
+
+  static const mockUserModel =
+      UserModel(uid: "1", username: "username", imageUrl: "");
 }

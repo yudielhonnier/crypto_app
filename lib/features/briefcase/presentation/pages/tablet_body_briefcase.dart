@@ -2,8 +2,8 @@ import 'package:crypto_app/config/themes/theme_constants.dart';
 import 'package:crypto_app/core/constants/constants.dart';
 import 'package:crypto_app/features/briefcase/presentation/widgets/circular_chart.dart';
 import 'package:crypto_app/features/briefcase/presentation/widgets/list_coins_without_chart.dart';
-import 'package:crypto_app/features/shared/widgets/app_bar_shared.dart';
-import 'package:crypto_app/features/shared/widgets/card_wallet_actions.dart';
+import 'package:crypto_app/features/shared/presentation/widgets/app_bar_shared.dart';
+import 'package:crypto_app/features/shared/presentation/widgets/card_wallet_actions.dart';
 import 'package:flutter/material.dart';
 
 class TabletBriefcaseBody extends StatefulWidget {

@@ -1,7 +1,9 @@
 import 'dart:convert';
 
 import 'package:crypto_app/core/error/exceptions.dart';
+import 'package:crypto_app/core/error/failure.dart';
 import 'package:crypto_app/features/profile/data/models/user_model.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:crypto_app/core/helpers/image_picker_handler.dart'
@@ -16,7 +18,7 @@ abstract class UserLocalDataSource {
 
   Future<void> cacheUser(UserModel user);
 
-  Future<XFile> pickImage();
+  Future<Either<Failure, XFile>> pickImage();
 }
 
 // ignore: constant_identifier_names
@@ -49,12 +51,12 @@ class UserLocalDataSourceImpl implements UserLocalDataSource {
   }
 
   @override
-  Future<XFile> pickImage() {
-    // return pickerHandler.onCallPicker(
-    //   ImageSource.camera,
-    //   context: context,
-    //   isMedia: true,
-    // )
-    return Future(() => XFile(''));
+  Future<Either<Failure, XFile>> pickImage() async {
+    final image = await pickerHandler.onCallPicker(
+      ImageSource.gallery,
+    );
+    return Future(() => image);
+
+    // return Future(() => XFile(''));
   }
 }

@@ -2,8 +2,8 @@ import 'package:crypto_app/config/router/my_router.dart';
 import 'package:crypto_app/config/themes/theme_constants.dart';
 import 'package:crypto_app/core/constants/constants.dart';
 import 'package:crypto_app/core/helpers/extensions.dart';
-import 'package:crypto_app/features/shared/widgets/app_bar_shared.dart';
-import 'package:crypto_app/features/shared/widgets/bottom_gradient.dart';
+import 'package:crypto_app/features/shared/presentation/widgets/app_bar_shared.dart';
+import 'package:crypto_app/features/shared/presentation/widgets/bottom_gradient.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

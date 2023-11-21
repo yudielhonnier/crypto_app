@@ -8,3 +8,9 @@ class GetMarketsEvent extends MarketsEvent {
 
   GetMarketsEvent({required this.page});
 }
+
+class AddMarketEvent extends MarketsEvent {
+  final Market market;
+
+  AddMarketEvent({required this.market});
+}

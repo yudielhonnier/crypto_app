@@ -6,37 +6,31 @@ import 'package:crypto_app/features/profile/data/models/user_model.dart';
 import 'package:crypto_app/features/profile/domain/usecase/pick_image_use_case.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:image_picker/image_picker.dart';
 
 part 'user_event.dart';
 part 'user_state.dart';
 part 'user_bloc.freezed.dart';
 
 class UserBloc extends BaseBloc<UserEvent, UserState, UserModel> {
-  UserModel userInitial =
-      const UserModel(uid: "1", username: "username", imageUrl: "");
   final PickImageUseCase _pickImageUseCase;
-  UserBloc(this.userInitial, this._pickImageUseCase)
-      : super(BaseBlocState.init(userInitial)) {
+  UserBloc(this._pickImageUseCase)
+      : super(const BaseBlocState.init(UserModel.mockUserModel)) {
     on<_PickImage>(onPickImage);
   }
 
-  void onPickImage(UserEvent event, Emitter<BaseBlocState> emit) async {
+  void onPickImage(UserEvent event,
+      Emitter<BaseBlocState<UserState, UserModel>> emit) async {
     emit(const BaseBlocState.loading());
     final response = await _pickImageUseCase(const NoParams());
 
-    response.fold(
-        (l) => emit(BaseBlocState.failure(l)),
-        (r) => r.path.isEmpty
-            ? emit(BaseBlocState.init(userInitial))
-            : emit(BaseBlocState.next(r)));
+    response.fold((l) => emit(BaseBlocState.failure(l)), (r) {
+      //todo:cache image
+
+      //emit values
+      r.path.isEmpty
+          ? emit(const BaseBlocState.init(UserModel.mockUserModel))
+          : emit(BaseBlocState.next(_PhotoLoaded(photo: r)));
+    });
   }
 }
-
-//todo:check this variant
-// class UserBloc extends BaseBloc<UserEvent, UserState, UserModel> {
-//   UserModel userInitial =
-//       const UserModel(uid: "1", username: "username", imageUrl: "");
-//   UserBloc(this.userInitial) : super(BaseBlocState.init(userInitial)) {
-//     on<UserEvent>((event, emit) {});
-//   }
-// }

@@ -1,9 +1,7 @@
 import 'dart:io';
 
-import 'package:crypto_app/core/constants/constants.dart';
 import 'package:crypto_app/core/error/failure.dart';
 import 'package:crypto_app/core/helpers/camera_delegate.dart';
-import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:logger/logger.dart';
@@ -54,17 +52,18 @@ Future<XFileMonad> _pickFromOtherDevices(source, context, picker) async {
   return Left(UnknowFailure());
 }
 
-Future<XFileMonad> onCallPicker(
-  ImageSource source, {
-  required BuildContext context,
-}) async {
+Future<XFileMonad> onCallPicker(ImageSource source) async {
   ImagePicker picker = ImagePicker();
 
-  if (context.mounted) {
+  try {
     if (Platform.isMacOS) {
-      return await _pickFileFromMack(source, picker);
+      return _pickFileFromMack(source, picker);
     }
-    return await _pickFromOtherDevices(source, context, picker);
+    // else{
+    // return await _pickFromOtherDevices(source, context, picker);
+    // }
+  } catch (e) {
+    return Left(UnknowFailure());
   }
   return Left(UnknowFailure());
 }

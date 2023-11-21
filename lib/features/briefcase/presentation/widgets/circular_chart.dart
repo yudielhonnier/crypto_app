@@ -1,6 +1,6 @@
 import 'package:crypto_app/core/helpers/extensions.dart';
 import 'package:crypto_app/features/briefcase/presentation/widgets/circular_chart_statictics.dart';
-import 'package:crypto_app/features/shared/models/chart_circular_data.dart';
+import 'package:crypto_app/features/shared/data/models/chart_circular_data.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 

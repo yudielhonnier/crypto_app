@@ -1,0 +1,57 @@
+class Ticket {
+  final String id;
+  final String symbol;
+  final String name;
+  final String image;
+  final double currentPrice;
+  final double marketCap;
+  final int marketCapRank;
+  final double fullyRilutedValuation;
+  final double totalVolume;
+  final double high24H;
+  final double low24H;
+  final double priceChange24H;
+  final double priceChangePercentage24H;
+  final double marketCapChange24H;
+  final double marketCapChangePercentage24H;
+  final double circulatingSupply;
+  final double totalSupply;
+  final double? maxSupply;
+  final double ath;
+  final double athChangePercentage;
+  final DateTime athDate;
+  final double atl;
+  final double atlChangePercentage;
+  final DateTime atlDate;
+  final dynamic roi;
+  final DateTime lastUpdated;
+
+  const Ticket({
+    required this.id,
+    required this.symbol,
+    required this.name,
+    required this.image,
+    required this.currentPrice,
+    required this.marketCap,
+    required this.marketCapRank,
+    required this.fullyRilutedValuation,
+    required this.totalVolume,
+    required this.high24H,
+    required this.low24H,
+    required this.priceChange24H,
+    required this.priceChangePercentage24H,
+    required this.marketCapChange24H,
+    required this.marketCapChangePercentage24H,
+    required this.circulatingSupply,
+    required this.totalSupply,
+    this.maxSupply,
+    required this.ath,
+    required this.athChangePercentage,
+    required this.athDate,
+    required this.atl,
+    required this.atlChangePercentage,
+    required this.atlDate,
+    this.roi,
+    required this.lastUpdated,
+  });
+}

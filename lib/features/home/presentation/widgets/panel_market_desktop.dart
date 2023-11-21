@@ -1,6 +1,9 @@
 import 'package:crypto_app/config/themes/theme_constants.dart';
+import 'package:crypto_app/features/home/data/models/market_model.dart';
+import 'package:crypto_app/features/home/domain/entities/market.dart';
 import 'package:crypto_app/features/home/presentation/bloc/markets_bloc.dart';
 import 'package:crypto_app/features/home/presentation/widgets/list_view_markets.dart';
+import 'package:crypto_app/features/shared/presentation/bloc/tickets/tickets_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -92,20 +95,23 @@ class _PanelMarketsState extends State<PanelMarketDesktop> {
           ),
           Flexible(
             flex: 7,
-            child: BlocBuilder<MarketsBloc, MarketsState>(
-              builder: (BuildContext context, state) {
-                if (state is Loading) {
+            child: Builder(
+              builder: (BuildContext context) {
+                final marketState = context.watch<MarketsBloc>().state;
+                final ticketState = context.watch<TicketsBloc>().state;
+
+                if (marketState is Loading) {
                   return const Center(child: CircularProgressIndicator());
-                } else if (state is Loaded) {
+                } else if (marketState is Loaded) {
                   return ListViewMarkets(
-                      context: context, markets: state.markets);
-                } else if (state is Error) {
+                      context: context, markets: marketState.markets);
+                } else if (marketState is Error) {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Center(
                         child:
                             Column(mainAxisSize: MainAxisSize.min, children: [
-                      Text("Error ${state.message}",
+                      Text("Error ${marketState.message}",
                           textAlign: TextAlign.center),
                       ElevatedButton(
                         onPressed: () {

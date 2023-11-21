@@ -3,7 +3,7 @@ import 'package:crypto_app/features/home/presentation/widgets/list_view_news.dar
 import 'package:crypto_app/config/themes/theme_constants.dart';
 import 'package:crypto_app/features/home/presentation/widgets/panel_market_desktop.dart';
 import 'package:crypto_app/features/home/presentation/widgets/statictics_wallet_home.dart';
-import 'package:crypto_app/features/shared/widgets/card_wallet_actions.dart';
+import 'package:crypto_app/features/shared/presentation/widgets/card_wallet_actions.dart';
 
 import 'package:flutter/material.dart';
 

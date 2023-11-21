@@ -6,5 +6,5 @@ class UserState with _$UserState {
   //     {@Default("username") username,
   //     @Default("") imageUrl,
   //     @Default("1") uid}) = _UserInitial;
-  const factory UserState.photoLoaded({required String photo}) = _PhotoLoaded;
+  const factory UserState.photoLoaded({required XFile photo}) = _PhotoLoaded;
 }

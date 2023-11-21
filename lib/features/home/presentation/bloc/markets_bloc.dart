@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:crypto_app/features/home/data/models/market_model.dart';
+import 'package:crypto_app/features/home/domain/entities/market.dart';
 import 'package:crypto_app/features/home/domain/usecase/get_markets_use_case.dart';
 import 'package:meta/meta.dart';
 

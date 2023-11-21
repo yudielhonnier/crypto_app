@@ -1,4 +1,4 @@
-import 'package:crypto_app/features/shared/models/step_area_data.dart';
+import 'package:crypto_app/features/shared/data/models/step_area_data.dart';
 import 'package:crypto_app/features/trading/presentation/widgets/ask_order_book.dart';
 import 'package:crypto_app/features/trading/presentation/widgets/bid_order_book.dart';
 
