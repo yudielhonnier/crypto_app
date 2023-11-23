@@ -30,7 +30,7 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
 
   double _panelHeightOpen = 0;
 
-  double _panelHeightClosed = 265.0;
+  final double _panelHeightClosed = 265.0;
   @override
   void initState() {
     super.initState();
@@ -77,7 +77,7 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
               ]),
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20), topRight: Radius.circular(20))),
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         children: <Widget>[
           IconButton(
@@ -129,8 +129,11 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
               Expanded(child: Container()),
               GestureDetector(
                 child: const SizedBox(
-                  child: Icon(
-                    Icons.dehaze,
+                  child: Padding(
+                    padding: EdgeInsets.all(14.0),
+                    child: Icon(
+                      Icons.dehaze,
+                    ),
                   ),
                 ),
               ),
@@ -154,8 +157,8 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
                           textAlign: TextAlign.center),
                       ElevatedButton(
                         onPressed: () {
-                          // BlocProvider.of<RemotePostBloc>(context)
-                          //     .add(GetRemotePosts());
+                          BlocProvider.of<MarketsBloc>(context)
+                              .add(GetMarketsEvent(page: 0));
                         },
                         child: const Text("Try again"),
                       )

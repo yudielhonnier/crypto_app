@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:crypto_app/config/themes/theme_constants.dart';
 import 'package:crypto_app/core/helpers/camera_delegate.dart';
+import 'package:crypto_app/core/resources/ticket_db_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:window_manager/window_manager.dart';
@@ -12,6 +13,7 @@ import 'injector.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDependencies();
+  await TicketDatabaseHelper().initializeDatabase();
   setUpCameraDelegate();
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
     await windowManager.ensureInitialized();

@@ -225,10 +225,10 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? photo = freezed,
+    Object? photo = null,
   }) {
     return _then(_value.copyWith(
-      photo: freezed == photo
+      photo: null == photo
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
               as XFile,
@@ -258,10 +258,10 @@ class __$$_PhotoLoadedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? photo = freezed,
+    Object? photo = null,
   }) {
     return _then(_$_PhotoLoaded(
-      photo: freezed == photo
+      photo: null == photo
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
               as XFile,
@@ -287,12 +287,11 @@ class _$_PhotoLoaded implements _PhotoLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PhotoLoaded &&
-            const DeepCollectionEquality().equals(other.photo, photo));
+            (identical(other.photo, photo) || other.photo == photo));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(photo));
+  int get hashCode => Object.hash(runtimeType, photo);
 
   @JsonKey(ignore: true)
   @override

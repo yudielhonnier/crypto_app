@@ -4,7 +4,7 @@ import 'package:crypto_app/features/profile/data/repository/user_repository_impl
 import 'package:crypto_app/features/profile/domain/repository/user_repository.dart';
 import 'package:crypto_app/features/profile/domain/usecase/pick_image_use_case.dart';
 import 'package:crypto_app/features/profile/presentation/bloc/user_bloc.dart';
-import 'package:crypto_app/features/shared/data/data-source/local/tickets_local_data_source.dart';
+import 'package:crypto_app/features/shared/data/data-source/local/ticket_local_data_source.dart';
 import 'package:crypto_app/features/shared/data/repository/tickets_repository_impl.dart';
 import 'package:crypto_app/features/shared/domain/repository/ticket_repository.dart';
 import 'package:crypto_app/features/shared/domain/usecase/add_ticket_use_case.dart';
