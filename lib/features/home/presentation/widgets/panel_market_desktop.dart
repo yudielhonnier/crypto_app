@@ -1,9 +1,6 @@
 import 'package:crypto_app/config/themes/theme_constants.dart';
-import 'package:crypto_app/features/home/data/models/market_model.dart';
-import 'package:crypto_app/features/home/domain/entities/market.dart';
 import 'package:crypto_app/features/home/presentation/bloc/markets_bloc.dart';
 import 'package:crypto_app/features/home/presentation/widgets/list_view_markets.dart';
-import 'package:crypto_app/features/shared/presentation/bloc/tickets/tickets_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -83,7 +80,8 @@ class _PanelMarketsState extends State<PanelMarketDesktop> {
                   ),
                   const Spacer(),
                   GestureDetector(
-                    child: const SizedBox(
+                    child: const Padding(
+                      padding: EdgeInsets.all(10),
                       child: Icon(
                         Icons.dehaze,
                       ),
@@ -98,7 +96,6 @@ class _PanelMarketsState extends State<PanelMarketDesktop> {
             child: Builder(
               builder: (BuildContext context) {
                 final marketState = context.watch<MarketsBloc>().state;
-                final ticketState = context.watch<TicketsBloc>().state;
 
                 if (marketState is Loading) {
                   return const Center(child: CircularProgressIndicator());

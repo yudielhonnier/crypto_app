@@ -1,3 +1,4 @@
+import 'package:crypto_app/features/home/data/models/market_model.dart';
 import 'package:crypto_app/features/shared/domain/entities/ticket.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -41,6 +42,34 @@ class TicketModel extends Ticket with _$TicketModel {
 
   factory TicketModel.fromJson(Map<String, dynamic> json) =>
       _$TicketModelFromJson(json);
+
+  factory TicketModel.fromMarket(MarketModel market) {
+    return TicketModel(
+        id: market.id,
+        symbol: market.symbol,
+        name: market.name,
+        image: market.image,
+        currentPrice: market.currentPrice,
+        marketCap: market.marketCap,
+        marketCapRank: market.marketCapRank,
+        fullyRilutedValuation: market.fullyDilutedValuation,
+        totalVolume: market.totalVolume,
+        high24H: market.high24H,
+        low24H: market.low24H,
+        priceChange24H: market.priceChange24H,
+        priceChangePercentage24H: market.priceChangePercentage24H,
+        marketCapChange24H: market.marketCapChange24H,
+        marketCapChangePercentage24H: market.marketCapChangePercentage24H,
+        circulatingSupply: market.circulatingSupply,
+        totalSupply: market.totalSupply,
+        ath: market.ath,
+        athChangePercentage: market.athChangePercentage,
+        athDate: market.athDate,
+        atl: market.atl,
+        atlChangePercentage: market.atlChangePercentage,
+        atlDate: market.atlDate,
+        lastUpdated: market.lastUpdated);
+  }
 
   static final TicketModel mockTicket = TicketModel(
       id: "bitcoin",

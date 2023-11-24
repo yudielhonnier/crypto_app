@@ -234,23 +234,22 @@ abstract class _AddTicket implements TicketsEvent {
 
 /// @nodoc
 mixin _$TicketsState {
-  List<Ticket> get photo => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Ticket> photo) ticketsLoaded,
-    required TResult Function(List<Ticket> photo) ticketAdded,
+    required TResult Function(List<TicketModel> ticketsList) ticketsLoaded,
+    required TResult Function(TicketModel ticket) ticketAdded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Ticket> photo)? ticketsLoaded,
-    TResult? Function(List<Ticket> photo)? ticketAdded,
+    TResult? Function(List<TicketModel> ticketsList)? ticketsLoaded,
+    TResult? Function(TicketModel ticket)? ticketAdded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Ticket> photo)? ticketsLoaded,
-    TResult Function(List<Ticket> photo)? ticketAdded,
+    TResult Function(List<TicketModel> ticketsList)? ticketsLoaded,
+    TResult Function(TicketModel ticket)? ticketAdded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -273,10 +272,6 @@ mixin _$TicketsState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $TicketsStateCopyWith<TicketsState> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -284,8 +279,6 @@ abstract class $TicketsStateCopyWith<$Res> {
   factory $TicketsStateCopyWith(
           TicketsState value, $Res Function(TicketsState) then) =
       _$TicketsStateCopyWithImpl<$Res, TicketsState>;
-  @useResult
-  $Res call({List<Ticket> photo});
 }
 
 /// @nodoc
@@ -297,30 +290,15 @@ class _$TicketsStateCopyWithImpl<$Res, $Val extends TicketsState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? photo = null,
-  }) {
-    return _then(_value.copyWith(
-      photo: null == photo
-          ? _value.photo
-          : photo // ignore: cast_nullable_to_non_nullable
-              as List<Ticket>,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$_TicketsLoadedCopyWith<$Res>
-    implements $TicketsStateCopyWith<$Res> {
+abstract class _$$_TicketsLoadedCopyWith<$Res> {
   factory _$$_TicketsLoadedCopyWith(
           _$_TicketsLoaded value, $Res Function(_$_TicketsLoaded) then) =
       __$$_TicketsLoadedCopyWithImpl<$Res>;
-  @override
   @useResult
-  $Res call({List<Ticket> photo});
+  $Res call({List<TicketModel> ticketsList});
 }
 
 /// @nodoc
@@ -334,13 +312,13 @@ class __$$_TicketsLoadedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? photo = null,
+    Object? ticketsList = null,
   }) {
     return _then(_$_TicketsLoaded(
-      photo: null == photo
-          ? _value._photo
-          : photo // ignore: cast_nullable_to_non_nullable
-              as List<Ticket>,
+      ticketsList: null == ticketsList
+          ? _value._ticketsList
+          : ticketsList // ignore: cast_nullable_to_non_nullable
+              as List<TicketModel>,
     ));
   }
 }
@@ -348,19 +326,20 @@ class __$$_TicketsLoadedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TicketsLoaded implements _TicketsLoaded {
-  const _$_TicketsLoaded({required final List<Ticket> photo}) : _photo = photo;
+  const _$_TicketsLoaded({required final List<TicketModel> ticketsList})
+      : _ticketsList = ticketsList;
 
-  final List<Ticket> _photo;
+  final List<TicketModel> _ticketsList;
   @override
-  List<Ticket> get photo {
-    if (_photo is EqualUnmodifiableListView) return _photo;
+  List<TicketModel> get ticketsList {
+    if (_ticketsList is EqualUnmodifiableListView) return _ticketsList;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_photo);
+    return EqualUnmodifiableListView(_ticketsList);
   }
 
   @override
   String toString() {
-    return 'TicketsState.ticketsLoaded(photo: $photo)';
+    return 'TicketsState.ticketsLoaded(ticketsList: $ticketsList)';
   }
 
   @override
@@ -368,12 +347,13 @@ class _$_TicketsLoaded implements _TicketsLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TicketsLoaded &&
-            const DeepCollectionEquality().equals(other._photo, _photo));
+            const DeepCollectionEquality()
+                .equals(other._ticketsList, _ticketsList));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_photo));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_ticketsList));
 
   @JsonKey(ignore: true)
   @override
@@ -384,30 +364,30 @@ class _$_TicketsLoaded implements _TicketsLoaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Ticket> photo) ticketsLoaded,
-    required TResult Function(List<Ticket> photo) ticketAdded,
+    required TResult Function(List<TicketModel> ticketsList) ticketsLoaded,
+    required TResult Function(TicketModel ticket) ticketAdded,
   }) {
-    return ticketsLoaded(photo);
+    return ticketsLoaded(ticketsList);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Ticket> photo)? ticketsLoaded,
-    TResult? Function(List<Ticket> photo)? ticketAdded,
+    TResult? Function(List<TicketModel> ticketsList)? ticketsLoaded,
+    TResult? Function(TicketModel ticket)? ticketAdded,
   }) {
-    return ticketsLoaded?.call(photo);
+    return ticketsLoaded?.call(ticketsList);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Ticket> photo)? ticketsLoaded,
-    TResult Function(List<Ticket> photo)? ticketAdded,
+    TResult Function(List<TicketModel> ticketsList)? ticketsLoaded,
+    TResult Function(TicketModel ticket)? ticketAdded,
     required TResult orElse(),
   }) {
     if (ticketsLoaded != null) {
-      return ticketsLoaded(photo);
+      return ticketsLoaded(ticketsList);
     }
     return orElse();
   }
@@ -445,26 +425,24 @@ class _$_TicketsLoaded implements _TicketsLoaded {
 }
 
 abstract class _TicketsLoaded implements TicketsState {
-  const factory _TicketsLoaded({required final List<Ticket> photo}) =
+  const factory _TicketsLoaded({required final List<TicketModel> ticketsList}) =
       _$_TicketsLoaded;
 
-  @override
-  List<Ticket> get photo;
-  @override
+  List<TicketModel> get ticketsList;
   @JsonKey(ignore: true)
   _$$_TicketsLoadedCopyWith<_$_TicketsLoaded> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_TicketAddedCopyWith<$Res>
-    implements $TicketsStateCopyWith<$Res> {
+abstract class _$$_TicketAddedCopyWith<$Res> {
   factory _$$_TicketAddedCopyWith(
           _$_TicketAdded value, $Res Function(_$_TicketAdded) then) =
       __$$_TicketAddedCopyWithImpl<$Res>;
-  @override
   @useResult
-  $Res call({List<Ticket> photo});
+  $Res call({TicketModel ticket});
+
+  $TicketModelCopyWith<$Res> get ticket;
 }
 
 /// @nodoc
@@ -478,33 +456,36 @@ class __$$_TicketAddedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? photo = null,
+    Object? ticket = null,
   }) {
     return _then(_$_TicketAdded(
-      photo: null == photo
-          ? _value._photo
-          : photo // ignore: cast_nullable_to_non_nullable
-              as List<Ticket>,
+      ticket: null == ticket
+          ? _value.ticket
+          : ticket // ignore: cast_nullable_to_non_nullable
+              as TicketModel,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TicketModelCopyWith<$Res> get ticket {
+    return $TicketModelCopyWith<$Res>(_value.ticket, (value) {
+      return _then(_value.copyWith(ticket: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$_TicketAdded implements _TicketAdded {
-  const _$_TicketAdded({required final List<Ticket> photo}) : _photo = photo;
+  const _$_TicketAdded({required this.ticket});
 
-  final List<Ticket> _photo;
   @override
-  List<Ticket> get photo {
-    if (_photo is EqualUnmodifiableListView) return _photo;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_photo);
-  }
+  final TicketModel ticket;
 
   @override
   String toString() {
-    return 'TicketsState.ticketAdded(photo: $photo)';
+    return 'TicketsState.ticketAdded(ticket: $ticket)';
   }
 
   @override
@@ -512,12 +493,11 @@ class _$_TicketAdded implements _TicketAdded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TicketAdded &&
-            const DeepCollectionEquality().equals(other._photo, _photo));
+            (identical(other.ticket, ticket) || other.ticket == ticket));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_photo));
+  int get hashCode => Object.hash(runtimeType, ticket);
 
   @JsonKey(ignore: true)
   @override
@@ -528,30 +508,30 @@ class _$_TicketAdded implements _TicketAdded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Ticket> photo) ticketsLoaded,
-    required TResult Function(List<Ticket> photo) ticketAdded,
+    required TResult Function(List<TicketModel> ticketsList) ticketsLoaded,
+    required TResult Function(TicketModel ticket) ticketAdded,
   }) {
-    return ticketAdded(photo);
+    return ticketAdded(ticket);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Ticket> photo)? ticketsLoaded,
-    TResult? Function(List<Ticket> photo)? ticketAdded,
+    TResult? Function(List<TicketModel> ticketsList)? ticketsLoaded,
+    TResult? Function(TicketModel ticket)? ticketAdded,
   }) {
-    return ticketAdded?.call(photo);
+    return ticketAdded?.call(ticket);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Ticket> photo)? ticketsLoaded,
-    TResult Function(List<Ticket> photo)? ticketAdded,
+    TResult Function(List<TicketModel> ticketsList)? ticketsLoaded,
+    TResult Function(TicketModel ticket)? ticketAdded,
     required TResult orElse(),
   }) {
     if (ticketAdded != null) {
-      return ticketAdded(photo);
+      return ticketAdded(ticket);
     }
     return orElse();
   }
@@ -589,12 +569,10 @@ class _$_TicketAdded implements _TicketAdded {
 }
 
 abstract class _TicketAdded implements TicketsState {
-  const factory _TicketAdded({required final List<Ticket> photo}) =
+  const factory _TicketAdded({required final TicketModel ticket}) =
       _$_TicketAdded;
 
-  @override
-  List<Ticket> get photo;
-  @override
+  TicketModel get ticket;
   @JsonKey(ignore: true)
   _$$_TicketAddedCopyWith<_$_TicketAdded> get copyWith =>
       throw _privateConstructorUsedError;
