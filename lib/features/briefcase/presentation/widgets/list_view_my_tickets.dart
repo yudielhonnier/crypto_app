@@ -3,36 +3,36 @@ import 'package:crypto_app/core/helpers/round.dart';
 import 'package:crypto_app/features/home/data/models/market_model.dart';
 import 'package:crypto_app/features/home/presentation/bloc/markets_bloc.dart';
 import 'package:crypto_app/features/shared/data/models/ticket_model.dart';
-import 'package:crypto_app/features/shared/presentation/bloc/tickets/tickets_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
-class ListViewMarkets extends StatelessWidget {
-  const ListViewMarkets({
+class ListViewTickets extends StatefulWidget {
+  const ListViewTickets({
     super.key,
     required this.context,
-    required this.markets,
+    required this.tickets,
   });
 
   final BuildContext context;
-  final List<MarketModel> markets;
+  final List<TicketModel> tickets;
 
   @override
+  State<ListViewTickets> createState() => _ListViewTicketsState();
+}
+
+class _ListViewTicketsState extends State<ListViewTickets> {
+  @override
   Widget build(BuildContext context) {
-    bool isNotToastReaded = true;
     return RefreshIndicator(
-        color: Colors.white,
         child: ListView.builder(
             padding: const EdgeInsets.all(4),
-            itemCount: markets.length,
+            itemCount: widget.tickets.length,
             itemBuilder: (BuildContext context, int index) {
-              final market = markets[index];
+              final market = widget.tickets[index];
               return SizedBox(
                   child: Row(
                 children: [
                   Flexible(
-                    flex: 2,
                     child: ListTile(
                       contentPadding: const EdgeInsets.all(0),
                       leading: Image(
@@ -44,27 +44,30 @@ class ListViewMarkets extends StatelessWidget {
                       subtitle: Text(market.symbol),
                     ),
                   ),
+                  const SizedBox(
+                    width: 30,
+                  ),
+                  market.priceChangePercentage24H < 0
+                      ? const Icon(
+                          Icons.arrow_circle_down,
+                          color: Colors.red,
+                          size: 50,
+                        )
+                      : const Icon(
+                          Icons.arrow_circle_up,
+                          color: Colors.green,
+                          size: 50,
+                        ),
                   Expanded(
-                    flex: 2,
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        market.priceChangePercentage24H < 0
-                            ? const Icon(
-                                Icons.arrow_circle_down,
-                                color: Colors.red,
-                                size: 40,
-                              )
-                            : const Icon(
-                                Icons.arrow_circle_up,
-                                color: Colors.green,
-                                size: 40,
-                              ),
+                        const Spacer(),
                         SizedBox(
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              const SizedBox(
+                                height: 18,
+                              ),
                               Text(yround(market.currentPrice).toString(),
                                   style: const TextStyle(fontSize: 20)),
                               Row(
@@ -94,56 +97,44 @@ class ListViewMarkets extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Builder(
-                    builder: (context) {
-                      final ticketsBloc = context.watch<TicketsBloc>();
-                      final mayShowToast =
-                          _mayShowToast(ticketsBloc, isNotToastReaded);
-
-                      if (mayShowToast) {
-                        _showToast(ticketsBloc);
-                        isNotToastReaded = false;
-                        ticketsBloc.add(const TicketsEvent.toastReaded());
-                      }
-
-                      return GestureDetector(
-                        onTap: () => ticketsBloc.add(TicketsEvent.addTicket(
-                            TicketModel.fromMarket(markets[index]))),
-                        child: const CircleAvatar(
-                          backgroundColor: Colors.blue,
-                          child: Icon(
-                            Icons.add,
-                            color: Colors.white,
-                            size: 40,
-                          ),
-                        ),
-                      );
-                    },
-                  ),
                 ],
               ));
             }),
-        onRefresh: () => _onRefresh(context, markets.length));
+        onRefresh: () => _onRefresh(context, widget.tickets.length));
   }
 
-  bool _mayShowToast(TicketsBloc ticketsBloc, bool isNotToastReaded) {
-    return ticketsBloc.state.status == TicketStatus.alreadyExist &&
-        isNotToastReaded;
+  Future<bool?> _showAlertDialog(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text("Add ticket"),
+            content: const Text("Are you sure you want to add this item?"),
+            actions: [
+              ElevatedButton(
+                  onPressed: () => Navigator.of(context).pop(true),
+                  child: const Text("Yes")),
+              ElevatedButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: const Text("No"),
+              )
+            ],
+          );
+        });
   }
 
   Future<void> _onRefresh(BuildContext context, int page) async {
     BlocProvider.of<MarketsBloc>(context).add(GetMarketsEvent(page: page));
   }
 
-  Future<bool?> _showToast(TicketsBloc bloc) {
-    return Fluttertoast.showToast(
-      msg: 'The Ticket with id ${bloc.state.ticketModel.id} Already Exist!',
-      toastLength: Toast.LENGTH_LONG,
-      gravity: ToastGravity.BOTTOM,
-      timeInSecForIosWeb: 4,
-      backgroundColor: Colors.red,
-      textColor: Colors.white,
-      fontSize: 16.0,
-    );
+  void _onDismissed(DismissDirection direction, int index) {
+    if (direction == DismissDirection.startToEnd) {
+      print("add to local");
+    } else {
+      print("remove item");
+      setState(() {
+        widget.tickets.removeAt(index);
+      });
+    }
   }
 }

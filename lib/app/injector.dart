@@ -1,3 +1,4 @@
+import 'package:crypto_app/core/resources/ticket_db_helper.dart';
 import 'package:crypto_app/features/home/presentation/bloc/markets_bloc.dart';
 import 'package:crypto_app/features/profile/data/data_sources/local/user_local_data_source.dart';
 import 'package:crypto_app/features/profile/data/repository/user_repository_impl.dart';
@@ -8,6 +9,9 @@ import 'package:crypto_app/features/shared/data/data-source/local/ticket_local_d
 import 'package:crypto_app/features/shared/data/repository/tickets_repository_impl.dart';
 import 'package:crypto_app/features/shared/domain/repository/ticket_repository.dart';
 import 'package:crypto_app/features/shared/domain/usecase/add_ticket_use_case.dart';
+import 'package:crypto_app/features/shared/domain/usecase/delete_ticket_by_id_use_case.dart';
+import 'package:crypto_app/features/shared/domain/usecase/get_all_tickets_use_case.dart';
+import 'package:crypto_app/features/shared/domain/usecase/get_ticket_by_id_use_case.dart';
 import 'package:crypto_app/features/shared/presentation/bloc/tickets/tickets_bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
@@ -37,6 +41,9 @@ void initUseCases() {
   getIt.registerLazySingleton(() => GetMarketsUseCase(getIt()));
   getIt.registerLazySingleton(() => PickImageUseCase(getIt()));
   getIt.registerLazySingleton(() => AddTicketUseCase(getIt()));
+  getIt.registerLazySingleton(() => GetTicketByIdUseCase(getIt()));
+  getIt.registerLazySingleton(() => DeleteTicketByIdUseCase(getIt()));
+  getIt.registerLazySingleton(() => GetAllTicketsUseCase(getIt()));
 }
 
 void initRepositories() {
@@ -70,7 +77,8 @@ void initDataSources() {
     () => UserLocalDataSourceImpl(sharedPreferences: getIt()),
   );
   getIt.registerLazySingleton<TicketLocalDataSourceImpl>(
-    () => TicketLocalDataSourceImpl(sharedPreferences: getIt()),
+    () => TicketLocalDataSourceImpl(
+        sharedPreferences: getIt(), ticketDB: getIt()),
   );
 }
 
@@ -87,10 +95,13 @@ Future<void> initExternals() async {
   getIt.registerLazySingleton(() => Dio());
 
   getIt.registerLazySingleton(() => Connectivity());
+
+  getIt.registerLazySingleton(() => TicketDatabaseHelper());
 }
 
 void initBlocs() {
   getIt.registerFactory<MarketsBloc>(() => MarketsBloc(getIt()));
   getIt.registerFactory<UserBloc>(() => UserBloc(getIt()));
-  getIt.registerFactory<TicketsBloc>(() => TicketsBloc(getIt()));
+  getIt.registerFactory<TicketsBloc>(
+      () => TicketsBloc(getIt(), getIt(), getIt(), getIt()));
 }

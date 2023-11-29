@@ -16,42 +16,55 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TicketsEvent {
-  TicketModel get ticket => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(TicketModel ticket) addTicket,
+    required TResult Function(TicketModel ticket) deleteTicket,
+    required TResult Function() getAllTickets,
+    required TResult Function() toastReaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(TicketModel ticket)? addTicket,
+    TResult? Function(TicketModel ticket)? deleteTicket,
+    TResult? Function()? getAllTickets,
+    TResult? Function()? toastReaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TicketModel ticket)? addTicket,
+    TResult Function(TicketModel ticket)? deleteTicket,
+    TResult Function()? getAllTickets,
+    TResult Function()? toastReaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddTicket value) addTicket,
+    required TResult Function(_DeleteTicket value) deleteTicket,
+    required TResult Function(_GetAllTickets value) getAllTickets,
+    required TResult Function(_ToastReaded value) toastReaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddTicket value)? addTicket,
+    TResult? Function(_DeleteTicket value)? deleteTicket,
+    TResult? Function(_GetAllTickets value)? getAllTickets,
+    TResult? Function(_ToastReaded value)? toastReaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddTicket value)? addTicket,
+    TResult Function(_DeleteTicket value)? deleteTicket,
+    TResult Function(_GetAllTickets value)? getAllTickets,
+    TResult Function(_ToastReaded value)? toastReaded,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $TicketsEventCopyWith<TicketsEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -60,10 +73,6 @@ abstract class $TicketsEventCopyWith<$Res> {
   factory $TicketsEventCopyWith(
           TicketsEvent value, $Res Function(TicketsEvent) then) =
       _$TicketsEventCopyWithImpl<$Res, TicketsEvent>;
-  @useResult
-  $Res call({TicketModel ticket});
-
-  $TicketModelCopyWith<$Res> get ticket;
 }
 
 /// @nodoc
@@ -75,40 +84,16 @@ class _$TicketsEventCopyWithImpl<$Res, $Val extends TicketsEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? ticket = null,
-  }) {
-    return _then(_value.copyWith(
-      ticket: null == ticket
-          ? _value.ticket
-          : ticket // ignore: cast_nullable_to_non_nullable
-              as TicketModel,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $TicketModelCopyWith<$Res> get ticket {
-    return $TicketModelCopyWith<$Res>(_value.ticket, (value) {
-      return _then(_value.copyWith(ticket: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$_AddTicketCopyWith<$Res>
-    implements $TicketsEventCopyWith<$Res> {
+abstract class _$$_AddTicketCopyWith<$Res> {
   factory _$$_AddTicketCopyWith(
           _$_AddTicket value, $Res Function(_$_AddTicket) then) =
       __$$_AddTicketCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({TicketModel ticket});
 
-  @override
   $TicketModelCopyWith<$Res> get ticket;
 }
 
@@ -131,6 +116,14 @@ class __$$_AddTicketCopyWithImpl<$Res>
           : ticket // ignore: cast_nullable_to_non_nullable
               as TicketModel,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TicketModelCopyWith<$Res> get ticket {
+    return $TicketModelCopyWith<$Res>(_value.ticket, (value) {
+      return _then(_value.copyWith(ticket: value));
+    });
   }
 }
 
@@ -168,6 +161,9 @@ class _$_AddTicket implements _AddTicket {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(TicketModel ticket) addTicket,
+    required TResult Function(TicketModel ticket) deleteTicket,
+    required TResult Function() getAllTickets,
+    required TResult Function() toastReaded,
   }) {
     return addTicket(ticket);
   }
@@ -176,6 +172,9 @@ class _$_AddTicket implements _AddTicket {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(TicketModel ticket)? addTicket,
+    TResult? Function(TicketModel ticket)? deleteTicket,
+    TResult? Function()? getAllTickets,
+    TResult? Function()? toastReaded,
   }) {
     return addTicket?.call(ticket);
   }
@@ -184,6 +183,9 @@ class _$_AddTicket implements _AddTicket {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(TicketModel ticket)? addTicket,
+    TResult Function(TicketModel ticket)? deleteTicket,
+    TResult Function()? getAllTickets,
+    TResult Function()? toastReaded,
     required TResult orElse(),
   }) {
     if (addTicket != null) {
@@ -196,6 +198,9 @@ class _$_AddTicket implements _AddTicket {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_AddTicket value) addTicket,
+    required TResult Function(_DeleteTicket value) deleteTicket,
+    required TResult Function(_GetAllTickets value) getAllTickets,
+    required TResult Function(_ToastReaded value) toastReaded,
   }) {
     return addTicket(this);
   }
@@ -204,6 +209,9 @@ class _$_AddTicket implements _AddTicket {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_AddTicket value)? addTicket,
+    TResult? Function(_DeleteTicket value)? deleteTicket,
+    TResult? Function(_GetAllTickets value)? getAllTickets,
+    TResult? Function(_ToastReaded value)? toastReaded,
   }) {
     return addTicket?.call(this);
   }
@@ -212,6 +220,9 @@ class _$_AddTicket implements _AddTicket {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AddTicket value)? addTicket,
+    TResult Function(_DeleteTicket value)? deleteTicket,
+    TResult Function(_GetAllTickets value)? getAllTickets,
+    TResult Function(_ToastReaded value)? toastReaded,
     required TResult orElse(),
   }) {
     if (addTicket != null) {
@@ -224,221 +235,17 @@ class _$_AddTicket implements _AddTicket {
 abstract class _AddTicket implements TicketsEvent {
   const factory _AddTicket(final TicketModel ticket) = _$_AddTicket;
 
-  @override
   TicketModel get ticket;
-  @override
   @JsonKey(ignore: true)
   _$$_AddTicketCopyWith<_$_AddTicket> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$TicketsState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(List<TicketModel> ticketsList) ticketsLoaded,
-    required TResult Function(TicketModel ticket) ticketAdded,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<TicketModel> ticketsList)? ticketsLoaded,
-    TResult? Function(TicketModel ticket)? ticketAdded,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<TicketModel> ticketsList)? ticketsLoaded,
-    TResult Function(TicketModel ticket)? ticketAdded,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_TicketsLoaded value) ticketsLoaded,
-    required TResult Function(_TicketAdded value) ticketAdded,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_TicketsLoaded value)? ticketsLoaded,
-    TResult? Function(_TicketAdded value)? ticketAdded,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_TicketsLoaded value)? ticketsLoaded,
-    TResult Function(_TicketAdded value)? ticketAdded,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $TicketsStateCopyWith<$Res> {
-  factory $TicketsStateCopyWith(
-          TicketsState value, $Res Function(TicketsState) then) =
-      _$TicketsStateCopyWithImpl<$Res, TicketsState>;
-}
-
-/// @nodoc
-class _$TicketsStateCopyWithImpl<$Res, $Val extends TicketsState>
-    implements $TicketsStateCopyWith<$Res> {
-  _$TicketsStateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$_TicketsLoadedCopyWith<$Res> {
-  factory _$$_TicketsLoadedCopyWith(
-          _$_TicketsLoaded value, $Res Function(_$_TicketsLoaded) then) =
-      __$$_TicketsLoadedCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<TicketModel> ticketsList});
-}
-
-/// @nodoc
-class __$$_TicketsLoadedCopyWithImpl<$Res>
-    extends _$TicketsStateCopyWithImpl<$Res, _$_TicketsLoaded>
-    implements _$$_TicketsLoadedCopyWith<$Res> {
-  __$$_TicketsLoadedCopyWithImpl(
-      _$_TicketsLoaded _value, $Res Function(_$_TicketsLoaded) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? ticketsList = null,
-  }) {
-    return _then(_$_TicketsLoaded(
-      ticketsList: null == ticketsList
-          ? _value._ticketsList
-          : ticketsList // ignore: cast_nullable_to_non_nullable
-              as List<TicketModel>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_TicketsLoaded implements _TicketsLoaded {
-  const _$_TicketsLoaded({required final List<TicketModel> ticketsList})
-      : _ticketsList = ticketsList;
-
-  final List<TicketModel> _ticketsList;
-  @override
-  List<TicketModel> get ticketsList {
-    if (_ticketsList is EqualUnmodifiableListView) return _ticketsList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_ticketsList);
-  }
-
-  @override
-  String toString() {
-    return 'TicketsState.ticketsLoaded(ticketsList: $ticketsList)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_TicketsLoaded &&
-            const DeepCollectionEquality()
-                .equals(other._ticketsList, _ticketsList));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_ticketsList));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_TicketsLoadedCopyWith<_$_TicketsLoaded> get copyWith =>
-      __$$_TicketsLoadedCopyWithImpl<_$_TicketsLoaded>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(List<TicketModel> ticketsList) ticketsLoaded,
-    required TResult Function(TicketModel ticket) ticketAdded,
-  }) {
-    return ticketsLoaded(ticketsList);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<TicketModel> ticketsList)? ticketsLoaded,
-    TResult? Function(TicketModel ticket)? ticketAdded,
-  }) {
-    return ticketsLoaded?.call(ticketsList);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<TicketModel> ticketsList)? ticketsLoaded,
-    TResult Function(TicketModel ticket)? ticketAdded,
-    required TResult orElse(),
-  }) {
-    if (ticketsLoaded != null) {
-      return ticketsLoaded(ticketsList);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_TicketsLoaded value) ticketsLoaded,
-    required TResult Function(_TicketAdded value) ticketAdded,
-  }) {
-    return ticketsLoaded(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_TicketsLoaded value)? ticketsLoaded,
-    TResult? Function(_TicketAdded value)? ticketAdded,
-  }) {
-    return ticketsLoaded?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_TicketsLoaded value)? ticketsLoaded,
-    TResult Function(_TicketAdded value)? ticketAdded,
-    required TResult orElse(),
-  }) {
-    if (ticketsLoaded != null) {
-      return ticketsLoaded(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _TicketsLoaded implements TicketsState {
-  const factory _TicketsLoaded({required final List<TicketModel> ticketsList}) =
-      _$_TicketsLoaded;
-
-  List<TicketModel> get ticketsList;
-  @JsonKey(ignore: true)
-  _$$_TicketsLoadedCopyWith<_$_TicketsLoaded> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_TicketAddedCopyWith<$Res> {
-  factory _$$_TicketAddedCopyWith(
-          _$_TicketAdded value, $Res Function(_$_TicketAdded) then) =
-      __$$_TicketAddedCopyWithImpl<$Res>;
+abstract class _$$_DeleteTicketCopyWith<$Res> {
+  factory _$$_DeleteTicketCopyWith(
+          _$_DeleteTicket value, $Res Function(_$_DeleteTicket) then) =
+      __$$_DeleteTicketCopyWithImpl<$Res>;
   @useResult
   $Res call({TicketModel ticket});
 
@@ -446,11 +253,11 @@ abstract class _$$_TicketAddedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_TicketAddedCopyWithImpl<$Res>
-    extends _$TicketsStateCopyWithImpl<$Res, _$_TicketAdded>
-    implements _$$_TicketAddedCopyWith<$Res> {
-  __$$_TicketAddedCopyWithImpl(
-      _$_TicketAdded _value, $Res Function(_$_TicketAdded) _then)
+class __$$_DeleteTicketCopyWithImpl<$Res>
+    extends _$TicketsEventCopyWithImpl<$Res, _$_DeleteTicket>
+    implements _$$_DeleteTicketCopyWith<$Res> {
+  __$$_DeleteTicketCopyWithImpl(
+      _$_DeleteTicket _value, $Res Function(_$_DeleteTicket) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -458,8 +265,8 @@ class __$$_TicketAddedCopyWithImpl<$Res>
   $Res call({
     Object? ticket = null,
   }) {
-    return _then(_$_TicketAdded(
-      ticket: null == ticket
+    return _then(_$_DeleteTicket(
+      null == ticket
           ? _value.ticket
           : ticket // ignore: cast_nullable_to_non_nullable
               as TicketModel,
@@ -477,22 +284,22 @@ class __$$_TicketAddedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TicketAdded implements _TicketAdded {
-  const _$_TicketAdded({required this.ticket});
+class _$_DeleteTicket implements _DeleteTicket {
+  const _$_DeleteTicket(this.ticket);
 
   @override
   final TicketModel ticket;
 
   @override
   String toString() {
-    return 'TicketsState.ticketAdded(ticket: $ticket)';
+    return 'TicketsEvent.deleteTicket(ticket: $ticket)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TicketAdded &&
+            other is _$_DeleteTicket &&
             (identical(other.ticket, ticket) || other.ticket == ticket));
   }
 
@@ -502,36 +309,42 @@ class _$_TicketAdded implements _TicketAdded {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TicketAddedCopyWith<_$_TicketAdded> get copyWith =>
-      __$$_TicketAddedCopyWithImpl<_$_TicketAdded>(this, _$identity);
+  _$$_DeleteTicketCopyWith<_$_DeleteTicket> get copyWith =>
+      __$$_DeleteTicketCopyWithImpl<_$_DeleteTicket>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<TicketModel> ticketsList) ticketsLoaded,
-    required TResult Function(TicketModel ticket) ticketAdded,
+    required TResult Function(TicketModel ticket) addTicket,
+    required TResult Function(TicketModel ticket) deleteTicket,
+    required TResult Function() getAllTickets,
+    required TResult Function() toastReaded,
   }) {
-    return ticketAdded(ticket);
+    return deleteTicket(ticket);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<TicketModel> ticketsList)? ticketsLoaded,
-    TResult? Function(TicketModel ticket)? ticketAdded,
+    TResult? Function(TicketModel ticket)? addTicket,
+    TResult? Function(TicketModel ticket)? deleteTicket,
+    TResult? Function()? getAllTickets,
+    TResult? Function()? toastReaded,
   }) {
-    return ticketAdded?.call(ticket);
+    return deleteTicket?.call(ticket);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<TicketModel> ticketsList)? ticketsLoaded,
-    TResult Function(TicketModel ticket)? ticketAdded,
+    TResult Function(TicketModel ticket)? addTicket,
+    TResult Function(TicketModel ticket)? deleteTicket,
+    TResult Function()? getAllTickets,
+    TResult Function()? toastReaded,
     required TResult orElse(),
   }) {
-    if (ticketAdded != null) {
-      return ticketAdded(ticket);
+    if (deleteTicket != null) {
+      return deleteTicket(ticket);
     }
     return orElse();
   }
@@ -539,41 +352,274 @@ class _$_TicketAdded implements _TicketAdded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_TicketsLoaded value) ticketsLoaded,
-    required TResult Function(_TicketAdded value) ticketAdded,
+    required TResult Function(_AddTicket value) addTicket,
+    required TResult Function(_DeleteTicket value) deleteTicket,
+    required TResult Function(_GetAllTickets value) getAllTickets,
+    required TResult Function(_ToastReaded value) toastReaded,
   }) {
-    return ticketAdded(this);
+    return deleteTicket(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_TicketsLoaded value)? ticketsLoaded,
-    TResult? Function(_TicketAdded value)? ticketAdded,
+    TResult? Function(_AddTicket value)? addTicket,
+    TResult? Function(_DeleteTicket value)? deleteTicket,
+    TResult? Function(_GetAllTickets value)? getAllTickets,
+    TResult? Function(_ToastReaded value)? toastReaded,
   }) {
-    return ticketAdded?.call(this);
+    return deleteTicket?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_TicketsLoaded value)? ticketsLoaded,
-    TResult Function(_TicketAdded value)? ticketAdded,
+    TResult Function(_AddTicket value)? addTicket,
+    TResult Function(_DeleteTicket value)? deleteTicket,
+    TResult Function(_GetAllTickets value)? getAllTickets,
+    TResult Function(_ToastReaded value)? toastReaded,
     required TResult orElse(),
   }) {
-    if (ticketAdded != null) {
-      return ticketAdded(this);
+    if (deleteTicket != null) {
+      return deleteTicket(this);
     }
     return orElse();
   }
 }
 
-abstract class _TicketAdded implements TicketsState {
-  const factory _TicketAdded({required final TicketModel ticket}) =
-      _$_TicketAdded;
+abstract class _DeleteTicket implements TicketsEvent {
+  const factory _DeleteTicket(final TicketModel ticket) = _$_DeleteTicket;
 
   TicketModel get ticket;
   @JsonKey(ignore: true)
-  _$$_TicketAddedCopyWith<_$_TicketAdded> get copyWith =>
+  _$$_DeleteTicketCopyWith<_$_DeleteTicket> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_GetAllTicketsCopyWith<$Res> {
+  factory _$$_GetAllTicketsCopyWith(
+          _$_GetAllTickets value, $Res Function(_$_GetAllTickets) then) =
+      __$$_GetAllTicketsCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_GetAllTicketsCopyWithImpl<$Res>
+    extends _$TicketsEventCopyWithImpl<$Res, _$_GetAllTickets>
+    implements _$$_GetAllTicketsCopyWith<$Res> {
+  __$$_GetAllTicketsCopyWithImpl(
+      _$_GetAllTickets _value, $Res Function(_$_GetAllTickets) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_GetAllTickets implements _GetAllTickets {
+  const _$_GetAllTickets();
+
+  @override
+  String toString() {
+    return 'TicketsEvent.getAllTickets()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_GetAllTickets);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(TicketModel ticket) addTicket,
+    required TResult Function(TicketModel ticket) deleteTicket,
+    required TResult Function() getAllTickets,
+    required TResult Function() toastReaded,
+  }) {
+    return getAllTickets();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(TicketModel ticket)? addTicket,
+    TResult? Function(TicketModel ticket)? deleteTicket,
+    TResult? Function()? getAllTickets,
+    TResult? Function()? toastReaded,
+  }) {
+    return getAllTickets?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TicketModel ticket)? addTicket,
+    TResult Function(TicketModel ticket)? deleteTicket,
+    TResult Function()? getAllTickets,
+    TResult Function()? toastReaded,
+    required TResult orElse(),
+  }) {
+    if (getAllTickets != null) {
+      return getAllTickets();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AddTicket value) addTicket,
+    required TResult Function(_DeleteTicket value) deleteTicket,
+    required TResult Function(_GetAllTickets value) getAllTickets,
+    required TResult Function(_ToastReaded value) toastReaded,
+  }) {
+    return getAllTickets(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AddTicket value)? addTicket,
+    TResult? Function(_DeleteTicket value)? deleteTicket,
+    TResult? Function(_GetAllTickets value)? getAllTickets,
+    TResult? Function(_ToastReaded value)? toastReaded,
+  }) {
+    return getAllTickets?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddTicket value)? addTicket,
+    TResult Function(_DeleteTicket value)? deleteTicket,
+    TResult Function(_GetAllTickets value)? getAllTickets,
+    TResult Function(_ToastReaded value)? toastReaded,
+    required TResult orElse(),
+  }) {
+    if (getAllTickets != null) {
+      return getAllTickets(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetAllTickets implements TicketsEvent {
+  const factory _GetAllTickets() = _$_GetAllTickets;
+}
+
+/// @nodoc
+abstract class _$$_ToastReadedCopyWith<$Res> {
+  factory _$$_ToastReadedCopyWith(
+          _$_ToastReaded value, $Res Function(_$_ToastReaded) then) =
+      __$$_ToastReadedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_ToastReadedCopyWithImpl<$Res>
+    extends _$TicketsEventCopyWithImpl<$Res, _$_ToastReaded>
+    implements _$$_ToastReadedCopyWith<$Res> {
+  __$$_ToastReadedCopyWithImpl(
+      _$_ToastReaded _value, $Res Function(_$_ToastReaded) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_ToastReaded implements _ToastReaded {
+  const _$_ToastReaded();
+
+  @override
+  String toString() {
+    return 'TicketsEvent.toastReaded()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_ToastReaded);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(TicketModel ticket) addTicket,
+    required TResult Function(TicketModel ticket) deleteTicket,
+    required TResult Function() getAllTickets,
+    required TResult Function() toastReaded,
+  }) {
+    return toastReaded();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(TicketModel ticket)? addTicket,
+    TResult? Function(TicketModel ticket)? deleteTicket,
+    TResult? Function()? getAllTickets,
+    TResult? Function()? toastReaded,
+  }) {
+    return toastReaded?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(TicketModel ticket)? addTicket,
+    TResult Function(TicketModel ticket)? deleteTicket,
+    TResult Function()? getAllTickets,
+    TResult Function()? toastReaded,
+    required TResult orElse(),
+  }) {
+    if (toastReaded != null) {
+      return toastReaded();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AddTicket value) addTicket,
+    required TResult Function(_DeleteTicket value) deleteTicket,
+    required TResult Function(_GetAllTickets value) getAllTickets,
+    required TResult Function(_ToastReaded value) toastReaded,
+  }) {
+    return toastReaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AddTicket value)? addTicket,
+    TResult? Function(_DeleteTicket value)? deleteTicket,
+    TResult? Function(_GetAllTickets value)? getAllTickets,
+    TResult? Function(_ToastReaded value)? toastReaded,
+  }) {
+    return toastReaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddTicket value)? addTicket,
+    TResult Function(_DeleteTicket value)? deleteTicket,
+    TResult Function(_GetAllTickets value)? getAllTickets,
+    TResult Function(_ToastReaded value)? toastReaded,
+    required TResult orElse(),
+  }) {
+    if (toastReaded != null) {
+      return toastReaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ToastReaded implements TicketsEvent {
+  const factory _ToastReaded() = _$_ToastReaded;
 }

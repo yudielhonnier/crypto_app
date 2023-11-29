@@ -1,8 +1,6 @@
 import 'package:crypto_app/core/resources/ticket_db_helper.dart';
 import 'package:crypto_app/features/shared/data/models/ticket_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart' as p;
 
 abstract class TicketLocalDataSource {
   Future<void> cacheTickets();
@@ -18,11 +16,13 @@ abstract class TicketLocalDataSource {
 
 class TicketLocalDataSourceImpl implements TicketLocalDataSource {
   final SharedPreferences sharedPreferences;
+  final TicketDatabaseHelper ticketDB;
 
-  TicketLocalDataSourceImpl({required this.sharedPreferences});
+  TicketLocalDataSourceImpl(
+      {required this.sharedPreferences, required this.ticketDB});
   @override
   Future<TicketModel> addTicket(TicketModel ticket) async {
-    return TicketDatabaseHelper().addTicket(ticket);
+    return ticketDB.addTicket(ticket);
   }
 
   @override
@@ -39,20 +39,17 @@ class TicketLocalDataSourceImpl implements TicketLocalDataSource {
 
   @override
   Future<void> deleteTicket(String id) {
-    // TODO: implement deleteTicket
-    throw UnimplementedError();
+    return ticketDB.deleteTicket(id);
   }
 
   @override
   Future<List<TicketModel>> getAllTickets() {
-    // TODO: implement getAllTickets
-    throw UnimplementedError();
+    return ticketDB.getAllTickets();
   }
 
   @override
   Future<TicketModel> getTicket(String id) {
-    // TODO: implement getTicket
-    throw UnimplementedError();
+    return ticketDB.getTicket(id);
   }
 
   @override

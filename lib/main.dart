@@ -3,12 +3,14 @@ import 'dart:io';
 import 'package:crypto_app/config/themes/theme_constants.dart';
 import 'package:crypto_app/core/helpers/camera_delegate.dart';
 import 'package:crypto_app/core/resources/ticket_db_helper.dart';
+import 'package:crypto_app/features/shared/presentation/bloc/tickets/tickets_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:window_manager/window_manager.dart';
 
-import '../config/router/my_router.dart';
-import 'injector.dart';
+import 'config/router/my_router.dart';
+import 'app/injector.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -47,16 +49,25 @@ class MyApp extends StatelessWidget {
             create: (BuildContext createContext) => MyRouter(),
           )
         ],
-        child: Builder(builder: (BuildContext context) {
-          final _router = Provider.of<MyRouter>(context, listen: false).router;
-          return MaterialApp.router(
-            routerConfig: _router,
-            title: 'Material App',
-            theme: ligthTheme,
-            darkTheme: darkTheme,
-            themeMode: ThemeMode.dark,
-            debugShowCheckedModeBanner: false,
-          );
-        }));
+        child: MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) =>
+                  getIt<TicketsBloc>()..add(const TicketsEvent.getAllTickets()),
+            )
+          ],
+          child: Builder(builder: (BuildContext context) {
+            final _router =
+                Provider.of<MyRouter>(context, listen: false).router;
+            return MaterialApp.router(
+              routerConfig: _router,
+              title: 'Material App',
+              theme: ligthTheme,
+              darkTheme: darkTheme,
+              themeMode: ThemeMode.dark,
+              debugShowCheckedModeBanner: false,
+            );
+          }),
+        ));
   }
 }

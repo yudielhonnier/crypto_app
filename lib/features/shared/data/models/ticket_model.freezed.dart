@@ -24,43 +24,43 @@ mixin _$TicketModel {
   String get symbol => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
-  @JsonKey(name: 'currentPrice')
+  @JsonKey(name: 'current_price')
   double get currentPrice => throw _privateConstructorUsedError;
-  @JsonKey(name: 'marketCap')
+  @JsonKey(name: 'market_cap')
   double get marketCap => throw _privateConstructorUsedError;
-  @JsonKey(name: 'marketCapRank')
+  @JsonKey(name: 'market_cap_rank')
   int get marketCapRank => throw _privateConstructorUsedError;
-  @JsonKey(name: 'fullyRilutedValuation')
-  double get fullyRilutedValuation => throw _privateConstructorUsedError;
-  @JsonKey(name: 'totalVolume')
+  @JsonKey(name: 'fully_diluted_valuation')
+  double get fullyDilutedValuation => throw _privateConstructorUsedError;
+  @JsonKey(name: 'total_volume')
   double get totalVolume => throw _privateConstructorUsedError;
-  @JsonKey(name: 'high_24H')
+  @JsonKey(name: 'high_24h')
   double get high24H => throw _privateConstructorUsedError;
-  @JsonKey(name: 'low_24H')
+  @JsonKey(name: 'low_24h')
   double get low24H => throw _privateConstructorUsedError;
-  @JsonKey(name: 'priceChange_24H')
+  @JsonKey(name: 'price_change_24h')
   double get priceChange24H => throw _privateConstructorUsedError;
-  @JsonKey(name: 'priceChangePercentage_24H')
+  @JsonKey(name: 'price_change_percentage_24h')
   double get priceChangePercentage24H => throw _privateConstructorUsedError;
-  @JsonKey(name: 'marketCapChange_24H')
+  @JsonKey(name: 'market_cap_change_24h')
   double get marketCapChange24H => throw _privateConstructorUsedError;
-  @JsonKey(name: 'marketCapChangePercentage_24H')
+  @JsonKey(name: 'market_cap_change_percentage_24h')
   double get marketCapChangePercentage24H => throw _privateConstructorUsedError;
-  @JsonKey(name: 'circulatingSupply')
+  @JsonKey(name: 'circulating_supply')
   double get circulatingSupply => throw _privateConstructorUsedError;
-  @JsonKey(name: 'totalSupply')
+  @JsonKey(name: 'total_supply')
   double get totalSupply => throw _privateConstructorUsedError;
-  @JsonKey(name: 'maxSupply')
+  @JsonKey(name: 'max_supply')
   double? get maxSupply => throw _privateConstructorUsedError;
   double get ath => throw _privateConstructorUsedError;
-  @JsonKey(name: 'athChangePercentage')
+  @JsonKey(name: 'ath_change_percentage')
   double get athChangePercentage => throw _privateConstructorUsedError;
-  @JsonKey(name: 'athRate')
+  @JsonKey(name: 'ath_date')
   DateTime get athDate => throw _privateConstructorUsedError;
   double get atl => throw _privateConstructorUsedError;
-  @JsonKey(name: 'atlChangePercentage')
+  @JsonKey(name: 'atl_change_percentage')
   double get atlChangePercentage => throw _privateConstructorUsedError;
-  @JsonKey(name: 'atlRate')
+  @JsonKey(name: 'atl_date')
   DateTime get atlDate => throw _privateConstructorUsedError;
   Roi? get roi => throw _privateConstructorUsedError;
   @JsonKey(name: 'last_updated')
@@ -83,28 +83,28 @@ abstract class $TicketModelCopyWith<$Res> {
       String symbol,
       String name,
       String image,
-      @JsonKey(name: 'currentPrice') double currentPrice,
-      @JsonKey(name: 'marketCap') double marketCap,
-      @JsonKey(name: 'marketCapRank') int marketCapRank,
-      @JsonKey(name: 'fullyRilutedValuation') double fullyRilutedValuation,
-      @JsonKey(name: 'totalVolume') double totalVolume,
-      @JsonKey(name: 'high_24H') double high24H,
-      @JsonKey(name: 'low_24H') double low24H,
-      @JsonKey(name: 'priceChange_24H') double priceChange24H,
-      @JsonKey(name: 'priceChangePercentage_24H')
+      @JsonKey(name: 'current_price') double currentPrice,
+      @JsonKey(name: 'market_cap') double marketCap,
+      @JsonKey(name: 'market_cap_rank') int marketCapRank,
+      @JsonKey(name: 'fully_diluted_valuation') double fullyDilutedValuation,
+      @JsonKey(name: 'total_volume') double totalVolume,
+      @JsonKey(name: 'high_24h') double high24H,
+      @JsonKey(name: 'low_24h') double low24H,
+      @JsonKey(name: 'price_change_24h') double priceChange24H,
+      @JsonKey(name: 'price_change_percentage_24h')
       double priceChangePercentage24H,
-      @JsonKey(name: 'marketCapChange_24H') double marketCapChange24H,
-      @JsonKey(name: 'marketCapChangePercentage_24H')
+      @JsonKey(name: 'market_cap_change_24h') double marketCapChange24H,
+      @JsonKey(name: 'market_cap_change_percentage_24h')
       double marketCapChangePercentage24H,
-      @JsonKey(name: 'circulatingSupply') double circulatingSupply,
-      @JsonKey(name: 'totalSupply') double totalSupply,
-      @JsonKey(name: 'maxSupply') double? maxSupply,
+      @JsonKey(name: 'circulating_supply') double circulatingSupply,
+      @JsonKey(name: 'total_supply') double totalSupply,
+      @JsonKey(name: 'max_supply') double? maxSupply,
       double ath,
-      @JsonKey(name: 'athChangePercentage') double athChangePercentage,
-      @JsonKey(name: 'athRate') DateTime athDate,
+      @JsonKey(name: 'ath_change_percentage') double athChangePercentage,
+      @JsonKey(name: 'ath_date') DateTime athDate,
       double atl,
-      @JsonKey(name: 'atlChangePercentage') double atlChangePercentage,
-      @JsonKey(name: 'atlRate') DateTime atlDate,
+      @JsonKey(name: 'atl_change_percentage') double atlChangePercentage,
+      @JsonKey(name: 'atl_date') DateTime atlDate,
       Roi? roi,
       @JsonKey(name: 'last_updated') DateTime lastUpdated});
 
@@ -131,7 +131,7 @@ class _$TicketModelCopyWithImpl<$Res, $Val extends TicketModel>
     Object? currentPrice = null,
     Object? marketCap = null,
     Object? marketCapRank = null,
-    Object? fullyRilutedValuation = null,
+    Object? fullyDilutedValuation = null,
     Object? totalVolume = null,
     Object? high24H = null,
     Object? low24H = null,
@@ -180,9 +180,9 @@ class _$TicketModelCopyWithImpl<$Res, $Val extends TicketModel>
           ? _value.marketCapRank
           : marketCapRank // ignore: cast_nullable_to_non_nullable
               as int,
-      fullyRilutedValuation: null == fullyRilutedValuation
-          ? _value.fullyRilutedValuation
-          : fullyRilutedValuation // ignore: cast_nullable_to_non_nullable
+      fullyDilutedValuation: null == fullyDilutedValuation
+          ? _value.fullyDilutedValuation
+          : fullyDilutedValuation // ignore: cast_nullable_to_non_nullable
               as double,
       totalVolume: null == totalVolume
           ? _value.totalVolume
@@ -285,28 +285,28 @@ abstract class _$$_TicketModelCopyWith<$Res>
       String symbol,
       String name,
       String image,
-      @JsonKey(name: 'currentPrice') double currentPrice,
-      @JsonKey(name: 'marketCap') double marketCap,
-      @JsonKey(name: 'marketCapRank') int marketCapRank,
-      @JsonKey(name: 'fullyRilutedValuation') double fullyRilutedValuation,
-      @JsonKey(name: 'totalVolume') double totalVolume,
-      @JsonKey(name: 'high_24H') double high24H,
-      @JsonKey(name: 'low_24H') double low24H,
-      @JsonKey(name: 'priceChange_24H') double priceChange24H,
-      @JsonKey(name: 'priceChangePercentage_24H')
+      @JsonKey(name: 'current_price') double currentPrice,
+      @JsonKey(name: 'market_cap') double marketCap,
+      @JsonKey(name: 'market_cap_rank') int marketCapRank,
+      @JsonKey(name: 'fully_diluted_valuation') double fullyDilutedValuation,
+      @JsonKey(name: 'total_volume') double totalVolume,
+      @JsonKey(name: 'high_24h') double high24H,
+      @JsonKey(name: 'low_24h') double low24H,
+      @JsonKey(name: 'price_change_24h') double priceChange24H,
+      @JsonKey(name: 'price_change_percentage_24h')
       double priceChangePercentage24H,
-      @JsonKey(name: 'marketCapChange_24H') double marketCapChange24H,
-      @JsonKey(name: 'marketCapChangePercentage_24H')
+      @JsonKey(name: 'market_cap_change_24h') double marketCapChange24H,
+      @JsonKey(name: 'market_cap_change_percentage_24h')
       double marketCapChangePercentage24H,
-      @JsonKey(name: 'circulatingSupply') double circulatingSupply,
-      @JsonKey(name: 'totalSupply') double totalSupply,
-      @JsonKey(name: 'maxSupply') double? maxSupply,
+      @JsonKey(name: 'circulating_supply') double circulatingSupply,
+      @JsonKey(name: 'total_supply') double totalSupply,
+      @JsonKey(name: 'max_supply') double? maxSupply,
       double ath,
-      @JsonKey(name: 'athChangePercentage') double athChangePercentage,
-      @JsonKey(name: 'athRate') DateTime athDate,
+      @JsonKey(name: 'ath_change_percentage') double athChangePercentage,
+      @JsonKey(name: 'ath_date') DateTime athDate,
       double atl,
-      @JsonKey(name: 'atlChangePercentage') double atlChangePercentage,
-      @JsonKey(name: 'atlRate') DateTime atlDate,
+      @JsonKey(name: 'atl_change_percentage') double atlChangePercentage,
+      @JsonKey(name: 'atl_date') DateTime atlDate,
       Roi? roi,
       @JsonKey(name: 'last_updated') DateTime lastUpdated});
 
@@ -332,7 +332,7 @@ class __$$_TicketModelCopyWithImpl<$Res>
     Object? currentPrice = null,
     Object? marketCap = null,
     Object? marketCapRank = null,
-    Object? fullyRilutedValuation = null,
+    Object? fullyDilutedValuation = null,
     Object? totalVolume = null,
     Object? high24H = null,
     Object? low24H = null,
@@ -381,9 +381,9 @@ class __$$_TicketModelCopyWithImpl<$Res>
           ? _value.marketCapRank
           : marketCapRank // ignore: cast_nullable_to_non_nullable
               as int,
-      fullyRilutedValuation: null == fullyRilutedValuation
-          ? _value.fullyRilutedValuation
-          : fullyRilutedValuation // ignore: cast_nullable_to_non_nullable
+      fullyDilutedValuation: null == fullyDilutedValuation
+          ? _value.fullyDilutedValuation
+          : fullyDilutedValuation // ignore: cast_nullable_to_non_nullable
               as double,
       totalVolume: null == totalVolume
           ? _value.totalVolume
@@ -469,29 +469,29 @@ class _$_TicketModel implements _TicketModel {
       required this.symbol,
       required this.name,
       required this.image,
-      @JsonKey(name: 'currentPrice') required this.currentPrice,
-      @JsonKey(name: 'marketCap') required this.marketCap,
-      @JsonKey(name: 'marketCapRank') required this.marketCapRank,
-      @JsonKey(name: 'fullyRilutedValuation')
-      required this.fullyRilutedValuation,
-      @JsonKey(name: 'totalVolume') required this.totalVolume,
-      @JsonKey(name: 'high_24H') required this.high24H,
-      @JsonKey(name: 'low_24H') required this.low24H,
-      @JsonKey(name: 'priceChange_24H') required this.priceChange24H,
-      @JsonKey(name: 'priceChangePercentage_24H')
+      @JsonKey(name: 'current_price') required this.currentPrice,
+      @JsonKey(name: 'market_cap') required this.marketCap,
+      @JsonKey(name: 'market_cap_rank') required this.marketCapRank,
+      @JsonKey(name: 'fully_diluted_valuation')
+      required this.fullyDilutedValuation,
+      @JsonKey(name: 'total_volume') required this.totalVolume,
+      @JsonKey(name: 'high_24h') required this.high24H,
+      @JsonKey(name: 'low_24h') required this.low24H,
+      @JsonKey(name: 'price_change_24h') required this.priceChange24H,
+      @JsonKey(name: 'price_change_percentage_24h')
       required this.priceChangePercentage24H,
-      @JsonKey(name: 'marketCapChange_24H') required this.marketCapChange24H,
-      @JsonKey(name: 'marketCapChangePercentage_24H')
+      @JsonKey(name: 'market_cap_change_24h') required this.marketCapChange24H,
+      @JsonKey(name: 'market_cap_change_percentage_24h')
       required this.marketCapChangePercentage24H,
-      @JsonKey(name: 'circulatingSupply') required this.circulatingSupply,
-      @JsonKey(name: 'totalSupply') required this.totalSupply,
-      @JsonKey(name: 'maxSupply') this.maxSupply,
+      @JsonKey(name: 'circulating_supply') required this.circulatingSupply,
+      @JsonKey(name: 'total_supply') required this.totalSupply,
+      @JsonKey(name: 'max_supply') this.maxSupply,
       required this.ath,
-      @JsonKey(name: 'athChangePercentage') required this.athChangePercentage,
-      @JsonKey(name: 'athRate') required this.athDate,
+      @JsonKey(name: 'ath_change_percentage') required this.athChangePercentage,
+      @JsonKey(name: 'ath_date') required this.athDate,
       required this.atl,
-      @JsonKey(name: 'atlChangePercentage') required this.atlChangePercentage,
-      @JsonKey(name: 'atlRate') required this.atlDate,
+      @JsonKey(name: 'atl_change_percentage') required this.atlChangePercentage,
+      @JsonKey(name: 'atl_date') required this.atlDate,
       this.roi,
       @JsonKey(name: 'last_updated') required this.lastUpdated});
 
@@ -507,62 +507,62 @@ class _$_TicketModel implements _TicketModel {
   @override
   final String image;
   @override
-  @JsonKey(name: 'currentPrice')
+  @JsonKey(name: 'current_price')
   final double currentPrice;
   @override
-  @JsonKey(name: 'marketCap')
+  @JsonKey(name: 'market_cap')
   final double marketCap;
   @override
-  @JsonKey(name: 'marketCapRank')
+  @JsonKey(name: 'market_cap_rank')
   final int marketCapRank;
   @override
-  @JsonKey(name: 'fullyRilutedValuation')
-  final double fullyRilutedValuation;
+  @JsonKey(name: 'fully_diluted_valuation')
+  final double fullyDilutedValuation;
   @override
-  @JsonKey(name: 'totalVolume')
+  @JsonKey(name: 'total_volume')
   final double totalVolume;
   @override
-  @JsonKey(name: 'high_24H')
+  @JsonKey(name: 'high_24h')
   final double high24H;
   @override
-  @JsonKey(name: 'low_24H')
+  @JsonKey(name: 'low_24h')
   final double low24H;
   @override
-  @JsonKey(name: 'priceChange_24H')
+  @JsonKey(name: 'price_change_24h')
   final double priceChange24H;
   @override
-  @JsonKey(name: 'priceChangePercentage_24H')
+  @JsonKey(name: 'price_change_percentage_24h')
   final double priceChangePercentage24H;
   @override
-  @JsonKey(name: 'marketCapChange_24H')
+  @JsonKey(name: 'market_cap_change_24h')
   final double marketCapChange24H;
   @override
-  @JsonKey(name: 'marketCapChangePercentage_24H')
+  @JsonKey(name: 'market_cap_change_percentage_24h')
   final double marketCapChangePercentage24H;
   @override
-  @JsonKey(name: 'circulatingSupply')
+  @JsonKey(name: 'circulating_supply')
   final double circulatingSupply;
   @override
-  @JsonKey(name: 'totalSupply')
+  @JsonKey(name: 'total_supply')
   final double totalSupply;
   @override
-  @JsonKey(name: 'maxSupply')
+  @JsonKey(name: 'max_supply')
   final double? maxSupply;
   @override
   final double ath;
   @override
-  @JsonKey(name: 'athChangePercentage')
+  @JsonKey(name: 'ath_change_percentage')
   final double athChangePercentage;
   @override
-  @JsonKey(name: 'athRate')
+  @JsonKey(name: 'ath_date')
   final DateTime athDate;
   @override
   final double atl;
   @override
-  @JsonKey(name: 'atlChangePercentage')
+  @JsonKey(name: 'atl_change_percentage')
   final double atlChangePercentage;
   @override
-  @JsonKey(name: 'atlRate')
+  @JsonKey(name: 'atl_date')
   final DateTime atlDate;
   @override
   final Roi? roi;
@@ -572,7 +572,7 @@ class _$_TicketModel implements _TicketModel {
 
   @override
   String toString() {
-    return 'TicketModel(id: $id, symbol: $symbol, name: $name, image: $image, currentPrice: $currentPrice, marketCap: $marketCap, marketCapRank: $marketCapRank, fullyRilutedValuation: $fullyRilutedValuation, totalVolume: $totalVolume, high24H: $high24H, low24H: $low24H, priceChange24H: $priceChange24H, priceChangePercentage24H: $priceChangePercentage24H, marketCapChange24H: $marketCapChange24H, marketCapChangePercentage24H: $marketCapChangePercentage24H, circulatingSupply: $circulatingSupply, totalSupply: $totalSupply, maxSupply: $maxSupply, ath: $ath, athChangePercentage: $athChangePercentage, athDate: $athDate, atl: $atl, atlChangePercentage: $atlChangePercentage, atlDate: $atlDate, roi: $roi, lastUpdated: $lastUpdated)';
+    return 'TicketModel(id: $id, symbol: $symbol, name: $name, image: $image, currentPrice: $currentPrice, marketCap: $marketCap, marketCapRank: $marketCapRank, fullyDilutedValuation: $fullyDilutedValuation, totalVolume: $totalVolume, high24H: $high24H, low24H: $low24H, priceChange24H: $priceChange24H, priceChangePercentage24H: $priceChangePercentage24H, marketCapChange24H: $marketCapChange24H, marketCapChangePercentage24H: $marketCapChangePercentage24H, circulatingSupply: $circulatingSupply, totalSupply: $totalSupply, maxSupply: $maxSupply, ath: $ath, athChangePercentage: $athChangePercentage, athDate: $athDate, atl: $atl, atlChangePercentage: $atlChangePercentage, atlDate: $atlDate, roi: $roi, lastUpdated: $lastUpdated)';
   }
 
   @override
@@ -590,8 +590,8 @@ class _$_TicketModel implements _TicketModel {
                 other.marketCap == marketCap) &&
             (identical(other.marketCapRank, marketCapRank) ||
                 other.marketCapRank == marketCapRank) &&
-            (identical(other.fullyRilutedValuation, fullyRilutedValuation) ||
-                other.fullyRilutedValuation == fullyRilutedValuation) &&
+            (identical(other.fullyDilutedValuation, fullyDilutedValuation) ||
+                other.fullyDilutedValuation == fullyDilutedValuation) &&
             (identical(other.totalVolume, totalVolume) ||
                 other.totalVolume == totalVolume) &&
             (identical(other.high24H, high24H) || other.high24H == high24H) &&
@@ -637,7 +637,7 @@ class _$_TicketModel implements _TicketModel {
         currentPrice,
         marketCap,
         marketCapRank,
-        fullyRilutedValuation,
+        fullyDilutedValuation,
         totalVolume,
         high24H,
         low24H,
@@ -678,33 +678,33 @@ abstract class _TicketModel implements TicketModel {
       required final String symbol,
       required final String name,
       required final String image,
-      @JsonKey(name: 'currentPrice') required final double currentPrice,
-      @JsonKey(name: 'marketCap') required final double marketCap,
-      @JsonKey(name: 'marketCapRank') required final int marketCapRank,
-      @JsonKey(name: 'fullyRilutedValuation')
-      required final double fullyRilutedValuation,
-      @JsonKey(name: 'totalVolume') required final double totalVolume,
-      @JsonKey(name: 'high_24H') required final double high24H,
-      @JsonKey(name: 'low_24H') required final double low24H,
-      @JsonKey(name: 'priceChange_24H') required final double priceChange24H,
-      @JsonKey(name: 'priceChangePercentage_24H')
+      @JsonKey(name: 'current_price') required final double currentPrice,
+      @JsonKey(name: 'market_cap') required final double marketCap,
+      @JsonKey(name: 'market_cap_rank') required final int marketCapRank,
+      @JsonKey(name: 'fully_diluted_valuation')
+      required final double fullyDilutedValuation,
+      @JsonKey(name: 'total_volume') required final double totalVolume,
+      @JsonKey(name: 'high_24h') required final double high24H,
+      @JsonKey(name: 'low_24h') required final double low24H,
+      @JsonKey(name: 'price_change_24h') required final double priceChange24H,
+      @JsonKey(name: 'price_change_percentage_24h')
       required final double priceChangePercentage24H,
-      @JsonKey(name: 'marketCapChange_24H')
+      @JsonKey(name: 'market_cap_change_24h')
       required final double marketCapChange24H,
-      @JsonKey(name: 'marketCapChangePercentage_24H')
+      @JsonKey(name: 'market_cap_change_percentage_24h')
       required final double marketCapChangePercentage24H,
-      @JsonKey(name: 'circulatingSupply')
+      @JsonKey(name: 'circulating_supply')
       required final double circulatingSupply,
-      @JsonKey(name: 'totalSupply') required final double totalSupply,
-      @JsonKey(name: 'maxSupply') final double? maxSupply,
+      @JsonKey(name: 'total_supply') required final double totalSupply,
+      @JsonKey(name: 'max_supply') final double? maxSupply,
       required final double ath,
-      @JsonKey(name: 'athChangePercentage')
+      @JsonKey(name: 'ath_change_percentage')
       required final double athChangePercentage,
-      @JsonKey(name: 'athRate') required final DateTime athDate,
+      @JsonKey(name: 'ath_date') required final DateTime athDate,
       required final double atl,
-      @JsonKey(name: 'atlChangePercentage')
+      @JsonKey(name: 'atl_change_percentage')
       required final double atlChangePercentage,
-      @JsonKey(name: 'atlRate') required final DateTime atlDate,
+      @JsonKey(name: 'atl_date') required final DateTime atlDate,
       final Roi? roi,
       @JsonKey(name: 'last_updated')
       required final DateTime lastUpdated}) = _$_TicketModel;
@@ -721,62 +721,62 @@ abstract class _TicketModel implements TicketModel {
   @override
   String get image;
   @override
-  @JsonKey(name: 'currentPrice')
+  @JsonKey(name: 'current_price')
   double get currentPrice;
   @override
-  @JsonKey(name: 'marketCap')
+  @JsonKey(name: 'market_cap')
   double get marketCap;
   @override
-  @JsonKey(name: 'marketCapRank')
+  @JsonKey(name: 'market_cap_rank')
   int get marketCapRank;
   @override
-  @JsonKey(name: 'fullyRilutedValuation')
-  double get fullyRilutedValuation;
+  @JsonKey(name: 'fully_diluted_valuation')
+  double get fullyDilutedValuation;
   @override
-  @JsonKey(name: 'totalVolume')
+  @JsonKey(name: 'total_volume')
   double get totalVolume;
   @override
-  @JsonKey(name: 'high_24H')
+  @JsonKey(name: 'high_24h')
   double get high24H;
   @override
-  @JsonKey(name: 'low_24H')
+  @JsonKey(name: 'low_24h')
   double get low24H;
   @override
-  @JsonKey(name: 'priceChange_24H')
+  @JsonKey(name: 'price_change_24h')
   double get priceChange24H;
   @override
-  @JsonKey(name: 'priceChangePercentage_24H')
+  @JsonKey(name: 'price_change_percentage_24h')
   double get priceChangePercentage24H;
   @override
-  @JsonKey(name: 'marketCapChange_24H')
+  @JsonKey(name: 'market_cap_change_24h')
   double get marketCapChange24H;
   @override
-  @JsonKey(name: 'marketCapChangePercentage_24H')
+  @JsonKey(name: 'market_cap_change_percentage_24h')
   double get marketCapChangePercentage24H;
   @override
-  @JsonKey(name: 'circulatingSupply')
+  @JsonKey(name: 'circulating_supply')
   double get circulatingSupply;
   @override
-  @JsonKey(name: 'totalSupply')
+  @JsonKey(name: 'total_supply')
   double get totalSupply;
   @override
-  @JsonKey(name: 'maxSupply')
+  @JsonKey(name: 'max_supply')
   double? get maxSupply;
   @override
   double get ath;
   @override
-  @JsonKey(name: 'athChangePercentage')
+  @JsonKey(name: 'ath_change_percentage')
   double get athChangePercentage;
   @override
-  @JsonKey(name: 'athRate')
+  @JsonKey(name: 'ath_date')
   DateTime get athDate;
   @override
   double get atl;
   @override
-  @JsonKey(name: 'atlChangePercentage')
+  @JsonKey(name: 'atl_change_percentage')
   double get atlChangePercentage;
   @override
-  @JsonKey(name: 'atlRate')
+  @JsonKey(name: 'atl_date')
   DateTime get atlDate;
   @override
   Roi? get roi;

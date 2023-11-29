@@ -6,7 +6,7 @@ class Ticket {
   final double currentPrice;
   final double marketCap;
   final int marketCapRank;
-  final double fullyRilutedValuation;
+  final double fullyDilutedValuation;
   final double totalVolume;
   final double high24H;
   final double low24H;
@@ -34,7 +34,7 @@ class Ticket {
     required this.currentPrice,
     required this.marketCap,
     required this.marketCapRank,
-    required this.fullyRilutedValuation,
+    required this.fullyDilutedValuation,
     required this.totalVolume,
     required this.high24H,
     required this.low24H,

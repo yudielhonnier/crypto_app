@@ -6,36 +6,35 @@ part 'ticket_model.freezed.dart';
 part 'ticket_model.g.dart';
 
 @freezed
-// @JsonSerializable()
 class TicketModel extends Ticket with _$TicketModel {
   const factory TicketModel({
     required String id,
     required String symbol,
     required String name,
     required String image,
-    @JsonKey(name: 'currentPrice') required double currentPrice,
-    @JsonKey(name: 'marketCap') required double marketCap,
-    @JsonKey(name: 'marketCapRank') required int marketCapRank,
-    @JsonKey(name: 'fullyRilutedValuation')
-    required double fullyRilutedValuation,
-    @JsonKey(name: 'totalVolume') required double totalVolume,
-    @JsonKey(name: 'high_24H') required double high24H,
-    @JsonKey(name: 'low_24H') required double low24H,
-    @JsonKey(name: 'priceChange_24H') required double priceChange24H,
-    @JsonKey(name: 'priceChangePercentage_24H')
+    @JsonKey(name: 'current_price') required double currentPrice,
+    @JsonKey(name: 'market_cap') required double marketCap,
+    @JsonKey(name: 'market_cap_rank') required int marketCapRank,
+    @JsonKey(name: 'fully_diluted_valuation')
+    required double fullyDilutedValuation,
+    @JsonKey(name: 'total_volume') required double totalVolume,
+    @JsonKey(name: 'high_24h') required double high24H,
+    @JsonKey(name: 'low_24h') required double low24H,
+    @JsonKey(name: 'price_change_24h') required double priceChange24H,
+    @JsonKey(name: 'price_change_percentage_24h')
     required double priceChangePercentage24H,
-    @JsonKey(name: 'marketCapChange_24H') required double marketCapChange24H,
-    @JsonKey(name: 'marketCapChangePercentage_24H')
+    @JsonKey(name: 'market_cap_change_24h') required double marketCapChange24H,
+    @JsonKey(name: 'market_cap_change_percentage_24h')
     required double marketCapChangePercentage24H,
-    @JsonKey(name: 'circulatingSupply') required double circulatingSupply,
-    @JsonKey(name: 'totalSupply') required double totalSupply,
-    @JsonKey(name: 'maxSupply') double? maxSupply,
+    @JsonKey(name: 'circulating_supply') required double circulatingSupply,
+    @JsonKey(name: 'total_supply') required double totalSupply,
+    @JsonKey(name: 'max_supply') double? maxSupply,
     required double ath,
-    @JsonKey(name: 'athChangePercentage') required double athChangePercentage,
-    @JsonKey(name: 'athRate') required DateTime athDate,
+    @JsonKey(name: 'ath_change_percentage') required double athChangePercentage,
+    @JsonKey(name: 'ath_date') required DateTime athDate,
     required double atl,
-    @JsonKey(name: 'atlChangePercentage') required double atlChangePercentage,
-    @JsonKey(name: 'atlRate') required DateTime atlDate,
+    @JsonKey(name: 'atl_change_percentage') required double atlChangePercentage,
+    @JsonKey(name: 'atl_date') required DateTime atlDate,
     Roi? roi,
     @JsonKey(name: 'last_updated') required DateTime lastUpdated,
   }) = _TicketModel;
@@ -52,7 +51,7 @@ class TicketModel extends Ticket with _$TicketModel {
         currentPrice: market.currentPrice,
         marketCap: market.marketCap,
         marketCapRank: market.marketCapRank,
-        fullyRilutedValuation: market.fullyDilutedValuation,
+        fullyDilutedValuation: market.fullyDilutedValuation,
         totalVolume: market.totalVolume,
         high24H: market.high24H,
         low24H: market.low24H,
@@ -80,7 +79,7 @@ class TicketModel extends Ticket with _$TicketModel {
       currentPrice: 26170,
       marketCap: 510424715433,
       marketCapRank: 1,
-      fullyRilutedValuation: 549778910893,
+      fullyDilutedValuation: 549778910893,
       totalVolume: 8866163501,
       high24H: 26387,
       low24H: 26102,
@@ -97,6 +96,34 @@ class TicketModel extends Ticket with _$TicketModel {
       atl: 67.81,
       atlChangePercentage: 38509.01636,
       atlDate: DateTime.parse("2013-07-06T00:00:00.000Z"),
+      roi: null,
+      lastUpdated: DateTime.parse("2023-09-26T23:27:20.666Z"));
+
+  static final TicketModel mockTicketEmpty = TicketModel(
+      id: "",
+      symbol: "",
+      name: "",
+      image: "",
+      currentPrice: 0,
+      marketCap: 0,
+      marketCapRank: 0,
+      fullyDilutedValuation: 0,
+      totalVolume: 0,
+      high24H: 0,
+      low24H: 0,
+      priceChange24H: 0.0,
+      priceChangePercentage24H: -0.0,
+      marketCapChange24H: -0.0,
+      marketCapChangePercentage24H: -0.0,
+      circulatingSupply: 0.0,
+      totalSupply: 0.0,
+      maxSupply: 0.0,
+      ath: 0,
+      athChangePercentage: -0.0,
+      athDate: DateTime.parse("2023-09-26T23:27:20.666Z"),
+      atl: 0.0,
+      atlChangePercentage: 0.0,
+      atlDate: DateTime.parse("2023-09-26T23:27:20.666Z"),
       roi: null,
       lastUpdated: DateTime.parse("2023-09-26T23:27:20.666Z"));
 }

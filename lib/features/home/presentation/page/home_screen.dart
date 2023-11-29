@@ -25,7 +25,6 @@ class _HomeScreenState extends State<HomeScreen> {
         BlocProvider(
           create: (_) => getIt<MarketsBloc>()..add(GetMarketsEvent(page: 0)),
         ),
-        BlocProvider(create: (_) => getIt<TicketsBloc>()),
       ],
       child: ResponsiveLayout(
           mobileBody: MobileHomeBody(context: context),

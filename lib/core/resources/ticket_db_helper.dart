@@ -11,38 +11,39 @@ class TicketDatabaseHelper {
   TicketDatabaseHelper.internal();
 
   // Define the table name and column names
-  final String tableTickets = 'tickets';
+  final String tableTickets = 'tick';
   String columnId = 'id';
   String columnSymbol = 'symbol';
   String columnName = 'name';
   String columnImage = 'image';
-  String columnCurrentPrice = 'currentPrice';
-  String columnMarketCap = 'marketCap';
-  String columnMarketCapRank = 'marketCapRank';
-  String columnFullyRilutedValuation = 'fullyRilutedValuation';
-  String columnTotalVolume = 'totalVolume';
-  String columnHigh24H = 'high_24H';
-  String columnLow24H = 'low_24H';
-  String columnPriceChange24H = 'priceChange_24H';
-  String columnPriceChangePercentage24H = 'priceChangePercentage_24H';
-  String columnMarketCapChange24H = 'marketCapChange_24H';
-  String columnMarketCapChangePercentage24H = 'marketCapChangePercentage_24H';
-  String columnCirculatingSupply = 'circulatingSupply';
-  String columnTotalSupply = 'totalSupply';
-  String columnMaxSupply = 'maxSupply';
+  String columnCurrentPrice = 'current_price';
+  String columnMarketCap = 'market_cap';
+  String columnMarketCapRank = 'market_cap_rank';
+  String columnFullyDilutedValuation = 'fully_diluted_valuation';
+  String columnTotalVolume = 'total_volume';
+  String columnHigh24H = 'high_24h';
+  String columnLow24H = 'low_24h';
+  String columnPriceChange24H = 'price_change_24h';
+  String columnPriceChangePercentage24H = 'price_change_percentage_24h';
+  String columnMarketCapChange24H = 'market_cap_change_24h';
+  String columnMarketCapChangePercentage24H =
+      'market_cap_change_percentage_24h';
+  String columnCirculatingSupply = 'circulating_supply';
+  String columnTotalSupply = 'total_supply';
+  String columnMaxSupply = 'max_supply';
   String columnAth = 'ath';
-  String columnAthChangePercentage = 'athChangePercentage';
-  String columnAthDate = 'athDate';
+  String columnAthChangePercentage = 'ath_change_percentage';
+  String columnAthDate = 'ath_date';
   String columnAtl = 'atl';
-  String columnAtlChangePercentage = 'atlChangePercentage';
-  String columnAtlDate = 'atlDate';
+  String columnAtlChangePercentage = 'atl_change_percentage';
+  String columnAtlDate = 'atl_date';
   String columnRoi = 'roi';
-  String columnLastUpdated = 'lastUpdated';
+  String columnLastUpdated = 'last_updated';
 
   Future<Database> get database async {
-    if (_database != null) {
-      return _database!;
-    }
+    // if (_database != null) {
+    //   return _database!;
+    // }
 
     _database = await initializeDatabase();
     return _database!;
@@ -50,12 +51,12 @@ class TicketDatabaseHelper {
 
   Future<Database> initializeDatabase() async {
     var databasesPath = await getDatabasesPath();
-    String path = p.join(databasesPath, 'tickets.db');
+    String path = p.join(databasesPath, 'tickets1.db');
     print("debbug path db created");
 
     return await openDatabase(
       path,
-      version: 2,
+      version: 1,
       onOpen: (db) {},
       onCreate: _createDb,
     );
@@ -72,7 +73,7 @@ class TicketDatabaseHelper {
       $columnCurrentPrice REAL,
       $columnMarketCap REAL,
       $columnMarketCapRank INTEGER,
-      $columnFullyRilutedValuation REAL,
+      $columnFullyDilutedValuation REAL,
       $columnTotalVolume REAL,
       $columnHigh24H REAL,
       $columnLow24H REAL,
@@ -115,7 +116,7 @@ class TicketDatabaseHelper {
       return TicketModel.fromJson(maps.first);
     }
 
-    throw Exception('Ticket not found!');
+    return TicketModel.mockTicketEmpty;
   }
 
   Future<List<TicketModel>> getAllTickets() async {

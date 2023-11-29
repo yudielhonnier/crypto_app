@@ -13,4 +13,19 @@ class TicketRepositoryImpl implements TicketRepository {
   Future<Either<Failure, TicketModel>> addTicket(TicketModel ticket) async {
     return Right(await localDataSource.addTicket(ticket));
   }
+
+  @override
+  Future<Either<Failure, TicketModel>> getTicketById(String id) async {
+    return Right(await localDataSource.getTicket(id));
+  }
+
+  @override
+  Future<Either<Failure, void>> deleteTicketById(String id) async {
+    return Right(await localDataSource.deleteTicket(id));
+  }
+
+  @override
+  Future<Either<Failure, List<TicketModel>>> getAllTickets() async {
+    return Right(await localDataSource.getAllTickets());
+  }
 }
