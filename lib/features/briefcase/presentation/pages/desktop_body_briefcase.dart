@@ -27,9 +27,9 @@ class _DesktopBriefcaseBodyState extends State<DesktopBriefcaseBody> {
         Container(
           color: darkTheme.colorScheme.primary,
           padding: const EdgeInsets.only(left: 20, right: 20),
-          child: Column(
+          child: const Column(
             children: [
-              const SizedBox(
+              SizedBox(
                 height: 24,
               ),
               Expanded(
@@ -37,9 +37,9 @@ class _DesktopBriefcaseBodyState extends State<DesktopBriefcaseBody> {
                   children: [
                     Expanded(
                       flex: 2,
-                      child: CircularChart(data: data, isMovile: false),
+                      child: CircularChart(isMovile: false),
                     ),
-                    const Expanded(
+                    Expanded(
                       flex: 1,
                       child: Column(
                         children: [
@@ -50,11 +50,11 @@ class _DesktopBriefcaseBodyState extends State<DesktopBriefcaseBody> {
                   ],
                 ),
               ),
-              const SizedBox(
+              SizedBox(
                 height: 18,
               ),
-              const CardWalletActions(),
-              const SizedBox(
+              CardWalletActions(),
+              SizedBox(
                 height: 10,
               ),
             ],

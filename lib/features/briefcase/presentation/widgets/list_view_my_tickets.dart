@@ -1,8 +1,7 @@
 import 'package:crypto_app/core/helpers/color_by_price.dart';
 import 'package:crypto_app/core/helpers/round.dart';
-import 'package:crypto_app/features/home/data/models/market_model.dart';
-import 'package:crypto_app/features/home/presentation/bloc/markets_bloc.dart';
 import 'package:crypto_app/features/shared/data/models/ticket_model.dart';
+import 'package:crypto_app/features/shared/presentation/bloc/tickets/tickets_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,77 +27,114 @@ class _ListViewTicketsState extends State<ListViewTickets> {
             padding: const EdgeInsets.all(4),
             itemCount: widget.tickets.length,
             itemBuilder: (BuildContext context, int index) {
-              final market = widget.tickets[index];
-              return SizedBox(
-                  child: Row(
-                children: [
-                  Flexible(
-                    child: ListTile(
-                      contentPadding: const EdgeInsets.all(0),
-                      leading: Image(
-                        image: NetworkImage(market.image),
-                        fit: BoxFit.contain,
-                        width: 40,
-                      ),
-                      title: Text(market.name),
-                      subtitle: Text(market.symbol),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 30,
-                  ),
-                  market.priceChangePercentage24H < 0
-                      ? const Icon(
-                          Icons.arrow_circle_down,
-                          color: Colors.red,
-                          size: 50,
-                        )
-                      : const Icon(
-                          Icons.arrow_circle_up,
-                          color: Colors.green,
-                          size: 50,
+              final ticket = widget.tickets[index];
+              final ticketBloc = context.watch<TicketsBloc>();
+
+              //DISMISABLE LIST
+              return Dismissible(
+                  direction: DismissDirection.endToStart,
+                  onDismissed: (directions) =>
+                      _onDismissed(directions, index, ticketBloc),
+                  confirmDismiss: (direction) async {
+                    return await _showAlertDialog(context);
+                  },
+                  background: Container(
+                      color: const Color.fromARGB(255, 51, 4, 1),
+                      child: const Padding(
+                        padding: EdgeInsets.all(15),
+                        child: Row(
+                          children: [
+                            Spacer(),
+                            Icon(
+                              Icons.delete_forever_outlined,
+                              color: Colors.red,
+                            ),
+                            SizedBox(
+                              width: 8.0,
+                            ),
+                            Text(
+                              "Delete",
+                              style: TextStyle(color: Colors.white),
+                            )
+                          ],
                         ),
-                  Expanded(
-                    child: Row(
-                      children: [
-                        const Spacer(),
-                        SizedBox(
-                          child: Column(
-                            children: [
-                              const SizedBox(
-                                height: 18,
-                              ),
-                              Text(yround(market.currentPrice).toString(),
-                                  style: const TextStyle(fontSize: 20)),
-                              Row(
+                      )),
+                  key: Key(ticket.id),
+                  child: SizedBox(
+                      child: IntrinsicHeight(
+                          child: Row(
+                    children: [
+                      //LIST ITEM
+                      Flexible(
+                        child: ListTile(
+                          contentPadding: const EdgeInsets.all(0),
+                          leading: Image(
+                            image: NetworkImage(ticket.image),
+                            fit: BoxFit.contain,
+                            width: 40,
+                          ),
+                          title: Text(ticket.name),
+                          subtitle: Text(ticket.symbol),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 30,
+                      ),
+                      ticket.priceChangePercentage24H < 0
+                          ? const Icon(
+                              Icons.arrow_circle_down,
+                              color: Colors.red,
+                              size: 50,
+                            )
+                          : const Icon(
+                              Icons.arrow_circle_up,
+                              color: Colors.green,
+                              size: 50,
+                            ),
+                      Expanded(
+                        child: Row(
+                          children: [
+                            const Spacer(),
+                            SizedBox(
+                              child: Column(
                                 children: [
-                                  Text(yround(market.priceChange24H).toString(),
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        color:
-                                            colorByPrice(market.priceChange24H),
-                                      )),
                                   const SizedBox(
-                                    width: 10,
+                                    height: 18,
                                   ),
-                                  Text(
-                                      yround(market.priceChangePercentage24H)
-                                              .toString() +
-                                          '%',
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          color: colorByPrice(market
-                                              .priceChangePercentage24H))),
+                                  Text(yround(ticket.currentPrice).toString(),
+                                      style: const TextStyle(fontSize: 20)),
+                                  Row(
+                                    children: [
+                                      Text(
+                                          yround(ticket.priceChange24H)
+                                              .toString(),
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: colorByPrice(
+                                                ticket.priceChange24H),
+                                          )),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                          yround(ticket
+                                                      .priceChangePercentage24H)
+                                                  .toString() +
+                                              '%',
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              color: colorByPrice(ticket
+                                                  .priceChangePercentage24H))),
+                                    ],
+                                  ),
                                 ],
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
-                ],
-              ));
+                      ),
+                    ],
+                  ))));
             }),
         onRefresh: () => _onRefresh(context, widget.tickets.length));
   }
@@ -108,8 +144,8 @@ class _ListViewTicketsState extends State<ListViewTickets> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: const Text("Add ticket"),
-            content: const Text("Are you sure you want to add this item?"),
+            title: const Text("Delete ticket"),
+            content: const Text("Are you sure you want to delete this item?"),
             actions: [
               ElevatedButton(
                   onPressed: () => Navigator.of(context).pop(true),
@@ -124,14 +160,17 @@ class _ListViewTicketsState extends State<ListViewTickets> {
   }
 
   Future<void> _onRefresh(BuildContext context, int page) async {
-    BlocProvider.of<MarketsBloc>(context).add(GetMarketsEvent(page: page));
+    BlocProvider.of<TicketsBloc>(context)
+        .add(const TicketsEvent.getAllTickets());
   }
 
-  void _onDismissed(DismissDirection direction, int index) {
-    if (direction == DismissDirection.startToEnd) {
-      print("add to local");
-    } else {
+  void _onDismissed(
+      DismissDirection direction, int index, TicketsBloc ticketBloc) {
+    if (direction == DismissDirection.endToStart) {
       print("remove item");
+      TicketModel toDelete = widget.tickets.elementAt(index);
+      ticketBloc.add(TicketsEvent.deleteTicket(toDelete));
+      ticketBloc.add(const TicketsEvent.getAllTickets());
       setState(() {
         widget.tickets.removeAt(index);
       });

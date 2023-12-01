@@ -1,5 +1,6 @@
 import 'package:crypto_app/features/home/presentation/bloc/markets_bloc.dart';
 import 'package:crypto_app/features/home/presentation/widgets/list_view_markets.dart';
+import 'package:crypto_app/features/shared/presentation/cubit/app_shadow_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,7 +31,12 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
 
   double _panelHeightOpen = 0;
 
-  final double _panelHeightClosed = 265.0;
+  double _panelHeightClosed = 50.0;
+
+  bool _isChildScrolling = false;
+
+  final PanelController _pc = PanelController();
+
   @override
   void initState() {
     super.initState();
@@ -38,9 +44,19 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
     _fabHeight = _initFabHeight;
   }
 
+  void handleDraggable(bool value) {
+    setState(() {
+      _isChildScrolling = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    _panelHeightOpen = MediaQuery.of(context).size.height * .80;
+    final appShadowCubit = context.read<AppShadowCubit>();
+    _panelHeightClosed = appShadowCubit.state == const AppShadowState.show()
+        ? 230
+        : _panelHeightClosed;
+    _panelHeightOpen = MediaQuery.of(context).size.height * .94;
 
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       systemNavigationBarColor: Colors.grey[200],
@@ -49,42 +65,77 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
     ));
 
     return SlidingUpPanel(
+      snapPoint: _panelHeightClosed == 230 ? 0.60 : 0.7,
+      controller: _pc,
+      backdropEnabled: false,
+      backdropColor: Colors.black,
       color: darkTheme.colorScheme.primary,
       maxHeight: _panelHeightOpen,
       minHeight: _panelHeightClosed,
       parallaxEnabled: true,
       parallaxOffset: .5,
-      body: Container(),
-      panelBuilder: _panel,
+      // isDraggable: !_isChildScrolling,
+      panel: _panel(_pc, handleDraggable),
       borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(18.0), topRight: Radius.circular(18.0)),
-      onPanelSlide: (double pos) => setState(() {
-        _fabHeight =
-            pos * (_panelHeightOpen - _panelHeightClosed) + _initFabHeight;
-      }),
+      onPanelSlide: (double pos) {
+        setState(() {
+          _fabHeight =
+              pos * (_panelHeightOpen - _panelHeightClosed) + _initFabHeight;
+        });
+      },
     );
   }
 
-  Widget _panel(ScrollController sc) {
+  Widget _panel(PanelController pc, Function(bool) callback) {
     return Container(
       decoration: const BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color.fromARGB(255, 17, 23, 35),
-                Color.fromARGB(255, 6, 13, 24)
-              ]),
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20), topRight: Radius.circular(20))),
+        gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color.fromARGB(255, 17, 23, 35),
+              Color.fromARGB(255, 6, 13, 24)
+            ]),
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+      ),
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         children: <Widget>[
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.keyboard_arrow_up_sharp,
-              )),
+          Row(
+            children: [
+              const SizedBox(
+                width: 50,
+              ),
+              const Spacer(),
+              Container(
+                width: 50,
+                height: 8,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20.0),
+                    color: Colors.white),
+              ),
+              const Spacer(),
+              //CLOSE BUTTON
+              Builder(builder: (context) {
+                final appShadowCubit = context.read<AppShadowCubit>();
+
+                return IconButton(
+                    onPressed: () {
+                      appShadowCubit.toggleShow();
+                      pc.animatePanelToPosition(0.0);
+                      // pc.animatePanelToSnapPoint(
+                      //     curve: Curves.bounceIn,
+                      //     duration: const Duration(milliseconds: 200));
+                      // pc.close();
+                    },
+                    icon: const Icon(
+                      Icons.close_rounded,
+                    ));
+              }),
+            ],
+          ),
           const Align(
               alignment: AlignmentDirectional.bottomStart,
               child: Text(
@@ -146,7 +197,10 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
                   return const Center(child: CircularProgressIndicator());
                 } else if (state is Loaded) {
                   return ListViewMarkets(
-                      context: context, markets: state.markets);
+                    context: context,
+                    markets: state.markets,
+                    callback: callback,
+                  );
                 } else if (state is Error) {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),

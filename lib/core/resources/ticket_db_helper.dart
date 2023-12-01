@@ -16,6 +16,7 @@ class TicketDatabaseHelper {
   String columnSymbol = 'symbol';
   String columnName = 'name';
   String columnImage = 'image';
+  String columnChartColorNumber = 'chartColorNumber';
   String columnCurrentPrice = 'current_price';
   String columnMarketCap = 'market_cap';
   String columnMarketCapRank = 'market_cap_rank';
@@ -51,8 +52,7 @@ class TicketDatabaseHelper {
 
   Future<Database> initializeDatabase() async {
     var databasesPath = await getDatabasesPath();
-    String path = p.join(databasesPath, 'tickets1.db');
-    print("debbug path db created");
+    String path = p.join(databasesPath, 'tick.db');
 
     return await openDatabase(
       path,
@@ -63,13 +63,14 @@ class TicketDatabaseHelper {
   }
 
   void _createDb(Database db, int version) async {
-    print("debbug creatinggggggg db");
+    print("DEBBUG: CREATING DB");
     await db.execute('''
     CREATE TABLE $tableTickets (
       $columnId TEXT PRIMARY KEY,
       $columnSymbol TEXT,
       $columnName TEXT,
       $columnImage TEXT,
+      $columnChartColorNumber INTEGER,
       $columnCurrentPrice REAL,
       $columnMarketCap REAL,
       $columnMarketCapRank INTEGER,
@@ -101,7 +102,7 @@ class TicketDatabaseHelper {
   Future<TicketModel> addTicket(TicketModel ticket) async {
     final db = await database;
     int inserted = await db.insert(tableTickets, ticket.toJson());
-    return Future(() => (inserted == 1) ? ticket : TicketModel.mockTicket);
+    return Future(() => (inserted >= 1) ? ticket : TicketModel.mockTicket);
   }
 
   Future<TicketModel> getTicket(String id) async {

@@ -2,6 +2,8 @@ import 'package:crypto_app/features/home/data/models/market_model.dart';
 import 'package:crypto_app/features/shared/domain/entities/ticket.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../core/helpers/number_helper.dart';
+
 part 'ticket_model.freezed.dart';
 part 'ticket_model.g.dart';
 
@@ -12,6 +14,7 @@ class TicketModel extends Ticket with _$TicketModel {
     required String symbol,
     required String name,
     required String image,
+    int? chartColorNumber,
     @JsonKey(name: 'current_price') required double currentPrice,
     @JsonKey(name: 'market_cap') required double marketCap,
     @JsonKey(name: 'market_cap_rank') required int marketCapRank,
@@ -44,6 +47,7 @@ class TicketModel extends Ticket with _$TicketModel {
 
   factory TicketModel.fromMarket(MarketModel market) {
     return TicketModel(
+        chartColorNumber: getRandomColorNumber(),
         id: market.id,
         symbol: market.symbol,
         name: market.name,
@@ -71,6 +75,7 @@ class TicketModel extends Ticket with _$TicketModel {
   }
 
   static final TicketModel mockTicket = TicketModel(
+      chartColorNumber: getRandomColorNumber(),
       id: "bitcoin",
       symbol: "btc",
       name: "Bitcoin",
@@ -100,6 +105,7 @@ class TicketModel extends Ticket with _$TicketModel {
       lastUpdated: DateTime.parse("2023-09-26T23:27:20.666Z"));
 
   static final TicketModel mockTicketEmpty = TicketModel(
+      chartColorNumber: 0,
       id: "",
       symbol: "",
       name: "",

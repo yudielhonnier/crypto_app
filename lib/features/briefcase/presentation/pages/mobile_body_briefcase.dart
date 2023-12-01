@@ -39,8 +39,7 @@ class _MobileBriefcaseBodyState extends State<MobileBriefcaseBody> {
               const SizedBox(
                 height: 24,
               ),
-              CircularChart(
-                data: data,
+              const CircularChart(
                 isMovile: true,
               ),
               const SizedBox(
@@ -56,27 +55,30 @@ class _MobileBriefcaseBodyState extends State<MobileBriefcaseBody> {
                 if (ticketsBloc.state.status == TicketStatus.loading) {
                   return const Center(child: CircularProgressIndicator());
                 } else if (ticketsBloc.state.status ==
-                    TicketStatus.listLoaded) {
+                        TicketStatus.listLoaded ||
+                    ticketsBloc.state.status == TicketStatus.loaded) {
                   return ListViewTickets(
                     context: context,
-                    tickets: ticketsBloc.state.ticketList,
+                    tickets: ticketsBloc.state.balance.tickets,
                   );
                 } else if (ticketsBloc.state.status == TicketStatus.failure) {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Center(
-                        child:
-                            Column(mainAxisSize: MainAxisSize.min, children: [
-                      Text("Error ${ticketsBloc.state}",
-                          textAlign: TextAlign.center),
-                      ElevatedButton(
-                        onPressed: () {
-                          // BlocProvider.of<RemotePostBloc>(context)
-                          //     .add(GetRemotePosts());
-                        },
-                        child: const Text("Try again"),
-                      )
-                    ])),
+                        child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text("Error ${ticketsBloc.state}",
+                            textAlign: TextAlign.center),
+                        ElevatedButton(
+                          onPressed: () {
+                            // BlocProvider.of<RemotePostBloc>(context)
+                            //     .add(GetRemotePosts());
+                          },
+                          child: const Text("Try again"),
+                        )
+                      ],
+                    )),
                   );
                 }
                 return Container();

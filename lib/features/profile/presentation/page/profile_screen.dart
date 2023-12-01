@@ -3,7 +3,7 @@ import 'package:crypto_app/features/profile/presentation/page/desktop_body_profi
 import 'package:crypto_app/features/profile/presentation/page/mobile_body_profile.dart';
 import 'package:crypto_app/features/profile/presentation/page/tablet_body_profile.dart';
 import 'package:crypto_app/features/shared/presentation/widgets/responsive_layout.dart';
-import 'package:crypto_app/app/injector.dart';
+import 'package:crypto_app/injector/injector.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

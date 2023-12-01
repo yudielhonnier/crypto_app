@@ -1,6 +1,6 @@
 import 'package:crypto_app/features/home/presentation/bloc/markets_bloc.dart';
 import 'package:crypto_app/features/shared/presentation/widgets/app_bar_shared.dart';
-import 'package:crypto_app/app/injector.dart';
+import 'package:crypto_app/injector/injector.dart';
 import 'package:crypto_app/config/themes/theme_constants.dart';
 
 import 'package:flutter/material.dart';

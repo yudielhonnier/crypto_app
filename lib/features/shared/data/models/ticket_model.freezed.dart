@@ -24,6 +24,7 @@ mixin _$TicketModel {
   String get symbol => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
+  int? get chartColorNumber => throw _privateConstructorUsedError;
   @JsonKey(name: 'current_price')
   double get currentPrice => throw _privateConstructorUsedError;
   @JsonKey(name: 'market_cap')
@@ -83,6 +84,7 @@ abstract class $TicketModelCopyWith<$Res> {
       String symbol,
       String name,
       String image,
+      int? chartColorNumber,
       @JsonKey(name: 'current_price') double currentPrice,
       @JsonKey(name: 'market_cap') double marketCap,
       @JsonKey(name: 'market_cap_rank') int marketCapRank,
@@ -128,6 +130,7 @@ class _$TicketModelCopyWithImpl<$Res, $Val extends TicketModel>
     Object? symbol = null,
     Object? name = null,
     Object? image = null,
+    Object? chartColorNumber = freezed,
     Object? currentPrice = null,
     Object? marketCap = null,
     Object? marketCapRank = null,
@@ -168,6 +171,10 @@ class _$TicketModelCopyWithImpl<$Res, $Val extends TicketModel>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
+      chartColorNumber: freezed == chartColorNumber
+          ? _value.chartColorNumber
+          : chartColorNumber // ignore: cast_nullable_to_non_nullable
+              as int?,
       currentPrice: null == currentPrice
           ? _value.currentPrice
           : currentPrice // ignore: cast_nullable_to_non_nullable
@@ -285,6 +292,7 @@ abstract class _$$_TicketModelCopyWith<$Res>
       String symbol,
       String name,
       String image,
+      int? chartColorNumber,
       @JsonKey(name: 'current_price') double currentPrice,
       @JsonKey(name: 'market_cap') double marketCap,
       @JsonKey(name: 'market_cap_rank') int marketCapRank,
@@ -329,6 +337,7 @@ class __$$_TicketModelCopyWithImpl<$Res>
     Object? symbol = null,
     Object? name = null,
     Object? image = null,
+    Object? chartColorNumber = freezed,
     Object? currentPrice = null,
     Object? marketCap = null,
     Object? marketCapRank = null,
@@ -369,6 +378,10 @@ class __$$_TicketModelCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
+      chartColorNumber: freezed == chartColorNumber
+          ? _value.chartColorNumber
+          : chartColorNumber // ignore: cast_nullable_to_non_nullable
+              as int?,
       currentPrice: null == currentPrice
           ? _value.currentPrice
           : currentPrice // ignore: cast_nullable_to_non_nullable
@@ -469,6 +482,7 @@ class _$_TicketModel implements _TicketModel {
       required this.symbol,
       required this.name,
       required this.image,
+      this.chartColorNumber,
       @JsonKey(name: 'current_price') required this.currentPrice,
       @JsonKey(name: 'market_cap') required this.marketCap,
       @JsonKey(name: 'market_cap_rank') required this.marketCapRank,
@@ -506,6 +520,8 @@ class _$_TicketModel implements _TicketModel {
   final String name;
   @override
   final String image;
+  @override
+  final int? chartColorNumber;
   @override
   @JsonKey(name: 'current_price')
   final double currentPrice;
@@ -572,7 +588,7 @@ class _$_TicketModel implements _TicketModel {
 
   @override
   String toString() {
-    return 'TicketModel(id: $id, symbol: $symbol, name: $name, image: $image, currentPrice: $currentPrice, marketCap: $marketCap, marketCapRank: $marketCapRank, fullyDilutedValuation: $fullyDilutedValuation, totalVolume: $totalVolume, high24H: $high24H, low24H: $low24H, priceChange24H: $priceChange24H, priceChangePercentage24H: $priceChangePercentage24H, marketCapChange24H: $marketCapChange24H, marketCapChangePercentage24H: $marketCapChangePercentage24H, circulatingSupply: $circulatingSupply, totalSupply: $totalSupply, maxSupply: $maxSupply, ath: $ath, athChangePercentage: $athChangePercentage, athDate: $athDate, atl: $atl, atlChangePercentage: $atlChangePercentage, atlDate: $atlDate, roi: $roi, lastUpdated: $lastUpdated)';
+    return 'TicketModel(id: $id, symbol: $symbol, name: $name, image: $image, chartColorNumber: $chartColorNumber, currentPrice: $currentPrice, marketCap: $marketCap, marketCapRank: $marketCapRank, fullyDilutedValuation: $fullyDilutedValuation, totalVolume: $totalVolume, high24H: $high24H, low24H: $low24H, priceChange24H: $priceChange24H, priceChangePercentage24H: $priceChangePercentage24H, marketCapChange24H: $marketCapChange24H, marketCapChangePercentage24H: $marketCapChangePercentage24H, circulatingSupply: $circulatingSupply, totalSupply: $totalSupply, maxSupply: $maxSupply, ath: $ath, athChangePercentage: $athChangePercentage, athDate: $athDate, atl: $atl, atlChangePercentage: $atlChangePercentage, atlDate: $atlDate, roi: $roi, lastUpdated: $lastUpdated)';
   }
 
   @override
@@ -584,6 +600,8 @@ class _$_TicketModel implements _TicketModel {
             (identical(other.symbol, symbol) || other.symbol == symbol) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.image, image) || other.image == image) &&
+            (identical(other.chartColorNumber, chartColorNumber) ||
+                other.chartColorNumber == chartColorNumber) &&
             (identical(other.currentPrice, currentPrice) ||
                 other.currentPrice == currentPrice) &&
             (identical(other.marketCap, marketCap) ||
@@ -634,6 +652,7 @@ class _$_TicketModel implements _TicketModel {
         symbol,
         name,
         image,
+        chartColorNumber,
         currentPrice,
         marketCap,
         marketCapRank,
@@ -678,6 +697,7 @@ abstract class _TicketModel implements TicketModel {
       required final String symbol,
       required final String name,
       required final String image,
+      final int? chartColorNumber,
       @JsonKey(name: 'current_price') required final double currentPrice,
       @JsonKey(name: 'market_cap') required final double marketCap,
       @JsonKey(name: 'market_cap_rank') required final int marketCapRank,
@@ -720,6 +740,8 @@ abstract class _TicketModel implements TicketModel {
   String get name;
   @override
   String get image;
+  @override
+  int? get chartColorNumber;
   @override
   @JsonKey(name: 'current_price')
   double get currentPrice;

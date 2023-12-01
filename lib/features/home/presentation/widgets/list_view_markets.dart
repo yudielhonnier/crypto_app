@@ -8,26 +8,79 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class ListViewMarkets extends StatelessWidget {
-  const ListViewMarkets({
+class ListViewMarkets extends StatefulWidget {
+  ListViewMarkets({
     super.key,
     required this.context,
     required this.markets,
+    this.callback,
   });
 
   final BuildContext context;
   final List<MarketModel> markets;
+  Function(bool)? callback;
+
+  @override
+  State<ListViewMarkets> createState() => _ListViewMarketsState();
+}
+
+class _ListViewMarketsState extends State<ListViewMarkets> {
+  // final ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    // _scrollController.addListener(_handleScrolling);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    // _scrollController.removeListener(_handleScrolling);
+    // _scrollController.dispose();
+  }
+
+  // void _handleScrolling() {
+  //   if (_scrollController.position.isScrollingNotifier.value) {
+  //     print('DEBBUG: true ');
+
+  //     widget.callback!(true);
+  //   } else {
+  //     print('DEBBUG: false ');
+
+  //     widget.callback!(false);
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
     bool isNotToastReaded = true;
-    return RefreshIndicator(
-        color: Colors.white,
-        child: ListView.builder(
+    return NotificationListener<ScrollNotification>(
+      onNotification: (notification) {
+        if (notification is ScrollStartNotification) {
+          // setState(() {
+          //   _isScrolling = true;
+          // });
+          print('DEBBUG: true notification - $notification ');
+
+          // widget.callback!(true);
+        } else if (notification is ScrollEndNotification) {
+          // setState(() {
+          //   _isScrolling = false;
+          // });
+          print('DEBBUG: false notification - $notification ');
+
+          // widget.callback!(false);
+        }
+        return false;
+      },
+      child: RefreshIndicator(
+          color: Colors.white,
+          child: ListView.builder(
             padding: const EdgeInsets.all(4),
-            itemCount: markets.length,
+            itemCount: widget.markets.length,
             itemBuilder: (BuildContext context, int index) {
-              final market = markets[index];
+              final market = widget.markets[index];
               return SizedBox(
                   child: Row(
                 children: [
@@ -97,18 +150,27 @@ class ListViewMarkets extends StatelessWidget {
                   Builder(
                     builder: (context) {
                       final ticketsBloc = context.watch<TicketsBloc>();
-                      final mayShowToast =
-                          _mayShowToast(ticketsBloc, isNotToastReaded);
 
-                      if (mayShowToast) {
-                        _showToast(ticketsBloc);
+                      final mayShowAlreadyToast =
+                          _mayShowAlreadyToast(ticketsBloc, isNotToastReaded);
+                      final mayShowAddedToast =
+                          _mayShowAddedToast(ticketsBloc, isNotToastReaded);
+
+                      if (mayShowAlreadyToast) {
+                        _showAlreadyToast(ticketsBloc);
                         isNotToastReaded = false;
-                        ticketsBloc.add(const TicketsEvent.toastReaded());
+                      }
+
+                      if (mayShowAddedToast) {
+                        _showAddedToast(ticketsBloc);
+                        isNotToastReaded = false;
                       }
 
                       return GestureDetector(
-                        onTap: () => ticketsBloc.add(TicketsEvent.addTicket(
-                            TicketModel.fromMarket(markets[index]))),
+                        onTap: () {
+                          ticketsBloc.add(TicketsEvent.addTicket(
+                              TicketModel.fromMarket(widget.markets[index])));
+                        },
                         child: const CircleAvatar(
                           backgroundColor: Colors.blue,
                           child: Icon(
@@ -122,25 +184,43 @@ class ListViewMarkets extends StatelessWidget {
                   ),
                 ],
               ));
-            }),
-        onRefresh: () => _onRefresh(context, markets.length));
+            },
+          ),
+          onRefresh: () => _onRefresh(context, widget.markets.length)),
+    );
   }
 
-  bool _mayShowToast(TicketsBloc ticketsBloc, bool isNotToastReaded) {
+  bool _mayShowAlreadyToast(TicketsBloc ticketsBloc, bool isNotToastReaded) {
     return ticketsBloc.state.status == TicketStatus.alreadyExist &&
         isNotToastReaded;
+  }
+
+  bool _mayShowAddedToast(TicketsBloc ticketsBloc, bool isNotToastReaded) {
+    return ticketsBloc.state.status == TicketStatus.loaded && isNotToastReaded;
   }
 
   Future<void> _onRefresh(BuildContext context, int page) async {
     BlocProvider.of<MarketsBloc>(context).add(GetMarketsEvent(page: page));
   }
 
-  Future<bool?> _showToast(TicketsBloc bloc) {
+  Future<bool?> _showAlreadyToast(TicketsBloc bloc) {
     return Fluttertoast.showToast(
       msg: 'The Ticket with id ${bloc.state.ticketModel.id} Already Exist!',
       toastLength: Toast.LENGTH_LONG,
       gravity: ToastGravity.BOTTOM,
-      timeInSecForIosWeb: 4,
+      timeInSecForIosWeb: 2,
+      backgroundColor: Colors.red,
+      textColor: Colors.white,
+      fontSize: 16.0,
+    );
+  }
+
+  Future<bool?> _showAddedToast(TicketsBloc bloc) {
+    return Fluttertoast.showToast(
+      msg: 'Ticket ${bloc.state.ticketModel.id} Added!',
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 2,
       backgroundColor: Colors.red,
       textColor: Colors.white,
       fontSize: 16.0,

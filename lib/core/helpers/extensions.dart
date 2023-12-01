@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:math' as math;
 
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
@@ -114,5 +115,12 @@ extension ListX on List? {
             .map<T>((event) => event!)
             .toList() ??
         <T>[];
+  }
+}
+
+extension ColorX on Color {
+  Color ramdomColor() {
+    return Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
+        .withOpacity(1.0);
   }
 }

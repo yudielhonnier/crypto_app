@@ -101,7 +101,9 @@ class _PanelMarketsState extends State<PanelMarketDesktop> {
                   return const Center(child: CircularProgressIndicator());
                 } else if (marketState is Loaded) {
                   return ListViewMarkets(
-                      context: context, markets: marketState.markets);
+                    context: context,
+                    markets: marketState.markets,
+                  );
                 } else if (marketState is Error) {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),

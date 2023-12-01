@@ -1,9 +1,8 @@
 import 'package:crypto_app/features/home/presentation/bloc/markets_bloc.dart';
 import 'package:crypto_app/features/home/presentation/page/desktop_body_home.dart';
 import 'package:crypto_app/features/home/presentation/page/tablet_body_home.dart';
-import 'package:crypto_app/features/shared/presentation/bloc/tickets/tickets_bloc.dart';
 import 'package:crypto_app/features/shared/presentation/widgets/responsive_layout.dart';
-import 'package:crypto_app/app/injector.dart';
+import 'package:crypto_app/injector/injector.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

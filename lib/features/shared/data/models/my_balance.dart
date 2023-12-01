@@ -2,20 +2,15 @@ import 'package:crypto_app/features/shared/data/models/ticket_model.dart';
 
 class MyBalance {
   final List<TicketModel> tickets;
-  double totalCurrentPrice;
-  double totalPriceChange24H;
-  double totalPriceChangePercentage24H;
+  double totalCurrentPrice = 0.0;
+  double totalPriceChange24H = 0.0;
+  double totalPriceChangePercentage24H = 0.0;
 
-  MyBalance(this.totalCurrentPrice, this.totalPriceChange24H,
-      this.totalPriceChangePercentage24H,
-      {required this.tickets}) {
+  MyBalance({required this.tickets}) {
     for (var t in tickets) {
       totalCurrentPrice += t.currentPrice;
       totalPriceChange24H += t.priceChange24H;
       totalPriceChangePercentage24H += t.priceChangePercentage24H;
     }
-    MyBalance(
-        totalCurrentPrice, totalPriceChange24H, totalPriceChangePercentage24H,
-        tickets: tickets);
   }
 }

@@ -25,6 +25,7 @@ import '../features/home/domain/repository/market_repository.dart';
 import '../features/home/domain/usecase/get_markets_use_case.dart';
 
 import '../core/network/network_info.dart';
+import '../features/shared/presentation/cubit/app_shadow_cubit.dart';
 
 final getIt = GetIt.instance;
 
@@ -104,4 +105,5 @@ void initBlocs() {
   getIt.registerFactory<UserBloc>(() => UserBloc(getIt()));
   getIt.registerFactory<TicketsBloc>(
       () => TicketsBloc(getIt(), getIt(), getIt(), getIt()));
+  getIt.registerFactory<AppShadowCubit>(() => AppShadowCubit());
 }

@@ -4,13 +4,14 @@ import 'package:crypto_app/config/themes/theme_constants.dart';
 import 'package:crypto_app/core/helpers/camera_delegate.dart';
 import 'package:crypto_app/core/resources/ticket_db_helper.dart';
 import 'package:crypto_app/features/shared/presentation/bloc/tickets/tickets_bloc.dart';
+import 'package:crypto_app/features/shared/presentation/cubit/app_shadow_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:window_manager/window_manager.dart';
 
 import 'config/router/my_router.dart';
-import 'app/injector.dart';
+import 'injector/injector.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -54,6 +55,9 @@ class MyApp extends StatelessWidget {
             BlocProvider(
               create: (context) =>
                   getIt<TicketsBloc>()..add(const TicketsEvent.getAllTickets()),
+            ),
+            BlocProvider(
+              create: (context) => getIt<AppShadowCubit>(),
             )
           ],
           child: Builder(builder: (BuildContext context) {

@@ -1,5 +1,4 @@
 import 'package:crypto_app/config/themes/theme_constants.dart';
-import 'package:crypto_app/core/constants/constants.dart';
 import 'package:crypto_app/features/briefcase/presentation/widgets/circular_chart.dart';
 import 'package:crypto_app/features/briefcase/presentation/widgets/list_coins_without_chart.dart';
 import 'package:crypto_app/features/shared/presentation/widgets/app_bar_shared.dart';
@@ -27,9 +26,9 @@ class _TabletBriefcaseBodyState extends State<TabletBriefcaseBody> {
         Container(
           color: darkTheme.colorScheme.primary,
           padding: const EdgeInsets.only(left: 20, right: 20),
-          child: Column(
+          child: const Column(
             children: [
-              const SizedBox(
+              SizedBox(
                 height: 24,
               ),
               Expanded(
@@ -37,9 +36,9 @@ class _TabletBriefcaseBodyState extends State<TabletBriefcaseBody> {
                   children: [
                     Expanded(
                       flex: 1,
-                      child: CircularChart(data: data, isMovile: false),
+                      child: CircularChart(isMovile: false),
                     ),
-                    const Expanded(
+                    Expanded(
                       flex: 1,
                       child: Column(
                         children: [
@@ -51,11 +50,11 @@ class _TabletBriefcaseBodyState extends State<TabletBriefcaseBody> {
                   ],
                 ),
               ),
-              const SizedBox(
+              SizedBox(
                 height: 18,
               ),
-              const CardWalletActions(),
-              const SizedBox(
+              CardWalletActions(),
+              SizedBox(
                 height: 10,
               ),
             ],
