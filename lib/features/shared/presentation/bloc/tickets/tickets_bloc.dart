@@ -43,8 +43,6 @@ class TicketsBloc extends Bloc<TicketsEvent, TicketsState> {
   Future<void> _onAddTicket(
       TicketModel ticket, Emitter<TicketsState> emit) async {
     bool isPresent = false;
-    print("DEBBUG: TO LOAD ${state.balance.tickets.length}");
-
     emit(state.copyWith(status: TicketStatus.loading));
 
     final existTicket = await _getTicketByIdUseCase(ticket.id);

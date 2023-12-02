@@ -1,13 +1,17 @@
 import 'package:crypto_app/features/briefcase/presentation/pages/briefcase_screen.dart';
 import 'package:crypto_app/features/cards/presentation/page/cards_screen.dart';
 import 'package:crypto_app/features/help/presentation/page/help_screen.dart';
-import 'package:crypto_app/features/home/presentation/page/home_screen.dart';
 import 'package:crypto_app/features/notifications/presentation/page/notifications_screen.dart';
 import 'package:crypto_app/features/profile/presentation/page/profile_screen.dart';
 import 'package:crypto_app/features/settings/presentation/page/settings_screen.dart';
 import 'package:crypto_app/features/trading/presentation/pages/trading_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../core/resources/toast_service.dart';
+import '../../features/home/presentation/page/home_screen.dart';
+
+GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 class MyRouter {
   static const homeRoute = '/home';
@@ -22,6 +26,7 @@ class MyRouter {
 
   late final router = GoRouter(
     initialLocation: homeRoute,
+    navigatorKey: navigatorKey,
     routes: <GoRoute>[
       GoRoute(
         path: homeRoute,
@@ -118,7 +123,9 @@ class MyRouter {
 
     // TODO Add Redirect
   );
-  Widget _build(Widget child) => Scaffold(body: child);
+  Widget _build(Widget child) {
+    return Scaffold(body: child);
+  }
 }
 
 CustomTransitionPage<void> buildPageWithDefaultTransition({
@@ -126,6 +133,8 @@ CustomTransitionPage<void> buildPageWithDefaultTransition({
   required GoRouterState state,
   required Widget child,
 }) {
+  ToastService.initialize(context);
+
   return CustomTransitionPage<void>(
     key: state.pageKey,
     child: child,

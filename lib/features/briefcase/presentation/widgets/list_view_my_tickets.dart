@@ -1,3 +1,4 @@
+import 'package:crypto_app/config/themes/theme_constants.dart';
 import 'package:crypto_app/core/helpers/color_by_price.dart';
 import 'package:crypto_app/core/helpers/round.dart';
 import 'package:crypto_app/features/shared/data/models/ticket_model.dart';
@@ -39,7 +40,7 @@ class _ListViewTicketsState extends State<ListViewTickets> {
                     return await _showAlertDialog(context);
                   },
                   background: Container(
-                      color: const Color.fromARGB(255, 51, 4, 1),
+                      color: _getDismissableBgColor(ticket).withOpacity(1),
                       child: const Padding(
                         padding: EdgeInsets.all(15),
                         child: Row(
@@ -47,7 +48,7 @@ class _ListViewTicketsState extends State<ListViewTickets> {
                             Spacer(),
                             Icon(
                               Icons.delete_forever_outlined,
-                              color: Colors.red,
+                              color: Colors.white,
                             ),
                             SizedBox(
                               width: 8.0,
@@ -55,7 +56,7 @@ class _ListViewTicketsState extends State<ListViewTickets> {
                             Text(
                               "Delete",
                               style: TextStyle(color: Colors.white),
-                            )
+                            ),
                           ],
                         ),
                       )),
@@ -139,20 +140,32 @@ class _ListViewTicketsState extends State<ListViewTickets> {
         onRefresh: () => _onRefresh(context, widget.tickets.length));
   }
 
+  Color _getDismissableBgColor(TicketModel ticket) {
+    return ticket.chartColorNumber != null
+        ? Color(ticket.chartColorNumber!).withOpacity(1)
+        : const Color.fromARGB(255, 72, 5, 0);
+  }
+
   Future<bool?> _showAlertDialog(BuildContext context) {
     return showDialog(
         context: context,
         builder: (context) {
           return AlertDialog(
+            backgroundColor: darkTheme.colorScheme.primary,
             title: const Text("Delete ticket"),
             content: const Text("Are you sure you want to delete this item?"),
             actions: [
               ElevatedButton(
-                  onPressed: () => Navigator.of(context).pop(true),
-                  child: const Text("Yes")),
+                onPressed: () => Navigator.of(context).pop(true),
+                child: const Text("Yes"),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 241, 21, 5)),
+              ),
               ElevatedButton(
                 onPressed: () => Navigator.of(context).pop(false),
                 child: const Text("No"),
+                style:
+                    ElevatedButton.styleFrom(backgroundColor: Colors.blue[900]),
               )
             ],
           );
@@ -167,7 +180,6 @@ class _ListViewTicketsState extends State<ListViewTickets> {
   void _onDismissed(
       DismissDirection direction, int index, TicketsBloc ticketBloc) {
     if (direction == DismissDirection.endToStart) {
-      print("remove item");
       TicketModel toDelete = widget.tickets.elementAt(index);
       ticketBloc.add(TicketsEvent.deleteTicket(toDelete));
       ticketBloc.add(const TicketsEvent.getAllTickets());

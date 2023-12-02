@@ -1,3 +1,4 @@
+import 'package:crypto_app/core/helpers/round.dart';
 import 'package:crypto_app/features/home/presentation/bloc/markets_bloc.dart';
 import 'package:crypto_app/features/home/presentation/widgets/list_view_markets.dart';
 import 'package:crypto_app/features/shared/presentation/cubit/app_shadow_cubit.dart';
@@ -7,6 +8,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:crypto_app/config/themes/theme_constants.dart';
+
+import '../../../../core/resources/toast_service.dart';
+import '../../../shared/presentation/bloc/tickets/tickets_bloc.dart';
 
 class SlidingUpPanelMarket extends StatefulWidget {
 // Initial Selected Value
@@ -33,8 +37,6 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
 
   double _panelHeightClosed = 50.0;
 
-  bool _isChildScrolling = false;
-
   final PanelController _pc = PanelController();
 
   @override
@@ -44,10 +46,17 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
     _fabHeight = _initFabHeight;
   }
 
-  void handleDraggable(bool value) {
-    setState(() {
-      _isChildScrolling = value;
-    });
+  IconData? _getIconByHeigth() {
+    num heightPanel = yround(_pc.panelPosition).abs();
+    if (heightPanel == 0) {
+      return Icons.remove_red_eye_outlined;
+    }
+
+    return Icons.close_rounded;
+  }
+
+  double _initSnapPoint() {
+    return _panelHeightClosed == 230 ? 0.60 : 0.7;
   }
 
   @override
@@ -65,7 +74,7 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
     ));
 
     return SlidingUpPanel(
-      snapPoint: _panelHeightClosed == 230 ? 0.60 : 0.7,
+      snapPoint: _initSnapPoint(),
       controller: _pc,
       backdropEnabled: false,
       backdropColor: Colors.black,
@@ -74,8 +83,7 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
       minHeight: _panelHeightClosed,
       parallaxEnabled: true,
       parallaxOffset: .5,
-      // isDraggable: !_isChildScrolling,
-      panel: _panel(_pc, handleDraggable),
+      panel: _panel(_pc),
       borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(18.0), topRight: Radius.circular(18.0)),
       onPanelSlide: (double pos) {
@@ -84,10 +92,14 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
               pos * (_panelHeightOpen - _panelHeightClosed) + _initFabHeight;
         });
       },
+      onPanelOpened: () {},
+      onPanelClosed: () {},
     );
   }
 
-  Widget _panel(PanelController pc, Function(bool) callback) {
+  Widget _panel(PanelController pc) {
+    bool isNotToastAlreadyReaded = true;
+    bool isNotToastAddedReaded = true;
     return Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
@@ -123,16 +135,16 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
 
                 return IconButton(
                     onPressed: () {
-                      appShadowCubit.toggleShow();
-                      pc.animatePanelToPosition(0.0);
-                      // pc.animatePanelToSnapPoint(
-                      //     curve: Curves.bounceIn,
-                      //     duration: const Duration(milliseconds: 200));
-                      // pc.close();
+                      if (pc.panelPosition.abs() > 0.0) {
+                        pc.animatePanelToPosition(0.0);
+                        appShadowCubit.hideShadow();
+                      }
+
+                      if (pc.panelPosition.abs() == 0.0) {
+                        pc.animatePanelToPosition(_initSnapPoint());
+                      }
                     },
-                    icon: const Icon(
-                      Icons.close_rounded,
-                    ));
+                    icon: Icon(_getIconByHeigth()));
               }),
             ],
           ),
@@ -199,7 +211,6 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
                   return ListViewMarkets(
                     context: context,
                     markets: state.markets,
-                    callback: callback,
                   );
                 } else if (state is Error) {
                   return Padding(
@@ -222,7 +233,31 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
                 return Container();
               },
             ),
-          )
+          ),
+          //SHOW TOASTS
+          Builder(builder: (context) {
+            final ticketsBloc = context.watch<TicketsBloc>();
+
+            final mayShowAlreadyToast =
+                ticketsBloc.state.status == TicketStatus.alreadyExist;
+            final mayShowAddedToast =
+                ticketsBloc.state.status == TicketStatus.loaded;
+
+            if (mayShowAlreadyToast) {
+              ToastService.showToastWarning(context,
+                  message:
+                      'Ticket with id ${ticketsBloc.state.ticketModel.id} Already Exist!');
+              ticketsBloc.add(const TicketsEvent.toastReaded());
+            }
+
+            if (mayShowAddedToast) {
+              ToastService.showToastSuccessfull(context,
+                  message:
+                      'Ticket ${ticketsBloc.state.ticketModel.id} Added Successfully!');
+              ticketsBloc.add(const TicketsEvent.toastReaded());
+            }
+            return Container();
+          })
         ],
       ),
     );

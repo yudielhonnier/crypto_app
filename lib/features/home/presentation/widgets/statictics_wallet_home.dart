@@ -53,11 +53,7 @@ class StaticticsWalletHome extends StatelessWidget {
             ticketsBloc.add(const TicketsEvent.getAllTickets());
           }
 
-          if (ticketsBloc.state.status == TicketStatus.listLoaded) {
-            return _listLoaded(ticketsBloc);
-          }
-
-          return Text(ticketsBloc.state.balance.totalCurrentPrice.toString());
+          return _listLoaded(ticketsBloc);
         }),
       ],
     );

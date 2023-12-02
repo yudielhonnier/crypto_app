@@ -20,12 +20,11 @@ class CircularChartStatictics extends StatelessWidget {
       child: Builder(builder: (context) {
         final ticketsBloc = context.watch<TicketsBloc>();
 
-        if (ticketsBloc.state.status == TicketStatus.listLoaded ||
-            ticketsBloc.state.status == TicketStatus.loaded) {
-          return _listLoaded(ticketsBloc);
+        if (ticketsBloc.state.status == TicketStatus.loading) {
+          return _listLoading(ticketsBloc);
         }
 
-        return Container();
+        return _listLoaded(ticketsBloc);
       }),
     );
   }
@@ -49,19 +48,28 @@ class CircularChartStatictics extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                '${yround(totalPriceChange24H)} % ',
+                '${yround(totalPriceChangePercentage24H)} % ',
                 style: TextStyle(
-                    fontSize: 16, color: colorByPrice(totalPriceChange24H)),
+                    fontSize: 20,
+                    color: colorByPrice(totalPriceChangePercentage24H)),
               ),
-              Text('${yround(totalPriceChangePercentage24H)}',
+              Text('${yround(totalPriceChange24H)}',
                   style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 20,
                       color: darkTheme.colorScheme.secondary,
                       fontWeight: FontWeight.bold)),
             ],
           )
         ],
       ),
+    );
+  }
+
+  Widget _listLoading(TicketsBloc ticketsBloc) {
+    return const Row(
+      children: [
+        CircularProgressIndicator(),
+      ],
     );
   }
 }
