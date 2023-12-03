@@ -1,6 +1,6 @@
 import 'package:crypto_app/features/shared/presentation/cubit/app_shadow_cubit.dart';
 import 'package:crypto_app/features/shared/presentation/widgets/card_wallet_actions.dart';
-import 'package:crypto_app/features/home/presentation/widgets/list_view_news.dart';
+import 'package:crypto_app/features/home/presentation/widgets/list_view_articles.dart';
 import 'package:crypto_app/features/home/presentation/widgets/sliding_up_panel_market.dart';
 import 'package:crypto_app/features/home/presentation/widgets/statictics_wallet_home.dart';
 import 'package:crypto_app/config/themes/theme_constants.dart';
@@ -8,7 +8,7 @@ import 'package:crypto_app/config/themes/theme_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../shared/presentation/widgets/bottom_gradient.dart';
+import '../bloc/article_bloc.dart';
 import '../widgets/app_bar_home.dart';
 
 class MobileHomeBody extends StatelessWidget {
@@ -77,7 +77,23 @@ class MobileHomeBody extends StatelessWidget {
                       const SizedBox(
                         height: 5,
                       ),
-                      const Expanded(child: ListViewNews()),
+                      Expanded(child: Builder(builder: (context) {
+                        final articleBloc = context.watch<ArticleBloc>();
+
+                        if (articleBloc.state.status == ArticleStatus.loading) {
+                          return const CircularProgressIndicator();
+                        }
+                        if (articleBloc.state.status == ArticleStatus.failure) {
+                          return const Text("An error ocurred");
+                        }
+                        if (articleBloc.state.status ==
+                            ArticleStatus.listLoaded) {
+                          return ListViewArticles(
+                            articles: articleBloc.state.articles,
+                          );
+                        }
+                        return Container();
+                      })),
                     ],
                   ),
                 ),
@@ -93,29 +109,9 @@ class MobileHomeBody extends StatelessWidget {
           return Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              // Container(
-              //   height: 30,
-              //   decoration: BoxDecoration(
-              //     gradient: LinearGradient(
-              //         begin: Alignment.topCenter,
-              //         end: Alignment.bottomCenter,
-              //         colors: [
-              //           const Color.fromARGB(255, 17, 23, 35)
-              //               .withOpacity(0.2),
-              //           const Color.fromARGB(255, 17, 13, 30)
-              //               .withOpacity(0.4),
-              //           const Color.fromARGB(255, 6, 13, 24).withOpacity(0.5),
-              //         ]),
-              //     borderRadius: const BorderRadius.only(
-              //         topLeft: Radius.circular(20),
-              //         topRight: Radius.circular(20)),
-              //   ),
-              // ),
               Stack(children: [
                 SlidingUpPanelMarket(
                     dropdownvalue: sortedByItems[0], items: sortedByItems),
-                BottomGradient(
-                    size: size, colors: colorsGradient, height: 170, bottom: 0),
               ]),
             ],
           );

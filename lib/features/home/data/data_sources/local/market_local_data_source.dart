@@ -14,7 +14,7 @@ abstract class MarketLocalDataSource {
   Future<void> cacheMarkets(List<MarketModel> markets);
 }
 
-const CACHED_MARKET = 'CACHED_MARKET';
+const cachedMarkets = 'CACHED_MARKET';
 
 class MarketLocalDataSourceImpl implements MarketLocalDataSource {
   final SharedPreferences sharedPreferences;
@@ -22,18 +22,28 @@ class MarketLocalDataSourceImpl implements MarketLocalDataSource {
   MarketLocalDataSourceImpl({required this.sharedPreferences});
 
   @override
-  Future<void> cacheMarkets(List<MarketModel> markets) {
-    // TODO: implement cacheMarkets
-    print('todo :implement cachemarkets');
-    return Future(() => null);
+  Future<void> cacheMarkets(List<MarketModel> markets) async {
+    final marketsString = <String>[];
+
+    for (var market in markets) {
+      marketsString.add(json.encode(market.toJson()));
+    }
+
+    await sharedPreferences.setStringList(cachedMarkets, marketsString);
   }
 
   @override
-  Future<List<MarketModel>> getLastMarkets() {
-    final jsonString = sharedPreferences.getString(CACHED_MARKET);
-    if (jsonString != null) {
-      return Future.value(
-          [MarketModel.fromJson(json.decode(jsonString ?? ''))]);
+  Future<List<MarketModel>> getLastMarkets() async {
+    final cachedMarketsString = sharedPreferences.getStringList(cachedMarkets);
+
+    final lastCachedUsers = <MarketModel>[];
+
+    if (cachedMarketsString != null) {
+      for (var market in cachedMarketsString) {
+        lastCachedUsers.add(MarketModel.fromJson(json.decode(market)));
+      }
+
+      return lastCachedUsers;
     } else {
       throw CacheException();
     }

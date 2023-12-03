@@ -98,8 +98,6 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
   }
 
   Widget _panel(PanelController pc) {
-    bool isNotToastAlreadyReaded = true;
-    bool isNotToastAddedReaded = true;
     return Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
@@ -206,7 +204,14 @@ class _SlidingUpPanelMarketState extends State<SlidingUpPanelMarket> {
             child: BlocBuilder<MarketsBloc, MarketsState>(
               builder: (BuildContext context, state) {
                 if (state is Loading) {
-                  return const Center(child: CircularProgressIndicator());
+                  return const Column(
+                    children: [
+                      CircularProgressIndicator(
+                        color: Colors.white,
+                      ),
+                      Spacer(),
+                    ],
+                  );
                 } else if (state is Loaded) {
                   return ListViewMarkets(
                     context: context,

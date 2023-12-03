@@ -1,4 +1,5 @@
 import 'package:crypto_app/core/resources/ticket_db_helper.dart';
+import 'package:crypto_app/features/home/presentation/bloc/article_bloc.dart';
 import 'package:crypto_app/features/home/presentation/bloc/markets_bloc.dart';
 import 'package:crypto_app/features/profile/data/data_sources/local/user_local_data_source.dart';
 import 'package:crypto_app/features/profile/data/repository/user_repository_impl.dart';
@@ -18,10 +19,15 @@ import 'package:get_it/get_it.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../features/home/data/data_sources/local/article_local_data_source.dart';
 import '../features/home/data/data_sources/local/market_local_data_source.dart';
+import '../features/home/data/data_sources/remote/article_remote_data_source.dart';
 import '../features/home/data/data_sources/remote/market_remote_data_source.dart';
 import '../features/home/data/repository/market_repository_impl.dart';
+import '../features/home/data/repository/articles_repository_impl.dart';
+import '../features/home/domain/repository/article_repository.dart';
 import '../features/home/domain/repository/market_repository.dart';
+import '../features/home/domain/usecase/get_articles_use_case.dart';
 import '../features/home/domain/usecase/get_markets_use_case.dart';
 
 import '../core/network/network_info.dart';
@@ -45,6 +51,7 @@ void initUseCases() {
   getIt.registerLazySingleton(() => GetTicketByIdUseCase(getIt()));
   getIt.registerLazySingleton(() => DeleteTicketByIdUseCase(getIt()));
   getIt.registerLazySingleton(() => GetAllTicketsUseCase(getIt()));
+  getIt.registerLazySingleton(() => GetAllArticlesUseCase(getIt()));
 }
 
 void initRepositories() {
@@ -65,6 +72,13 @@ void initRepositories() {
       localDataSource: getIt(),
     ),
   );
+  getIt.registerLazySingleton<ArticleRepository>(
+    () => ArticleRepositoryImpl(
+      remoteDataSource: getIt(),
+      localDataSource: getIt(),
+      networkInfo: getIt(),
+    ),
+  );
 }
 
 void initDataSources() {
@@ -80,6 +94,14 @@ void initDataSources() {
   getIt.registerLazySingleton<TicketLocalDataSourceImpl>(
     () => TicketLocalDataSourceImpl(
         sharedPreferences: getIt(), ticketDB: getIt()),
+  );
+
+  getIt.registerLazySingleton<ArticleLocalDataSource>(
+    () => ArticleLocalDataSourceImpl(sharedPreferences: getIt()),
+  );
+
+  getIt.registerLazySingleton<ArticleRemoteDataSource>(
+    () => ArticleRemoteDataSourceImpl(getIt()),
   );
 }
 
@@ -106,4 +128,5 @@ void initBlocs() {
   getIt.registerFactory<TicketsBloc>(
       () => TicketsBloc(getIt(), getIt(), getIt(), getIt()));
   getIt.registerFactory<AppShadowCubit>(() => AppShadowCubit());
+  getIt.registerFactory<ArticleBloc>(() => ArticleBloc(getIt()));
 }

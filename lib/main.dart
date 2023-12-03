@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:crypto_app/config/themes/theme_constants.dart';
 import 'package:crypto_app/core/helpers/camera_delegate.dart';
 import 'package:crypto_app/core/resources/ticket_db_helper.dart';
-import 'package:crypto_app/core/resources/toast_service.dart';
+import 'package:crypto_app/features/home/presentation/bloc/article_bloc.dart';
 import 'package:crypto_app/features/shared/presentation/bloc/tickets/tickets_bloc.dart';
 import 'package:crypto_app/features/shared/presentation/cubit/app_shadow_cubit.dart';
 import 'package:flutter/material.dart';
@@ -60,7 +60,10 @@ class MyApp extends StatelessWidget {
             ),
             BlocProvider(
               create: (context) => getIt<AppShadowCubit>(),
-            )
+            ),
+            BlocProvider(
+                create: (context) => getIt<ArticleBloc>()
+                  ..add(const ArticleEvent.getAllArticles()))
           ],
           child: Builder(builder: (BuildContext context) {
             final _router =

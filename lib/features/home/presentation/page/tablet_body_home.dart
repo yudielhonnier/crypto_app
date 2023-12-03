@@ -1,7 +1,7 @@
 import 'package:crypto_app/features/home/presentation/widgets/app_bar_home.dart';
 import 'package:crypto_app/features/shared/presentation/widgets/bottom_gradient.dart';
 import 'package:crypto_app/features/shared/presentation/widgets/card_wallet_actions.dart';
-import 'package:crypto_app/features/home/presentation/widgets/list_view_news.dart';
+import 'package:crypto_app/features/home/presentation/widgets/list_view_articles.dart';
 import 'package:crypto_app/features/home/presentation/widgets/sliding_up_panel_market.dart';
 import 'package:crypto_app/features/home/presentation/widgets/statictics_wallet_home.dart';
 import 'package:crypto_app/config/themes/theme_constants.dart';
@@ -73,7 +73,10 @@ class TabletHomeBody extends StatelessWidget {
                   const SizedBox(
                     height: 5,
                   ),
-                  const Expanded(child: ListViewNews()),
+                  const Expanded(
+                      child: ListViewArticles(
+                    articles: [],
+                  )),
                 ],
               ),
             ),

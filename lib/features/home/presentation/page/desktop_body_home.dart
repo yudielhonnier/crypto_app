@@ -1,5 +1,5 @@
 import 'package:crypto_app/features/home/presentation/widgets/app_bar_home.dart';
-import 'package:crypto_app/features/home/presentation/widgets/list_view_news.dart';
+import 'package:crypto_app/features/home/presentation/widgets/list_view_articles.dart';
 import 'package:crypto_app/config/themes/theme_constants.dart';
 import 'package:crypto_app/features/home/presentation/widgets/panel_market_desktop.dart';
 import 'package:crypto_app/features/home/presentation/widgets/statictics_wallet_home.dart';
@@ -80,7 +80,9 @@ class DesktopHomeBody extends StatelessWidget {
                             child: ScrollConfiguration(
                               behavior: ScrollConfiguration.of(context)
                                   .copyWith(scrollbars: false),
-                              child: const ListViewNews(),
+                              child: const ListViewArticles(
+                                articles: [],
+                              ),
                             )),
                       ),
                     ],
