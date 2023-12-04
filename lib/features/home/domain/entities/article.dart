@@ -7,7 +7,7 @@ class Article {
   final String? videoUrl;
   final String description;
   final String content;
-  final String pubDate;
+  final DateTime pubDate;
   final String? imageUrl;
   final String sourceId;
   final int sourcePriority;

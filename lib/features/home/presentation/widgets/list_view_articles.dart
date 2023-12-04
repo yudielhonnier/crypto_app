@@ -1,3 +1,4 @@
+import 'package:crypto_app/core/helpers/extensions.dart';
 import 'package:crypto_app/features/home/presentation/bloc/article_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:crypto_app/config/themes/theme_constants.dart';
@@ -20,26 +21,32 @@ class ListViewArticles extends StatelessWidget {
       child: ListView.separated(
         itemBuilder: (context, index) {
           final article = articles[index];
-          print('DEBBUG: listloaded articles $article ');
+          print('DEBBUG: view article - ${article.imageUrl} ');
 
-          return ListTile(
-            contentPadding: const EdgeInsets.only(left: 0),
-            title: Text(
-              article.title,
-              style: const TextStyle(height: 1.4),
-            ),
-            subtitle: const Text('5h agao', style: TextStyle(height: 2.0)),
-            trailing: Container(
-                decoration: BoxDecoration(
-                  color: darkTheme.colorScheme.primary,
-                  border: Border.all(
-                    color: darkTheme.colorScheme.secondary,
+          return GestureDetector(
+            // onTap: () => context.go(MyRouter.articleRoute),
+            child: ListTile(
+              contentPadding: const EdgeInsets.only(left: 0),
+              title: Text(
+                article.title,
+                style: const TextStyle(height: 1.4),
+              ),
+              subtitle: Text(article.pubDate.hms(),
+                  style: const TextStyle(height: 2.0)),
+              trailing: Container(
+                  decoration: BoxDecoration(
+                    color: darkTheme.colorScheme.primary,
+                    border: Border.all(
+                      color: darkTheme.colorScheme.secondary,
+                    ),
                   ),
-                ),
-                padding: const EdgeInsets.all(0),
-                width: 90,
-                height: 60,
-                child: const Icon(Icons.grain_sharp, size: 40)),
+                  padding: const EdgeInsets.all(0),
+                  width: 90,
+                  height: 60,
+                  child: article.imageUrl != null
+                      ? Image.network(article.imageUrl!)
+                      : const Icon(Icons.grain_sharp, size: 40)),
+            ),
           );
         },
         separatorBuilder: (context, index) => Divider(

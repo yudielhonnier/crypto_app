@@ -16,7 +16,7 @@ class ArticleModel extends Article with _$ArticleModel {
     @JsonKey(name: 'video_url') String? videoUrl,
     required String description,
     required String content,
-    required String pubDate,
+    required DateTime pubDate,
     @JsonKey(name: 'image_Url') String? imageUrl,
     @JsonKey(name: 'source_id') required String sourceId,
     @JsonKey(name: 'source_priority') required int sourcePriority,

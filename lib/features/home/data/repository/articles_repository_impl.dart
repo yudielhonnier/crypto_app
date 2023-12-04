@@ -3,6 +3,7 @@ import 'package:crypto_app/core/error/failure.dart';
 import 'package:crypto_app/core/network/network_info.dart';
 import 'package:fpdart/fpdart.dart';
 
+import '../../../../core/helpers/translate_articles.dart';
 import '../../domain/repository/article_repository.dart';
 import '../data_sources/local/article_local_data_source.dart';
 import '../data_sources/remote/article_remote_data_source.dart';
@@ -21,12 +22,12 @@ class ArticleRepositoryImpl implements ArticleRepository {
 
   @override
   Future<Either<Failure, List<ArticleModel>>> getArticles() async {
-    bool result = await networkInfo.isConnected;
+    bool isConnected = await networkInfo.isConnected;
 
-    if (await networkInfo.isConnected) {
+    if (isConnected) {
       try {
         final remote = await remoteDataSource.getArticles();
-        final remoteArticles = remote.results;
+        final remoteArticles = translateArticles(remote.results);
         localDataSource.cacheArticles(remoteArticles);
         return Right(remoteArticles);
       } on ServerException catch (e) {

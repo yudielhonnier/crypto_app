@@ -30,7 +30,7 @@ mixin _$ArticleModel {
   String? get videoUrl => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
-  String get pubDate => throw _privateConstructorUsedError;
+  DateTime get pubDate => throw _privateConstructorUsedError;
   @JsonKey(name: 'image_Url')
   String? get imageUrl => throw _privateConstructorUsedError;
   @JsonKey(name: 'source_id')
@@ -62,7 +62,7 @@ abstract class $ArticleModelCopyWith<$Res> {
       @JsonKey(name: 'video_url') String? videoUrl,
       String description,
       String content,
-      String pubDate,
+      DateTime pubDate,
       @JsonKey(name: 'image_Url') String? imageUrl,
       @JsonKey(name: 'source_id') String sourceId,
       @JsonKey(name: 'source_priority') int sourcePriority,
@@ -136,7 +136,7 @@ class _$ArticleModelCopyWithImpl<$Res, $Val extends ArticleModel>
       pubDate: null == pubDate
           ? _value.pubDate
           : pubDate // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -182,7 +182,7 @@ abstract class _$$_ArticleModelCopyWith<$Res>
       @JsonKey(name: 'video_url') String? videoUrl,
       String description,
       String content,
-      String pubDate,
+      DateTime pubDate,
       @JsonKey(name: 'image_Url') String? imageUrl,
       @JsonKey(name: 'source_id') String sourceId,
       @JsonKey(name: 'source_priority') int sourcePriority,
@@ -254,7 +254,7 @@ class __$$_ArticleModelCopyWithImpl<$Res>
       pubDate: null == pubDate
           ? _value.pubDate
           : pubDate // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -345,7 +345,7 @@ class _$_ArticleModel implements _ArticleModel {
   @override
   final String content;
   @override
-  final String pubDate;
+  final DateTime pubDate;
   @override
   @JsonKey(name: 'image_Url')
   final String? imageUrl;
@@ -452,7 +452,7 @@ abstract class _ArticleModel implements ArticleModel {
       @JsonKey(name: 'video_url') final String? videoUrl,
       required final String description,
       required final String content,
-      required final String pubDate,
+      required final DateTime pubDate,
       @JsonKey(name: 'image_Url') final String? imageUrl,
       @JsonKey(name: 'source_id') required final String sourceId,
       @JsonKey(name: 'source_priority') required final int sourcePriority,
@@ -482,7 +482,7 @@ abstract class _ArticleModel implements ArticleModel {
   @override
   String get content;
   @override
-  String get pubDate;
+  DateTime get pubDate;
   @override
   @JsonKey(name: 'image_Url')
   String? get imageUrl;

@@ -7,6 +7,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
+import 'package:translator/translator.dart';
 
 extension BuildContextX on BuildContext {
   MediaQueryData get mediaQuery => MediaQuery.of(this);
@@ -75,6 +77,47 @@ extension StringX on String {
   int get toInt {
     return digitsOnly.isEmpty ? 0 : int.parse(digitsOnly);
   }
+
+  String detectLanguage() {
+    String languageCodes = 'en';
+
+    final RegExp persian = RegExp(r'^[\u0600-\u06FF]+');
+    final RegExp english = RegExp(r'^[a-zA-Z]+');
+    final RegExp arabic = RegExp(r'^[\u0621-\u064A]+');
+    final RegExp chinese = RegExp(r'^[\u4E00-\u9FFF]+');
+    final RegExp japanese = RegExp(r'^[\u3040-\u30FF]+');
+    final RegExp korean = RegExp(r'^[\uAC00-\uD7AF]+');
+    final RegExp ukrainian = RegExp(r'^[\u0400-\u04FF\u0500-\u052F]+');
+    final RegExp russian = RegExp(r'^[\u0400-\u04FF]+');
+    final RegExp italian = RegExp(r'^[\u00C0-\u017F]+');
+    final RegExp french = RegExp(r'^[\u00C0-\u017F]+');
+    final RegExp spanish = RegExp(
+        r'[\u00C0-\u024F\u1E00-\u1EFF\u2C60-\u2C7F\uA720-\uA7FF\u1D00-\u1D7F]+');
+
+    if (persian.hasMatch(this)) languageCodes = 'fa';
+    if (english.hasMatch(this)) languageCodes = 'en';
+    if (arabic.hasMatch(this)) languageCodes = 'ar';
+    if (chinese.hasMatch(this)) languageCodes = 'zh';
+    if (japanese.hasMatch(this)) languageCodes = 'ja';
+    if (korean.hasMatch(this)) languageCodes = 'ko';
+    if (russian.hasMatch(this)) languageCodes = 'ru';
+    if (ukrainian.hasMatch(this)) languageCodes = 'uk';
+    if (italian.hasMatch(this)) languageCodes = 'it';
+    if (french.hasMatch(this)) languageCodes = 'fr';
+    if (spanish.hasMatch(this)) languageCodes = 'es';
+
+    return languageCodes;
+  }
+
+  bool isEnglish() {
+    return detectLanguage() == 'en';
+  }
+
+  Future<String> translate() async {
+    final translator = GoogleTranslator();
+    var t = await translator.translate(this, to: 'en');
+    return t.source;
+  }
 }
 
 extension StringNullableX on String? {
@@ -122,5 +165,12 @@ extension ColorX on Color {
   Color ramdomColor() {
     return Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
         .withOpacity(1.0);
+  }
+}
+
+extension DateTimeX on DateTime {
+  String hms() {
+    DateFormat df = DateFormat.Hms();
+    return df.format(this);
   }
 }

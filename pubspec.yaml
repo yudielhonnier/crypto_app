@@ -41,6 +41,7 @@ dependencies:
   equatable: ^2.0.5
   simple_animations: ^5.0.2
   fluttertoast: ^8.2.4
+  translator: ^0.1.7
 
   
 

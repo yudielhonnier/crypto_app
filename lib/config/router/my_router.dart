@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/resources/toast_service.dart';
+import '../../features/home/presentation/page/article_screen.dart';
 import '../../features/home/presentation/page/home_screen.dart';
 
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -23,6 +24,7 @@ class MyRouter {
   static const notificationsRoute = '/notifications';
   static const tradingRoute = '/trading';
   static const logoutRoute = '/initial';
+  static const articleRoute = '/article';
 
   late final router = GoRouter(
     initialLocation: homeRoute,
@@ -92,6 +94,14 @@ class MyRouter {
           child: _build(const TradingScreen()),
         ),
       ),
+      // GoRoute(
+      //   path: articleRoute,
+      //   pageBuilder: (context, state) => buildPageWithDefaultTransition(
+      //     context: context,
+      //     state: state,
+      //     child: _build(const ArticleScreen()),
+      //   ),
+      // ),
       // GoRoute(
       //   path: '/provider',
       //   // builder: (BuildContext context, GoRouterState state) =>
