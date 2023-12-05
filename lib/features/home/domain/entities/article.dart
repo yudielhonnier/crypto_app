@@ -5,7 +5,7 @@ class Article {
   final List<String>? keywords;
   final List<String>? creator;
   final String? videoUrl;
-  final String description;
+  final String? description;
   final String content;
   final DateTime pubDate;
   final String? imageUrl;
@@ -22,7 +22,7 @@ class Article {
     this.keywords,
     this.creator,
     this.videoUrl,
-    required this.description,
+    this.description,
     required this.content,
     required this.pubDate,
     this.imageUrl,

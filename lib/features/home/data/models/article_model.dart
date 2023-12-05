@@ -14,7 +14,7 @@ class ArticleModel extends Article with _$ArticleModel {
     required List<String>? keywords,
     required List<String>? creator,
     @JsonKey(name: 'video_url') String? videoUrl,
-    required String description,
+    required String? description,
     required String content,
     required DateTime pubDate,
     @JsonKey(name: 'image_Url') String? imageUrl,

@@ -28,7 +28,7 @@ mixin _$ArticleModel {
   List<String>? get creator => throw _privateConstructorUsedError;
   @JsonKey(name: 'video_url')
   String? get videoUrl => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
   DateTime get pubDate => throw _privateConstructorUsedError;
   @JsonKey(name: 'image_Url')
@@ -60,7 +60,7 @@ abstract class $ArticleModelCopyWith<$Res> {
       List<String>? keywords,
       List<String>? creator,
       @JsonKey(name: 'video_url') String? videoUrl,
-      String description,
+      String? description,
       String content,
       DateTime pubDate,
       @JsonKey(name: 'image_Url') String? imageUrl,
@@ -90,7 +90,7 @@ class _$ArticleModelCopyWithImpl<$Res, $Val extends ArticleModel>
     Object? keywords = freezed,
     Object? creator = freezed,
     Object? videoUrl = freezed,
-    Object? description = null,
+    Object? description = freezed,
     Object? content = null,
     Object? pubDate = null,
     Object? imageUrl = freezed,
@@ -125,10 +125,10 @@ class _$ArticleModelCopyWithImpl<$Res, $Val extends ArticleModel>
           ? _value.videoUrl
           : videoUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: null == description
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -180,7 +180,7 @@ abstract class _$$_ArticleModelCopyWith<$Res>
       List<String>? keywords,
       List<String>? creator,
       @JsonKey(name: 'video_url') String? videoUrl,
-      String description,
+      String? description,
       String content,
       DateTime pubDate,
       @JsonKey(name: 'image_Url') String? imageUrl,
@@ -208,7 +208,7 @@ class __$$_ArticleModelCopyWithImpl<$Res>
     Object? keywords = freezed,
     Object? creator = freezed,
     Object? videoUrl = freezed,
-    Object? description = null,
+    Object? description = freezed,
     Object? content = null,
     Object? pubDate = null,
     Object? imageUrl = freezed,
@@ -243,10 +243,10 @@ class __$$_ArticleModelCopyWithImpl<$Res>
           ? _value.videoUrl
           : videoUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: null == description
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -341,7 +341,7 @@ class _$_ArticleModel implements _ArticleModel {
   @JsonKey(name: 'video_url')
   final String? videoUrl;
   @override
-  final String description;
+  final String? description;
   @override
   final String content;
   @override
@@ -450,7 +450,7 @@ abstract class _ArticleModel implements ArticleModel {
       required final List<String>? keywords,
       required final List<String>? creator,
       @JsonKey(name: 'video_url') final String? videoUrl,
-      required final String description,
+      required final String? description,
       required final String content,
       required final DateTime pubDate,
       @JsonKey(name: 'image_Url') final String? imageUrl,
@@ -478,7 +478,7 @@ abstract class _ArticleModel implements ArticleModel {
   @JsonKey(name: 'video_url')
   String? get videoUrl;
   @override
-  String get description;
+  String? get description;
   @override
   String get content;
   @override

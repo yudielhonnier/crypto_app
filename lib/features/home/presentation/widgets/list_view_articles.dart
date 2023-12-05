@@ -3,7 +3,9 @@ import 'package:crypto_app/features/home/presentation/bloc/article_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:crypto_app/config/themes/theme_constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../config/router/my_router.dart';
 import '../../data/models/article_model.dart';
 
 class ListViewArticles extends StatelessWidget {
@@ -24,7 +26,7 @@ class ListViewArticles extends StatelessWidget {
           print('DEBBUG: view article - ${article.imageUrl} ');
 
           return GestureDetector(
-            // onTap: () => context.go(MyRouter.articleRoute),
+            onTap: () => context.push(MyRouter.articleRoute, extra: article),
             child: ListTile(
               contentPadding: const EdgeInsets.only(left: 0),
               title: Text(
@@ -34,18 +36,25 @@ class ListViewArticles extends StatelessWidget {
               subtitle: Text(article.pubDate.hms(),
                   style: const TextStyle(height: 2.0)),
               trailing: Container(
-                  decoration: BoxDecoration(
-                    color: darkTheme.colorScheme.primary,
-                    border: Border.all(
-                      color: darkTheme.colorScheme.secondary,
-                    ),
+                decoration: BoxDecoration(
+                  color: darkTheme.colorScheme.primary,
+                  border: Border.all(
+                    color: darkTheme.colorScheme.secondary,
                   ),
-                  padding: const EdgeInsets.all(0),
-                  width: 90,
-                  height: 60,
+                ),
+                padding: const EdgeInsets.all(0),
+                width: 90,
+                height: 60,
+                child: Hero(
+                  tag: article.articleId,
                   child: article.imageUrl != null
                       ? Image.network(article.imageUrl!)
-                      : const Icon(Icons.grain_sharp, size: 40)),
+                      : Image.asset(
+                          'assets/crypto.png',
+                          fit: BoxFit.cover,
+                        ),
+                ),
+              ),
             ),
           );
         },

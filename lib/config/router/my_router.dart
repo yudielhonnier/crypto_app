@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/resources/toast_service.dart';
+import '../../features/home/data/models/article_model.dart';
 import '../../features/home/presentation/page/article_screen.dart';
 import '../../features/home/presentation/page/home_screen.dart';
 
@@ -94,14 +95,19 @@ class MyRouter {
           child: _build(const TradingScreen()),
         ),
       ),
-      // GoRoute(
-      //   path: articleRoute,
-      //   pageBuilder: (context, state) => buildPageWithDefaultTransition(
-      //     context: context,
-      //     state: state,
-      //     child: _build(const ArticleScreen()),
-      //   ),
-      // ),
+      GoRoute(
+        path: articleRoute,
+        pageBuilder: (context, state) {
+          ArticleModel article = state.extra as ArticleModel;
+          return buildPageWithDefaultTransition(
+            context: context,
+            state: state,
+            child: _build(ArticleScreen(
+              article: article,
+            )),
+          );
+        },
+      ),
       // GoRoute(
       //   path: '/provider',
       //   // builder: (BuildContext context, GoRouterState state) =>

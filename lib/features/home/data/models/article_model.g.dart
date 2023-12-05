@@ -17,7 +17,7 @@ _$_ArticleModel _$$_ArticleModelFromJson(Map<String, dynamic> json) =>
       creator:
           (json['creator'] as List<dynamic>?)?.map((e) => e as String).toList(),
       videoUrl: json['video_url'] as String?,
-      description: json['description'] as String,
+      description: json['description'] as String?,
       content: json['content'] as String,
       pubDate: DateTime.parse(json['pubDate'] as String),
       imageUrl: json['image_Url'] as String?,
