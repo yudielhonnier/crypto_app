@@ -12,8 +12,12 @@ import 'package:flutter/material.dart';
 
 import 'package:crypto_app/config/themes/theme_constants.dart';
 
+import '../../../shared/data/models/ticket_model.dart';
+
 class DesktopTradingBody extends StatefulWidget {
-  const DesktopTradingBody({super.key});
+  const DesktopTradingBody({super.key, required this.ticket});
+
+  final TicketModel ticket;
 
   @override
   State<DesktopTradingBody> createState() => _DesktopTradingBodyState();

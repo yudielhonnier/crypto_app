@@ -6,6 +6,7 @@ import 'package:crypto_app/core/resources/ticket_db_helper.dart';
 import 'package:crypto_app/features/home/presentation/bloc/article_bloc.dart';
 import 'package:crypto_app/features/shared/presentation/bloc/tickets/tickets_bloc.dart';
 import 'package:crypto_app/features/shared/presentation/cubit/app_shadow_cubit.dart';
+import 'package:crypto_app/features/trading/presentation/bloc/historical_market_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -63,7 +64,7 @@ class MyApp extends StatelessWidget {
             ),
             BlocProvider(
                 create: (context) => getIt<ArticleBloc>()
-                  ..add(const ArticleEvent.getAllArticles()))
+                  ..add(const ArticleEvent.getAllArticles())),
           ],
           child: Builder(builder: (BuildContext context) {
             final _router =

@@ -75,11 +75,12 @@ class StaticticsWalletHome extends StatelessWidget {
         Column(
           children: [
             Text(
-              '${yround(totalPriceChange24H)} % ',
+              '${yround(totalPriceChangePercentage24H)} % ',
               style: TextStyle(
-                  fontSize: 16, color: colorByPrice(totalPriceChange24H)),
+                  fontSize: 16,
+                  color: colorByPrice(totalPriceChangePercentage24H)),
             ),
-            Text('${yround(totalPriceChangePercentage24H)}',
+            Text('${yround(totalPriceChange24H)}',
                 style: TextStyle(
                     fontSize: 16,
                     color: darkTheme.colorScheme.secondary,

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'market_remote_data_source.dart';
+part of 'historical_market_remote_data_source.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,9 @@ part of 'market_remote_data_source.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _MarketRemoteDataSourceImpl implements MarketRemoteDataSourceImpl {
-  _MarketRemoteDataSourceImpl(
+class _HistoricalMarketRemoteDataSourceImpl
+    implements HistoricalMarketRemoteDataSourceImpl {
+  _HistoricalMarketRemoteDataSourceImpl(
     this._dio, {
     this.baseUrl,
   }) {
@@ -21,27 +22,34 @@ class _MarketRemoteDataSourceImpl implements MarketRemoteDataSourceImpl {
   String? baseUrl;
 
   @override
-  Future<List<MarketModel>> getMarkets(page) async {
+  Future<HistoricalMarketModel> getHistoricalMarket(
+    from,
+    to,
+    id,
+    vsCurrency,
+  ) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'page': page};
+    final queryParameters = <String, dynamic>{
+      r'from': from,
+      r'to': to,
+      r'vs_currency': vsCurrency,
+    };
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio
-        .fetch<List<dynamic>>(_setStreamType<List<MarketModel>>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<HistoricalMarketModel>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/markets?vs_currency=usd&per_page=10',
+              '/${id}/market_chart/range?precision=6',
               queryParameters: queryParameters,
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!
-        .map((dynamic i) => MarketModel.fromJson(i as Map<String, dynamic>))
-        .toList();
+    final value = HistoricalMarketModel.fromJson(_result.data!);
     return value;
   }
 

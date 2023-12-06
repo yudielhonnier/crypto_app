@@ -1,19 +1,21 @@
 import 'package:crypto_app/core/constants/trading_screen_data.dart';
-import 'package:crypto_app/core/helpers/extensions.dart';
+import 'package:crypto_app/core/helpers/trading_screen_helper.dart';
 import 'package:crypto_app/features/trading/presentation/widgets/app_bar_trading.dart';
 import 'package:crypto_app/features/trading/presentation/widgets/cards_time_chart.dart';
-import 'package:crypto_app/features/trading/presentation/widgets/history.dart';
-import 'package:crypto_app/features/trading/presentation/widgets/info.dart';
 import 'package:crypto_app/features/trading/presentation/widgets/line_chart.dart';
 import 'package:crypto_app/features/trading/presentation/widgets/linear_chart_statictics.dart';
-import 'package:crypto_app/features/trading/presentation/widgets/notes.dart';
-import 'package:crypto_app/features/trading/presentation/widgets/order_book.dart';
 import 'package:flutter/material.dart';
 
 import 'package:crypto_app/config/themes/theme_constants.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../shared/data/models/ticket_model.dart';
+import '../bloc/historical_market_bloc.dart';
 
 class MobileTradingBody extends StatefulWidget {
-  const MobileTradingBody({super.key});
+  const MobileTradingBody({super.key, required this.ticket});
+
+  final TicketModel ticket;
 
   @override
   State<MobileTradingBody> createState() => _MobileTradingBodyState();
@@ -22,16 +24,15 @@ class MobileTradingBody extends StatefulWidget {
 class _MobileTradingBodyState extends State<MobileTradingBody> {
   @override
   Widget build(BuildContext context) {
-    late double heightContext = context.height;
-    late double widthContext = context.width;
+    final dropDownValues = getDropdownvalues(widget.ticket.symbol);
 
     return DefaultTabController(
       length: 4,
       child: Scaffold(
         backgroundColor: darkTheme.colorScheme.primary,
         appBar: AppBarTrading(
-          dropdownvalue: dropdownvalue,
-          items: coinsPair,
+          dropdownvalue: dropDownValues.first,
+          items: dropDownValues,
           context: context,
         ),
         body: Column(
@@ -92,52 +93,65 @@ class _MobileTradingBodyState extends State<MobileTradingBody> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 48,
-              child: AppBar(
-                  bottom: PreferredSize(
-                      preferredSize: Size.fromWidth(widthContext - 40),
-                      child: SizedBox(
-                        width: widthContext - 40,
-                        child: TabBar(
-                          labelStyle: const TextStyle(fontSize: 16),
-                          labelPadding: const EdgeInsets.only(right: 25),
-                          isScrollable: true,
-                          indicator: const UnderlineTabIndicator(
-                            borderSide:
-                                BorderSide(width: 1.0, color: Colors.white),
-                            insets: EdgeInsets.only(right: 20),
-                          ),
-                          tabs: ktabs,
-                        ),
-                      ))),
-            ),
-            Expanded(
-              flex: 1,
-              child: Column(
-                children: [
-                  ColoredBox(
-                    color: darkTheme.colorScheme.secondary,
-                    child: SizedBox(
-                      height: 1,
-                      child: Container(),
-                    ),
-                  ),
-                  Flexible(
-                    child: TabBarView(
-                      children: <Widget>[
-                        OrderBook(
-                            chartData: chartData,
-                            size: Size(widthContext, heightContext)),
-                        const History(),
-                        const Notes(),
-                        const Info(),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            // Builder(builder: (context) {
+            //   final historialMarket = context.watch<HistoricalMarketBloc>();
+            //   if (historialMarket.state.status ==
+            //       HistoricalMarketStatus.loading) {
+            //     return const CircularProgressIndicator();
+            //   }
+            //   if (historialMarket.state.status ==
+            //       HistoricalMarketStatus.loaded) {
+            //     return Text(historialMarket.state.model.prices.toString());
+            //   }
+            //   return Container();
+            // })
+            //TODO: ADD TO VERSION 1.1.0
+            // SizedBox(
+            //   height: 48,
+            //   child: AppBar(
+            //       bottom: PreferredSize(
+            //           preferredSize: Size.fromWidth(widthContext - 40),
+            //           child: SizedBox(
+            //             width: widthContext - 40,
+            //             child: TabBar(
+            //               labelStyle: const TextStyle(fontSize: 16),
+            //               labelPadding: const EdgeInsets.only(right: 25),
+            //               isScrollable: true,
+            //               indicator: const UnderlineTabIndicator(
+            //                 borderSide:
+            //                     BorderSide(width: 1.0, color: Colors.white),
+            //                 insets: EdgeInsets.only(right: 20),
+            //               ),
+            //               tabs: ktabs,
+            //             ),
+            //           ))),
+            // ),
+            // Expanded(
+            //   flex: 1,
+            //   child: Column(
+            //     children: [
+            //       ColoredBox(
+            //         color: darkTheme.colorScheme.secondary,
+            //         child: SizedBox(
+            //           height: 1,
+            //           child: Container(),
+            //         ),
+            //       ),
+            //       Flexible(
+            //         child: TabBarView(
+            //           children: <Widget>[
+            //             OrderBook(
+            //                 chartData: chartData,
+            //                 size: Size(widthContext, heightContext)),
+            //             const History(),
+            //             const Notes(),
+            //             const Info(),
+            //           ],
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
           ],
         ),
       ),

@@ -28,8 +28,6 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
     response.fold(
       (l) => emit(state.copyWith(status: ArticleStatus.failure)),
       (r) {
-        print('DEBBUG: bloc r - $r ');
-
         emit(state.copyWith(
             articles: r as List<ArticleModel>,
             status: ArticleStatus.listLoaded));

@@ -12,6 +12,7 @@ import '../../core/resources/toast_service.dart';
 import '../../features/home/data/models/article_model.dart';
 import '../../features/home/presentation/page/article_screen.dart';
 import '../../features/home/presentation/page/home_screen.dart';
+import '../../features/shared/data/models/ticket_model.dart';
 
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -89,11 +90,17 @@ class MyRouter {
       ),
       GoRoute(
         path: tradingRoute,
-        pageBuilder: (context, state) => buildPageWithDefaultTransition(
-          context: context,
-          state: state,
-          child: _build(const TradingScreen()),
-        ),
+        pageBuilder: (context, state) {
+          TicketModel ticket = state.extra as TicketModel;
+
+          return buildPageWithDefaultTransition(
+            context: context,
+            state: state,
+            child: _build(TradingScreen(
+              ticket: ticket,
+            )),
+          );
+        },
       ),
       GoRoute(
         path: articleRoute,

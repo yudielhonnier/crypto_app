@@ -23,7 +23,6 @@ class ListViewArticles extends StatelessWidget {
       child: ListView.separated(
         itemBuilder: (context, index) {
           final article = articles[index];
-          print('DEBBUG: view article - ${article.imageUrl} ');
 
           return GestureDetector(
             onTap: () => context.push(MyRouter.articleRoute, extra: article),

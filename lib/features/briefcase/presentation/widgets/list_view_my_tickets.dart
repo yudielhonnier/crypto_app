@@ -5,6 +5,9 @@ import 'package:crypto_app/features/shared/data/models/ticket_model.dart';
 import 'package:crypto_app/features/shared/presentation/bloc/tickets/tickets_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../../../config/router/my_router.dart';
 
 class ListViewTickets extends StatefulWidget {
   const ListViewTickets({
@@ -61,81 +64,85 @@ class _ListViewTicketsState extends State<ListViewTickets> {
                         ),
                       )),
                   key: Key(ticket.id),
-                  child: SizedBox(
-                      child: IntrinsicHeight(
-                          child: Row(
-                    children: [
-                      //LIST ITEM
-                      Flexible(
-                        child: ListTile(
-                          contentPadding: const EdgeInsets.all(0),
-                          leading: Image(
-                            image: NetworkImage(ticket.image),
-                            fit: BoxFit.contain,
-                            width: 40,
+                  child: GestureDetector(
+                    onTap: () =>
+                        context.push(MyRouter.tradingRoute, extra: ticket),
+                    child: SizedBox(
+                        child: IntrinsicHeight(
+                            child: Row(
+                      children: [
+                        //LIST ITEM
+                        Flexible(
+                          child: ListTile(
+                            contentPadding: const EdgeInsets.all(0),
+                            leading: Image(
+                              image: NetworkImage(ticket.image),
+                              fit: BoxFit.contain,
+                              width: 40,
+                            ),
+                            title: Text(ticket.name),
+                            subtitle: Text(ticket.symbol),
                           ),
-                          title: Text(ticket.name),
-                          subtitle: Text(ticket.symbol),
                         ),
-                      ),
-                      const SizedBox(
-                        width: 30,
-                      ),
-                      ticket.priceChangePercentage24H < 0
-                          ? const Icon(
-                              Icons.arrow_circle_down,
-                              color: Colors.red,
-                              size: 50,
-                            )
-                          : const Icon(
-                              Icons.arrow_circle_up,
-                              color: Colors.green,
-                              size: 50,
-                            ),
-                      Expanded(
-                        child: Row(
-                          children: [
-                            const Spacer(),
-                            SizedBox(
-                              child: Column(
-                                children: [
-                                  const SizedBox(
-                                    height: 18,
-                                  ),
-                                  Text(yround(ticket.currentPrice).toString(),
-                                      style: const TextStyle(fontSize: 20)),
-                                  Row(
-                                    children: [
-                                      Text(
-                                          yround(ticket.priceChange24H)
-                                              .toString(),
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            color: colorByPrice(
-                                                ticket.priceChange24H),
-                                          )),
-                                      const SizedBox(
-                                        width: 10,
-                                      ),
-                                      Text(
-                                          yround(ticket
-                                                      .priceChangePercentage24H)
-                                                  .toString() +
-                                              '%',
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              color: colorByPrice(ticket
-                                                  .priceChangePercentage24H))),
-                                    ],
-                                  ),
-                                ],
+                        const SizedBox(
+                          width: 30,
+                        ),
+                        ticket.priceChangePercentage24H < 0
+                            ? const Icon(
+                                Icons.arrow_circle_down,
+                                color: Colors.red,
+                                size: 50,
+                              )
+                            : const Icon(
+                                Icons.arrow_circle_up,
+                                color: Colors.green,
+                                size: 50,
                               ),
-                            ),
-                          ],
+                        Expanded(
+                          child: Row(
+                            children: [
+                              const Spacer(),
+                              SizedBox(
+                                child: Column(
+                                  children: [
+                                    const SizedBox(
+                                      height: 18,
+                                    ),
+                                    Text(yround(ticket.currentPrice).toString(),
+                                        style: const TextStyle(fontSize: 20)),
+                                    Row(
+                                      children: [
+                                        Text(
+                                            yround(ticket.priceChange24H)
+                                                .toString(),
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: colorByPrice(
+                                                  ticket.priceChange24H),
+                                            )),
+                                        const SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text(
+                                            yround(ticket
+                                                        .priceChangePercentage24H)
+                                                    .toString() +
+                                                '%',
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                color: colorByPrice(ticket
+                                                    .priceChangePercentage24H))),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ))));
+                      ],
+                    ))),
+                  ));
             }),
         onRefresh: () => _onRefresh(context, widget.tickets.length));
   }

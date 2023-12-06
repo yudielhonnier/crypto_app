@@ -75,6 +75,7 @@ Widget _createAppbar(ArticleModel article) {
 
 Widget _postTitle(ArticleModel article, BuildContext context) {
   return Container(
+    padding: const EdgeInsets.only(top: 14),
     child: Row(
       children: [
         const SizedBox(width: 20.0),
@@ -86,11 +87,11 @@ Widget _postTitle(ArticleModel article, BuildContext context) {
               children: [
                 const Icon(
                   Icons.date_range_sharp,
-                  size: 40.0,
+                  size: 30.0,
                   color: Color.fromARGB(255, 36, 188, 201),
                 ),
                 const SizedBox(
-                  width: 20,
+                  width: 10,
                 ),
                 Text(article.pubDate.toString(),
                     style: Theme.of(context).textTheme.titleMedium,
