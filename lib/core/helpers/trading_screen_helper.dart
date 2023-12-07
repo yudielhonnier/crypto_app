@@ -14,3 +14,7 @@ List<String> getDropdownvalues(String coin) {
 
   return values;
 }
+
+List<double> getLineChartDataList(List<List<num>> numers) {
+  return numers.map((e) => e[1] as double).toList();
+}

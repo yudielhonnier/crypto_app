@@ -25,6 +25,7 @@ class _MobileTradingBodyState extends State<MobileTradingBody> {
   @override
   Widget build(BuildContext context) {
     final dropDownValues = getDropdownvalues(widget.ticket.symbol);
+    final historicalMarketBloc = context.watch<HistoricalMarketBloc>();
 
     return DefaultTabController(
       length: 4,
@@ -77,15 +78,41 @@ class _MobileTradingBodyState extends State<MobileTradingBody> {
                                 )),
                           ),
                         ),
-                        LineChartWidget(
-                          data: lineChartDataList,
-                          width: double.infinity,
-                          height: 220,
-                          color: Colors.white,
-                        ),
+                        Builder(builder: (context) {
+                          if (historicalMarketBloc.state.status ==
+                              HistoricalMarketStatus.loading) {
+                            return const SizedBox(
+                                height: 220,
+                                width: double.infinity,
+                                child: Center(
+                                  child: CircularProgressIndicator(
+                                    color: Colors.white,
+                                  ),
+                                ));
+                          }
+
+                          if (historicalMarketBloc.state.status ==
+                              HistoricalMarketStatus.loaded) {
+                            return LineChartWidget(
+                              data: getLineChartDataList(
+                                  historicalMarketBloc.state.model.prices),
+                              width: double.infinity,
+                              height: 220,
+                              color: Colors.white,
+                            );
+                          }
+
+                          if (historicalMarketBloc.state.status ==
+                              HistoricalMarketStatus.failure) {
+                            return const Text('Error');
+                          }
+
+                          return const Text('No data');
+                        }),
                       ])),
                       const SizedBox(
-                        child: CardsTimeChart(),
+                        width: double.infinity,
+                        child: Center(child: CardsTimeChart()),
                         height: 50,
                       ),
                     ],

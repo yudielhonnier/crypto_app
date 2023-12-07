@@ -3,6 +3,9 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 import 'package:crypto_app/config/themes/theme_constants.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../bloc/historical_market_bloc.dart';
 
 class LineChartWidget extends StatelessWidget {
   final List<double> data;
@@ -27,15 +30,20 @@ class LineChartWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(alignment: AlignmentDirectional.center, children: [
       Opacity(
-        opacity: data.length - 1 > 0 && !loading & !error ? 1 : 0.3,
+        opacity: data.isNotEmpty && !loading & !error ? 1 : 0.3,
         child: SizedBox(
           width: width,
           height: height,
-          child: LineChart(
-            mainData(data),
-            // : Utils.demoGraphData),
-            swapAnimationDuration: const Duration(seconds: 0),
-          ),
+          child: data.isNotEmpty
+              ? LineChart(
+                  key: GlobalKey(),
+                  mainData(data, context),
+                  // : Utils.demoGraphData),
+                  swapAnimationDuration: const Duration(seconds: 0),
+                )
+              : const Center(
+                  child: Text('No data reached'),
+                ),
         ),
       ),
       if (loading)
@@ -50,34 +58,20 @@ class LineChartWidget extends StatelessWidget {
     ]);
   }
 
-  LineChartData mainData(List<double> data) {
+  LineChartData mainData(List<double> data, BuildContext context) {
+    final historicalMarketBloc = context.watch<HistoricalMarketBloc>();
+
     return LineChartData(
-      gridData: FlGridData(
-        show: true,
-        drawVerticalLine: false,
-        drawHorizontalLine: false,
-        horizontalInterval: 4,
-        getDrawingHorizontalLine: (value) {
-          return FlLine(
-            color: const Color(0xff37434d),
-            strokeWidth: 1,
-          );
-        },
-        getDrawingVerticalLine: (value) {
-          return FlLine(
-            color: const Color(0xff37434d),
-            strokeWidth: 1,
-          );
-        },
-      ),
-      titlesData: FlTitlesData(
-        show: false,
-      ),
+      gridData: _buildFLGridData(),
+
+      ///show the values of the x and y
+      titlesData: _buildTitlesData(),
+
       borderData: FlBorderData(
-        show: false,
+        show: true,
       ),
       minX: 0,
-      maxX: data.length.toDouble() - 1,
+      maxX: historicalMarketBloc.state.interval.daysInterval() * 1.0,
       minY: data.reduce(min).toDouble(),
       maxY: data.reduce(max).toDouble(),
       lineBarsData: [
@@ -99,6 +93,49 @@ class LineChartWidget extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  FlGridData _buildFLGridData() {
+    return FlGridData(
+      show: true,
+      drawVerticalLine: false,
+      drawHorizontalLine: false,
+      horizontalInterval: 4,
+      getDrawingHorizontalLine: (value) {
+        return FlLine(
+          color: const Color(0xff37434d),
+          strokeWidth: 1,
+        );
+      },
+      getDrawingVerticalLine: (value) {
+        return FlLine(
+          color: const Color(0xff37434d),
+          strokeWidth: 1,
+        );
+      },
+    );
+  }
+
+  FlTitlesData _buildTitlesData() {
+    return FlTitlesData(
+      show: true, // Set to true to display titles
+      bottomTitles: AxisTitles(
+          sideTitles: SideTitles(
+        showTitles: true, // Set to true to display bottom titles
+        getTitlesWidget: (value, meta) => Text(
+          value.toString(),
+          style: const TextStyle(
+              color: Color(0xff7589a2),
+              fontWeight: FontWeight.bold,
+              fontSize: 14),
+        ),
+        reservedSize: 20,
+        interval: 1000,
+      )),
+      leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+      topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+      rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
     );
   }
 

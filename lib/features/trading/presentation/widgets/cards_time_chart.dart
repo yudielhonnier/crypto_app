@@ -1,5 +1,8 @@
+import 'package:crypto_app/features/shared/presentation/bloc/tickets/tickets_bloc.dart';
+import 'package:crypto_app/features/trading/presentation/bloc/historical_market_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:crypto_app/config/themes/theme_constants.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CardsTimeChart extends StatelessWidget {
   const CardsTimeChart({
@@ -8,84 +11,32 @@ class CardsTimeChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        alignment: AlignmentDirectional.bottomStart,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Card(
+    List<HistoryInterval> valuesInterval = HistoryInterval.values;
+    return ListView.builder(
+        itemCount: valuesInterval.length,
+        scrollDirection: Axis.horizontal,
+        physics: const NeverScrollableScrollPhysics(),
+        itemBuilder: (context, index) {
+          final historicalMarketBloc = context.watch<HistoricalMarketBloc>();
+          final ticketsBloc = context.watch<TicketsBloc>();
+
+          return GestureDetector(
+            onTap: () {
+              historicalMarketBloc.add(
+                  HistoricalMarketEvent.changeInterval(valuesInterval[index]));
+              historicalMarketBloc.add(
+                  HistoricalMarketEvent.getHistoricalMarket(
+                      ticketsBloc.state.ticketModel));
+            },
+            child: Card(
               color: darkTheme.colorScheme.primary,
               child: Container(
                   alignment: Alignment.center,
-                  width: 20,
+                  width: 40,
                   height: 20,
-                  child: const Text('D')),
+                  child: Text(valuesInterval[index].firstLetterUpperCase())),
             ),
-            Card(
-              color: darkTheme.colorScheme.primary,
-              child: Container(
-                  alignment: Alignment.center,
-                  width: 20,
-                  height: 20,
-                  child: const Text('W')),
-            ),
-            Card(
-              color: darkTheme.colorScheme.secondary,
-              child: Container(
-                  alignment: Alignment.center,
-                  width: 20,
-                  height: 20,
-                  child: const Text('M')),
-            ),
-            Card(
-              color: darkTheme.colorScheme.primary,
-              child: Container(
-                  alignment: Alignment.center,
-                  width: 25,
-                  height: 20,
-                  child: const Text('6M')),
-            ),
-            Card(
-              color: darkTheme.colorScheme.primary,
-              child: Container(
-                  alignment: Alignment.center,
-                  width: 20,
-                  height: 20,
-                  child: const Text('Y')),
-            ),
-            Card(
-              color: darkTheme.colorScheme.primary,
-              child: Container(
-                  alignment: Alignment.center,
-                  width: 20,
-                  height: 20,
-                  child: const Text('Y')),
-            ),
-            Card(
-              color: darkTheme.colorScheme.primary,
-              child: Container(
-                  alignment: Alignment.center,
-                  width: 20,
-                  height: 20,
-                  child: const Text('All')),
-            ),
-            Card(
-              color: darkTheme.colorScheme.primary,
-              child: Container(
-                  alignment: Alignment.center,
-                  width: 20,
-                  height: 20,
-                  child: const Text('')),
-            ),
-            Card(
-              color: darkTheme.colorScheme.primary,
-              child: Container(
-                  alignment: Alignment.center,
-                  width: 20,
-                  height: 20,
-                  child: const Icon(Icons.aspect_ratio)),
-            ),
-          ],
-        ));
+          );
+        });
   }
 }

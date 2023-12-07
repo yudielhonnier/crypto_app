@@ -13,7 +13,64 @@ enum HistoryInterval {
   month,
   sixMonth,
   year,
-  fiveYears,
+  fiveYears;
+
+  (int, int) get rangeInUnix {
+    final to = DateTime.now();
+    final from = to.subtract(Duration(days: daysInterval()));
+
+    return (from.toUnixDateTime(), to.toUnixDateTime());
+  }
+
+  int daysInterval() {
+    int res = 30;
+    switch (this) {
+      case HistoryInterval.day:
+        res = 1;
+        break;
+      case HistoryInterval.week:
+        res = 7;
+        break;
+      case HistoryInterval.month:
+        res = 30;
+        break;
+      case HistoryInterval.sixMonth:
+        res = 180;
+        break;
+      case HistoryInterval.year:
+        res = 365;
+        break;
+      case HistoryInterval.fiveYears:
+        res = 1825;
+        break;
+    }
+    return res;
+  }
+
+  String firstLetterUpperCase() {
+    var res = 'D';
+    switch (this) {
+      case HistoryInterval.day:
+        res = 'D';
+        break;
+      case HistoryInterval.week:
+        res = 'W';
+        break;
+      case HistoryInterval.month:
+        res = 'M';
+        break;
+      case HistoryInterval.sixMonth:
+        res = '6M';
+        break;
+      case HistoryInterval.year:
+        res = 'Y';
+        break;
+      case HistoryInterval.fiveYears:
+        res = '5Y';
+        break;
+    }
+    return res;
+  }
 }
 
 enum VsCurrency { usd, eur, ypt }

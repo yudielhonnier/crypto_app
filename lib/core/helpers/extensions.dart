@@ -2,10 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:math' as math;
 
-import 'package:collection/collection.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:fpdart/fpdart.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:translator/translator.dart';
@@ -172,5 +169,12 @@ extension DateTimeX on DateTime {
   String hms() {
     DateFormat df = DateFormat.Hms();
     return df.format(this);
+  }
+
+  ///transform the dateTime into
+  ///
+  ///unix DateTime format in seconds
+  int toUnixDateTime() {
+    return toUtc().millisecondsSinceEpoch ~/ 1000;
   }
 }
