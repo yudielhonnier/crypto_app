@@ -5,15 +5,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../../core/error/exceptions.dart';
 
-abstract class HistoricalMarketLocalDataSource {
+abstract class GraficLocalDataSource {
   Future<void> cachedHistoricalMarket(HistoricalMarketModel historicalMarket);
   Future<HistoricalMarketModel> getLastHistoricalMarket();
 }
 
 String historicalMarketCached = 'CACHED_HISTORICAL_MARKET';
 
-class HistoricalMarketLocalDataSourceImpl
-    implements HistoricalMarketLocalDataSource {
+class HistoricalMarketLocalDataSourceImpl implements GraficLocalDataSource {
   final SharedPreferences sharedPreferences;
 
   HistoricalMarketLocalDataSourceImpl(this.sharedPreferences);

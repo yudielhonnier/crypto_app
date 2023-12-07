@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'historical_market_bloc.dart';
+part of 'grafic_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,26 +15,29 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$HistoricalMarketEvent {
+mixin _$GraficEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TicketModel ticket) getHistoricalMarket,
+    required TResult Function(String id) getHistoricalMarket,
     required TResult Function(HistoryInterval interval) changeInterval,
     required TResult Function(String vsCurrency) changeVsCurrency,
+    required TResult Function(String id) getCoinInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TicketModel ticket)? getHistoricalMarket,
+    TResult? Function(String id)? getHistoricalMarket,
     TResult? Function(HistoryInterval interval)? changeInterval,
     TResult? Function(String vsCurrency)? changeVsCurrency,
+    TResult? Function(String id)? getCoinInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TicketModel ticket)? getHistoricalMarket,
+    TResult Function(String id)? getHistoricalMarket,
     TResult Function(HistoryInterval interval)? changeInterval,
     TResult Function(String vsCurrency)? changeVsCurrency,
+    TResult Function(String id)? getCoinInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$HistoricalMarketEvent {
     required TResult Function(_GetHistoricalMarket value) getHistoricalMarket,
     required TResult Function(_ChangeInterval value) changeInterval,
     required TResult Function(_ChangeVsCurrency value) changeVsCurrency,
+    required TResult Function(_GetCoinInfo value) getCoinInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$HistoricalMarketEvent {
     TResult? Function(_GetHistoricalMarket value)? getHistoricalMarket,
     TResult? Function(_ChangeInterval value)? changeInterval,
     TResult? Function(_ChangeVsCurrency value)? changeVsCurrency,
+    TResult? Function(_GetCoinInfo value)? getCoinInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,23 +62,23 @@ mixin _$HistoricalMarketEvent {
     TResult Function(_GetHistoricalMarket value)? getHistoricalMarket,
     TResult Function(_ChangeInterval value)? changeInterval,
     TResult Function(_ChangeVsCurrency value)? changeVsCurrency,
+    TResult Function(_GetCoinInfo value)? getCoinInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $HistoricalMarketEventCopyWith<$Res> {
-  factory $HistoricalMarketEventCopyWith(HistoricalMarketEvent value,
-          $Res Function(HistoricalMarketEvent) then) =
-      _$HistoricalMarketEventCopyWithImpl<$Res, HistoricalMarketEvent>;
+abstract class $GraficEventCopyWith<$Res> {
+  factory $GraficEventCopyWith(
+          GraficEvent value, $Res Function(GraficEvent) then) =
+      _$GraficEventCopyWithImpl<$Res, GraficEvent>;
 }
 
 /// @nodoc
-class _$HistoricalMarketEventCopyWithImpl<$Res,
-        $Val extends HistoricalMarketEvent>
-    implements $HistoricalMarketEventCopyWith<$Res> {
-  _$HistoricalMarketEventCopyWithImpl(this._value, this._then);
+class _$GraficEventCopyWithImpl<$Res, $Val extends GraficEvent>
+    implements $GraficEventCopyWith<$Res> {
+  _$GraficEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -87,12 +92,12 @@ abstract class _$$_GetHistoricalMarketCopyWith<$Res> {
           $Res Function(_$_GetHistoricalMarket) then) =
       __$$_GetHistoricalMarketCopyWithImpl<$Res>;
   @useResult
-  $Res call({TicketModel ticket});
+  $Res call({String id});
 }
 
 /// @nodoc
 class __$$_GetHistoricalMarketCopyWithImpl<$Res>
-    extends _$HistoricalMarketEventCopyWithImpl<$Res, _$_GetHistoricalMarket>
+    extends _$GraficEventCopyWithImpl<$Res, _$_GetHistoricalMarket>
     implements _$$_GetHistoricalMarketCopyWith<$Res> {
   __$$_GetHistoricalMarketCopyWithImpl(_$_GetHistoricalMarket _value,
       $Res Function(_$_GetHistoricalMarket) _then)
@@ -101,13 +106,13 @@ class __$$_GetHistoricalMarketCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? ticket = freezed,
+    Object? id = null,
   }) {
     return _then(_$_GetHistoricalMarket(
-      freezed == ticket
-          ? _value.ticket
-          : ticket // ignore: cast_nullable_to_non_nullable
-              as TicketModel,
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -115,14 +120,14 @@ class __$$_GetHistoricalMarketCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_GetHistoricalMarket implements _GetHistoricalMarket {
-  const _$_GetHistoricalMarket(this.ticket);
+  const _$_GetHistoricalMarket(this.id);
 
   @override
-  final TicketModel ticket;
+  final String id;
 
   @override
   String toString() {
-    return 'HistoricalMarketEvent.getHistoricalMarket(ticket: $ticket)';
+    return 'GraficEvent.getHistoricalMarket(id: $id)';
   }
 
   @override
@@ -130,12 +135,11 @@ class _$_GetHistoricalMarket implements _GetHistoricalMarket {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_GetHistoricalMarket &&
-            const DeepCollectionEquality().equals(other.ticket, ticket));
+            (identical(other.id, id) || other.id == id));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(ticket));
+  int get hashCode => Object.hash(runtimeType, id);
 
   @JsonKey(ignore: true)
   @override
@@ -147,33 +151,36 @@ class _$_GetHistoricalMarket implements _GetHistoricalMarket {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TicketModel ticket) getHistoricalMarket,
+    required TResult Function(String id) getHistoricalMarket,
     required TResult Function(HistoryInterval interval) changeInterval,
     required TResult Function(String vsCurrency) changeVsCurrency,
+    required TResult Function(String id) getCoinInfo,
   }) {
-    return getHistoricalMarket(ticket);
+    return getHistoricalMarket(id);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TicketModel ticket)? getHistoricalMarket,
+    TResult? Function(String id)? getHistoricalMarket,
     TResult? Function(HistoryInterval interval)? changeInterval,
     TResult? Function(String vsCurrency)? changeVsCurrency,
+    TResult? Function(String id)? getCoinInfo,
   }) {
-    return getHistoricalMarket?.call(ticket);
+    return getHistoricalMarket?.call(id);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TicketModel ticket)? getHistoricalMarket,
+    TResult Function(String id)? getHistoricalMarket,
     TResult Function(HistoryInterval interval)? changeInterval,
     TResult Function(String vsCurrency)? changeVsCurrency,
+    TResult Function(String id)? getCoinInfo,
     required TResult orElse(),
   }) {
     if (getHistoricalMarket != null) {
-      return getHistoricalMarket(ticket);
+      return getHistoricalMarket(id);
     }
     return orElse();
   }
@@ -184,6 +191,7 @@ class _$_GetHistoricalMarket implements _GetHistoricalMarket {
     required TResult Function(_GetHistoricalMarket value) getHistoricalMarket,
     required TResult Function(_ChangeInterval value) changeInterval,
     required TResult Function(_ChangeVsCurrency value) changeVsCurrency,
+    required TResult Function(_GetCoinInfo value) getCoinInfo,
   }) {
     return getHistoricalMarket(this);
   }
@@ -194,6 +202,7 @@ class _$_GetHistoricalMarket implements _GetHistoricalMarket {
     TResult? Function(_GetHistoricalMarket value)? getHistoricalMarket,
     TResult? Function(_ChangeInterval value)? changeInterval,
     TResult? Function(_ChangeVsCurrency value)? changeVsCurrency,
+    TResult? Function(_GetCoinInfo value)? getCoinInfo,
   }) {
     return getHistoricalMarket?.call(this);
   }
@@ -204,6 +213,7 @@ class _$_GetHistoricalMarket implements _GetHistoricalMarket {
     TResult Function(_GetHistoricalMarket value)? getHistoricalMarket,
     TResult Function(_ChangeInterval value)? changeInterval,
     TResult Function(_ChangeVsCurrency value)? changeVsCurrency,
+    TResult Function(_GetCoinInfo value)? getCoinInfo,
     required TResult orElse(),
   }) {
     if (getHistoricalMarket != null) {
@@ -213,11 +223,10 @@ class _$_GetHistoricalMarket implements _GetHistoricalMarket {
   }
 }
 
-abstract class _GetHistoricalMarket implements HistoricalMarketEvent {
-  const factory _GetHistoricalMarket(final TicketModel ticket) =
-      _$_GetHistoricalMarket;
+abstract class _GetHistoricalMarket implements GraficEvent {
+  const factory _GetHistoricalMarket(final String id) = _$_GetHistoricalMarket;
 
-  TicketModel get ticket;
+  String get id;
   @JsonKey(ignore: true)
   _$$_GetHistoricalMarketCopyWith<_$_GetHistoricalMarket> get copyWith =>
       throw _privateConstructorUsedError;
@@ -234,7 +243,7 @@ abstract class _$$_ChangeIntervalCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ChangeIntervalCopyWithImpl<$Res>
-    extends _$HistoricalMarketEventCopyWithImpl<$Res, _$_ChangeInterval>
+    extends _$GraficEventCopyWithImpl<$Res, _$_ChangeInterval>
     implements _$$_ChangeIntervalCopyWith<$Res> {
   __$$_ChangeIntervalCopyWithImpl(
       _$_ChangeInterval _value, $Res Function(_$_ChangeInterval) _then)
@@ -264,7 +273,7 @@ class _$_ChangeInterval implements _ChangeInterval {
 
   @override
   String toString() {
-    return 'HistoricalMarketEvent.changeInterval(interval: $interval)';
+    return 'GraficEvent.changeInterval(interval: $interval)';
   }
 
   @override
@@ -288,9 +297,10 @@ class _$_ChangeInterval implements _ChangeInterval {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TicketModel ticket) getHistoricalMarket,
+    required TResult Function(String id) getHistoricalMarket,
     required TResult Function(HistoryInterval interval) changeInterval,
     required TResult Function(String vsCurrency) changeVsCurrency,
+    required TResult Function(String id) getCoinInfo,
   }) {
     return changeInterval(interval);
   }
@@ -298,9 +308,10 @@ class _$_ChangeInterval implements _ChangeInterval {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TicketModel ticket)? getHistoricalMarket,
+    TResult? Function(String id)? getHistoricalMarket,
     TResult? Function(HistoryInterval interval)? changeInterval,
     TResult? Function(String vsCurrency)? changeVsCurrency,
+    TResult? Function(String id)? getCoinInfo,
   }) {
     return changeInterval?.call(interval);
   }
@@ -308,9 +319,10 @@ class _$_ChangeInterval implements _ChangeInterval {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TicketModel ticket)? getHistoricalMarket,
+    TResult Function(String id)? getHistoricalMarket,
     TResult Function(HistoryInterval interval)? changeInterval,
     TResult Function(String vsCurrency)? changeVsCurrency,
+    TResult Function(String id)? getCoinInfo,
     required TResult orElse(),
   }) {
     if (changeInterval != null) {
@@ -325,6 +337,7 @@ class _$_ChangeInterval implements _ChangeInterval {
     required TResult Function(_GetHistoricalMarket value) getHistoricalMarket,
     required TResult Function(_ChangeInterval value) changeInterval,
     required TResult Function(_ChangeVsCurrency value) changeVsCurrency,
+    required TResult Function(_GetCoinInfo value) getCoinInfo,
   }) {
     return changeInterval(this);
   }
@@ -335,6 +348,7 @@ class _$_ChangeInterval implements _ChangeInterval {
     TResult? Function(_GetHistoricalMarket value)? getHistoricalMarket,
     TResult? Function(_ChangeInterval value)? changeInterval,
     TResult? Function(_ChangeVsCurrency value)? changeVsCurrency,
+    TResult? Function(_GetCoinInfo value)? getCoinInfo,
   }) {
     return changeInterval?.call(this);
   }
@@ -345,6 +359,7 @@ class _$_ChangeInterval implements _ChangeInterval {
     TResult Function(_GetHistoricalMarket value)? getHistoricalMarket,
     TResult Function(_ChangeInterval value)? changeInterval,
     TResult Function(_ChangeVsCurrency value)? changeVsCurrency,
+    TResult Function(_GetCoinInfo value)? getCoinInfo,
     required TResult orElse(),
   }) {
     if (changeInterval != null) {
@@ -354,7 +369,7 @@ class _$_ChangeInterval implements _ChangeInterval {
   }
 }
 
-abstract class _ChangeInterval implements HistoricalMarketEvent {
+abstract class _ChangeInterval implements GraficEvent {
   const factory _ChangeInterval(final HistoryInterval interval) =
       _$_ChangeInterval;
 
@@ -375,7 +390,7 @@ abstract class _$$_ChangeVsCurrencyCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ChangeVsCurrencyCopyWithImpl<$Res>
-    extends _$HistoricalMarketEventCopyWithImpl<$Res, _$_ChangeVsCurrency>
+    extends _$GraficEventCopyWithImpl<$Res, _$_ChangeVsCurrency>
     implements _$$_ChangeVsCurrencyCopyWith<$Res> {
   __$$_ChangeVsCurrencyCopyWithImpl(
       _$_ChangeVsCurrency _value, $Res Function(_$_ChangeVsCurrency) _then)
@@ -405,7 +420,7 @@ class _$_ChangeVsCurrency implements _ChangeVsCurrency {
 
   @override
   String toString() {
-    return 'HistoricalMarketEvent.changeVsCurrency(vsCurrency: $vsCurrency)';
+    return 'GraficEvent.changeVsCurrency(vsCurrency: $vsCurrency)';
   }
 
   @override
@@ -429,9 +444,10 @@ class _$_ChangeVsCurrency implements _ChangeVsCurrency {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TicketModel ticket) getHistoricalMarket,
+    required TResult Function(String id) getHistoricalMarket,
     required TResult Function(HistoryInterval interval) changeInterval,
     required TResult Function(String vsCurrency) changeVsCurrency,
+    required TResult Function(String id) getCoinInfo,
   }) {
     return changeVsCurrency(vsCurrency);
   }
@@ -439,9 +455,10 @@ class _$_ChangeVsCurrency implements _ChangeVsCurrency {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TicketModel ticket)? getHistoricalMarket,
+    TResult? Function(String id)? getHistoricalMarket,
     TResult? Function(HistoryInterval interval)? changeInterval,
     TResult? Function(String vsCurrency)? changeVsCurrency,
+    TResult? Function(String id)? getCoinInfo,
   }) {
     return changeVsCurrency?.call(vsCurrency);
   }
@@ -449,9 +466,10 @@ class _$_ChangeVsCurrency implements _ChangeVsCurrency {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TicketModel ticket)? getHistoricalMarket,
+    TResult Function(String id)? getHistoricalMarket,
     TResult Function(HistoryInterval interval)? changeInterval,
     TResult Function(String vsCurrency)? changeVsCurrency,
+    TResult Function(String id)? getCoinInfo,
     required TResult orElse(),
   }) {
     if (changeVsCurrency != null) {
@@ -466,6 +484,7 @@ class _$_ChangeVsCurrency implements _ChangeVsCurrency {
     required TResult Function(_GetHistoricalMarket value) getHistoricalMarket,
     required TResult Function(_ChangeInterval value) changeInterval,
     required TResult Function(_ChangeVsCurrency value) changeVsCurrency,
+    required TResult Function(_GetCoinInfo value) getCoinInfo,
   }) {
     return changeVsCurrency(this);
   }
@@ -476,6 +495,7 @@ class _$_ChangeVsCurrency implements _ChangeVsCurrency {
     TResult? Function(_GetHistoricalMarket value)? getHistoricalMarket,
     TResult? Function(_ChangeInterval value)? changeInterval,
     TResult? Function(_ChangeVsCurrency value)? changeVsCurrency,
+    TResult? Function(_GetCoinInfo value)? getCoinInfo,
   }) {
     return changeVsCurrency?.call(this);
   }
@@ -486,6 +506,7 @@ class _$_ChangeVsCurrency implements _ChangeVsCurrency {
     TResult Function(_GetHistoricalMarket value)? getHistoricalMarket,
     TResult Function(_ChangeInterval value)? changeInterval,
     TResult Function(_ChangeVsCurrency value)? changeVsCurrency,
+    TResult Function(_GetCoinInfo value)? getCoinInfo,
     required TResult orElse(),
   }) {
     if (changeVsCurrency != null) {
@@ -495,12 +516,157 @@ class _$_ChangeVsCurrency implements _ChangeVsCurrency {
   }
 }
 
-abstract class _ChangeVsCurrency implements HistoricalMarketEvent {
+abstract class _ChangeVsCurrency implements GraficEvent {
   const factory _ChangeVsCurrency(final String vsCurrency) =
       _$_ChangeVsCurrency;
 
   String get vsCurrency;
   @JsonKey(ignore: true)
   _$$_ChangeVsCurrencyCopyWith<_$_ChangeVsCurrency> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_GetCoinInfoCopyWith<$Res> {
+  factory _$$_GetCoinInfoCopyWith(
+          _$_GetCoinInfo value, $Res Function(_$_GetCoinInfo) then) =
+      __$$_GetCoinInfoCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$_GetCoinInfoCopyWithImpl<$Res>
+    extends _$GraficEventCopyWithImpl<$Res, _$_GetCoinInfo>
+    implements _$$_GetCoinInfoCopyWith<$Res> {
+  __$$_GetCoinInfoCopyWithImpl(
+      _$_GetCoinInfo _value, $Res Function(_$_GetCoinInfo) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$_GetCoinInfo(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_GetCoinInfo implements _GetCoinInfo {
+  const _$_GetCoinInfo(this.id);
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'GraficEvent.getCoinInfo(id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_GetCoinInfo &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_GetCoinInfoCopyWith<_$_GetCoinInfo> get copyWith =>
+      __$$_GetCoinInfoCopyWithImpl<_$_GetCoinInfo>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String id) getHistoricalMarket,
+    required TResult Function(HistoryInterval interval) changeInterval,
+    required TResult Function(String vsCurrency) changeVsCurrency,
+    required TResult Function(String id) getCoinInfo,
+  }) {
+    return getCoinInfo(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String id)? getHistoricalMarket,
+    TResult? Function(HistoryInterval interval)? changeInterval,
+    TResult? Function(String vsCurrency)? changeVsCurrency,
+    TResult? Function(String id)? getCoinInfo,
+  }) {
+    return getCoinInfo?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String id)? getHistoricalMarket,
+    TResult Function(HistoryInterval interval)? changeInterval,
+    TResult Function(String vsCurrency)? changeVsCurrency,
+    TResult Function(String id)? getCoinInfo,
+    required TResult orElse(),
+  }) {
+    if (getCoinInfo != null) {
+      return getCoinInfo(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetHistoricalMarket value) getHistoricalMarket,
+    required TResult Function(_ChangeInterval value) changeInterval,
+    required TResult Function(_ChangeVsCurrency value) changeVsCurrency,
+    required TResult Function(_GetCoinInfo value) getCoinInfo,
+  }) {
+    return getCoinInfo(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetHistoricalMarket value)? getHistoricalMarket,
+    TResult? Function(_ChangeInterval value)? changeInterval,
+    TResult? Function(_ChangeVsCurrency value)? changeVsCurrency,
+    TResult? Function(_GetCoinInfo value)? getCoinInfo,
+  }) {
+    return getCoinInfo?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetHistoricalMarket value)? getHistoricalMarket,
+    TResult Function(_ChangeInterval value)? changeInterval,
+    TResult Function(_ChangeVsCurrency value)? changeVsCurrency,
+    TResult Function(_GetCoinInfo value)? getCoinInfo,
+    required TResult orElse(),
+  }) {
+    if (getCoinInfo != null) {
+      return getCoinInfo(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetCoinInfo implements GraficEvent {
+  const factory _GetCoinInfo(final String id) = _$_GetCoinInfo;
+
+  String get id;
+  @JsonKey(ignore: true)
+  _$$_GetCoinInfoCopyWith<_$_GetCoinInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }

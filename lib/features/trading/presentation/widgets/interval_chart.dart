@@ -1,11 +1,10 @@
-import 'package:crypto_app/features/shared/presentation/bloc/tickets/tickets_bloc.dart';
-import 'package:crypto_app/features/trading/presentation/bloc/historical_market_bloc.dart';
+import 'package:crypto_app/features/trading/presentation/bloc/grafic_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:crypto_app/config/themes/theme_constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CardsTimeChart extends StatelessWidget {
-  const CardsTimeChart({
+class IntervalChart extends StatelessWidget {
+  const IntervalChart({
     Key? key,
   }) : super(key: key);
 
@@ -17,19 +16,18 @@ class CardsTimeChart extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
-          final historicalMarketBloc = context.watch<HistoricalMarketBloc>();
-          final ticketsBloc = context.watch<TicketsBloc>();
+          final graficBloc = context.watch<GraficBloc>();
 
           return GestureDetector(
             onTap: () {
-              historicalMarketBloc.add(
-                  HistoricalMarketEvent.changeInterval(valuesInterval[index]));
-              historicalMarketBloc.add(
-                  HistoricalMarketEvent.getHistoricalMarket(
-                      ticketsBloc.state.ticketModel));
+              graficBloc.add(GraficEvent.changeInterval(valuesInterval[index]));
+              graficBloc.add(GraficEvent.getHistoricalMarket(
+                  graficBloc.state.coinModel.id));
             },
             child: Card(
-              color: darkTheme.colorScheme.primary,
+              color: valuesInterval[index] == graficBloc.state.interval
+                  ? darkTheme.colorScheme.secondary
+                  : darkTheme.colorScheme.primary,
               child: Container(
                   alignment: Alignment.center,
                   width: 40,

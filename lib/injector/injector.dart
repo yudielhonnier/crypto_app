@@ -14,6 +14,7 @@ import 'package:crypto_app/features/shared/domain/usecase/delete_ticket_by_id_us
 import 'package:crypto_app/features/shared/domain/usecase/get_all_tickets_use_case.dart';
 import 'package:crypto_app/features/shared/domain/usecase/get_ticket_by_id_use_case.dart';
 import 'package:crypto_app/features/shared/presentation/bloc/tickets/tickets_bloc.dart';
+import 'package:crypto_app/features/trading/domain/usecases/get_coin_info_use_case.dart';
 import 'package:crypto_app/features/trading/domain/usecases/get_historical_market_use_case.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
@@ -33,11 +34,11 @@ import '../features/home/domain/usecase/get_markets_use_case.dart';
 
 import '../core/network/network_info.dart';
 import '../features/shared/presentation/cubit/app_shadow_cubit.dart';
-import '../features/trading/data/data_sources/local/historical_market_local_data_source.dart';
-import '../features/trading/data/data_sources/remote/historical_market_remote_data_source.dart';
-import '../features/trading/data/repository/historical_market_repository_impl.dart';
+import '../features/trading/data/data_sources/local/grafic_local_data_source.dart';
+import '../features/trading/data/data_sources/remote/grafic_remote_data_source.dart';
+import '../features/trading/data/repository/grafic_repository_impl.dart';
 import '../features/trading/domain/repository/historical_market_repository.dart';
-import '../features/trading/presentation/bloc/historical_market_bloc.dart';
+import '../features/trading/presentation/bloc/grafic_bloc.dart';
 
 final getIt = GetIt.instance;
 
@@ -59,6 +60,7 @@ void initUseCases() {
   getIt.registerLazySingleton(() => GetAllTicketsUseCase(getIt()));
   getIt.registerLazySingleton(() => GetAllArticlesUseCase(getIt()));
   getIt.registerLazySingleton(() => GetHistoricalMarketUseCase(getIt()));
+  getIt.registerLazySingleton(() => GetCoinInfoUseCase(getIt()));
 }
 
 void initRepositories() {
@@ -86,8 +88,8 @@ void initRepositories() {
       networkInfo: getIt(),
     ),
   );
-  getIt.registerLazySingleton<HistoricalMarketRepository>(
-    () => HistoricalMarketRepositoryImpl(
+  getIt.registerLazySingleton<GraficRepository>(
+    () => GraficRepositoryImpl(
       remoteDataSource: getIt(),
       localDataSource: getIt(),
       networkInfo: getIt(),
@@ -109,19 +111,17 @@ void initDataSources() {
     () => TicketLocalDataSourceImpl(
         sharedPreferences: getIt(), ticketDB: getIt()),
   );
-
   getIt.registerLazySingleton<ArticleLocalDataSource>(
     () => ArticleLocalDataSourceImpl(sharedPreferences: getIt()),
   );
-
   getIt.registerLazySingleton<ArticleRemoteDataSource>(
     () => ArticleRemoteDataSourceImpl(getIt()),
   );
-  getIt.registerLazySingleton<HistoricalMarketLocalDataSource>(
+  getIt.registerLazySingleton<GraficLocalDataSource>(
     () => HistoricalMarketLocalDataSourceImpl(getIt()),
   );
-  getIt.registerLazySingleton<HistoricalMarketRemoteDataSource>(
-    () => HistoricalMarketRemoteDataSourceImpl(getIt()),
+  getIt.registerLazySingleton<GraficRemoteDataSource>(
+    () => GraficRemoteDataSourceImpl(getIt()),
   );
 }
 
@@ -149,6 +149,5 @@ void initBlocs() {
       () => TicketsBloc(getIt(), getIt(), getIt(), getIt()));
   getIt.registerFactory<AppShadowCubit>(() => AppShadowCubit());
   getIt.registerFactory<ArticleBloc>(() => ArticleBloc(getIt()));
-  getIt.registerFactory<HistoricalMarketBloc>(
-      () => HistoricalMarketBloc(getIt()));
+  getIt.registerFactory<GraficBloc>(() => GraficBloc(getIt(), getIt()));
 }

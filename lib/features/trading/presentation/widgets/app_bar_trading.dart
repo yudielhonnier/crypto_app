@@ -4,7 +4,7 @@ import 'package:crypto_app/config/themes/theme_constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../bloc/historical_market_bloc.dart';
+import '../bloc/grafic_bloc.dart';
 
 class AppBarTrading extends StatelessWidget implements PreferredSize {
   const AppBarTrading(
@@ -102,7 +102,7 @@ class DropdownButtonAppBar extends StatefulWidget {
 class _DropdownButtonAppBarState extends State<DropdownButtonAppBar> {
   @override
   Widget build(BuildContext context) {
-    final historicalMarketBloc = context.watch<HistoricalMarketBloc>();
+    final graficBloc = context.watch<GraficBloc>();
     final ticketsBloc = context.watch<TicketsBloc>();
 
     return DropdownButton(
@@ -124,12 +124,13 @@ class _DropdownButtonAppBarState extends State<DropdownButtonAppBar> {
       // change button value to selected value
       onChanged: (String? newValue) {
         if (newValue != null) {
-          historicalMarketBloc.add(
-              HistoricalMarketEvent.changeVsCurrency(newValue.split('/').last));
-
           if (newValue != widget.dropdownvalue) {
-            historicalMarketBloc.add(HistoricalMarketEvent.getHistoricalMarket(
-                ticketsBloc.state.ticketModel));
+            graficBloc.add(GraficEvent.changeVsCurrency(
+                newValue.split('/').last.toLowerCase()));
+            graficBloc.add(
+                GraficEvent.getHistoricalMarket(graficBloc.state.coinModel.id));
+            graficBloc
+                .add(GraficEvent.getCoinInfo(graficBloc.state.coinModel.id));
           }
         }
 

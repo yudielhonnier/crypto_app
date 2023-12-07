@@ -1,4 +1,4 @@
-part of 'historical_market_bloc.dart';
+part of 'grafic_bloc.dart';
 
 enum HistoricalMarketStatus {
   initial,
@@ -73,41 +73,45 @@ enum HistoryInterval {
   }
 }
 
-enum VsCurrency { usd, eur, ypt }
+enum VsCurrency { usd, eur, mxn }
 
-class HistoricalMarketState extends Equatable {
-  const HistoricalMarketState({
+class GraficState extends Equatable {
+  const GraficState({
     required this.status,
-    required this.model,
+    required this.historicMarketModel,
     required this.interval,
     required this.vsCurrency,
+    required this.coinModel,
   });
 
   final HistoricalMarketStatus status;
-  final HistoricalMarketModel model;
+  final HistoricalMarketModel historicMarketModel;
+  final CoinModel coinModel;
   final HistoryInterval interval;
   final String vsCurrency;
 
-  static HistoricalMarketState initial() => HistoricalMarketState(
+  static GraficState initial() => GraficState(
         status: HistoricalMarketStatus.initial,
-        model: HistoricalMarketModel.mockHistoricalMarketModel,
+        historicMarketModel: HistoricalMarketModel.mockHistoricalMarketModel,
         interval: HistoryInterval.month,
         vsCurrency: VsCurrency.usd.name,
+        coinModel: CoinModel.mockCoinModel,
       );
 
-  HistoricalMarketState copyWith({
-    HistoricalMarketStatus? status,
-    HistoricalMarketModel? model,
-    HistoryInterval? interval,
-    String? vsCurrency,
-  }) =>
-      HistoricalMarketState(
-        status: status ?? this.status,
-        model: model ?? this.model,
-        interval: interval ?? this.interval,
-        vsCurrency: vsCurrency ?? this.vsCurrency,
-      );
+  GraficState copyWith(
+          {HistoricalMarketStatus? status,
+          HistoricalMarketModel? historicalMarketModel,
+          HistoryInterval? interval,
+          String? vsCurrency,
+          CoinModel? coinModel}) =>
+      GraficState(
+          status: status ?? this.status,
+          historicMarketModel: historicalMarketModel ?? historicMarketModel,
+          interval: interval ?? this.interval,
+          vsCurrency: vsCurrency ?? this.vsCurrency,
+          coinModel: coinModel ?? this.coinModel);
 
   @override
-  List<Object?> get props => [status, model, interval, vsCurrency];
+  List<Object?> get props =>
+      [status, historicMarketModel, interval, vsCurrency];
 }

@@ -1,5 +1,5 @@
 import 'package:crypto_app/features/shared/presentation/widgets/responsive_layout.dart';
-import 'package:crypto_app/features/trading/presentation/bloc/historical_market_bloc.dart';
+import 'package:crypto_app/features/trading/presentation/bloc/grafic_bloc.dart';
 import 'package:crypto_app/features/trading/presentation/pages/desktop_body_trading.dart';
 import 'package:crypto_app/features/trading/presentation/pages/mobile_body_trading.dart';
 import 'package:crypto_app/features/trading/presentation/pages/tablet_body_trading.dart';
@@ -24,8 +24,9 @@ class TradingScreenState extends State<TradingScreen> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-            create: (context) => getIt<HistoricalMarketBloc>()
-              ..add(HistoricalMarketEvent.getHistoricalMarket(widget.ticket)))
+            create: (context) => getIt<GraficBloc>()
+              ..add(GraficEvent.getHistoricalMarket(widget.ticket.id))
+              ..add(GraficEvent.getCoinInfo(widget.ticket.id)))
       ],
       child: ResponsiveLayout(
           mobileBody: MobileTradingBody(

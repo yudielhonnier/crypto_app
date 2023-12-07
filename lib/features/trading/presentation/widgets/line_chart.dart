@@ -1,11 +1,11 @@
-import 'dart:math';
+import 'dart:math' as math;
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 import 'package:crypto_app/config/themes/theme_constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/historical_market_bloc.dart';
+import '../bloc/grafic_bloc.dart';
 
 class LineChartWidget extends StatelessWidget {
   final List<double> data;
@@ -59,21 +59,21 @@ class LineChartWidget extends StatelessWidget {
   }
 
   LineChartData mainData(List<double> data, BuildContext context) {
-    final historicalMarketBloc = context.watch<HistoricalMarketBloc>();
+    final graficBloc = context.watch<GraficBloc>();
 
     return LineChartData(
       gridData: _buildFLGridData(),
 
       ///show the values of the x and y
-      titlesData: _buildTitlesData(),
+      titlesData: _buildTitlesData(graficBloc),
 
       borderData: FlBorderData(
         show: true,
       ),
       minX: 0,
-      maxX: historicalMarketBloc.state.interval.daysInterval() * 1.0,
-      minY: data.reduce(min).toDouble(),
-      maxY: data.reduce(max).toDouble(),
+      maxX: graficBloc.state.interval.daysInterval() * 1.0,
+      minY: data.reduce(math.min).toDouble(),
+      maxY: data.reduce(math.max).toDouble(),
       lineBarsData: [
         LineChartBarData(
           spots: listData(data),
@@ -117,7 +117,9 @@ class LineChartWidget extends StatelessWidget {
     );
   }
 
-  FlTitlesData _buildTitlesData() {
+  FlTitlesData _buildTitlesData(GraficBloc graficBloc) {
+    int daysInterval = graficBloc.state.interval.daysInterval();
+
     return FlTitlesData(
       show: true, // Set to true to display titles
       bottomTitles: AxisTitles(
@@ -131,7 +133,7 @@ class LineChartWidget extends StatelessWidget {
               fontSize: 14),
         ),
         reservedSize: 20,
-        interval: 1000,
+        interval: daysInterval == 1 ? 1.0 : (daysInterval ~/ 4).toDouble(),
       )),
       leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
       topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
@@ -151,4 +153,8 @@ extension IndexedIterable<E> on Iterable<E> {
     var i = 0;
     return map((e) => f(e, i++));
   }
+}
+
+double _calculateRangeInterval(GraficBloc graficBloc) {
+  return 0.0;
 }

@@ -1,7 +1,7 @@
-import 'package:crypto_app/core/constants/trading_screen_data.dart';
+import 'package:crypto_app/core/helpers/extensions.dart';
 import 'package:crypto_app/core/helpers/trading_screen_helper.dart';
 import 'package:crypto_app/features/trading/presentation/widgets/app_bar_trading.dart';
-import 'package:crypto_app/features/trading/presentation/widgets/cards_time_chart.dart';
+import 'package:crypto_app/features/trading/presentation/widgets/interval_chart.dart';
 import 'package:crypto_app/features/trading/presentation/widgets/line_chart.dart';
 import 'package:crypto_app/features/trading/presentation/widgets/linear_chart_statictics.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +10,7 @@ import 'package:crypto_app/config/themes/theme_constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../shared/data/models/ticket_model.dart';
-import '../bloc/historical_market_bloc.dart';
+import '../bloc/grafic_bloc.dart';
 
 class MobileTradingBody extends StatefulWidget {
   const MobileTradingBody({super.key, required this.ticket});
@@ -25,7 +25,6 @@ class _MobileTradingBodyState extends State<MobileTradingBody> {
   @override
   Widget build(BuildContext context) {
     final dropDownValues = getDropdownvalues(widget.ticket.symbol);
-    final historicalMarketBloc = context.watch<HistoricalMarketBloc>();
 
     return DefaultTabController(
       length: 4,
@@ -44,83 +43,167 @@ class _MobileTradingBodyState extends State<MobileTradingBody> {
                 color: darkTheme.colorScheme.primary,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),
-                  child: Column(
-                    children: [
-                      LinearChartStatictics(
-                          walletAmount: walletAmount,
-                          higAmount: higAmount,
-                          lowAmount: lowAmount),
-                      SizedBox(
-                        child: Container(),
-                        height: 26,
-                      ),
-                      Container(
-                        height: 1,
-                        color: darkTheme.colorScheme.secondary,
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Flexible(
-                          child: Stack(children: [
-                        ColoredBox(
-                          color: darkTheme.colorScheme.secondary,
-                          child: const SizedBox(
-                            width: 55,
-                            height: 30,
-                            child: Align(
-                                alignment: Alignment.center,
-                                child: Row(
-                                  children: [
-                                    Icon(Icons.stacked_line_chart_sharp),
-                                    Text('Line'),
-                                  ],
-                                )),
-                          ),
-                        ),
-                        Builder(builder: (context) {
-                          if (historicalMarketBloc.state.status ==
-                              HistoricalMarketStatus.loading) {
-                            return const SizedBox(
-                                height: 220,
-                                width: double.infinity,
-                                child: Center(
-                                  child: CircularProgressIndicator(
-                                    color: Colors.white,
-                                  ),
-                                ));
-                          }
+                  child: Builder(builder: (context) {
+                    final graficBloc = context.watch<GraficBloc>();
 
-                          if (historicalMarketBloc.state.status ==
-                              HistoricalMarketStatus.loaded) {
-                            return LineChartWidget(
-                              data: getLineChartDataList(
-                                  historicalMarketBloc.state.model.prices),
-                              width: double.infinity,
-                              height: 220,
-                              color: Colors.white,
-                            );
-                          }
+                    if (graficBloc.state.status ==
+                        HistoricalMarketStatus.loaded) {
+                      final data = getLineChartDataList(
+                          graficBloc.state.historicMarketModel.prices);
 
-                          if (historicalMarketBloc.state.status ==
-                              HistoricalMarketStatus.failure) {
-                            return const Text('Error');
-                          }
-
-                          return const Text('No data');
-                        }),
-                      ])),
-                      const SizedBox(
-                        width: double.infinity,
-                        child: Center(child: CardsTimeChart()),
-                        height: 50,
-                      ),
-                    ],
-                  ),
+                      final highAmount = data.highInDouble().toDouble();
+                      final lowAmount = data.lowInDouble().toDouble();
+                      //BUILD GRAFIC
+                      return _buildGrafic(
+                          highAmount, lowAmount, graficBloc, data);
+                    }
+                    if (graficBloc.state.status ==
+                        HistoricalMarketStatus.loading) {
+                      //BUILD LOADING GRAFIC
+                      return _buildLoadingGrafic(graficBloc);
+                    }
+                    return Container();
+                  }),
                 ),
               ),
             ),
-            // Builder(builder: (context) {
+          ],
+        ),
+      ),
+    );
+  }
+
+  Column _buildGrafic(double highAmount, double lowAmount,
+      GraficBloc graficBloc, List<double> data) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        LinearChartStatictics(
+            coin: graficBloc.state.coinModel,
+            ticket: widget.ticket,
+            higAmount: highAmount,
+            lowAmount: lowAmount),
+        SizedBox(
+          child: Container(),
+          height: 26,
+        ),
+        Container(
+          height: 1,
+          color: darkTheme.colorScheme.secondary,
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        Flexible(
+            child: Stack(children: [
+          ColoredBox(
+            color: darkTheme.colorScheme.secondary,
+            child: const SizedBox(
+              width: 55,
+              height: 30,
+              child: Align(
+                  alignment: Alignment.center,
+                  child: Row(
+                    children: [
+                      Icon(Icons.stacked_line_chart_sharp),
+                      Text('Line'),
+                    ],
+                  )),
+            ),
+          ),
+          Builder(builder: (context) {
+            if (graficBloc.state.status == HistoricalMarketStatus.loading) {
+              return const SizedBox(
+                  height: 220,
+                  width: double.infinity,
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.white,
+                    ),
+                  ));
+            }
+
+            if (graficBloc.state.status == HistoricalMarketStatus.loaded) {
+              return LineChartWidget(
+                data: data,
+                width: double.infinity,
+                height: 220,
+                color: Colors.white,
+              );
+            }
+
+            if (graficBloc.state.status == HistoricalMarketStatus.failure) {
+              return const Text('Error');
+            }
+
+            return const Text('No data');
+          }),
+        ])),
+        SizedBox(
+          width: context.width * 0.74,
+          height: 50,
+          child: const IntervalChart(),
+        ),
+      ],
+    );
+  }
+
+  Column _buildLoadingGrafic(GraficBloc historicalMarketBloc) {
+    return Column(
+      children: [
+        const CircularProgressIndicator(
+          color: Colors.white,
+        ),
+        SizedBox(
+          child: Container(),
+          height: 26,
+        ),
+        Container(
+          height: 1,
+          color: darkTheme.colorScheme.secondary,
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        Flexible(
+            child: Stack(children: [
+          ColoredBox(
+            color: darkTheme.colorScheme.secondary,
+            child: const SizedBox(
+              width: 55,
+              height: 30,
+              child: Align(
+                  alignment: Alignment.center,
+                  child: Row(
+                    children: [
+                      Icon(Icons.stacked_line_chart_sharp),
+                      Text('Line'),
+                    ],
+                  )),
+            ),
+          ),
+          const SizedBox(
+              height: 220,
+              width: double.infinity,
+              child: Center(
+                child: CircularProgressIndicator(
+                  color: Colors.white,
+                ),
+              ))
+        ])),
+        SizedBox(
+          width: context.width * 0.74,
+          height: 50,
+          child: const IntervalChart(),
+        ),
+      ],
+    );
+  }
+}
+
+
+  //TODO: ADD TO VERSION 1.1.0
+    // Builder(builder: (context) {
             //   final historialMarket = context.watch<HistoricalMarketBloc>();
             //   if (historialMarket.state.status ==
             //       HistoricalMarketStatus.loading) {
@@ -132,7 +215,7 @@ class _MobileTradingBodyState extends State<MobileTradingBody> {
             //   }
             //   return Container();
             // })
-            //TODO: ADD TO VERSION 1.1.0
+          
             // SizedBox(
             //   height: 48,
             //   child: AppBar(
@@ -179,9 +262,3 @@ class _MobileTradingBodyState extends State<MobileTradingBody> {
             //     ],
             //   ),
             // ),
-          ],
-        ),
-      ),
-    );
-  }
-}

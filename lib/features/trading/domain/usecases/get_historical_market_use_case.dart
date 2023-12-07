@@ -15,13 +15,13 @@ class GetHistoricalMarketParams {
 
 class GetHistoricalMarketUseCase
     implements Usecase<HistoricalMarket, GetHistoricalMarketParams> {
-  GetHistoricalMarketUseCase(this.historicalMarketRepository);
+  GetHistoricalMarketUseCase(this.graficRepository);
 
-  final HistoricalMarketRepository historicalMarketRepository;
+  final GraficRepository graficRepository;
 
   @override
   Future<Either<Failure, HistoricalMarket>> call(GetHistoricalMarketParams) =>
-      historicalMarketRepository.getHistoricalMarket(
+      graficRepository.getHistoricalMarket(
           GetHistoricalMarketParams.from,
           GetHistoricalMarketParams.to,
           GetHistoricalMarketParams.id,

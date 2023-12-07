@@ -1,7 +1,7 @@
 import 'package:crypto_app/core/constants/trading_screen_data.dart';
 import 'package:crypto_app/core/helpers/extensions.dart';
 import 'package:crypto_app/features/trading/presentation/widgets/app_bar_trading.dart';
-import 'package:crypto_app/features/trading/presentation/widgets/cards_time_chart.dart';
+import 'package:crypto_app/features/trading/presentation/widgets/interval_chart.dart';
 import 'package:crypto_app/features/trading/presentation/widgets/history.dart';
 import 'package:crypto_app/features/trading/presentation/widgets/info.dart';
 import 'package:crypto_app/features/trading/presentation/widgets/line_chart.dart';
@@ -11,8 +11,10 @@ import 'package:crypto_app/features/trading/presentation/widgets/order_book.dart
 import 'package:flutter/material.dart';
 
 import 'package:crypto_app/config/themes/theme_constants.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../shared/data/models/ticket_model.dart';
+import '../bloc/grafic_bloc.dart';
 
 class DesktopTradingBody extends StatefulWidget {
   const DesktopTradingBody({super.key, required this.ticket});
@@ -28,6 +30,7 @@ class _DesktopTradingBodyState extends State<DesktopTradingBody> {
   Widget build(BuildContext context) {
     late double heightContext = context.height;
     late double widthContext = context.width;
+    final graficBloc = context.watch<GraficBloc>();
 
     return DefaultTabController(
       length: 4,
@@ -52,9 +55,10 @@ class _DesktopTradingBodyState extends State<DesktopTradingBody> {
                     child: Column(
                       children: [
                         LinearChartStatictics(
-                            walletAmount: walletAmount,
-                            higAmount: higAmount,
-                            lowAmount: lowAmount),
+                            coin: graficBloc.state.coinModel,
+                            ticket: widget.ticket,
+                            higAmount: 0.0,
+                            lowAmount: 0.0),
                         SizedBox(
                           child: Container(),
                           height: 26,
@@ -91,7 +95,7 @@ class _DesktopTradingBodyState extends State<DesktopTradingBody> {
                           ),
                         ])),
                         const SizedBox(
-                          child: CardsTimeChart(),
+                          child: IntervalChart(),
                           height: 50,
                         ),
                       ],

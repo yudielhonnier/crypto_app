@@ -111,9 +111,14 @@ extension StringX on String {
   }
 
   Future<String> translate() async {
-    final translator = GoogleTranslator();
-    var t = await translator.translate(this, to: 'en');
-    return t.source;
+    try {
+      final translator = GoogleTranslator();
+      var t = await translator.translate(this, to: 'en');
+
+      return t.source;
+    } catch (e) {
+      return this;
+    }
   }
 }
 
@@ -155,6 +160,22 @@ extension ListX on List? {
             .map<T>((event) => event!)
             .toList() ??
         <T>[];
+  }
+
+  num highInDouble() {
+    if (this is List<double> && this!.isNotEmpty) {
+      return this!.reduce((value, element) =>
+          (value as double) > (element as double) ? value : element);
+    }
+    return -1;
+  }
+
+  num lowInDouble() {
+    if (this is List<num> && this!.isNotEmpty) {
+      return this?.reduce((value, element) =>
+          (value as double) < (element as double) ? value : element);
+    }
+    return -1;
   }
 }
 

@@ -1,9 +1,12 @@
-import 'package:crypto_app/features/trading/data/models/historical_market_model.dart';
 import 'package:fpdart/fpdart.dart';
 
 import '../../../../core/error/failure.dart';
+import '../entities/coin.dart';
+import '../entities/historical_market.dart';
 
-abstract class HistoricalMarketRepository {
-  Future<Either<Failure, HistoricalMarketModel>> getHistoricalMarket(
+abstract class GraficRepository {
+  Future<Either<Failure, HistoricalMarket>> getHistoricalMarket(
       int from, int to, String id, String vsCurrency);
+
+  Future<Either<Failure, Coin>> getCoinInfo(String id);
 }
